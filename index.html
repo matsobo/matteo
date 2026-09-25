@@ -1,0 +1,1791 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Il Pontino · Pizzeria Ristorante a Manesseno, Sant'Olcese</title>
+<meta name="description" content="Pizzeria e ristorante storico di Manesseno (Sant'Olcese, GE): pizza cotta nel forno a legna e cucina ligure e piemontese. Chiama lo 010 713589 per prenotare.">
+<meta name="theme-color" content="#1a1210">
+<meta property="og:type" content="restaurant">
+<meta property="og:title" content="Il Pontino · Pizzeria Ristorante">
+<meta property="og:description" content="Forno a legna e cucina di casa tra Liguria e Piemonte, a Manesseno.">
+<meta property="og:image" content="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1200&q=70">
+<meta property="og:locale" content="it_IT">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%231a1210'/%3E%3Cpath d='M32 12c6 8 10 13 10 20a10 10 0 0 1-20 0c0-4 2-7 4-9 0 4 2 6 4 6-2-6 0-12 2-17z' fill='%23f08a3c'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://images.unsplash.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Dati strutturati per Google (SEO locale). Verificare gli orari con il titolare. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Pizzeria Ristorante Il Pontino",
+  "telephone": "+39 010 713589",
+  "servesCuisine": ["Pizza", "Cucina ligure", "Cucina piemontese"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Carlo Lorenzini, 18",
+    "addressLocality": "Sant'Olcese",
+    "postalCode": "16010",
+    "addressRegion": "GE",
+    "addressCountry": "IT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 44.4775, "longitude": 8.9198 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "11:00", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"], "opens": "19:00", "closes": "23:59" }
+  ],
+  "acceptsReservations": "True"
+}
+</script>
+
+<style>
+/* =========================================================
+   DESIGN TOKENS
+   ========================================================= */
+:root{
+  /* Colori base: brace, legno, farina */
+  --ink:        #1a1210;   /* espresso / fondo principale */
+  --ink-2:      #231815;   /* superfici */
+  --ink-3:      #2e211c;   /* card su fondo scuro */
+  --line:       rgba(246,236,220,.12);
+  --cream:      #f6ecdc;   /* testo su scuro, fondo "carta" */
+  --cream-2:    #efe2cc;
+  --cream-dim:  #d6c4a8;   /* testo secondario su scuro (AA ≈ 10:1) */
+  --ink-soft:   #5a463b;   /* testo secondario su crema (AA ≈ 7:1) */
+  --ember:      #e2622f;   /* brace */
+  --ember-2:    #f2a14a;   /* fiamma */
+  --ember-deep: #a93c18;   /* accento su crema (AA ≈ 5.5:1) */
+  --gold:       #d8a650;
+  --basil:      #6f8a55;
+  --ok:         #7fc97a;
+  --ko:         #ff8a73;
+
+  /* Gradienti */
+  --grad-fire:  linear-gradient(115deg, #e2622f 0%, #ec7f3a 45%, #f2a14a 100%);
+  --grad-ember: radial-gradient(60% 60% at 70% 40%, rgba(226,98,47,.45) 0%, rgba(169,60,24,.18) 40%, transparent 70%);
+  --grad-ink:   linear-gradient(180deg, #1a1210 0%, #231815 100%);
+  --grad-gold-text: linear-gradient(100deg, #f6ecdc 0%, #f2c27a 45%, #e2622f 100%);
+
+  /* Tipografia */
+  --f-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --f-text:    "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --fs-hero:   clamp(2.6rem, 1.4rem + 5.6vw, 6rem);
+  --fs-h2:     clamp(2rem, 1.3rem + 3vw, 3.6rem);
+  --fs-h3:     clamp(1.25rem, 1.1rem + .6vw, 1.6rem);
+  --fs-body:   clamp(1rem, .96rem + .2vw, 1.125rem);
+  --fs-small:  .875rem;
+
+  /* Spaziature (scala 8pt) */
+  --s-1: .5rem; --s-2: 1rem; --s-3: 1.5rem; --s-4: 2rem; --s-5: 3rem; --s-6: 4.5rem; --s-7: 7rem;
+  --section-y: clamp(4.5rem, 3rem + 7vw, 9rem);
+  --gutter: clamp(1.25rem, .8rem + 2.5vw, 3rem);
+  --maxw: 1240px;
+
+  /* Forme ed effetti */
+  --r-sm: 10px; --r-md: 18px; --r-lg: 28px; --r-pill: 999px;
+  --shadow-1: 0 10px 30px -12px rgba(0,0,0,.5);
+  --shadow-2: 0 30px 80px -30px rgba(0,0,0,.7);
+  --glow: 0 0 0 1px rgba(242,161,74,.25), 0 18px 50px -18px rgba(226,98,47,.65);
+
+  /* Movimento */
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-io:  cubic-bezier(.65,0,.35,1);
+  --t-fast: 180ms; --t-med: 380ms; --t-slow: 800ms;
+
+  /* Livelli */
+  --z-canvas: 0; --z-content: 10; --z-header: 50; --z-float: 60; --z-dialog: 100;
+  --header-h: 72px;
+}
+
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-padding-top: calc(var(--header-h) + 12px); }
+html.lenis, html.lenis body{ height:auto; }
+.lenis.lenis-smooth{ scroll-behavior:auto !important; }
+body{
+  margin:0; background:var(--ink); color:var(--cream);
+  font-family:var(--f-text); font-size:var(--fs-body); line-height:1.65;
+  -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img{ max-width:100%; display:block; height:auto; }
+a{ color:inherit; }
+button{ font:inherit; color:inherit; }
+h1,h2,h3{ font-family:var(--f-display); font-weight:500; line-height:1.05; margin:0; letter-spacing:-.015em; text-wrap:balance; }
+p{ margin:0 0 1em; }
+::selection{ background:var(--ember); color:var(--ink); }
+:focus-visible{ outline:2px solid var(--ember-2); outline-offset:3px; border-radius:6px; }
+
+.skip-link{
+  position:fixed; left:1rem; top:-100px; z-index:1000; padding:.75rem 1rem;
+  background:var(--cream); color:var(--ink); border-radius:var(--r-sm); font-weight:700; text-decoration:none;
+}
+.skip-link:focus{ top:1rem; }
+.sr-only{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* grana "carta" leggera, statica */
+body::after{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:200; opacity:.06; mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.container{ width:100%; max-width:var(--maxw); margin-inline:auto; padding-inline:var(--gutter); }
+.section{ padding-block:var(--section-y); position:relative; }
+.section--paper{ background:var(--cream); color:var(--ink); }
+.section--paper ::selection{ background:var(--ink); color:var(--cream); }
+
+.eyebrow{
+  display:inline-flex; align-items:center; gap:.6rem; font-size:.8rem; font-weight:700;
+  letter-spacing:.18em; text-transform:uppercase; color:var(--ember-2); margin-bottom:var(--s-3);
+}
+.eyebrow::before{ content:""; width:28px; height:1px; background:currentColor; }
+.section--paper .eyebrow{ color:var(--ember-deep); }
+.h2{ font-size:var(--fs-h2); }
+.h2 em, .hero__title em{ font-style:italic; font-weight:400; }
+.lead{ font-size:clamp(1.08rem, 1rem + .4vw, 1.3rem); color:var(--cream-dim); max-width:60ch; }
+.section--paper .lead{ color:var(--ink-soft); }
+.gradient-text{ background:var(--grad-gold-text); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-box-decoration-break:clone; box-decoration-break:clone; }
+.hero__title .word.gradient-text{ padding-right:.04em; }
+
+/* Segnaposto visibili: da sostituire con dati reali */
+.ph{
+  display:inline; padding:.05em .4em; border:1px dashed currentColor; border-radius:6px;
+  font-family:var(--f-text); font-style:normal; font-size:.85em; font-weight:600; opacity:.9;
+  background:rgba(242,161,74,.08); color:var(--ember-2); white-space:normal;
+}
+.section--paper .ph{ color:var(--ember-deep); background:rgba(169,60,24,.06); }
+
+/* =========================================================
+   BOTTONI & LINK (micro-interazioni)
+   ========================================================= */
+.btn{
+  --bx:0px; --by:0px;
+  position:relative; display:inline-flex; align-items:center; justify-content:center; gap:.6rem;
+  min-height:52px; padding:.9rem 1.5rem; border-radius:var(--r-pill); border:1px solid transparent;
+  font-weight:700; font-size:1rem; text-decoration:none; cursor:pointer; white-space:nowrap;
+  transform:translate(var(--bx),var(--by)); touch-action:manipulation;
+  transition:transform var(--t-med) var(--ease-out), box-shadow var(--t-med) var(--ease-out), background-color var(--t-fast), color var(--t-fast), border-color var(--t-fast);
+  isolation:isolate; overflow:hidden;
+}
+.btn svg{ width:20px; height:20px; flex:none; transition:transform var(--t-med) var(--ease-out); }
+.btn:hover svg.i-arrow{ transform:translateX(4px); }
+.btn:active{ transform:translate(var(--bx),var(--by)) scale(.97); }
+.btn--fire{ background:var(--grad-fire); color:var(--ink); box-shadow:var(--glow); }
+.btn--fire::after{ /* riflesso che scorre */
+  content:""; position:absolute; inset:0; z-index:-1;
+  background:linear-gradient(110deg, transparent 30%, rgba(255,255,255,.45) 50%, transparent 70%);
+  transform:translateX(-120%); transition:transform .8s var(--ease-out);
+}
+.btn--fire:hover::after{ transform:translateX(120%); }
+.btn--fire:hover{ box-shadow:0 0 0 1px rgba(242,161,74,.4), 0 22px 60px -16px rgba(226,98,47,.85); }
+.btn--ghost{ background:rgba(246,236,220,.04); color:var(--cream); border-color:rgba(246,236,220,.28); backdrop-filter:blur(6px); }
+.btn--ghost:hover{ border-color:var(--cream); background:rgba(246,236,220,.1); }
+.btn--wa{ background:#1f8f4e; color:#fff; }            /* #fff su #1f8f4e ≈ 4.6:1 */
+.btn--wa:hover{ background:#1a7a43; }
+.btn--dark{ background:var(--ink); color:var(--cream); }
+.btn--dark:hover{ background:#000; }
+.btn--sm{ min-height:44px; padding:.6rem 1.1rem; font-size:.92rem; }
+
+.link{
+  text-decoration:none; background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;
+  transition:background-size var(--t-med) var(--ease-out); padding-bottom:2px;
+}
+.link:hover, .link:focus-visible{ background-size:100% 1px; }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header{
+  position:fixed; inset:0 0 auto 0; z-index:var(--z-header); height:var(--header-h);
+  display:flex; align-items:center; transition:background-color var(--t-med), backdrop-filter var(--t-med), box-shadow var(--t-med), transform var(--t-med) var(--ease-out);
+}
+.header.is-scrolled{ background:rgba(26,18,16,.78); backdrop-filter:blur(14px) saturate(140%); -webkit-backdrop-filter:blur(14px) saturate(140%); box-shadow:0 1px 0 var(--line); }
+.header.is-hidden{ transform:translateY(-100%); }
+.header__inner{ display:flex; align-items:center; justify-content:space-between; gap:var(--s-2); }
+.brand{ display:flex; align-items:center; gap:.7rem; text-decoration:none; }
+.brand__mark{ width:40px; height:40px; flex:none; }
+.brand__name{ font-family:var(--f-display); font-size:1.45rem; line-height:1; letter-spacing:-.01em; }
+.brand__name small{ display:block; font-family:var(--f-text); font-size:.62rem; letter-spacing:.24em; text-transform:uppercase; color:var(--cream-dim); margin-top:.3rem; }
+.nav{ display:none; }
+.nav ul{ list-style:none; display:flex; gap:clamp(1rem, 2vw, 2rem); margin:0; padding:0; }
+.nav a{ text-decoration:none; font-size:.95rem; font-weight:500; color:var(--cream-dim); transition:color var(--t-fast); }
+.nav a:hover, .nav a[aria-current="true"]{ color:var(--cream); }
+.header__actions{ display:flex; align-items:center; gap:.6rem; }
+.header__call{ display:none; }
+.menu-toggle{
+  width:48px; height:48px; border-radius:50%; border:1px solid var(--line); background:rgba(246,236,220,.04);
+  display:grid; place-items:center; cursor:pointer;
+}
+.menu-toggle span{ display:block; width:20px; height:2px; background:var(--cream); position:relative; transition:transform var(--t-med) var(--ease-out), background var(--t-fast); }
+.menu-toggle span::before,.menu-toggle span::after{ content:""; position:absolute; left:0; width:100%; height:2px; background:var(--cream); transition:transform var(--t-med) var(--ease-out); }
+.menu-toggle span::before{ top:-6px; } .menu-toggle span::after{ top:6px; }
+.menu-toggle[aria-expanded="true"] span{ background:transparent; }
+.menu-toggle[aria-expanded="true"] span::before{ transform:translateY(6px) rotate(45deg); }
+.menu-toggle[aria-expanded="true"] span::after{ transform:translateY(-6px) rotate(-45deg); }
+
+.mobile-nav{
+  position:fixed; inset:0; z-index:calc(var(--z-header) - 1); background:rgba(26,18,16,.97);
+  display:flex; flex-direction:column; justify-content:center; padding:var(--gutter);
+  opacity:0; visibility:hidden; transition:opacity var(--t-med), visibility var(--t-med);
+}
+.mobile-nav.is-open{ opacity:1; visibility:visible; }
+.mobile-nav ul{ list-style:none; margin:0 0 var(--s-5); padding:0; }
+.mobile-nav li{ border-bottom:1px solid var(--line); }
+.mobile-nav a{ display:block; padding:1rem 0; font-family:var(--f-display); font-size:clamp(1.8rem, 7vw, 2.6rem); text-decoration:none; }
+
+/* Badge aperto/chiuso */
+.status{
+  display:inline-flex; align-items:center; gap:.55rem; padding:.45rem .85rem .45rem .7rem; border-radius:var(--r-pill);
+  font-size:.85rem; font-weight:600; background:rgba(246,236,220,.06); border:1px solid var(--line); white-space:nowrap;
+}
+.status__dot{ width:9px; height:9px; border-radius:50%; background:var(--cream-dim); position:relative; flex:none; }
+.status.is-open .status__dot{ background:var(--ok); }
+.status.is-open .status__dot::after{ content:""; position:absolute; inset:-4px; border-radius:50%; border:2px solid var(--ok); opacity:.6; animation:pulse 2s var(--ease-out) infinite; }
+.status.is-closed .status__dot{ background:var(--ko); }
+@keyframes pulse{ from{ transform:scale(.6); opacity:.7 } to{ transform:scale(1.6); opacity:0 } }
+.header .status{ display:none; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{ position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; padding-top:calc(var(--header-h) + var(--s-4)); padding-bottom:var(--s-6); background:var(--grad-ink); }
+.hero__canvas{ position:absolute; inset:0; z-index:var(--z-canvas); pointer-events:none; }
+.hero__canvas canvas{ width:100%!important; height:100%!important; display:block; opacity:0; transition:opacity 1.4s var(--ease-out); }
+.hero__canvas.is-ready canvas{ opacity:1; }
+/* fallback statico (reduced-motion, no WebGL, CDN non disponibile) */
+.hero__orb{
+  position:absolute; width:min(90vw, 720px); aspect-ratio:1; right:-18%; top:50%; transform:translateY(-50%);
+  border-radius:50%; background:
+    radial-gradient(circle at 35% 30%, #ffd08a 0%, #f2a14a 18%, #e2622f 42%, #a93c18 64%, #3b1a10 82%, transparent 84%);
+  filter:blur(1px) saturate(1.05); opacity:.85; box-shadow:0 0 160px 40px rgba(226,98,47,.35);
+  transition:opacity 1s;
+}
+.hero__canvas.is-ready + .hero__orb{ opacity:0; }
+.hero::before{ /* velatura per contrasto del testo */
+  content:""; position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(90deg, rgba(26,18,16,.92) 0%, rgba(26,18,16,.7) 45%, rgba(26,18,16,.1) 80%),
+             linear-gradient(0deg, rgba(26,18,16,.9) 0%, transparent 35%);
+}
+.hero__content{ position:relative; z-index:var(--z-content); max-width:760px; }
+.hero__meta{ display:flex; flex-wrap:wrap; align-items:center; gap:.75rem; margin-bottom:var(--s-3); }
+.hero__kicker{ font-size:.8rem; font-weight:700; letter-spacing:.2em; text-transform:uppercase; color:var(--ember-2); }
+.hero__title{ font-size:var(--fs-hero); font-weight:400; line-height:.98; margin-bottom:var(--s-3); }
+.hero__title .line{ display:block; overflow:hidden; padding-bottom:.08em; }
+.hero__title .word{ display:inline-block; will-change:transform; }
+.hero__sub{ font-size:clamp(1.05rem, 1rem + .45vw, 1.35rem); color:var(--cream-dim); max-width:52ch; margin-bottom:var(--s-4); }
+.hero__ctas{ display:flex; flex-wrap:wrap; gap:.75rem; }
+.hero__note{ margin-top:var(--s-3); font-size:var(--fs-small); color:var(--cream-dim); display:flex; align-items:center; gap:.5rem; }
+.hero__note svg{ width:18px; height:18px; color:var(--ember-2); }
+.scroll-cue{
+  position:absolute; left:50%; bottom:1.5rem; z-index:var(--z-content); transform:translateX(-50%);
+  display:none; flex-direction:column; align-items:center; gap:.5rem; font-size:.7rem; letter-spacing:.2em; text-transform:uppercase; color:var(--cream-dim); text-decoration:none;
+}
+.scroll-cue i{ width:1px; height:44px; background:linear-gradient(var(--cream-dim), transparent); position:relative; overflow:hidden; }
+.scroll-cue i::after{ content:""; position:absolute; left:0; top:-40%; width:100%; height:40%; background:var(--ember-2); animation:cue 2.2s var(--ease-io) infinite; }
+@keyframes cue{ to{ top:110%; } }
+
+/* =========================================================
+   MARQUEE
+   ========================================================= */
+.marquee{ border-block:1px solid var(--line); overflow:hidden; padding-block:1.1rem; background:var(--ink-2); }
+.marquee__track{ display:flex; width:max-content; animation:marquee 38s linear infinite; }
+.marquee__group{ display:flex; align-items:center; gap:2.5rem; padding-right:2.5rem; font-family:var(--f-display); font-style:italic; font-size:clamp(1.3rem, 1rem + 1.4vw, 2.2rem); color:var(--cream-dim); white-space:nowrap; }
+.marquee__group svg{ width:22px; height:22px; color:var(--ember); flex:none; }
+@keyframes marquee{ to{ transform:translateX(-50%); } }
+.marquee:hover .marquee__track{ animation-play-state:paused; }
+
+/* =========================================================
+   CHI SIAMO
+   ========================================================= */
+.story{ display:grid; gap:var(--s-5); align-items:center; }
+.story__media{ position:relative; aspect-ratio:4/5; max-width:520px; }
+.story__img, .story__img.media{ position:absolute; border-radius:var(--r-lg); overflow:hidden; box-shadow:var(--shadow-2); }
+.story__img--a{ inset:0 18% 12% 0; }
+.story__img--b{ width:52%; aspect-ratio:3/4; right:0; bottom:0; border:6px solid var(--ink); }
+.story__badge{
+  position:absolute; left:-4%; bottom:4%; z-index:2; width:128px; height:128px; border-radius:50%;
+  display:grid; place-items:center; text-align:center; background:var(--grad-fire); color:var(--ink); box-shadow:var(--glow);
+  font-family:var(--f-display); line-height:1.05; padding:1rem;
+}
+.story__badge strong{ display:block; font-size:1.05rem; }
+.story__badge span{ font-size:.72rem; font-family:var(--f-text); font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+.story__text p{ color:var(--cream-dim); max-width:58ch; }
+.story__sign{ margin-top:var(--s-4); display:flex; align-items:center; gap:1rem; }
+.story__sign em{ font-family:var(--f-display); font-size:1.6rem; color:var(--cream); }
+
+/* media con fallback: se l'immagine non carica resta un gradiente elegante */
+.media{ position:relative; overflow:hidden; background:
+  radial-gradient(120% 90% at 30% 20%, rgba(242,161,74,.35), transparent 60%),
+  linear-gradient(135deg, #3a2519, #1f1411); }
+.media img{ width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease-out), opacity .6s; }
+.media img.is-broken{ opacity:0; }
+.media[data-label]::before{
+  content:attr(data-label); position:absolute; inset:auto 0 0 0; padding:1rem; font-size:.8rem; color:var(--cream-dim);
+}
+
+/* =========================================================
+   MENU / SERVIZI (card con tilt)
+   ========================================================= */
+.section-head{ display:grid; gap:var(--s-3); margin-bottom:var(--s-5); }
+.cards{ display:grid; gap:var(--s-3); }
+.card{
+  --rx:0deg; --ry:0deg; --mx:50%; --my:50%;
+  position:relative; border-radius:var(--r-lg); background:#fffaf1; color:var(--ink);
+  box-shadow:0 1px 0 rgba(26,18,16,.06), 0 24px 50px -30px rgba(26,18,16,.45);
+  transform:perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style:preserve-3d; transition:transform .5s var(--ease-out), box-shadow .5s var(--ease-out);
+  overflow:hidden; display:flex; flex-direction:column;
+}
+.card.is-tilting{ transition:transform .08s linear, box-shadow .5s var(--ease-out); box-shadow:0 1px 0 rgba(26,18,16,.06), 0 40px 70px -30px rgba(26,18,16,.55); }
+.card::after{ /* riflesso che segue il cursore */
+  content:""; position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .4s;
+  background:radial-gradient(420px circle at var(--mx) var(--my), rgba(255,255,255,.35), transparent 45%);
+}
+.card.is-tilting::after{ opacity:1; }
+.card__media{ aspect-ratio:16/11; }
+.card:hover .card__media img{ transform:scale(1.06); }
+.card__body{ padding:var(--s-3); display:flex; flex-direction:column; gap:.6rem; flex:1; transform:translateZ(30px); }
+.card__tag{ font-size:.72rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--ember-deep); }
+.card h3{ font-size:var(--fs-h3); }
+.card p{ color:var(--ink-soft); font-size:.98rem; margin:0; }
+.card__num{ position:absolute; top:1rem; right:1rem; z-index:2; font-family:var(--f-display); font-style:italic; font-size:1rem; color:var(--cream); background:rgba(26,18,16,.55); backdrop-filter:blur(6px); padding:.2rem .7rem; border-radius:var(--r-pill); }
+.menu-cta{ margin-top:var(--s-5); display:flex; flex-wrap:wrap; align-items:center; gap:1rem; justify-content:space-between; padding:var(--s-3) var(--s-4); border-radius:var(--r-lg); border:1px solid rgba(26,18,16,.12); }
+.menu-cta p{ margin:0; font-family:var(--f-display); font-size:clamp(1.2rem, 1rem + .8vw, 1.6rem); }
+
+/* =========================================================
+   GALLERIA
+   ========================================================= */
+.gallery{ display:grid; grid-template-columns:repeat(2, 1fr); gap:.75rem; }
+.gallery__item{ position:relative; border-radius:var(--r-md); overflow:hidden; cursor:zoom-in; border:0; padding:0; background:none; display:block; aspect-ratio:1; }
+.gallery__item .media{ position:absolute; inset:0; }
+.gallery__item:hover img, .gallery__item:focus-visible img{ transform:scale(1.07); }
+.gallery__item figcaption, .gallery__cap{
+  position:absolute; inset:auto 0 0 0; padding:.9rem 1rem; font-size:.85rem; font-weight:600; text-align:left;
+  background:linear-gradient(0deg, rgba(26,18,16,.85), transparent); color:var(--cream);
+  transform:translateY(30%); opacity:0; transition:transform var(--t-med) var(--ease-out), opacity var(--t-med);
+}
+.gallery__item:hover .gallery__cap, .gallery__item:focus-visible .gallery__cap{ transform:none; opacity:1; }
+
+.lightbox{ border:0; padding:0; background:transparent; max-width:min(1100px, 94vw); width:100%; color:var(--cream); }
+.lightbox::backdrop{ background:rgba(10,7,6,.9); backdrop-filter:blur(6px); }
+.lightbox__fig{ margin:0; position:relative; }
+.lightbox__fig .media{ border-radius:var(--r-md); aspect-ratio:3/2; max-height:80vh; }
+.lightbox__fig img{ object-fit:contain; background:#0d0907; }
+.lightbox__cap{ margin-top:.8rem; color:var(--cream-dim); font-size:.95rem; }
+.lightbox__btn{
+  position:absolute; width:48px; height:48px; border-radius:50%; border:1px solid var(--line); background:rgba(26,18,16,.7);
+  display:grid; place-items:center; cursor:pointer; color:var(--cream); transition:background var(--t-fast);
+}
+.lightbox__btn:hover{ background:var(--ember); color:var(--ink); }
+.lightbox__btn svg{ width:22px; height:22px; }
+.lightbox__close{ top:.75rem; right:.75rem; }
+.lightbox__prev{ left:.75rem; top:50%; transform:translateY(-50%); }
+.lightbox__next{ right:.75rem; top:50%; transform:translateY(-50%); }
+
+/* =========================================================
+   PERCHÉ SCEGLIERCI
+   ========================================================= */
+.why{ background:var(--ink-2); overflow:hidden; }
+.why::before{ content:""; position:absolute; inset:0; background:var(--grad-ember); opacity:.6; pointer-events:none; }
+.features{ display:grid; gap:var(--s-3); position:relative; }
+.feature{ padding:var(--s-4) var(--s-3); border-radius:var(--r-lg); border:1px solid var(--line); background:linear-gradient(180deg, rgba(246,236,220,.05), rgba(246,236,220,.015)); transition:border-color var(--t-med), transform var(--t-med) var(--ease-out); }
+.feature:hover{ border-color:rgba(242,161,74,.45); transform:translateY(-4px); }
+.feature__icon{ width:56px; height:56px; border-radius:16px; display:grid; place-items:center; background:rgba(226,98,47,.14); color:var(--ember-2); margin-bottom:var(--s-3); }
+.feature__icon svg{ width:28px; height:28px; }
+.feature h3{ font-size:var(--fs-h3); margin-bottom:.6rem; }
+.feature p{ color:var(--cream-dim); margin:0; font-size:.98rem; }
+.stats{ margin-top:var(--s-5); display:grid; grid-template-columns:repeat(2,1fr); gap:var(--s-3); position:relative; border-top:1px solid var(--line); padding-top:var(--s-4); }
+.stat strong{ display:block; font-family:var(--f-display); font-weight:400; font-size:clamp(2.2rem, 1.6rem + 2.4vw, 3.6rem); line-height:1; }
+.stat span{ color:var(--cream-dim); font-size:.92rem; }
+
+/* =========================================================
+   RECENSIONI
+   ========================================================= */
+.reviews{ display:grid; gap:var(--s-3); }
+.review{ position:relative; padding:var(--s-4); border-radius:var(--r-lg); background:#fffaf1; box-shadow:0 20px 50px -34px rgba(26,18,16,.45); display:flex; flex-direction:column; gap:1rem; }
+.review__stars{ display:flex; gap:3px; color:#b7791f; }
+.review__stars svg{ width:18px; height:18px; }
+.review blockquote{ margin:0; font-family:var(--f-display); font-size:1.18rem; line-height:1.45; }
+.review figcaption{ margin-top:auto; display:flex; align-items:center; gap:.8rem; font-size:.92rem; color:var(--ink-soft); }
+.review__avatar{ width:42px; height:42px; border-radius:50%; background:var(--grad-fire); display:grid; place-items:center; color:var(--ink); font-weight:700; }
+.review__quote{ position:absolute; top:1rem; right:1.4rem; font-family:var(--f-display); font-size:5rem; line-height:1; color:rgba(169,60,24,.15); }
+.reviews-cta{ margin-top:var(--s-4); display:flex; flex-wrap:wrap; gap:1rem; align-items:center; }
+
+/* =========================================================
+   ORARI E MAPPA
+   ========================================================= */
+.visit{ display:grid; gap:var(--s-4); }
+.hours{ border-radius:var(--r-lg); border:1px solid var(--line); background:var(--ink-2); padding:var(--s-4) var(--s-3); }
+.hours__head{ display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:1rem; margin-bottom:var(--s-3); }
+.hours__head h3{ font-size:var(--fs-h3); }
+.hours table{ width:100%; border-collapse:collapse; font-variant-numeric:tabular-nums; }
+.hours th, .hours td{ padding:.8rem .2rem; border-bottom:1px solid var(--line); text-align:left; font-weight:500; vertical-align:top; }
+.hours td{ text-align:right; color:var(--cream-dim); }
+.hours td small{ display:block; font-size:.78rem; color:var(--gold); }
+.hours tr.is-today th, .hours tr.is-today td{ color:var(--cream); }
+.hours tr.is-today th::after{ content:"oggi"; margin-left:.6rem; font-size:.68rem; font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:.15rem .5rem; border-radius:var(--r-pill); background:var(--ember); color:var(--ink); vertical-align:middle; }
+.hours tr.is-closed td{ color:var(--ko); }
+.hours__foot{ margin-top:var(--s-3); font-size:var(--fs-small); color:var(--cream-dim); }
+.weather{ margin-top:var(--s-3); display:flex; align-items:center; gap:1rem; padding:1rem 1.1rem; border-radius:var(--r-md); background:rgba(246,236,220,.04); border:1px solid var(--line); }
+.weather[hidden]{ display:none; }
+.weather__icon{ width:44px; height:44px; flex:none; color:var(--ember-2); }
+.weather__temp{ font-family:var(--f-display); font-size:1.6rem; line-height:1; }
+.weather__txt{ font-size:.9rem; color:var(--cream-dim); }
+.map-wrap{ position:relative; border-radius:var(--r-lg); overflow:hidden; min-height:380px; border:1px solid var(--line); background:var(--ink-2); }
+#map{ position:absolute; inset:0; }
+.map-wrap .map-fallback{ position:absolute; inset:0; display:grid; place-items:center; text-align:center; padding:2rem; color:var(--cream-dim); }
+.map-card{ position:absolute; left:1rem; right:1rem; bottom:1rem; z-index:500; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.8rem; padding:1rem 1.1rem; border-radius:var(--r-md); background:rgba(26,18,16,.9); backdrop-filter:blur(8px); border:1px solid var(--line); }
+.map-card address{ font-style:normal; font-size:.95rem; }
+.map-card strong{ font-family:var(--f-display); font-weight:500; font-size:1.15rem; display:block; }
+.map-wrap .leaflet-container{ font-family:var(--f-text); background:#2a1f1a; }
+.leaflet-tile-pane{ filter:grayscale(.55) sepia(.35) brightness(.78) contrast(1.05); }
+.pin{ width:44px; height:44px; border-radius:50% 50% 50% 0; transform:rotate(-45deg); background:var(--grad-fire); box-shadow:0 10px 25px -6px rgba(226,98,47,.8); display:grid; place-items:center; border:3px solid var(--cream); }
+.pin::after{ content:""; width:12px; height:12px; border-radius:50%; background:var(--ink); }
+
+/* =========================================================
+   CONTATTI
+   ========================================================= */
+.contact{ display:grid; gap:var(--s-5); }
+.contact__list{ list-style:none; margin:var(--s-4) 0 0; padding:0; display:grid; gap:.75rem; }
+.contact__item{ display:flex; align-items:center; gap:1rem; padding:1rem 1.1rem; border-radius:var(--r-md); border:1px solid rgba(26,18,16,.12); text-decoration:none; transition:border-color var(--t-fast), transform var(--t-med) var(--ease-out), background var(--t-fast); }
+a.contact__item:hover{ border-color:var(--ember-deep); transform:translateX(4px); background:#fffaf1; }
+.contact__item svg{ width:24px; height:24px; color:var(--ember-deep); flex:none; }
+.contact__item small{ display:block; font-size:.78rem; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); font-weight:700; }
+.contact__item span{ font-weight:600; }
+
+.form{ padding:var(--s-4) var(--s-3); border-radius:var(--r-lg); background:#fffaf1; box-shadow:0 30px 70px -40px rgba(26,18,16,.5); }
+.form h3{ font-size:var(--fs-h3); margin-bottom:.4rem; }
+.form > p{ color:var(--ink-soft); font-size:.95rem; }
+.form__grid{ display:grid; gap:1rem; margin-top:var(--s-3); }
+.field{ display:flex; flex-direction:column; gap:.35rem; }
+.field label{ font-size:.88rem; font-weight:700; }
+.field label .req{ color:var(--ember-deep); }
+.field input, .field select, .field textarea{
+  width:100%; min-height:50px; padding:.8rem 1rem; border-radius:var(--r-sm); border:1.5px solid rgba(26,18,16,.22);
+  background:#fff; color:var(--ink); font:inherit; font-size:1rem; transition:border-color var(--t-fast), box-shadow var(--t-fast);
+}
+.field textarea{ min-height:120px; resize:vertical; }
+.field input:focus, .field select:focus, .field textarea:focus{ outline:none; border-color:var(--ember-deep); box-shadow:0 0 0 4px rgba(226,98,47,.18); }
+.field.has-error input, .field.has-error textarea, .field.has-error select{ border-color:#b3261e; }
+.field__error{ font-size:.84rem; line-height:1.35; color:#b3261e; min-height:1.35em; } /* spazio riservato: niente salti di layout */
+.field__help{ font-size:.82rem; color:var(--ink-soft); }
+.check{ display:flex; gap:.7rem; align-items:flex-start; font-size:.88rem; color:var(--ink-soft); }
+.check input{ width:22px; height:22px; min-height:0; margin-top:.1rem; accent-color:var(--ember-deep); flex:none; }
+.form__status{ margin-top:1rem; padding:0; border-radius:var(--r-sm); font-size:.95rem; font-weight:600; }
+.form__status:not(:empty){ padding:.9rem 1rem; }
+.form__status.is-ok{ background:#e6f3e2; color:#1d5a1a; }
+.form__status.is-err{ background:#fde8e6; color:#8c1d15; }
+.form__status.is-info{ background:#fff1dc; color:#6b3a0e; }
+.btn[aria-busy="true"]{ pointer-events:none; opacity:.75; }
+.spinner{ width:18px; height:18px; border-radius:50%; border:2px solid currentColor; border-right-color:transparent; animation:spin .8s linear infinite; display:none; }
+.btn[aria-busy="true"] .spinner{ display:inline-block; }
+@keyframes spin{ to{ transform:rotate(360deg); } }
+.hp{ position:absolute; left:-9999px; }
+
+/* =========================================================
+   CTA FINALE + FOOTER
+   ========================================================= */
+.final-cta{ position:relative; overflow:hidden; text-align:center; background:var(--ink); }
+.final-cta::before{ content:""; position:absolute; left:50%; top:100%; width:900px; height:900px; transform:translate(-50%,-50%); background:radial-gradient(circle, rgba(226,98,47,.45), transparent 60%); pointer-events:none; }
+.final-cta .h2{ font-size:clamp(2.2rem, 1.2rem + 4.5vw, 5rem); max-width:16ch; margin:0 auto var(--s-4); }
+.final-cta .hero__ctas{ justify-content:center; position:relative; }
+
+.footer{ background:#120c0a; padding-block:var(--s-6) calc(var(--s-5) + 70px); font-size:.95rem; color:var(--cream-dim); }
+.footer__grid{ display:grid; gap:var(--s-4); }
+.footer h4{ font-family:var(--f-text); font-size:.78rem; letter-spacing:.18em; text-transform:uppercase; color:var(--cream); margin:0 0 1rem; }
+.footer ul{ list-style:none; margin:0; padding:0; display:grid; gap:.5rem; }
+.footer a{ text-decoration:none; }
+.footer a:hover{ color:var(--cream); }
+.footer__bottom{ margin-top:var(--s-5); padding-top:var(--s-3); border-top:1px solid var(--line); display:flex; flex-wrap:wrap; gap:1rem; justify-content:space-between; font-size:.85rem; }
+
+/* =========================================================
+   CTA FLUTTUANTI
+   ========================================================= */
+.dock{
+  position:fixed; left:.75rem; right:.75rem; bottom:max(.75rem, env(safe-area-inset-bottom)); z-index:var(--z-float);
+  display:grid; grid-template-columns:1fr 1fr 1fr; gap:.5rem; padding:.5rem; border-radius:20px;
+  background:rgba(26,18,16,.88); backdrop-filter:blur(14px); -webkit-backdrop-filter:blur(14px); border:1px solid var(--line); box-shadow:var(--shadow-2);
+  transform:translateY(140%); transition:transform var(--t-med) var(--ease-out);
+}
+.dock.is-visible{ transform:none; }
+.dock a{ display:flex; flex-direction:column; align-items:center; justify-content:center; gap:.2rem; min-height:56px; border-radius:14px; text-decoration:none; font-size:.78rem; font-weight:700; }
+.dock a svg{ width:22px; height:22px; }
+.dock a:nth-child(1){ background:var(--grad-fire); color:var(--ink); }
+.dock a:nth-child(2){ background:#1f8f4e; color:#fff; }
+.dock a:nth-child(3){ background:rgba(246,236,220,.08); }
+.wa-float{
+  position:fixed; right:1.5rem; bottom:1.5rem; z-index:var(--z-float); width:62px; height:62px; border-radius:50%;
+  display:none; place-items:center; background:#1f8f4e; color:#fff; box-shadow:0 18px 40px -12px rgba(31,143,78,.7);
+  transition:transform var(--t-med) var(--ease-out);
+}
+.wa-float:hover{ transform:scale(1.08) rotate(-6deg); }
+.wa-float svg{ width:30px; height:30px; }
+.wa-float__tip{ position:absolute; right:calc(100% + 12px); top:50%; transform:translate(8px,-50%); opacity:0; background:var(--cream); color:var(--ink); font-size:.85rem; font-weight:700; padding:.5rem .8rem; border-radius:10px; white-space:nowrap; pointer-events:none; transition:opacity var(--t-fast), transform var(--t-med) var(--ease-out); }
+.wa-float:hover .wa-float__tip, .wa-float:focus-visible .wa-float__tip{ opacity:1; transform:translate(0,-50%); }
+
+/* =========================================================
+   STATI DI ANIMAZIONE (applicati solo se GSAP è attivo)
+   ========================================================= */
+.js-anim [data-reveal]{ opacity:0; }
+
+/* =========================================================
+   RESPONSIVE (mobile-first)
+   ========================================================= */
+@media (min-width: 600px){
+  .cards{ grid-template-columns:repeat(2,1fr); }
+  .features{ grid-template-columns:repeat(2,1fr); }
+  .stats{ grid-template-columns:repeat(4,1fr); }
+  .gallery{ grid-template-columns:repeat(3,1fr); }
+  .form__grid{ grid-template-columns:1fr 1fr; }
+  .form__grid .field--full{ grid-column:1/-1; }
+  .header .status{ display:inline-flex; }
+}
+@media (min-width: 900px){
+  :root{ --header-h: 84px; }
+  .nav{ display:block; }
+  .menu-toggle{ display:none; }
+  .header__call{ display:inline-flex; }
+  .scroll-cue{ display:flex; }
+  .story{ grid-template-columns:1fr 1fr; gap:var(--s-6); }
+  .section-head{ grid-template-columns:1.1fr 1fr; align-items:end; }
+  .cards{ grid-template-columns:repeat(4,1fr); }
+  .features{ grid-template-columns:repeat(4,1fr); }
+  .gallery{ grid-template-columns:repeat(4,1fr); grid-auto-rows:200px; }
+  .gallery__item{ aspect-ratio:auto; }
+  .gallery__item:nth-child(1){ grid-column:span 2; grid-row:span 2; }
+  .gallery__item:nth-child(3){ grid-row:span 2; }
+  .gallery__item:nth-child(5), .gallery__item:nth-child(6){ grid-column:span 2; }
+  .reviews{ grid-template-columns:repeat(3,1fr); }
+  .visit{ grid-template-columns:.9fr 1.1fr; align-items:stretch; }
+  .map-wrap{ min-height:100%; }
+  .contact{ grid-template-columns:.85fr 1.15fr; align-items:start; }
+  .footer__grid{ grid-template-columns:1.4fr 1fr 1fr 1fr; }
+  .dock{ display:none; }
+  .wa-float{ display:grid; }
+  .footer{ padding-bottom:var(--s-5); }
+  .form{ padding:var(--s-5) var(--s-4); }
+}
+@media (max-width: 899px){
+  .hero::before{ background:linear-gradient(180deg, rgba(26,18,16,.55) 0%, rgba(26,18,16,.75) 50%, rgba(26,18,16,.95) 100%); }
+  .hero__orb{ right:-45%; top:28%; width:120vw; opacity:.6; }
+  .hero__ctas .btn{ flex:1 1 auto; }
+}
+@media (max-width: 380px){
+  .hero__ctas .btn{ width:100%; }
+  .brand__name small{ display:none; }
+}
+
+/* =========================================================
+   MOVIMENTO RIDOTTO
+   ========================================================= */
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
+  .marquee__track{ animation:none; }
+  .card{ transform:none!important; }
+  .js-anim [data-reveal]{ opacity:1!important; }
+}
+</style>
+</head>
+
+<body>
+<a class="skip-link" href="#main">Vai al contenuto</a>
+
+<!-- ============ ICONE (sprite SVG, stile lineare coerente) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+    <symbol id="i-wa" viewBox="0 0 24 24" fill="currentColor"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.6.13-.14.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.2-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.3 1.26.49 1.7.63.71.22 1.36.19 1.87.12.57-.09 1.76-.72 2-1.42.25-.69.25-1.29.18-1.41-.08-.13-.27-.2-.57-.35M12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.83 9.83 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.89 9.88m8.41-18.3A11.82 11.82 0 0 0 12.05 0C5.5 0 .16 5.34.16 11.89c0 2.1.55 4.14 1.59 5.95L.06 24l6.3-1.65a11.88 11.88 0 0 0 5.68 1.45h.01c6.55 0 11.89-5.34 11.89-11.89 0-3.18-1.24-6.17-3.48-8.41"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-flame" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.4-.5-2-1-3-1.1-2.1-.2-4 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.2.4-2.3 1-3.3.2 1.5 1.3 2.8 2.5 2.8z"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.5 19 2c1 2 2 4.2 2 8 0 5.5-4.8 10-10 10z"/><path d="M2 21c0-3 1.9-5.4 5.1-6C9.5 14.5 12 13 13 12"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.9M16 3.1a4 4 0 0 1 0 7.8"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8L12 17.8 5.8 21l1.2-6.8-5-4.9 6.9-1z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+    <symbol id="i-send" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+    <symbol id="i-dot" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c1.5 4 4 6.5 8 8-4 1.5-6.5 4-8 8-1.5-4-4-6.5-8-8 4-1.5 6.5-4 8-8z"/></symbol>
+  </defs>
+</svg>
+
+<!-- ============ HEADER ============ -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a class="brand" href="#home" aria-label="Il Pontino, torna all'inizio">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs><linearGradient id="gm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f2a14a"/><stop offset="1" stop-color="#e2622f"/></linearGradient></defs>
+        <circle cx="24" cy="24" r="22.5" fill="none" stroke="url(#gm)" stroke-width="1.5"/>
+        <!-- un piccolo ponte ad arco: il "Pontino" -->
+        <path d="M9 30h30M12 30c2.5-7 7-10.5 12-10.5S33.5 23 36 30" fill="none" stroke="#f6ecdc" stroke-width="1.8" stroke-linecap="round"/>
+        <path d="M24 9c2 2.6 3.4 4.4 3.4 6.6a3.4 3.4 0 0 1-6.8 0c0-1.3.6-2.4 1.4-3.1 0 1.3.6 2 1.4 2-.6-2 0-3.8.6-5.5z" fill="url(#gm)"/>
+        <path d="M18 30v4M30 30v4" stroke="#f6ecdc" stroke-width="1.8" stroke-linecap="round"/>
+      </svg>
+      <span class="brand__name">Il Pontino<small>Pizzeria · Ristorante</small></span>
+    </a>
+
+    <nav class="nav" aria-label="Navigazione principale">
+      <ul>
+        <li><a class="link" href="#storia">Storia</a></li>
+        <li><a class="link" href="#menu">Cucina</a></li>
+        <li><a class="link" href="#galleria">Galleria</a></li>
+        <li><a class="link" href="#recensioni">Recensioni</a></li>
+        <li><a class="link" href="#orari">Orari</a></li>
+        <li><a class="link" href="#contatti">Contatti</a></li>
+      </ul>
+    </nav>
+
+    <div class="header__actions">
+      <span class="status" data-status><span class="status__dot" aria-hidden="true"></span><span data-status-text>Orari</span></span>
+      <a class="btn btn--fire btn--sm header__call magnetic" href="tel:+39010713589" data-track="call-header">
+        <svg aria-hidden="true"><use href="#i-phone"/></svg>Prenota un tavolo
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Apri il menu"><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <nav aria-label="Navigazione mobile">
+    <ul>
+      <li><a href="#storia">La nostra storia</a></li>
+      <li><a href="#menu">La cucina</a></li>
+      <li><a href="#galleria">Galleria</a></li>
+      <li><a href="#recensioni">Recensioni</a></li>
+      <li><a href="#orari">Orari e mappa</a></li>
+      <li><a href="#contatti">Contatti</a></li>
+    </ul>
+  </nav>
+  <a class="btn btn--fire" href="tel:+39010713589"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama 010 713 589</a>
+</div>
+
+<main id="main">
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="hero__canvas" id="hero-canvas" aria-hidden="true"></div>
+  <div class="hero__orb" aria-hidden="true"></div>
+
+  <div class="container">
+    <div class="hero__content">
+      <div class="hero__meta" data-hero-fade>
+        <span class="hero__kicker">Manesseno · Sant'Olcese</span>
+        <span class="status" data-status aria-live="polite"><span class="status__dot" aria-hidden="true"></span><span data-status-text>Orari di apertura</span></span>
+      </div>
+      <h1 class="hero__title" id="hero-title">
+        <span class="line"><span class="word">Il</span> <span class="word">forno</span> <span class="word">è</span> <span class="word">acceso.</span></span>
+        <span class="line"><em><span class="word gradient-text">La</span> <span class="word gradient-text">tavola</span> <span class="word gradient-text">è</span> <span class="word gradient-text">pronta.</span></em></span>
+      </h1>
+      <p class="hero__sub" data-hero-fade>Pizza cotta nel forno a legna e cucina di casa tra Liguria e Piemonte. Al Pontino ci si ritrova da anni: per una cena in famiglia, una serata con gli amici, una pizza dopo il lavoro.</p>
+      <div class="hero__ctas" data-hero-fade>
+        <a class="btn btn--fire magnetic" href="tel:+39010713589" data-track="call-hero">
+          <svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama e prenota
+        </a>
+        <a class="btn btn--wa magnetic" href="#" data-wa data-wa-text="Buongiorno, vorrei prenotare un tavolo al Pontino." target="_blank" rel="noopener">
+          <svg aria-hidden="true"><use href="#i-wa"/></svg>Scrivici su WhatsApp
+        </a>
+        <a class="btn btn--ghost magnetic" href="#orari">
+          Orari e mappa<svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg>
+        </a>
+      </div>
+      <p class="hero__note" data-hero-fade><svg aria-hidden="true"><use href="#i-pin"/></svg>Via Carlo Lorenzini 18 · Manesseno (GE) · chiuso il lunedì</p>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#storia" aria-label="Scorri alla nostra storia"><span>Scopri</span><i></i></a>
+</section>
+
+<!-- ============ MARQUEE ============ -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__group">
+      <span>Forno a legna</span><svg><use href="#i-dot"/></svg>
+      <span>Cucina ligure</span><svg><use href="#i-dot"/></svg>
+      <span>Cucina piemontese</span><svg><use href="#i-dot"/></svg>
+      <span>Il ritrovo di Manesseno</span><svg><use href="#i-dot"/></svg>
+      <span>Aperti dal martedì alla domenica</span><svg><use href="#i-dot"/></svg>
+    </div>
+    <div class="marquee__group">
+      <span>Forno a legna</span><svg><use href="#i-dot"/></svg>
+      <span>Cucina ligure</span><svg><use href="#i-dot"/></svg>
+      <span>Cucina piemontese</span><svg><use href="#i-dot"/></svg>
+      <span>Il ritrovo di Manesseno</span><svg><use href="#i-dot"/></svg>
+      <span>Aperti dal martedì alla domenica</span><svg><use href="#i-dot"/></svg>
+    </div>
+  </div>
+</div>
+
+<!-- ============ CHI SIAMO / STORIA ============ -->
+<section class="section" id="storia" aria-labelledby="storia-title">
+  <div class="container story">
+    <div class="story__media" data-reveal="fade">
+      <div class="story__img story__img--a media" data-parallax="-8">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=900&q=70" width="900" height="1125" loading="lazy" decoding="async" alt="Sala di un ristorante con tavoli apparecchiati e luci calde (foto segnaposto)">
+      </div>
+      <div class="story__img story__img--b media" data-parallax="10">
+        <img src="https://images.unsplash.com/photo-1590947132387-155cc02f3212?auto=format&fit=crop&w=600&q=70" width="600" height="800" loading="lazy" decoding="async" alt="Pizza che cuoce nel forno a legna (foto segnaposto)">
+      </div>
+      <div class="story__badge" data-reveal="pop"><div><strong>Dal <span class="ph">[ANNO]</span></strong><span>a Manesseno</span></div></div>
+    </div>
+
+    <div class="story__text">
+      <p class="eyebrow" data-reveal>La nostra storia</p>
+      <h2 class="h2" id="storia-title" data-reveal>Una tavola di quartiere, <em>aperta a tutti.</em></h2>
+      <div data-reveal>
+        <p class="lead" style="margin-top:1.5rem">Il Pontino è da anni un punto di riferimento per Manesseno e per tutta la valle: il posto dove si festeggia un compleanno, si chiude la settimana con gli amici o ci si ferma per una pizza senza pensarci troppo.</p>
+        <p>Il cuore del locale è il forno a legna, acceso ogni sera. Accanto alla pizza, una cucina che guarda a due tradizioni: quella ligure, di casa, e quella piemontese, a pochi chilometri da qui. Ricette semplici, fatte con cura, servite come si fa tra persone che si conoscono.</p>
+        <p><span class="ph">[SEGNAPOSTO: anno di apertura, nomi dei titolari e un aneddoto sulla nascita del locale o sul nome "Il Pontino"]</span></p>
+      </div>
+      <div class="story__sign" data-reveal>
+        <em>La famiglia <span class="ph">[COGNOME]</span></em>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CUCINA / PRODOTTI ============ -->
+<section class="section section--paper" id="menu" aria-labelledby="menu-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" data-reveal>La cucina</p>
+        <h2 class="h2" id="menu-title" data-reveal>Dal forno a legna <em>alla cucina di casa.</em></h2>
+      </div>
+      <p class="lead" data-reveal>Pizze, primi e secondi della tradizione, pensati per chi vuole mangiare bene senza formalità. Chiedi sempre al tavolo le proposte del giorno.</p>
+    </div>
+
+    <div class="cards" data-stagger>
+      <article class="card" data-tilt>
+        <span class="card__num">01</span>
+        <div class="card__media media">
+          <img src="https://images.unsplash.com/photo-1574071318508-1cdbab80d002?auto=format&fit=crop&w=700&q=70" width="700" height="480" loading="lazy" decoding="async" alt="Pizza margherita appena sfornata con basilico fresco (foto segnaposto)">
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Forno a legna</span>
+          <h3>Le pizze</h3>
+          <p>Cotte nel forno a legna, dalle classiche alle proposte della casa. <span class="ph">[SEGNAPOSTO: tipo di impasto, ore di lievitazione, pizza più richiesta]</span></p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <span class="card__num">02</span>
+        <div class="card__media media">
+          <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=700&q=70" width="700" height="480" loading="lazy" decoding="async" alt="Piatto di pasta fresca condita (foto segnaposto)">
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Tradizione ligure</span>
+          <h3>Cucina ligure</h3>
+          <p>I sapori di casa nostra, preparati come una volta. <span class="ph">[SEGNAPOSTO: 2–3 piatti firma, es. trofie al pesto]</span></p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <span class="card__num">03</span>
+        <div class="card__media media">
+          <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=700&q=70" width="700" height="480" loading="lazy" decoding="async" alt="Piatto di carne impiattato con cura (foto segnaposto)">
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Tradizione piemontese</span>
+          <h3>Cucina piemontese</h3>
+          <p>Piatti robusti e generosi dall'altra parte dell'Appennino. <span class="ph">[SEGNAPOSTO: 2–3 piatti firma]</span></p>
+        </div>
+      </article>
+
+      <article class="card" data-tilt>
+        <span class="card__num">04</span>
+        <div class="card__media media">
+          <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=700&q=70" width="700" height="480" loading="lazy" decoding="async" alt="Tavolata conviviale in un ristorante (foto segnaposto)">
+        </div>
+        <div class="card__body">
+          <span class="card__tag">Su prenotazione</span>
+          <h3>Tavolate e ricorrenze</h3>
+          <p>Compleanni, cene di gruppo, pranzi della domenica: chiamaci e organizziamo insieme. <span class="ph">[CONFERMARE: asporto, sala eventi, dehors]</span></p>
+        </div>
+      </article>
+    </div>
+
+    <div class="menu-cta" data-reveal>
+      <p>Vuoi il menù completo o un tavolo per stasera?</p>
+      <a class="btn btn--dark magnetic" href="tel:+39010713589"><svg aria-hidden="true"><use href="#i-phone"/></svg>010 713 589</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALLERIA ============ -->
+<section class="section" id="galleria" aria-labelledby="galleria-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" data-reveal>Galleria</p>
+        <h2 class="h2" id="galleria-title" data-reveal>Un assaggio <em>prima di sedersi.</em></h2>
+      </div>
+      <p class="lead" data-reveal>Le immagini sono segnaposto: nella versione definitiva ci saranno le foto vere del locale, dei piatti e del forno. <span class="ph">[SEGNAPOSTO: servizio fotografico]</span></p>
+    </div>
+
+    <div class="gallery" data-stagger>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=1600&q=75" data-caption="Pizza appena uscita dal forno">
+        <span class="media"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=900&q=70" width="900" height="900" loading="lazy" decoding="async" alt="Pizza vista dall'alto su un tagliere di legno (foto segnaposto)"></span>
+        <span class="gallery__cap">Pizza appena uscita dal forno</span>
+      </button>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=1600&q=75" data-caption="Ingredienti semplici, scelti bene">
+        <span class="media"><img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&w=600&q=70" width="600" height="600" loading="lazy" decoding="async" alt="Pizza con pomodoro, mozzarella e basilico (foto segnaposto)"></span>
+        <span class="gallery__cap">Ingredienti semplici, scelti bene</span>
+      </button>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1600&q=75" data-caption="La sala, la sera">
+        <span class="media"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=600&q=70" width="600" height="600" loading="lazy" decoding="async" alt="Sala di ristorante illuminata di sera (foto segnaposto)"></span>
+        <span class="gallery__cap">La sala, la sera</span>
+      </button>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=1600&q=75" data-caption="In cucina">
+        <span class="media"><img src="https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?auto=format&fit=crop&w=600&q=70" width="600" height="900" loading="lazy" decoding="async" alt="Cuoco al lavoro in cucina (foto segnaposto)"></span>
+        <span class="gallery__cap">In cucina</span>
+      </button>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1600&q=75" data-caption="Primi della tradizione">
+        <span class="media"><img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=600&q=70" width="600" height="600" loading="lazy" decoding="async" alt="Piatto di pasta fatta in casa (foto segnaposto)"></span>
+        <span class="gallery__cap">Primi della tradizione</span>
+      </button>
+      <button class="gallery__item" type="button" data-full="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=75" data-caption="Secondi e contorni">
+        <span class="media"><img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=70" width="900" height="450" loading="lazy" decoding="async" alt="Piatto di carne con verdure (foto segnaposto)"></span>
+        <span class="gallery__cap">Secondi e contorni</span>
+      </button>
+    </div>
+  </div>
+
+  <dialog class="lightbox" id="lightbox" aria-label="Galleria immagini">
+    <figure class="lightbox__fig">
+      <div class="media"><img id="lightbox-img" src="" alt=""></div>
+      <figcaption class="lightbox__cap" id="lightbox-cap"></figcaption>
+      <button class="lightbox__btn lightbox__close" type="button" data-lb="close" aria-label="Chiudi"><svg aria-hidden="true"><use href="#i-x"/></svg></button>
+      <button class="lightbox__btn lightbox__prev" type="button" data-lb="prev" aria-label="Immagine precedente"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+      <button class="lightbox__btn lightbox__next" type="button" data-lb="next" aria-label="Immagine successiva"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+    </figure>
+  </dialog>
+</section>
+
+<!-- ============ PERCHÉ SCEGLIERCI ============ -->
+<section class="section why" id="perche" aria-labelledby="perche-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" data-reveal>Perché sceglierci</p>
+        <h2 class="h2" id="perche-title" data-reveal>Quello che ci chiedono <em>di non cambiare mai.</em></h2>
+      </div>
+      <p class="lead" data-reveal>Niente mode passeggere: un forno vero, una cucina onesta e un'accoglienza che fa sentire a casa.</p>
+    </div>
+
+    <div class="features" data-stagger>
+      <div class="feature">
+        <div class="feature__icon"><svg aria-hidden="true"><use href="#i-flame"/></svg></div>
+        <h3>Forno a legna</h3>
+        <p>La cottura che dà alla pizza il bordo alveolato, la base croccante e quel profumo inconfondibile.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__icon"><svg aria-hidden="true"><use href="#i-leaf"/></svg></div>
+        <h3>Due tradizioni</h3>
+        <p>Liguria e Piemonte nello stesso menù: due cucine di casa, per ogni gusto e ogni stagione.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__icon"><svg aria-hidden="true"><use href="#i-users"/></svg></div>
+        <h3>Il ritrovo del paese</h3>
+        <p>Famiglie, amici, colleghi: da anni qui ci si incontra, ci si riconosce e si torna volentieri.</p>
+      </div>
+      <div class="feature">
+        <div class="feature__icon"><svg aria-hidden="true"><use href="#i-cal"/></svg></div>
+        <h3>Sei giorni su sette</h3>
+        <p>Aperti dal martedì alla domenica, a pranzo e a cena. Nel weekend il pranzo è su prenotazione.</p>
+      </div>
+    </div>
+
+    <div class="stats" data-stagger>
+      <div class="stat"><strong class="gradient-text"><span class="ph">[N]</span></strong><span>anni di attività</span></div>
+      <div class="stat"><strong class="gradient-text"><span class="ph">[N]</span></strong><span>coperti in sala</span></div>
+      <div class="stat"><strong class="gradient-text"><span class="ph">[N,N]★</span></strong><span>valutazione media su Google</span></div>
+      <div class="stat"><strong class="gradient-text">6/7</strong><span>giorni aperti a settimana</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RECENSIONI ============ -->
+<section class="section section--paper" id="recensioni" aria-labelledby="recensioni-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" data-reveal>Recensioni</p>
+        <h2 class="h2" id="recensioni-title" data-reveal>Lo dicono <em>i nostri ospiti.</em></h2>
+      </div>
+      <p class="lead" data-reveal>Le recensioni qui sotto sono esempi di impaginazione: vanno sostituite con recensioni reali, riportate con il consenso degli autori.</p>
+    </div>
+
+    <div class="reviews" data-stagger>
+      <figure class="review">
+        <span class="review__quote" aria-hidden="true">“</span>
+        <div class="review__stars" role="img" aria-label="Valutazione segnaposto: 5 stelle su 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote><span class="ph">[SEGNAPOSTO]</span> Testo di una recensione reale da Google, ad esempio su pizza, accoglienza e atmosfera del locale.</blockquote>
+        <figcaption><span class="review__avatar" aria-hidden="true">A</span><span><strong>[Nome A.]</strong> · Google</span></figcaption>
+      </figure>
+      <figure class="review">
+        <span class="review__quote" aria-hidden="true">“</span>
+        <div class="review__stars" role="img" aria-label="Valutazione segnaposto: 5 stelle su 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote><span class="ph">[SEGNAPOSTO]</span> Seconda recensione reale: meglio se cita un piatto della cucina ligure o piemontese.</blockquote>
+        <figcaption><span class="review__avatar" aria-hidden="true">B</span><span><strong>[Nome B.]</strong> · Google</span></figcaption>
+      </figure>
+      <figure class="review">
+        <span class="review__quote" aria-hidden="true">“</span>
+        <div class="review__stars" role="img" aria-label="Valutazione segnaposto: 5 stelle su 5"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></div>
+        <blockquote><span class="ph">[SEGNAPOSTO]</span> Terza recensione reale: ideale se racconta il Pontino come punto di ritrovo di lunga data.</blockquote>
+        <figcaption><span class="review__avatar" aria-hidden="true">C</span><span><strong>[Nome C.]</strong> · Google</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="reviews-cta" data-reveal>
+      <a class="btn btn--dark magnetic" href="https://maps.app.goo.gl/b2PyxZy8LLD5CuiR8" target="_blank" rel="noopener">Leggi le recensioni su Google<svg class="i-arrow" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ORARI E MAPPA ============ -->
+<section class="section" id="orari" aria-labelledby="orari-title">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow" data-reveal>Orari e mappa</p>
+        <h2 class="h2" id="orari-title" data-reveal>Ti aspettiamo <em>a Manesseno.</em></h2>
+      </div>
+      <p class="lead" data-reveal>Nella frazione di Manesseno, facile da raggiungere da Genova e dalla Valpolcevera.</p>
+    </div>
+
+    <div class="visit">
+      <div class="hours" data-reveal>
+        <div class="hours__head">
+          <h3>Orari di apertura</h3>
+          <span class="status" data-status><span class="status__dot" aria-hidden="true"></span><span data-status-text>—</span></span>
+        </div>
+        <table>
+          <caption class="sr-only">Orari settimanali di apertura</caption>
+          <tbody id="hours-body">
+            <tr data-day="1" class="is-closed"><th scope="row">Lunedì</th><td>Chiuso</td></tr>
+            <tr data-day="2"><th scope="row">Martedì</th><td>11:00–15:00 · 19:00–24:00</td></tr>
+            <tr data-day="3"><th scope="row">Mercoledì</th><td>11:00–15:00 · 19:00–24:00</td></tr>
+            <tr data-day="4"><th scope="row">Giovedì</th><td>11:00–15:00 · 19:00–24:00</td></tr>
+            <tr data-day="5"><th scope="row">Venerdì</th><td>11:00–15:00 · 19:00–24:00</td></tr>
+            <tr data-day="6"><th scope="row">Sabato</th><td>11:00–15:00 · 19:00–24:00<small>Pranzo solo su prenotazione</small></td></tr>
+            <tr data-day="0"><th scope="row">Domenica</th><td>11:00–15:00 · 19:00–24:00<small>Pranzo solo su prenotazione</small></td></tr>
+          </tbody>
+        </table>
+        <p class="hours__foot">Orari da fonti pubbliche <span class="ph">[DA VERIFICARE con il titolare]</span>. Nei festivi possono variare: chiamaci per conferma.</p>
+
+        <div class="weather" id="weather" hidden>
+          <svg class="weather__icon" id="weather-icon" viewBox="0 0 24 24" aria-hidden="true"></svg>
+          <div>
+            <div class="weather__temp"><span id="weather-temp">—</span> <span class="sr-only">gradi</span></div>
+            <div class="weather__txt" id="weather-txt">Meteo a Manesseno</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-wrap" data-reveal>
+        <div class="map-fallback" id="map-fallback">
+          <p>Mappa di Manesseno, Sant'Olcese.<br><a class="link" href="https://maps.app.goo.gl/b2PyxZy8LLD5CuiR8" target="_blank" rel="noopener">Apri su Google Maps</a></p>
+        </div>
+        <div id="map" role="region" aria-label="Mappa con la posizione della pizzeria"></div>
+        <div class="map-card">
+          <address><strong>Il Pontino</strong>Via Carlo Lorenzini, 18 · 16010 Manesseno, Sant'Olcese (GE)</address>
+          <a class="btn btn--fire btn--sm magnetic" id="directions" href="https://www.google.com/maps/dir/?api=1&destination=Pizzeria+Il+Pontino+Via+Lorenzini+18+Sant'Olcese+GE" target="_blank" rel="noopener">
+            <svg aria-hidden="true"><use href="#i-pin"/></svg>Indicazioni
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTATTI ============ -->
+<section class="section section--paper" id="contatti" aria-labelledby="contatti-title">
+  <div class="container contact">
+    <div>
+      <p class="eyebrow" data-reveal>Contatti</p>
+      <h2 class="h2" id="contatti-title" data-reveal>Prenota il tuo tavolo, <em>al resto pensiamo noi.</em></h2>
+      <p class="lead" style="margin-top:1.5rem" data-reveal>Il modo più rapido è una telefonata. Per richieste di gruppo, ricorrenze o informazioni puoi anche scriverci.</p>
+      <ul class="contact__list" data-stagger>
+        <li><a class="contact__item" href="tel:+39010713589"><svg aria-hidden="true"><use href="#i-phone"/></svg><div><small>Telefono</small><span>010 713 589</span></div></a></li>
+        <li><a class="contact__item" href="#" data-wa data-wa-text="Buongiorno, vorrei informazioni sul Pontino." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg><div><small>WhatsApp</small><span>Scrivici un messaggio</span></div></a></li>
+        <li><a class="contact__item" href="https://maps.app.goo.gl/b2PyxZy8LLD5CuiR8" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-pin"/></svg><div><small>Indirizzo</small><span>Via Carlo Lorenzini 18, Manesseno</span></div></a></li>
+        <li><div class="contact__item"><svg aria-hidden="true"><use href="#i-mail"/></svg><div><small>Email</small><span class="ph">[EMAIL DEL LOCALE]</span></div></div></li>
+      </ul>
+    </div>
+
+    <form class="form" id="contact-form" action="https://api.web3forms.com/submit" method="POST" novalidate data-reveal>
+      <h3>Richiesta di prenotazione</h3>
+      <p>Ti ricontattiamo per confermare. Per stasera è meglio chiamare.</p>
+
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="Nuova richiesta dal sito – Il Pontino">
+      <input type="hidden" name="from_name" value="Sito Il Pontino">
+      <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <div class="form__grid">
+        <div class="field">
+          <label for="f-name">Nome e cognome <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-name" name="name" type="text" autocomplete="name" required aria-describedby="e-name">
+          <span class="field__error" id="e-name" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="f-phone">Telefono <span class="req" aria-hidden="true">*</span></label>
+          <input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" required pattern="[0-9 +().\-]{6,}" aria-describedby="e-phone">
+          <span class="field__error" id="e-phone" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="f-email">Email</label>
+          <input id="f-email" name="email" type="email" autocomplete="email" aria-describedby="e-email">
+          <span class="field__error" id="e-email" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="f-people">Persone</label>
+          <select id="f-people" name="persone">
+            <option value="">Seleziona</option>
+            <option>1–2</option><option>3–4</option><option>5–8</option><option>9–15</option><option>Più di 15</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="f-date">Giorno</label>
+          <input id="f-date" name="data" type="date" aria-describedby="h-date e-date">
+          <span class="field__help" id="h-date">Il lunedì siamo chiusi.</span>
+          <span class="field__error" id="e-date" aria-live="polite"></span>
+        </div>
+        <div class="field">
+          <label for="f-time">Orario indicativo</label>
+          <select id="f-time" name="orario">
+            <option value="">Seleziona</option>
+            <option>Pranzo</option><option>19:30</option><option>20:00</option><option>20:30</option><option>21:00</option><option>21:30</option>
+          </select>
+        </div>
+        <div class="field field--full">
+          <label for="f-msg">Messaggio</label>
+          <textarea id="f-msg" name="message" placeholder="Es. compleanno, seggiolone, intolleranze…"></textarea>
+        </div>
+        <div class="field field--full">
+          <label class="check"><input type="checkbox" name="privacy" id="f-privacy" required aria-describedby="e-privacy"> <span>Ho letto l'<a class="link" href="#privacy" style="background-size:100% 1px">informativa privacy</a> e acconsento al trattamento dei dati per rispondere alla mia richiesta. <span class="req" aria-hidden="true">*</span></span></label>
+          <span class="field__error" id="e-privacy" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <div style="margin-top:1.25rem">
+        <button class="btn btn--fire magnetic" type="submit"><span class="spinner" aria-hidden="true"></span><svg aria-hidden="true"><use href="#i-send"/></svg>Invia la richiesta</button>
+      </div>
+      <div class="form__status" id="form-status" role="status" aria-live="polite"></div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ CTA FINALE ============ -->
+<section class="section final-cta" aria-labelledby="final-title">
+  <div class="container">
+    <p class="eyebrow" data-reveal style="justify-content:center">Stasera</p>
+    <h2 class="h2" id="final-title" data-reveal>Si cena dalle sette. <em class="gradient-text">Ti teniamo un posto?</em></h2>
+    <div class="hero__ctas" data-reveal>
+      <a class="btn btn--fire magnetic" href="tel:+39010713589"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama 010 713 589</a>
+      <a class="btn btn--wa magnetic" href="#" data-wa data-wa-text="Buongiorno, vorrei prenotare un tavolo al Pontino." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div>
+        <a class="brand" href="#home" aria-label="Il Pontino, torna all'inizio">
+          <span class="brand__name" style="color:var(--cream)">Il Pontino<small>Pizzeria · Ristorante</small></span>
+        </a>
+        <p style="margin-top:1rem; max-width:34ch">Forno a legna e cucina ligure e piemontese a Manesseno, Sant'Olcese.</p>
+      </div>
+      <div>
+        <h4>Visita</h4>
+        <ul>
+          <li>Via Carlo Lorenzini, 18</li>
+          <li>16010 Manesseno, Sant'Olcese (GE)</li>
+          <li><a class="link" href="https://maps.app.goo.gl/b2PyxZy8LLD5CuiR8" target="_blank" rel="noopener">Google Maps</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Contatti</h4>
+        <ul>
+          <li><a class="link" href="tel:+39010713589">010 713 589</a></li>
+          <li><a class="link" href="#" data-wa target="_blank" rel="noopener">WhatsApp</a></li>
+          <li><span class="ph">[EMAIL]</span></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Orari</h4>
+        <ul>
+          <li>Mar–Dom · 11–15 / 19–24</li>
+          <li>Lunedì chiuso</li>
+          <li>Pranzo sab/dom su prenotazione</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Pizzeria Ristorante Il Pontino · P.IVA <span class="ph">[P.IVA]</span></span>
+      <span><a class="link" href="#privacy" id="privacy">Privacy</a> · <a class="link" href="#cookie">Cookie</a> · Mappa © <a class="link" href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> · Meteo <a class="link" href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ CTA FLUTTUANTI ============ -->
+<nav class="dock" aria-label="Azioni rapide">
+  <a href="tel:+39010713589"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama</a>
+  <a href="#" data-wa data-wa-text="Buongiorno, vorrei prenotare un tavolo al Pontino." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-wa"/></svg>WhatsApp</a>
+  <a href="#orari"><svg aria-hidden="true"><use href="#i-pin"/></svg>Dove siamo</a>
+</nav>
+<a class="wa-float" href="#" data-wa data-wa-text="Buongiorno, vorrei prenotare un tavolo al Pontino." target="_blank" rel="noopener" aria-label="Scrivici su WhatsApp">
+  <svg aria-hidden="true"><use href="#i-wa"/></svg><span class="wa-float__tip" aria-hidden="true">Scrivici su WhatsApp</span>
+</a>
+
+<!-- ============ LIBRERIE (CDN) ============ -->
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/lenis@1.1.20/dist/lenis.min.js"></script>
+
+<script type="module">
+/* =========================================================
+   CONFIGURAZIONE — sostituire i segnaposto
+   ========================================================= */
+const CONFIG = {
+  phone: '+39010713589',
+  // [SEGNAPOSTO] Numero WhatsApp in formato internazionale senza "+" né spazi (es. 393331234567).
+  // Nota: WhatsApp Business può essere attivato anche sul numero fisso (39010713589).
+  whatsapp: '39XXXXXXXXXX',
+  // [SEGNAPOSTO] Chiave gratuita da https://web3forms.com (si riceve via email).
+  web3formsKey: 'YOUR_WEB3FORMS_ACCESS_KEY',
+  // [DA VERIFICARE] Coordinate approssimative di Manesseno: sostituire con quelle esatte del locale.
+  lat: 44.4775, lng: 8.9198,
+  timezone: 'Europe/Rome',
+  // Orari in minuti dalla mezzanotte. 0 = domenica … 6 = sabato. [DA VERIFICARE con il titolare]
+  hours: {
+    0: [[660, 900], [1140, 1440]],
+    1: [],
+    2: [[660, 900], [1140, 1440]],
+    3: [[660, 900], [1140, 1440]],
+    4: [[660, 900], [1140, 1440]],
+    5: [[660, 900], [1140, 1440]],
+    6: [[660, 900], [1140, 1440]],
+  },
+  bookingOnlyLunch: [0, 6], // pranzo solo su prenotazione
+};
+
+const $  = (s, c = document) => c.querySelector(s);
+const $$ = (s, c = document) => [...c.querySelectorAll(s)];
+const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const finePointer  = matchMedia('(hover: hover) and (pointer: fine)').matches;
+const isDesktop    = () => innerWidth >= 900;
+
+/* Dispositivo "debole": pochi core, poca RAM, risparmio dati o schermo piccolo */
+const weakDevice = (() => {
+  const c = navigator.connection;
+  return (navigator.hardwareConcurrency || 8) <= 4
+      || (navigator.deviceMemory || 8) <= 4
+      || (c && (c.saveData || /2g/.test(c.effectiveType || '')));
+})();
+
+$('#year').textContent = new Date().getFullYear();
+
+/* =========================================================
+   IMMAGINI: fallback elegante se una foto non carica
+   ========================================================= */
+$$('.media img').forEach(img => {
+  const fail = () => img.classList.add('is-broken');
+  if (img.complete && img.naturalWidth === 0 && img.src) fail();
+  img.addEventListener('error', fail, { once: true });
+});
+
+/* =========================================================
+   WHATSAPP & LINK
+   ========================================================= */
+const waReady = /^\d{10,15}$/.test(CONFIG.whatsapp);
+$$('[data-wa]').forEach(a => {
+  const text = a.dataset.waText || 'Buongiorno, vorrei informazioni.';
+  if (waReady) {
+    a.href = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(text)}`;
+  } else {
+    // In demo, senza numero configurato, il pulsante ripiega sulla chiamata.
+    a.href = `tel:${CONFIG.phone}`;
+    a.removeAttribute('target');
+  }
+});
+
+/* =========================================================
+   APERTO ORA / CHIUSO (fuso orario Europe/Rome)
+   ========================================================= */
+const DAYS = ['domenica','lunedì','martedì','mercoledì','giovedì','venerdì','sabato'];
+const fmt = m => `${String(Math.floor(m / 60) % 24).padStart(2,'0')}:${String(m % 60).padStart(2,'0')}`;
+
+function romeNow() {
+  const parts = new Intl.DateTimeFormat('en-GB', {
+    timeZone: CONFIG.timezone, weekday: 'short', hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+  }).formatToParts(new Date());
+  const get = t => parts.find(p => p.type === t).value;
+  const day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(get('weekday'));
+  return { day, min: parseInt(get('hour'), 10) * 60 + parseInt(get('minute'), 10) };
+}
+
+function computeStatus() {
+  const { day, min } = romeNow();
+  const today = CONFIG.hours[day] || [];
+  const slot = today.find(([o, c]) => min >= o && min < c);
+  if (slot) {
+    const lunchBooking = CONFIG.bookingOnlyLunch.includes(day) && slot[0] < 900;
+    return { open: true, label: `Aperto ora · fino alle ${fmt(slot[1])}${lunchBooking ? ' (su prenotazione)' : ''}`, day };
+  }
+  const later = today.find(([o]) => o > min);
+  if (later) return { open: false, label: `Chiuso · apre alle ${fmt(later[0])}`, day };
+  for (let i = 1; i <= 7; i++) {
+    const d = (day + i) % 7;
+    const s = CONFIG.hours[d] || [];
+    if (s.length) {
+      const when = i === 1 ? 'domani' : DAYS[d];
+      return { open: false, label: `Chiuso · riapre ${when} alle ${fmt(s[0][0])}`, day };
+    }
+  }
+  return { open: false, label: 'Chiuso', day };
+}
+
+function renderStatus() {
+  const st = computeStatus();
+  $$('[data-status]').forEach(el => {
+    el.classList.toggle('is-open', st.open);
+    el.classList.toggle('is-closed', !st.open);
+    const t = $('[data-status-text]', el);
+    // nel header mostriamo la versione breve
+    t.textContent = el.closest('.header') ? (st.open ? 'Aperto ora' : 'Chiuso ora') : st.label;
+  });
+  $$('#hours-body tr').forEach(tr => tr.classList.toggle('is-today', +tr.dataset.day === st.day));
+}
+renderStatus();
+setInterval(renderStatus, 60_000);
+
+/* =========================================================
+   HEADER: stato scroll, menu mobile, dock CTA
+   ========================================================= */
+const header = $('.header');
+const dock = $('.dock');
+const toggle = $('.menu-toggle');
+const mobileNav = $('#mobile-nav');
+let lastY = 0;
+
+function onScroll(y = scrollY) {
+  header.classList.toggle('is-scrolled', y > 30);
+  const goingDown = y > lastY && y > innerHeight * .6;
+  header.classList.toggle('is-hidden', goingDown && !mobileNav.classList.contains('is-open'));
+  dock.classList.toggle('is-visible', y > innerHeight * .5);
+  lastY = y;
+}
+addEventListener('scroll', () => onScroll(), { passive: true });
+onScroll();
+
+function setMenu(open) {
+  toggle.setAttribute('aria-expanded', String(open));
+  toggle.setAttribute('aria-label', open ? 'Chiudi il menu' : 'Apri il menu');
+  mobileNav.classList.toggle('is-open', open);
+  mobileNav.setAttribute('aria-hidden', String(!open));
+  document.body.style.overflow = open ? 'hidden' : '';
+  if (window.__lenis) open ? window.__lenis.stop() : window.__lenis.start();
+  if (open) $('a', mobileNav).focus();
+}
+toggle.addEventListener('click', () => setMenu(toggle.getAttribute('aria-expanded') !== 'true'));
+$$('a', mobileNav).forEach(a => a.addEventListener('click', () => setMenu(false)));
+addEventListener('keydown', e => { if (e.key === 'Escape' && mobileNav.classList.contains('is-open')) { setMenu(false); toggle.focus(); } });
+
+/* =========================================================
+   MICRO-INTERAZIONI: pulsanti magnetici
+   ========================================================= */
+if (finePointer && !reduceMotion) {
+  $$('.magnetic').forEach(btn => {
+    btn.addEventListener('pointermove', e => {
+      const r = btn.getBoundingClientRect();
+      btn.style.setProperty('--bx', `${(e.clientX - r.left - r.width / 2) * .18}px`);
+      btn.style.setProperty('--by', `${(e.clientY - r.top - r.height / 2) * .3}px`);
+    });
+    btn.addEventListener('pointerleave', () => { btn.style.setProperty('--bx', '0px'); btn.style.setProperty('--by', '0px'); });
+  });
+}
+
+/* =========================================================
+   CARD TILT 3D
+   ========================================================= */
+if (finePointer && !reduceMotion) {
+  $$('[data-tilt]').forEach(card => {
+    let raf = 0;
+    card.addEventListener('pointermove', e => {
+      cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        const r = card.getBoundingClientRect();
+        const px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+        card.classList.add('is-tilting');
+        card.style.setProperty('--ry', `${(px - .5) * 12}deg`);
+        card.style.setProperty('--rx', `${(.5 - py) * 10}deg`);
+        card.style.setProperty('--mx', `${px * 100}%`);
+        card.style.setProperty('--my', `${py * 100}%`);
+      });
+    });
+    card.addEventListener('pointerleave', () => {
+      cancelAnimationFrame(raf);
+      card.classList.remove('is-tilting');
+      card.style.setProperty('--rx', '0deg'); card.style.setProperty('--ry', '0deg');
+    });
+  });
+}
+
+/* =========================================================
+   LIGHTBOX GALLERIA (dialog nativo: Esc e focus gestiti dal browser)
+   ========================================================= */
+const lb = $('#lightbox'), lbImg = $('#lightbox-img'), lbCap = $('#lightbox-cap');
+const items = $$('.gallery__item');
+let lbIndex = 0;
+function showLb(i) {
+  lbIndex = (i + items.length) % items.length;
+  const it = items[lbIndex];
+  lbImg.classList.remove('is-broken');
+  lbImg.src = it.dataset.full;
+  lbImg.alt = $('img', it).alt;
+  lbCap.textContent = it.dataset.caption || '';
+}
+lbImg.addEventListener('error', () => lbImg.classList.add('is-broken'));
+items.forEach((it, i) => it.addEventListener('click', () => {
+  showLb(i);
+  if (typeof lb.showModal === 'function') lb.showModal(); else window.open(it.dataset.full, '_blank');
+  window.__lenis?.stop();
+}));
+lb.addEventListener('close', () => { window.__lenis?.start(); items[lbIndex]?.focus(); });
+lb.addEventListener('click', e => {
+  const act = e.target.closest('[data-lb]')?.dataset.lb;
+  if (act === 'close' || e.target === lb) lb.close();
+  if (act === 'prev') showLb(lbIndex - 1);
+  if (act === 'next') showLb(lbIndex + 1);
+});
+lb.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft') showLb(lbIndex - 1);
+  if (e.key === 'ArrowRight') showLb(lbIndex + 1);
+});
+
+/* =========================================================
+   MODULO CONTATTI (Web3Forms)
+   ========================================================= */
+const form = $('#contact-form');
+const statusBox = $('#form-status');
+$('input[name="access_key"]', form).value = CONFIG.web3formsKey;
+
+const validators = {
+  name:    el => el.value.trim().length >= 2 || 'Inserisci il tuo nome (almeno 2 caratteri).',
+  phone:   el => /^[0-9 +().\-]{6,}$/.test(el.value.trim()) || 'Inserisci un numero di telefono valido, ad esempio 333 123 4567.',
+  email:   el => !el.value.trim() || /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim()) || 'Controlla l\'indirizzo email, ad esempio nome@esempio.it.',
+  data:    el => {
+    if (!el.value) return true;
+    const d = new Date(el.value + 'T12:00:00');
+    const today = new Date(); today.setHours(0,0,0,0);
+    if (d < today) return 'Scegli una data a partire da oggi.';
+    if (d.getDay() === 1) return 'Il lunedì siamo chiusi: scegli un altro giorno.';
+    return true;
+  },
+  privacy: el => el.checked || 'Per inviare la richiesta serve il consenso privacy.',
+};
+function validateField(el) {
+  const fn = validators[el.name]; if (!fn) return true;
+  const res = fn(el);
+  const field = el.closest('.field');
+  const err = $('#' + (el.getAttribute('aria-describedby') || '').split(' ').find(id => id.startsWith('e-')));
+  const ok = res === true;
+  field.classList.toggle('has-error', !ok);
+  el.setAttribute('aria-invalid', String(!ok));
+  if (err) err.textContent = ok ? '' : res;
+  return ok;
+}
+const dateInput = $('#f-date');
+dateInput.min = new Date().toISOString().slice(0, 10);
+$$('input, select, textarea', form).forEach(el => {
+  el.addEventListener('blur', () => validateField(el));
+  el.addEventListener('input', () => { if (el.closest('.field')?.classList.contains('has-error')) validateField(el); });
+});
+$('#f-privacy').addEventListener('change', e => validateField(e.target));
+
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const fields = ['name','phone','email','data','privacy'].map(n => form.elements[n]);
+  const invalid = fields.filter(el => !validateField(el));
+  if (invalid.length) {
+    statusBox.className = 'form__status is-err';
+    statusBox.textContent = `Controlla ${invalid.length === 1 ? 'il campo evidenziato' : 'i ' + invalid.length + ' campi evidenziati'}.`;
+    invalid[0].focus();
+    return;
+  }
+  const btn = $('button[type="submit"]', form);
+  if (!CONFIG.web3formsKey || CONFIG.web3formsKey.startsWith('YOUR_')) {
+    statusBox.className = 'form__status is-info';
+    statusBox.textContent = 'Versione demo: il modulo sarà attivo dopo aver inserito la chiave Web3Forms. Nel frattempo chiamaci allo 010 713 589.';
+    return;
+  }
+  btn.setAttribute('aria-busy', 'true'); btn.disabled = true;
+  statusBox.className = 'form__status'; statusBox.textContent = '';
+  try {
+    const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: new FormData(form) });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok || data.success === false) throw new Error(data.message || 'Errore di invio');
+    statusBox.className = 'form__status is-ok';
+    statusBox.textContent = 'Grazie! Abbiamo ricevuto la tua richiesta: ti richiamiamo al più presto per confermare.';
+    form.reset();
+  } catch (err) {
+    statusBox.className = 'form__status is-err';
+    statusBox.textContent = 'Invio non riuscito. Riprova tra poco oppure chiamaci allo 010 713 589.';
+  } finally {
+    btn.removeAttribute('aria-busy'); btn.disabled = false;
+  }
+});
+
+/* =========================================================
+   CARICAMENTO PIGRO: mappa e meteo quando la sezione si avvicina
+   ========================================================= */
+function whenNear(el, cb, margin = '400px') {
+  if (!('IntersectionObserver' in window)) return cb();
+  const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); cb(); } }, { rootMargin: margin });
+  io.observe(el);
+}
+function loadCSS(href) { return new Promise((ok, ko) => { const l = Object.assign(document.createElement('link'), { rel: 'stylesheet', href, onload: ok, onerror: ko }); document.head.append(l); }); }
+function loadJS(src)  { return new Promise((ok, ko) => { const s = Object.assign(document.createElement('script'), { src, onload: ok, onerror: ko }); document.head.append(s); }); }
+
+/* --- Mappa Leaflet + OpenStreetMap --- */
+whenNear($('#orari'), async () => {
+  try {
+    await Promise.all([
+      loadCSS('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css'),
+      loadJS('https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js'),
+    ]);
+    const L = window.L;
+    const map = L.map('map', { scrollWheelZoom: false, zoomControl: true, attributionControl: true }).setView([CONFIG.lat, CONFIG.lng], 16);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    const icon = L.divIcon({ className: '', html: '<div class="pin" aria-hidden="true"></div>', iconSize: [44, 44], iconAnchor: [22, 44] });
+    L.marker([CONFIG.lat, CONFIG.lng], { icon, title: 'Il Pontino', alt: 'Il Pontino' }).addTo(map)
+      .bindPopup('<strong>Il Pontino</strong><br>Via Carlo Lorenzini, 18');
+    map.panBy([0, 60], { animate: false }); // lascia spazio alla card indirizzo
+    $('#map-fallback').hidden = true;
+  } catch (e) { /* resta il fallback con link a Google Maps */ }
+});
+
+/* --- Meteo Open-Meteo (nessuna chiave) --- */
+const WMO = [
+  [[0], 'Sereno', 'sun'], [[1, 2], 'Poco nuvoloso', 'cloud-sun'], [[3], 'Nuvoloso', 'cloud'],
+  [[45, 48], 'Nebbia', 'cloud'], [[51, 53, 55, 56, 57], 'Pioviggine', 'rain'],
+  [[61, 63, 65, 66, 67, 80, 81, 82], 'Pioggia', 'rain'], [[71, 73, 75, 77, 85, 86], 'Neve', 'snow'],
+  [[95, 96, 99], 'Temporale', 'rain'],
+];
+const WICON = {
+  sun: '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="4.5"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g>',
+  moon: '<path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+  'cloud-sun': '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v1.5M3.8 4.8l1 1M2 9h1.5"/><path d="M5.3 11.2A4 4 0 1 1 12 7"/><path d="M17.5 20H9a4 4 0 1 1 .9-7.9 5 5 0 0 1 9.6 1.4A3.3 3.3 0 0 1 17.5 20z"/></g>',
+  cloud: '<path fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" d="M17.5 19H8a5 5 0 1 1 1-9.9 6 6 0 0 1 11.3 2.4A3.8 3.8 0 0 1 17.5 19z"/>',
+  rain: '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 15H8a5 5 0 1 1 1-9.9 6 6 0 0 1 11.3 2.4A3.8 3.8 0 0 1 17.5 15z"/><path d="M8 18l-1 3M12 18l-1 3M16 18l-1 3"/></g>',
+  snow: '<g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17.5 15H8a5 5 0 1 1 1-9.9 6 6 0 0 1 11.3 2.4A3.8 3.8 0 0 1 17.5 15z"/><path d="M8 19h.01M12 19h.01M16 19h.01M10 22h.01M14 22h.01"/></g>',
+};
+whenNear($('#orari'), async () => {
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${CONFIG.lat}&longitude=${CONFIG.lng}&current=temperature_2m,weather_code,is_day&timezone=${encodeURIComponent(CONFIG.timezone)}`;
+    const ctrl = new AbortController(); setTimeout(() => ctrl.abort(), 6000);
+    const { current } = await (await fetch(url, { signal: ctrl.signal })).json();
+    const code = current.weather_code;
+    const [, label, key] = WMO.find(([codes]) => codes.includes(code)) || [null, 'Meteo', 'cloud'];
+    const iconKey = key === 'sun' && !current.is_day ? 'moon' : key;
+    const wet = ['rain', 'snow'].includes(key);
+    $('#weather-icon').innerHTML = WICON[iconKey];
+    $('#weather-temp').textContent = `${Math.round(current.temperature_2m)}°`;
+    $('#weather-txt').textContent = `${label} a Manesseno · ${wet ? 'giornata da passare al caldo, vicino al forno.' : 'il momento giusto per una cena fuori.'}`;
+    $('#weather').hidden = false;
+  } catch (e) { /* widget opzionale: se non risponde resta nascosto */ }
+}, '200px');
+
+/* =========================================================
+   ANIMAZIONI: Lenis + GSAP/ScrollTrigger
+   ========================================================= */
+function initMotion() {
+  const { gsap, ScrollTrigger, Lenis } = window;
+  if (!gsap || !ScrollTrigger || reduceMotion) return;
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('js-anim');
+
+  /* Smooth scroll */
+  if (Lenis) {
+    const lenis = new Lenis({ duration: 1.15, easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)), smoothWheel: true });
+    window.__lenis = lenis;
+    lenis.on('scroll', ({ scroll }) => { ScrollTrigger.update(); onScroll(scroll); });
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const id = a.getAttribute('href');
+      if (id.length < 2) return;
+      const target = $(id); if (!target) return;
+      e.preventDefault();
+      lenis.scrollTo(target, { offset: id === '#home' ? 0 : -parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) + 1 });
+      history.replaceState(null, '', id);
+      target.setAttribute('tabindex', '-1'); target.focus({ preventScroll: true });
+    }));
+  }
+
+  /* Hero: parole che salgono */
+  const tl = gsap.timeline({ defaults: { ease: 'expo.out' } });
+  tl.from('.hero__title .word', { yPercent: 110, rotate: 4, duration: 1.2, stagger: .06 })
+    .from('[data-hero-fade]', { y: 24, opacity: 0, duration: 1, stagger: .1 }, '-=.9')
+    .from('.header__inner', { opacity: 0, duration: .8, clearProps: 'opacity' }, '-=1');
+
+  /* Reveal generico */
+  $$('[data-reveal]').forEach(el => {
+    const type = el.dataset.reveal;
+    const from = type === 'pop' ? { scale: .6, opacity: 0, rotate: -12 } : type === 'fade' ? { opacity: 0, y: 40 } : { opacity: 0, y: 32 };
+    gsap.fromTo(el, from, {
+      opacity: 1, y: 0, scale: 1, rotate: 0, duration: type === 'pop' ? 1 : 1.1,
+      ease: type === 'pop' ? 'back.out(1.6)' : 'expo.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true },
+    });
+  });
+
+  /* Gruppi con stagger */
+  $$('[data-stagger]').forEach(group => {
+    gsap.from(group.children, {
+      opacity: 0, y: 40, scale: .97, duration: 1, ease: 'expo.out', stagger: .08,
+      scrollTrigger: { trigger: group, start: 'top 85%', once: true },
+      clearProps: 'transform',
+    });
+  });
+
+  /* Parallax leggero sulle immagini della storia */
+  $$('[data-parallax]').forEach(el => {
+    gsap.to(el, { yPercent: +el.dataset.parallax, ease: 'none', scrollTrigger: { trigger: el.closest('section'), start: 'top bottom', end: 'bottom top', scrub: true } });
+  });
+
+  /* Contenuto hero che si dissolve allo scroll */
+  gsap.to('.hero__content', { y: -60, opacity: .2, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+
+  /* Nav: sezione attiva */
+  $$('.nav a').forEach(a => {
+    const sec = $(a.getAttribute('href'));
+    if (sec) ScrollTrigger.create({ trigger: sec, start: 'top 50%', end: 'bottom 50%', onToggle: s => s.isActive ? a.setAttribute('aria-current', 'true') : a.removeAttribute('aria-current') });
+  });
+
+  addEventListener('load', () => ScrollTrigger.refresh());
+}
+initMotion();
+
+/* =========================================================
+   HERO 3D — "brace" in Three.js (sfera deformata + scintille)
+   ========================================================= */
+async function initHero3D() {
+  const host = $('#hero-canvas');
+  if (reduceMotion) return;                      // fallback statico CSS
+  const test = document.createElement('canvas');
+  if (!(test.getContext('webgl2') || test.getContext('webgl'))) return;
+
+  let THREE;
+  try { THREE = await import('https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js'); }
+  catch (e) { return; }
+
+  const lite = weakDevice || innerWidth < 700;
+  const renderer = new THREE.WebGLRenderer({ antialias: !lite, alpha: true, powerPreference: 'high-performance' });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, lite ? 1 : 1.75));
+  renderer.setClearColor(0x000000, 0);
+  host.append(renderer.domElement);
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(35, 1, .1, 100);
+  camera.position.set(0, 0, 7);
+
+  const group = new THREE.Group();
+  scene.add(group);
+
+  /* Simplex noise 3D (Ashima Arts, MIT) */
+  const noise = `
+  vec3 mod289(vec3 x){return x-floor(x*(1./289.))*289.;}
+  vec4 mod289(vec4 x){return x-floor(x*(1./289.))*289.;}
+  vec4 permute(vec4 x){return mod289(((x*34.)+1.)*x);}
+  vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-.85373472095314*r;}
+  float snoise(vec3 v){
+    const vec2 C=vec2(1./6.,1./3.); const vec4 D=vec4(0.,.5,1.,2.);
+    vec3 i=floor(v+dot(v,C.yyy)); vec3 x0=v-i+dot(i,C.xxx);
+    vec3 g=step(x0.yzx,x0.xyz); vec3 l=1.-g; vec3 i1=min(g.xyz,l.zxy); vec3 i2=max(g.xyz,l.zxy);
+    vec3 x1=x0-i1+C.xxx; vec3 x2=x0-i2+C.yyy; vec3 x3=x0-D.yyy;
+    i=mod289(i);
+    vec4 p=permute(permute(permute(i.z+vec4(0.,i1.z,i2.z,1.))+i.y+vec4(0.,i1.y,i2.y,1.))+i.x+vec4(0.,i1.x,i2.x,1.));
+    float n_=.142857142857; vec3 ns=n_*D.wyz-D.xzx;
+    vec4 j=p-49.*floor(p*ns.z*ns.z); vec4 x_=floor(j*ns.z); vec4 y_=floor(j-7.*x_);
+    vec4 x=x_*ns.x+ns.yyyy; vec4 y=y_*ns.x+ns.yyyy; vec4 h=1.-abs(x)-abs(y);
+    vec4 b0=vec4(x.xy,y.xy); vec4 b1=vec4(x.zw,y.zw);
+    vec4 s0=floor(b0)*2.+1.; vec4 s1=floor(b1)*2.+1.; vec4 sh=-step(h,vec4(0.));
+    vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy; vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+    vec3 p0=vec3(a0.xy,h.x); vec3 p1=vec3(a0.zw,h.y); vec3 p2=vec3(a1.xy,h.z); vec3 p3=vec3(a1.zw,h.w);
+    vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+    p0*=norm.x; p1*=norm.y; p2*=norm.z; p3*=norm.w;
+    vec4 m=max(.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.); m=m*m;
+    return 42.*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+  }`;
+
+  /* Sfera "brace" */
+  const uniforms = {
+    uTime:  { value: 0 },
+    uAmp:   { value: .28 },
+    uHeat:  { value: 0 },
+    uC1:    { value: new THREE.Color('#3b1409') },
+    uC2:    { value: new THREE.Color('#e2622f') },
+    uC3:    { value: new THREE.Color('#ffc978') },
+    uRim:   { value: new THREE.Color('#f2a14a') },
+  };
+  const blob = new THREE.Mesh(
+    new THREE.IcosahedronGeometry(1.55, lite ? 24 : 64),
+    new THREE.ShaderMaterial({
+      uniforms,
+      vertexShader: `
+        uniform float uTime; uniform float uAmp;
+        varying float vN; varying vec3 vPos;
+        ${noise}
+        void main(){
+          vec3 p = position;
+          float n  = snoise(p*1.1 + vec3(uTime*.16, uTime*.11, 0.));
+          float n2 = snoise(p*2.8 - uTime*.22) * .35;
+          vN = n + n2;
+          vec3 d = p + normal * vN * uAmp;
+          vec4 mv = modelViewMatrix * vec4(d, 1.);
+          vPos = mv.xyz;
+          gl_Position = projectionMatrix * mv;
+        }`,
+      fragmentShader: `
+        uniform vec3 uC1, uC2, uC3, uRim; uniform float uHeat;
+        varying float vN; varying vec3 vPos;
+        void main(){
+          vec3 nrm = normalize(cross(dFdx(vPos), dFdy(vPos)));
+          vec3 v = normalize(-vPos);
+          float t = smoothstep(-.8, .9, vN + uHeat*.25);
+          vec3 col = mix(uC1, uC2, t);
+          col = mix(col, uC3, smoothstep(.62, 1., t));
+          float light = clamp(dot(nrm, normalize(vec3(-.4, .7, .8))), 0., 1.);
+          col *= .55 + .65 * light;
+          float fres = pow(1. - clamp(dot(nrm, v), 0., 1.), 2.4);
+          col += uRim * fres * .85;
+          gl_FragColor = vec4(col, 1.);
+        }`,
+    })
+  );
+  group.add(blob);
+
+  /* Guscio a filo dorato */
+  const shell = new THREE.LineSegments(
+    new THREE.WireframeGeometry(new THREE.IcosahedronGeometry(2.25, 2)),
+    new THREE.LineBasicMaterial({ color: 0xd8a650, transparent: true, opacity: .13 })
+  );
+  group.add(shell);
+
+  /* Scintille che salgono dal forno */
+  const COUNT = lite ? 140 : 520;
+  const pos = new Float32Array(COUNT * 3), seed = new Float32Array(COUNT), speed = new Float32Array(COUNT);
+  for (let i = 0; i < COUNT; i++) {
+    const r = 1.4 + Math.random() * 2.6, a = Math.random() * Math.PI * 2;
+    pos[i*3] = Math.cos(a) * r; pos[i*3+1] = (Math.random() - .5) * 6; pos[i*3+2] = Math.sin(a) * r * .6;
+    seed[i] = Math.random(); speed[i] = .25 + Math.random() * .6;
+  }
+  const pGeo = new THREE.BufferGeometry();
+  pGeo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  pGeo.setAttribute('aSeed', new THREE.BufferAttribute(seed, 1));
+  pGeo.setAttribute('aSpeed', new THREE.BufferAttribute(speed, 1));
+  const sparks = new THREE.Points(pGeo, new THREE.ShaderMaterial({
+    uniforms: { uTime: uniforms.uTime, uPR: { value: renderer.getPixelRatio() } },
+    transparent: true, depthWrite: false, blending: THREE.AdditiveBlending,
+    vertexShader: `
+      uniform float uTime; uniform float uPR;
+      attribute float aSeed; attribute float aSpeed;
+      varying float vA; varying float vS;
+      void main(){
+        vec3 p = position;
+        p.y = mod(p.y + 3. + uTime * aSpeed, 6.) - 3.;
+        p.x += sin(uTime * .8 + aSeed * 20.) * .15;
+        vA = smoothstep(-3., -1.8, p.y) * (1. - smoothstep(1.2, 3., p.y));
+        vS = aSeed;
+        vec4 mv = modelViewMatrix * vec4(p, 1.);
+        gl_PointSize = (6. + aSeed * 12.) * uPR / -mv.z;
+        gl_Position = projectionMatrix * mv;
+      }`,
+    fragmentShader: `
+      varying float vA; varying float vS;
+      void main(){
+        float d = length(gl_PointCoord - .5);
+        float a = smoothstep(.5, 0., d) * vA;
+        vec3 c = mix(vec3(.89,.38,.18), vec3(1.,.8,.47), vS);
+        gl_FragColor = vec4(c, a * .9);
+      }`,
+  }));
+  scene.add(sparks);
+
+  /* Layout: la brace sta a destra su desktop, in alto al centro su mobile */
+  function layout() {
+    const w = host.clientWidth, h = host.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    const desk = w >= 900;
+    group.position.set(desk ? 1.9 : 0, desk ? 0 : 1.2, 0);
+    group.scale.setScalar(desk ? 1 : .78);
+    sparks.position.x = group.position.x;
+  }
+  layout();
+  addEventListener('resize', layout);
+
+  /* Interazione: mouse (desktop) e scroll */
+  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
+  addEventListener('pointermove', e => {
+    mouse.tx = (e.clientX / innerWidth) * 2 - 1;
+    mouse.ty = (e.clientY / innerHeight) * 2 - 1;
+  }, { passive: true });
+
+  /* Render solo quando l'hero è visibile e la scheda è attiva */
+  let visible = true, running = true, raf = 0;
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; tick(); }).observe(host);
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; tick(); });
+
+  /* Auto-degrado: se il frame rate resta basso riduciamo la risoluzione */
+  let frames = 0, t0 = performance.now(), degraded = lite;
+  const clock = new THREE.Clock();
+
+  function frame() {
+    raf = 0;
+    if (!visible || !running) return;
+    const t = clock.getElapsedTime();
+    uniforms.uTime.value = t;
+    mouse.x += (mouse.tx - mouse.x) * .05;
+    mouse.y += (mouse.ty - mouse.y) * .05;
+    const sp = Math.min(scrollY / innerHeight, 1.2);
+    uniforms.uAmp.value = .28 + sp * .22 + Math.abs(mouse.x) * .06;
+    uniforms.uHeat.value = sp;
+    blob.rotation.y = t * .12 + mouse.x * .6;
+    blob.rotation.x = mouse.y * .35 + sp * .8;
+    shell.rotation.y = -t * .05 - mouse.x * .25;
+    shell.rotation.z = t * .03;
+    group.position.y += (((innerWidth >= 900) ? 0 : 1.2) - sp * 1.2 - group.position.y) * .08;
+    renderer.render(scene, camera);
+
+    if (!degraded && ++frames === 90) {
+      const fps = 90 / ((performance.now() - t0) / 1000);
+      if (fps < 40) { degraded = true; renderer.setPixelRatio(1); layout(); }
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  function tick() { if (!raf && visible && running) raf = requestAnimationFrame(frame); }
+  tick();
+  requestAnimationFrame(() => host.classList.add('is-ready'));
+}
+initHero3D();
+</script>
+</body>
+</html>
