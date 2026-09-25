@@ -8,11 +8,11 @@
 <meta name="theme-color" content="#1f3b2d">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <!--
   SCELTE DI DESIGN (una riga ciascuna)
   Palette: verdone (loden, velluto, tradizione sartoriale) in gradiente fino al verde bosco + panna (carta) + cuoio e oro antico (pelle, bottoni) → elegante, caldo, riconoscibile.
-  Tipografia: Cormorant Garamond per i titoli (eleganza d'altri tempi, dal 1964) + Jost per i testi (pulito, leggibile su mobile).
+  Tipografia: Bodoni Moda per i titoli (contrasto alto da moda sartoriale, abbinamento "Luxury Minimalist") + Jost per i testi (geometrico, leggibile su mobile).
   Tono di voce: sobrio, cortese e concreto, come il commesso di fiducia di un negozio storico di quartiere.
 -->
 <style>
@@ -33,7 +33,7 @@
   --ko:#9a2f2f;
   --radius:14px;
   --shadow:0 10px 30px rgba(31,59,45,.12);
-  --serif:"Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --serif:"Bodoni Moda", "Didot", Georgia, "Times New Roman", serif;
   --sans:"Jost", system-ui, -apple-system, "Segoe UI", sans-serif;
   --maxw:1140px;
 }
@@ -248,7 +248,7 @@ body{background:linear-gradient(180deg,#fbf8f2 0%,#f4f1e6 100%)}
 .header{background:linear-gradient(100deg,rgba(18,36,27,.97) 0%,rgba(31,59,45,.97) 55%,rgba(46,90,66,.97) 100%);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
 .progress{position:absolute;left:0;bottom:-3px;height:3px;width:100%;transform-origin:0 50%;transform:scaleX(0);background:linear-gradient(90deg,var(--gold),#f3e3bf,var(--green-3))}
 @media (max-width:919px){.nav{background:linear-gradient(180deg,var(--green),var(--green-deep))}}
-.nav .nav-cta,.btn-primary{background:linear-gradient(135deg,#a8743f 0%,#8a5a34 45%,#5f3b1f 100%);background-size:200% 200%;background-position:0 0}
+.nav .nav-cta,.btn-primary{background:linear-gradient(135deg,#95613a 0%,#80522f 45%,#5f3b1f 100%);background-size:200% 200%;background-position:0 0}
 .nav .nav-cta:hover{background-position:100% 100%}
 
 /* Titoli in gradiente */
@@ -475,6 +475,95 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 .storefront{aspect-ratio:3/4;margin:0}
 .storefront img{object-position:50% 50%}
 .storefront::after{background:linear-gradient(180deg,transparent 70%,rgba(18,36,27,.35))}
+
+/* =========================================================
+   VERSIONE 6 · premium (revisione con la skill ui-ux-pro-max)
+   Stile: Exaggerated Minimalism + Editorial + texture tattile
+   Font: "Luxury Minimalist" Bodoni Moda + Jost
+   ========================================================= */
+:root{
+  --shadow-sm:0 2px 8px rgba(18,36,27,.08);
+  --shadow-md:0 12px 30px rgba(18,36,27,.12);
+  --shadow-lg:0 30px 60px rgba(18,36,27,.2);
+  --ease-out:cubic-bezier(.2,.8,.2,1);
+}
+/* Grana della carta su tutta la pagina */
+body::after{content:"";position:fixed;inset:0;z-index:90;pointer-events:none;opacity:.05;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+a,button{touch-action:manipulation}
+
+/* Tipografia */
+h1,h2{text-wrap:balance}
+h1,h2,h3{font-weight:500;letter-spacing:-.01em}
+h2{font-size:clamp(2.2rem,4.8vw,3.7rem);line-height:1.06;margin-bottom:.45em}
+h3{font-weight:600}
+.hero h1{font-size:clamp(2.6rem,6vw,5.4rem);font-weight:500;line-height:1.02;letter-spacing:-.025em;margin-bottom:.4em}
+.hero h1 em{animation:none;background-size:100% 100%;font-weight:400}
+.lead{font-size:clamp(1.08rem,1.4vw,1.22rem);line-height:1.7}
+.eyebrow{display:inline-flex;align-items:center;gap:.9em;font-size:.78rem;letter-spacing:.24em;margin-bottom:1.1rem}
+.eyebrow .num{font-family:var(--serif);font-style:italic;font-size:1.15rem;letter-spacing:0;text-transform:none;color:var(--leather)}
+.strengths .eyebrow .num{color:var(--gold)}
+.eyebrow .num::after{content:"";display:inline-block;width:34px;height:1px;background:currentColor;margin-left:.8em;vertical-align:middle;opacity:.7}
+.hero .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold);flex:none}
+@media (max-width:480px){.eyebrow{letter-spacing:.14em;font-size:.72rem}}
+h3 .tbc,.card h3 .tbc{font-size:.5em;vertical-align:middle}
+
+/* Hero a tutto schermo, più calmo e più d'impatto */
+.hero{min-height:min(94svh,960px);display:flex;align-items:center;animation:none;padding:72px 0 110px}
+.hero .container{width:100%}
+.hero-photo{opacity:.34}
+.hero::after{background:linear-gradient(90deg,rgba(10,22,15,.86) 0%,rgba(14,31,22,.5) 50%,rgba(14,31,22,.15) 100%),linear-gradient(0deg,rgba(10,22,15,.55),transparent 35%)}
+.hero p{font-weight:300;font-size:clamp(1.05rem,1.3vw,1.2rem)}
+.hero-facts{list-style:none;padding:22px 0 0;margin:30px 0 0;border-top:1px solid rgba(216,183,122,.35);display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;max-width:560px}
+.hero-facts strong{display:block;font-family:var(--serif);font-weight:500;font-size:clamp(1.35rem,2.4vw,1.9rem);color:var(--gold);line-height:1.1}
+.hero-facts span{display:block;font-size:.75rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,240,230,.82);margin-top:6px;line-height:1.35}
+.scroll-cue{position:absolute;left:50%;bottom:22px;z-index:2;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(246,240,230,.8);text-decoration:none;font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;padding:6px 12px;min-height:44px}
+.scroll-cue i{display:block;width:1px;height:42px;background:linear-gradient(var(--gold),transparent);transform-origin:top;animation:cue 2.2s var(--ease-out) infinite}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1)}100%{transform:scaleY(1);opacity:0}}
+@media (max-width:899px){.scroll-cue{display:none}}
+.coin-hint{display:flex;align-items:center;justify-content:center;gap:6px;text-transform:uppercase;letter-spacing:.2em;font-size:.72rem}
+.coin-hint svg{width:14px;height:14px}
+
+/* Nastro informativo */
+.ribbon{background:var(--green-deep);color:var(--cream);border-top:1px solid rgba(216,183,122,.35);border-bottom:1px solid rgba(216,183,122,.35);
+  display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px 22px;padding:20px 16px;font-family:var(--serif);font-style:italic;font-size:clamp(1rem,1.6vw,1.25rem);text-align:center}
+.ribbon b{width:7px;height:7px;background:var(--gold);transform:rotate(45deg);flex:none}
+
+/* Pulsanti più sartoriali */
+.btn{font-size:.82rem;letter-spacing:.12em;text-transform:uppercase;min-height:52px;padding:.9em 1.7em}
+.btn-primary{box-shadow:0 4px 0 #4a2d16,0 14px 28px rgba(0,0,0,.2)}
+.btn-primary:hover{box-shadow:0 6px 0 #4a2d16,0 20px 34px rgba(0,0,0,.24)}
+.card .btn,.loc-tools .btn,.store-actions .btn,.loc-search .btn{font-size:.76rem}
+.btn:disabled{opacity:.7;cursor:progress}
+.spinner{display:none;width:16px;height:16px;border-radius:50%;border:2px solid rgba(255,255,255,.4);border-top-color:#fff;animation:spin .8s linear infinite}
+.btn.loading .spinner{display:inline-block}
+
+/* Navigazione: sottolineatura oro invece della pillola */
+@media (min-width:920px){
+  .nav a:not(.nav-cta){position:relative;background:none!important;font-size:.84rem;letter-spacing:.1em;text-transform:uppercase}
+  .nav a:not(.nav-cta)::after{content:"";position:absolute;left:12px;right:12px;bottom:4px;height:1px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease-out)}
+  .nav a:not(.nav-cta):hover::after,.nav a.active::after{transform:scaleX(1)}
+  .nav .nav-cta{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;padding:10px 18px}
+}
+
+/* Storia in stile editoriale */
+.dropcap::first-letter{float:left;font-family:var(--serif);font-size:4.3em;line-height:.82;margin:.06em .12em 0 0;color:var(--leather)}
+.pull{font-family:var(--serif);font-style:italic;font-size:clamp(1.35rem,2.2vw,1.7rem);line-height:1.35;color:var(--green);border-left:2px solid var(--gold);padding:.2em 0 .2em 1.1em;margin:1.4em 0}
+.story .storefront{box-shadow:var(--shadow-lg),22px 22px 0 0 var(--sand)}
+@media (max-width:600px){.story .storefront{box-shadow:var(--shadow-md),12px 12px 0 0 var(--sand);margin-right:12px}}
+
+/* Superfici ed elevazioni coerenti */
+.card,.panel,.locator,form{box-shadow:var(--shadow-md)}
+.card:hover{box-shadow:var(--shadow-lg)}
+.card h3{font-size:1.4rem}
+.ph .photo-tag{font-size:.75rem}
+section{padding:88px 0}
+@media (min-width:900px){section{padding:120px 0}}
+
+/* Target tattili ≥ 44px (skill: touch-target-size) */
+.osm-ctrl button{width:44px;height:44px}
+.mode button{min-height:44px}
+.demo button{min-height:32px;padding:4px 10px}
 </style>
 </head>
 <body class="no-js">
@@ -535,6 +624,11 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
       <div class="status" id="status" role="status" aria-live="polite">
         <span class="dot" aria-hidden="true"></span><span id="statusText">Verifica orari…</span>
       </div>
+      <ul class="hero-facts" aria-label="In breve">
+        <li><strong>1964</strong><span>Anno di apertura</span></li>
+        <li><strong>27/R</strong><span>Via Fiasella, Genova</span></li>
+        <li><strong>Uomo</strong><span>Abbigliamento e camiceria</span></li>
+      </ul>
     </div>
     <div class="scene" id="scene">
       <div class="orbit" id="orbit" aria-hidden="true">
@@ -558,10 +652,15 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
           </span>
         </span>
       </button>
-      <p class="coin-hint" aria-hidden="true">↻ tocca la medaglia</p>
+      <p class="coin-hint" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 12a8 8 0 1 1-2.3-5.6M20 4v4h-4"/></svg> Tocca la medaglia</p>
     </div>
   </div>
+  <a class="scroll-cue" href="#storia"><span>Scopri</span><i aria-hidden="true"></i></a>
 </section>
+
+<div class="ribbon" role="note" aria-label="Bleummer's in breve">
+  <span>Dal 1964</span><b aria-hidden="true"></b><span>Abbigliamento uomo</span><b aria-hidden="true"></b><span>Camiceria</span><b aria-hidden="true"></b><span>Via Fiasella 27/R · Genova</span>
+</div>
 
 <!-- STORIA -->
 <section class="story" id="storia" aria-labelledby="storia-title">
@@ -571,10 +670,11 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
       <figcaption class="photo-tag">La nostra vetrina · Via Fiasella 27/R</figcaption>
     </figure>
     <div class="reveal">
-      <span class="eyebrow">La nostra storia</span>
+      <span class="eyebrow"><span class="num">01</span>La nostra storia</span>
       <h2 id="storia-title">Un negozio genovese, dal 1964</h2>
-      <p class="lead">Bleummer's accompagna gli uomini genovesi da più di sessant'anni: un negozio di vicinato specializzato in abbigliamento maschile e camiceria, nel centro della città.</p>
-      <p>Qui il servizio è quello di una volta: ci si conosce, ci si ascolta, si sceglie con calma. <span class="tbc">[DA CONFERMARE: racconto della storia – chi l'ha fondato, come è nato il nome, i passaggi di gestione]</span></p>
+      <p class="lead dropcap">Bleummer's accompagna gli uomini genovesi da più di sessant'anni: un negozio di vicinato specializzato in abbigliamento maschile e camiceria, nel centro della città.</p>
+      <p class="pull">Qui il servizio è quello di una volta: ci si conosce, ci si ascolta, si sceglie con calma.</p>
+      <p><span class="tbc">[DA CONFERMARE: racconto della storia – chi l'ha fondato, come è nato il nome, i passaggi di gestione]</span></p>
       <ol class="timeline" aria-label="Tappe principali">
         <li><b>1964</b> Apertura di Bleummer's a Genova.</li>
         <li><b><span class="tbc">[ANNO DA CONFERMARE]</span></b> Passaggio alla gestione attuale. <span class="tbc">[DA CONFERMARE]</span></li>
@@ -591,7 +691,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 <!-- COLLEZIONI -->
 <section id="collezioni" aria-labelledby="coll-title">
   <div class="container">
-    <span class="eyebrow">Cosa trovi in negozio</span>
+    <span class="eyebrow"><span class="num">02</span>Cosa trovi in negozio</span>
     <h2 id="coll-title">Le nostre collezioni</h2>
     <p class="lead">Abbigliamento da uomo e camiceria. Filtra per categoria e passa in negozio per provare i capi e farti consigliare.</p>
 
@@ -722,7 +822,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 <!-- PUNTI DI FORZA -->
 <section class="strengths" id="perche" aria-labelledby="perche-title">
   <div class="container">
-    <span class="eyebrow" style="color:var(--gold)">Perché sceglierci</span>
+    <span class="eyebrow" style="color:var(--gold)"><span class="num">03</span>Perché sceglierci</span>
     <h2 id="perche-title">Quello che una vetrina online non può darti</h2>
     <p class="lead">Un negozio storico di Genova, fatto di persone, tessuti da toccare e consigli su misura.</p>
     <div class="s-grid">
@@ -753,7 +853,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 <!-- DOVE SIAMO -->
 <section id="dove" aria-labelledby="dove-title">
   <div class="container">
-    <span class="eyebrow">Dove siamo</span>
+    <span class="eyebrow"><span class="num">04</span>Dove siamo</span>
     <h2 id="dove-title">Vieni a trovarci in Via Fiasella</h2>
     <div class="visit-grid">
       <div class="panel reveal">
@@ -846,7 +946,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 <section class="contact" id="contatti" aria-labelledby="contatti-title">
   <div class="container form-grid">
     <div class="reveal">
-      <span class="eyebrow">Scrivici</span>
+      <span class="eyebrow"><span class="num">05</span>Scrivici</span>
       <h2 id="contatti-title">Cerchi un capo in particolare?</h2>
       <p class="lead">Lasciaci una richiesta: ti ricontattiamo per dirti se è disponibile, o per fissare un momento in cui passare con calma in negozio.</p>
       <p>Preferisci parlarne a voce? Chiamaci allo <a href="tel:+39010542234"><strong>010 542234</strong></a> negli orari di apertura.</p>
@@ -907,7 +1007,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
             </div>
             <div class="error" id="privacy-err"></div>
           </div>
-          <button class="btn btn-primary" type="submit" style="width:100%">Invia la richiesta</button>
+          <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%"><span class="spinner" aria-hidden="true"></span><span class="btn-label">Invia la richiesta</span></button>
           <p class="form-note" id="formNote">I campi con * sono obbligatori. Demo: nessun dato viene inviato.</p>
         </div>
         <div class="success" id="success" role="status" aria-live="polite" tabindex="-1">
@@ -925,7 +1025,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 <!-- FAQ -->
 <section id="faq" aria-labelledby="faq-title">
   <div class="container">
-    <span class="eyebrow">Domande frequenti</span>
+    <span class="eyebrow"><span class="num">06</span>Domande frequenti</span>
     <h2 id="faq-title">Prima di passare in negozio</h2>
     <div class="faq-list" id="faqList">
       <div class="faq-item">
@@ -1178,11 +1278,18 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
     var firstBad = null;
     Object.keys(rules).forEach(function(n){ if (!check(n) && !firstBad) firstBad = form.elements[n]; });
     if (firstBad) { firstBad.focus(); return; }
-    document.getElementById('successName').textContent = form.elements.nome.value.trim().split(' ')[0];
-    document.getElementById('formFields').hidden = true;
-    var ok = document.getElementById('success');
-    ok.classList.add('show');
-    ok.focus();
+    var sb = document.getElementById('submitBtn');
+    sb.disabled = true; sb.setAttribute('aria-busy','true'); sb.classList.add('loading');
+    sb.querySelector('.btn-label').textContent = 'Invio in corso…';
+    setTimeout(function(){
+      sb.disabled = false; sb.removeAttribute('aria-busy'); sb.classList.remove('loading');
+      sb.querySelector('.btn-label').textContent = 'Invia la richiesta';
+      document.getElementById('successName').textContent = form.elements.nome.value.trim().split(' ')[0];
+      document.getElementById('formFields').hidden = true;
+      var ok = document.getElementById('success');
+      ok.classList.add('show');
+      ok.focus();
+    }, 900);
   });
   document.getElementById('resetForm').addEventListener('click', function(){
     form.reset();
