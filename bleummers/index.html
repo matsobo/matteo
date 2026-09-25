@@ -181,13 +181,6 @@ section{padding:72px 0}
 .contact-list a,.contact-list div{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);padding:12px 14px;border:1px solid var(--sand);border-radius:12px;background:var(--paper)}
 .contact-list a:hover{border-color:var(--leather)}
 .contact-list svg{width:22px;height:22px;color:var(--leather);flex:none}
-.map{position:relative;border-radius:var(--radius);overflow:hidden;min-height:300px;background:#e9e2d4;display:block;text-decoration:none;color:var(--ink)}
-.map svg.streets{position:absolute;inset:0;width:100%;height:100%}
-.map .pin{position:absolute;left:50%;top:46%;transform:translate(-50%,-100%);text-align:center}
-.map .pin svg{width:48px;height:48px;color:var(--leather);filter:drop-shadow(0 4px 6px rgba(0,0,0,.25));margin:0 auto}
-.map .pin span{display:inline-block;background:var(--green);color:var(--cream);padding:6px 12px;border-radius:8px;font-size:.88rem;margin-top:4px;white-space:nowrap}
-.map .open-map{position:absolute;right:12px;bottom:12px;background:#fff;border-radius:999px;padding:10px 16px;font-weight:600;font-size:.9rem;box-shadow:var(--shadow);color:var(--green)}
-.map:hover .open-map{background:var(--leather);color:#fff}
 
 /* Form */
 .contact{background:var(--cream)}
@@ -376,10 +369,7 @@ h2{background:linear-gradient(120deg,var(--green-deep) 0%,var(--green-2) 60%,var
 .fact strong{background:linear-gradient(90deg,var(--leather),var(--green-2));-webkit-background-clip:text;background-clip:text;color:transparent}
 .timeline{border-image:linear-gradient(var(--gold),var(--green-3)) 1}
 .panel,form{background:linear-gradient(160deg,#fff 0%,#fbfaf5 100%)}
-.map{background:linear-gradient(135deg,#e7ebdc,#dfe6d2)}
-.map .pin{animation:pinDrop 2.4s ease-in-out infinite}
-@keyframes pinDrop{0%,100%{transform:translate(-50%,-100%)}50%{transform:translate(-50%,-112%)}}
-.map .pin span{background:linear-gradient(135deg,var(--green-2),var(--green-deep))}
+@keyframes pinDropOld{0%,100%{transform:translate(-50%,-100%)}50%{transform:translate(-50%,-112%)}}
 .faq-item{transition:background .3s}
 .faq-item:hover{background:linear-gradient(90deg,rgba(74,124,89,.08),transparent)}
 footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#0a1610 100%)}
@@ -397,6 +387,72 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 .to-top svg{width:22px;height:22px}
 @media (min-width:920px){.to-top{bottom:24px;right:24px}}
 @media (prefers-reduced-motion:reduce){.card,.s-item.in,.coin,.hero-copy{transform:none!important}}
+
+/* =========================================================
+   STORE LOCATOR · OpenStreetMap (tile, Nominatim, OSRM) senza librerie
+   ========================================================= */
+.locator{background:linear-gradient(160deg,#fff 0%,#f4f6ee 100%);border:1px solid var(--sand);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:12px;min-width:0}
+.loc-head p{margin:0;color:var(--muted);font-size:.95rem}
+.loc-head h3{margin-bottom:.25em}
+.loc-search{display:flex;gap:8px;background:none;border:0;padding:0;box-shadow:none}
+.loc-search input{flex:1;min-width:0;border-radius:999px;padding-left:18px}
+.loc-search .btn{min-height:48px;padding:.6em 1.1em}
+@media (max-width:420px){.loc-search .lbl{display:none}}
+.loc-tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.loc-tools .btn{min-height:44px;padding:.5em 1em;font-size:.93rem}
+.mode{display:inline-flex;background:#e7ebdc;border-radius:999px;padding:4px;gap:4px}
+.mode button{border:0;background:none;border-radius:999px;padding:.5em 1em;min-height:38px;font:500 .9rem var(--sans);color:var(--green);cursor:pointer;transition:background .25s,color .25s,transform .15s}
+.mode button[aria-checked="true"]{background:linear-gradient(135deg,var(--green-3),var(--green-deep));color:var(--cream);box-shadow:0 3px 0 var(--green-deep)}
+.mode button:active{transform:translateY(2px)}
+.loc-msg{margin:0;font-size:.92rem;color:var(--muted);min-height:1.3em}
+.loc-msg.err{color:var(--ko)}
+.loc-results{list-style:none;margin:0;padding:0;border:1px solid var(--sand);border-radius:12px;overflow:hidden;background:#fff}
+.loc-results button{display:block;width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--sand);padding:12px 14px;font:inherit;font-size:.93rem;cursor:pointer;color:var(--ink)}
+.loc-results li:last-child button{border-bottom:0}
+.loc-results button:hover,.loc-results button:focus-visible{background:linear-gradient(90deg,rgba(74,124,89,.12),transparent)}
+
+.osm{position:relative;height:340px;border-radius:12px;overflow:hidden;background:#dfe6d2;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;box-shadow:inset 0 0 0 1px rgba(31,59,45,.12)}
+@media (min-width:900px){.osm{height:380px}}
+.osm.dragging{cursor:grabbing}
+.osm-tiles,.osm-markers,.osm-route{position:absolute;inset:0}
+.osm-tiles img{position:absolute;width:256px;height:256px;max-width:none;filter:saturate(.75) sepia(.12) hue-rotate(35deg);opacity:0;transition:opacity .3s}
+.osm-tiles img.ok{opacity:1}
+.osm-route{width:100%;height:100%;pointer-events:none;overflow:visible}
+.osm-markers{pointer-events:none}
+.mk{position:absolute;pointer-events:auto;transform:translate(-50%,-100%)}
+.mk-store{border:0;background:none;padding:0;cursor:pointer;width:46px;height:58px;perspective:200px}
+.mk-store .pin3d{display:block;width:46px;height:46px;border-radius:50% 50% 50% 0;transform:rotate(-45deg) rotateX(18deg);
+  background:linear-gradient(135deg,#6fa582 0%,var(--green-2) 45%,var(--green-deep) 100%);box-shadow:-4px 6px 0 rgba(18,36,27,.35),inset 0 0 0 3px var(--gold);
+  animation:pinFloat 2.4s ease-in-out infinite;position:relative}
+.mk-store .pin3d::after{content:"B";position:absolute;inset:0;display:grid;place-items:center;transform:rotate(45deg);font:700 1.3rem var(--serif);color:var(--gold)}
+.mk-store::after{content:"";position:absolute;left:50%;bottom:-2px;width:24px;height:8px;margin-left:-12px;border-radius:50%;background:rgba(0,0,0,.28);filter:blur(2px);animation:shadowPulse 2.4s ease-in-out infinite}
+@keyframes pinFloat{0%,100%{translate:0 0}50%{translate:5px -5px}}
+@keyframes shadowPulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(.7);opacity:.5}}
+.mk-user{width:22px;height:22px;border-radius:50%;background:#2f7de1;border:3px solid #fff;box-shadow:0 0 0 6px rgba(47,125,225,.25),0 2px 6px rgba(0,0,0,.3);transform:translate(-50%,-50%)}
+.popup{position:absolute;pointer-events:auto;transform:translate(-50%,calc(-100% - 66px));background:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 12px 30px rgba(0,0,0,.25);font-size:.88rem;line-height:1.4;width:220px;text-align:left}
+.popup::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-bottom:0;border-top-color:#fff}
+.popup strong{display:block;font-family:var(--serif);font-size:1.15rem;color:var(--green)}
+.popup .close{position:absolute;top:4px;right:6px;border:0;background:none;font-size:1.2rem;cursor:pointer;color:var(--muted);width:32px;height:32px}
+.popup .pop-status{display:block;margin-top:4px;font-weight:600}
+.popup .pop-status.open{color:var(--ok)}.popup .pop-status.closed{color:var(--ko)}
+.osm-ctrl{position:absolute;right:10px;top:10px;display:flex;flex-direction:column;gap:6px;z-index:2}
+.osm-ctrl button{width:40px;height:40px;border-radius:10px;border:0;background:linear-gradient(135deg,#fff,#eef1e4);box-shadow:0 3px 0 rgba(31,59,45,.3),0 6px 12px rgba(0,0,0,.15);font:600 1.3rem var(--sans);color:var(--green);cursor:pointer;display:grid;place-items:center;transition:transform .15s}
+.osm-ctrl button:active{transform:translateY(2px);box-shadow:0 1px 0 rgba(31,59,45,.3)}
+.osm-ctrl svg{width:20px;height:20px}
+.osm-hint{position:absolute;left:10px;bottom:28px;margin:0;background:rgba(18,36,27,.8);color:var(--cream);font-size:.75rem;padding:5px 10px;border-radius:999px;max-width:calc(100% - 80px);transition:opacity .6s;pointer-events:none}
+.osm-hint.gone{opacity:0}
+.osm-attr{position:absolute;right:0;bottom:0;background:rgba(255,255,255,.85);font-size:.7rem;padding:2px 6px;border-top-left-radius:6px}
+.osm-attr a{color:var(--green)}
+.osm:focus-visible{outline:3px solid var(--leather);outline-offset:2px}
+
+.store-card{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;border-radius:12px;padding:14px 16px;background:linear-gradient(120deg,var(--green-deep),var(--green) 60%,var(--green-2));color:var(--cream)}
+.store-card strong{display:block;font-family:var(--serif);font-size:1.25rem;color:var(--gold)}
+.store-card span{display:block;font-size:.92rem}
+.store-dist{margin-top:4px;color:#dfe9dc}
+.store-dist b{color:#fff}
+.store-actions{display:flex;gap:8px;flex-wrap:wrap}
+.store-actions .btn{min-height:42px;padding:.45em 1em;font-size:.9rem}
+.store-card .btn-outline{color:var(--cream);border-color:rgba(246,240,230,.7)}
 </style>
 </head>
 <body class="no-js">
@@ -659,32 +715,65 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
           <li><a href="mailto:info@DA-CONFERMARE.it?subject=Richiesta%20informazioni%20dal%20sito" id="mailLink">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
             <span><strong>Email</strong> <span class="tbc">[DA CONFERMARE]</span><br><small>Oggi il negozio non ha un indirizzo email pubblico</small></span></a></li>
-          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Domenico+Fiasella+27R+16121+Genova" target="_blank" rel="noopener">
+          <li><a href="https://www.openstreetmap.org/?mlat=44.4051&amp;mlon=8.9412#map=18/44.4051/8.9412" target="_blank" rel="noopener">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
-            <span><strong>Via Domenico Fiasella 27/R</strong><br><small>16121 Genova · Apri in Google Maps</small></span></a></li>
+            <span><strong>Via Domenico Fiasella 27/R</strong><br><small>16121 Genova · Apri su OpenStreetMap</small></span></a></li>
         </ul>
       </div>
 
-      <a class="map reveal" href="https://www.google.com/maps/search/?api=1&amp;query=Via+Domenico+Fiasella+27R+16121+Genova" target="_blank" rel="noopener" aria-label="Apri la posizione di Bleummer's in Google Maps (nuova scheda)">
-        <svg class="streets" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="400" height="320" fill="#ebe4d6"/>
-          <g fill="#ddd3c1">
-            <rect x="20" y="20" width="110" height="80" rx="6"/><rect x="150" y="20" width="90" height="60" rx="6"/><rect x="262" y="20" width="120" height="90" rx="6"/>
-            <rect x="20" y="130" width="90" height="70" rx="6"/><rect x="240" y="170" width="140" height="60" rx="6"/>
-            <rect x="20" y="230" width="140" height="70" rx="6"/><rect x="190" y="250" width="80" height="55" rx="6"/><rect x="295" y="255" width="90" height="50" rx="6"/>
-          </g>
-          <path d="M0 115 L400 150" stroke="#fff" stroke-width="18"/>
-          <path d="M140 0 L175 320" stroke="#fff" stroke-width="14"/>
-          <path d="M0 215 L400 240" stroke="#fff" stroke-width="10"/>
-          <path d="M250 0 L225 320" stroke="#fff" stroke-width="8"/>
-          <text x="300" y="143" font-family="Jost, sans-serif" font-size="11" fill="#8a7f6d" transform="rotate(5 300 143)">Via Fiasella</text>
-        </svg>
-        <div class="pin">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z"/></svg>
-          <span>Bleummer's · 27/R</span>
+      <div class="locator reveal" id="locator">
+        <div class="loc-head">
+          <h3>Trova il negozio</h3>
+          <p>Inserisci da dove parti oppure usa la tua posizione: ti mostriamo il percorso fino a Via Fiasella.</p>
         </div>
-        <span class="open-map">Apri la mappa ↗</span>
-      </a>
+        <form class="loc-search" id="locForm" role="search" novalidate>
+          <label for="locInput" class="sr-only">Indirizzo di partenza</label>
+          <input id="locInput" type="search" autocomplete="street-address" placeholder="Es. Piazza De Ferrari, Genova" aria-describedby="locMsg">
+          <button class="btn btn-primary" type="submit" aria-label="Cerca l'indirizzo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+            <span class="lbl">Cerca</span>
+          </button>
+        </form>
+        <div class="loc-tools">
+          <button class="btn btn-outline" type="button" id="geoBtn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/><circle cx="12" cy="12" r="8"/></svg>
+            Usa la mia posizione
+          </button>
+          <div class="mode" role="radiogroup" aria-label="Mezzo di trasporto">
+            <button type="button" role="radio" aria-checked="true" data-mode="foot">A piedi</button>
+            <button type="button" role="radio" aria-checked="false" data-mode="car">In auto</button>
+          </div>
+        </div>
+        <p class="loc-msg" id="locMsg" role="status" aria-live="polite"></p>
+        <ul class="loc-results" id="locResults" hidden></ul>
+
+        <div class="osm" id="osm" tabindex="0" role="application" aria-roledescription="mappa" aria-label="Mappa OpenStreetMap con la posizione di Bleummer's. Usa le frecce per spostarti, + e − per lo zoom.">
+          <div class="osm-tiles" id="osmTiles"></div>
+          <svg class="osm-route" id="osmRoute" aria-hidden="true"><defs><linearGradient id="routeGrad" x1="0" x2="1"><stop offset="0" stop-color="#4a7c59"/><stop offset="1" stop-color="#d8b77a"/></linearGradient></defs><polyline id="routeShadow" fill="none" stroke="rgba(18,36,27,.35)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><polyline id="routeLine" fill="none" stroke="url(#routeGrad)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div class="osm-markers" id="osmMarkers"></div>
+          <div class="osm-ctrl">
+            <button type="button" id="zIn" aria-label="Aumenta lo zoom">+</button>
+            <button type="button" id="zOut" aria-label="Riduci lo zoom">−</button>
+            <button type="button" id="zHome" aria-label="Centra la mappa sul negozio">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+            </button>
+          </div>
+          <p class="osm-hint" id="osmHint">Trascina per spostarti · doppio clic o Ctrl + rotellina per lo zoom</p>
+          <div class="osm-attr">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">contributori di OpenStreetMap</a></div>
+        </div>
+
+        <div class="store-card" id="storeCard">
+          <div>
+            <strong>Bleummer's · dal 1964</strong>
+            <span>Via Domenico Fiasella 27/R, 16121 Genova</span>
+            <span class="store-dist" id="storeDist">Posizione del segnaposto <span class="tbc">[DA CONFERMARE]</span></span>
+          </div>
+          <div class="store-actions">
+            <a class="btn btn-primary" id="routeLink" href="https://www.openstreetmap.org/?mlat=44.4051&amp;mlon=8.9412#map=18/44.4051/8.9412" target="_blank" rel="noopener">Apri su OpenStreetMap ↗</a>
+            <a class="btn btn-outline" href="tel:+39010542234">Chiama</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -776,7 +865,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
     <div class="faq-list" id="faqList">
       <div class="faq-item">
         <h3 style="margin:0"><button class="faq-q" aria-expanded="false" aria-controls="faq1" id="faq1-b">Dove si trova il negozio?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
-        <div class="faq-a" id="faq1" role="region" aria-labelledby="faq1-b"><div>In Via Domenico Fiasella 27/R, 16121 Genova, in pieno centro. <a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Domenico+Fiasella+27R+16121+Genova" target="_blank" rel="noopener">Apri la mappa</a>.</div></div>
+        <div class="faq-a" id="faq1" role="region" aria-labelledby="faq1-b"><div>In Via Domenico Fiasella 27/R, 16121 Genova, in pieno centro. <a href="#locator">Calcola il percorso sulla mappa</a>.</div></div>
       </div>
       <div class="faq-item">
         <h3 style="margin:0"><button class="faq-q" aria-expanded="false" aria-controls="faq2" id="faq2-b">Siete aperti il lunedì mattina?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button></h3>
@@ -843,7 +932,7 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
 
 <nav class="quickbar" aria-label="Azioni rapide">
   <a href="tel:+39010542234"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>Chiama</a>
-  <a href="https://www.google.com/maps/search/?api=1&amp;query=Via+Domenico+Fiasella+27R+16121+Genova" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Indicazioni</a>
+  <a href="#locator"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>Indicazioni</a>
   <a href="#contatti"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Scrivici</a>
 </nav>
 
@@ -1146,6 +1235,265 @@ footer{background:linear-gradient(170deg,var(--green) 0%,var(--green-deep) 60%,#
   toTop.addEventListener('click', function(){
     window.scrollTo({top:0, behavior: reduce ? 'auto' : 'smooth'});
     document.querySelector('.logo').focus({preventScroll:true});
+  });
+  /* ===== Store locator OpenStreetMap (senza librerie) ===== */
+  /* Coordinate del negozio: da fonti online, leggermente discordanti → [DA CONFERMARE] */
+  var STORES = [{
+    name: "Bleummer's", address: 'Via Domenico Fiasella 27/R, 16121 Genova',
+    lat: 44.4051, lon: 8.9412, tel: '+39010542234'
+  }];
+  var store = STORES[0];
+  var TILE = 'https://tile.openstreetmap.org/{z}/{x}/{y}.png';
+  var NOMINATIM = 'https://nominatim.openstreetmap.org/search';
+  var OSRM = {foot:'https://routing.openstreetmap.de/routed-foot/route/v1/driving/', car:'https://routing.openstreetmap.de/routed-car/route/v1/driving/'};
+  var OSM_ENGINE = {foot:'fossgis_osrm_foot', car:'fossgis_osrm_car'};
+
+  var osm = document.getElementById('osm'), tilesEl = document.getElementById('osmTiles'),
+      markersEl = document.getElementById('osmMarkers'), routeLine = document.getElementById('routeLine'),
+      routeShadow = document.getElementById('routeShadow'), hint = document.getElementById('osmHint');
+  var view = {lat: store.lat, lon: store.lon, z: 17}, MINZ = 12, MAXZ = 19;
+  var origin = null, routeCoords = null, mode = 'foot', popupOpen = true, tileCache = {};
+
+  function project(lat, lon, z){
+    var n = 256 * Math.pow(2, z), s = Math.sin(lat * Math.PI / 180);
+    return {x: (lon + 180) / 360 * n, y: (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * n};
+  }
+  function unproject(x, y, z){
+    var n = 256 * Math.pow(2, z);
+    return {lon: x / n * 360 - 180, lat: Math.atan(Math.sinh(Math.PI * (1 - 2 * y / n))) * 180 / Math.PI};
+  }
+  function toScreen(lat, lon){
+    var c = project(view.lat, view.lon, view.z), p = project(lat, lon, view.z);
+    return {x: p.x - c.x + osm.clientWidth / 2, y: p.y - c.y + osm.clientHeight / 2};
+  }
+
+  function renderTiles(){
+    var w = osm.clientWidth, h = osm.clientHeight, z = view.z, c = project(view.lat, view.lon, z);
+    var x0 = c.x - w / 2, y0 = c.y - h / 2, max = Math.pow(2, z), keep = {};
+    for (var tx = Math.floor(x0 / 256); tx <= Math.floor((x0 + w) / 256); tx++) {
+      for (var ty = Math.floor(y0 / 256); ty <= Math.floor((y0 + h) / 256); ty++) {
+        if (ty < 0 || ty >= max) continue;
+        var key = z + '/' + tx + '/' + ty, img = tileCache[key];
+        if (!img) {
+          img = new Image(); img.alt = ''; img.decoding = 'async';
+          img.onload = function(){ this.classList.add('ok'); };
+          img.src = TILE.replace('{z}', z).replace('{x}', ((tx % max) + max) % max).replace('{y}', ty);
+          tileCache[key] = img; tilesEl.appendChild(img);
+        }
+        img.style.left = Math.round(tx * 256 - x0) + 'px';
+        img.style.top = Math.round(ty * 256 - y0) + 'px';
+        keep[key] = 1;
+      }
+    }
+    Object.keys(tileCache).forEach(function(k){ if (!keep[k]) { tileCache[k].remove(); delete tileCache[k]; } });
+  }
+
+  function statusText(){
+    var t = document.getElementById('statusText').textContent;
+    return {open: /^Aperto/.test(t), text: t};
+  }
+  function renderMarkers(){
+    markersEl.innerHTML = '';
+    var sp = toScreen(store.lat, store.lon);
+    var mk = document.createElement('button');
+    mk.type = 'button'; mk.className = 'mk mk-store';
+    mk.setAttribute('aria-label', "Bleummer's, " + store.address + '. Mostra dettagli');
+    mk.setAttribute('aria-expanded', popupOpen);
+    mk.style.left = sp.x + 'px'; mk.style.top = sp.y + 'px';
+    mk.innerHTML = '<span class="pin3d"></span>';
+    mk.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
+    mk.addEventListener('click', function(){ popupOpen = !popupOpen; renderMarkers(); });
+    markersEl.appendChild(mk);
+    if (popupOpen) {
+      var st = statusText(), pop = document.createElement('div');
+      pop.className = 'popup'; pop.style.left = sp.x + 'px'; pop.style.top = sp.y + 'px';
+      pop.innerHTML = '<button type="button" class="close" aria-label="Chiudi dettagli">×</button><strong>Bleummer\'s</strong>' +
+        store.address + '<span class="pop-status ' + (st.open ? 'open' : 'closed') + '">' + st.text + '</span>';
+      pop.addEventListener('pointerdown', function(e){ e.stopPropagation(); });
+      pop.querySelector('.close').addEventListener('click', function(){ popupOpen = false; renderMarkers(); mk.focus(); });
+      markersEl.appendChild(pop);
+    }
+    if (origin) {
+      var up = toScreen(origin.lat, origin.lon), u = document.createElement('div');
+      u.className = 'mk mk-user'; u.title = 'Punto di partenza';
+      u.style.left = up.x + 'px'; u.style.top = up.y + 'px';
+      markersEl.appendChild(u);
+    }
+  }
+  function renderRoute(){
+    var pts = routeCoords || (origin ? [[origin.lon, origin.lat], [store.lon, store.lat]] : null);
+    var str = pts ? pts.map(function(c){ var p = toScreen(c[1], c[0]); return p.x.toFixed(1) + ',' + p.y.toFixed(1); }).join(' ') : '';
+    routeLine.setAttribute('points', str); routeShadow.setAttribute('points', str);
+    routeLine.setAttribute('stroke-dasharray', routeCoords ? '' : '8 8');
+  }
+  function render(){ renderTiles(); renderRoute(); renderMarkers(); }
+
+  function setZoom(z, ax, ay){
+    z = Math.max(MINZ, Math.min(MAXZ, z));
+    if (z === view.z) return;
+    if (ax != null) { /* mantiene fermo il punto sotto il cursore */
+      var c = project(view.lat, view.lon, view.z);
+      var wx = c.x + ax - osm.clientWidth / 2, wy = c.y + ay - osm.clientHeight / 2;
+      var k = Math.pow(2, z - view.z);
+      var nc = unproject(wx * k - (ax - osm.clientWidth / 2), wy * k - (ay - osm.clientHeight / 2), z);
+      view.lat = nc.lat; view.lon = nc.lon;
+    }
+    view.z = z; render();
+  }
+  function panBy(dx, dy){
+    var c = project(view.lat, view.lon, view.z), n = unproject(c.x - dx, c.y - dy, view.z);
+    view.lat = n.lat; view.lon = n.lon; render();
+  }
+  function fitTo(points){
+    var lats = points.map(function(p){ return p[0]; }), lons = points.map(function(p){ return p[1]; });
+    var minLa = Math.min.apply(0, lats), maxLa = Math.max.apply(0, lats), minLo = Math.min.apply(0, lons), maxLo = Math.max.apply(0, lons);
+    view.lat = (minLa + maxLa) / 2; view.lon = (minLo + maxLo) / 2;
+    for (var z = MAXZ - 1; z >= 3; z--) {
+      var a = project(maxLa, minLo, z), b = project(minLa, maxLo, z);
+      if (b.x - a.x < osm.clientWidth - 90 && b.y - a.y < osm.clientHeight - 120) { view.z = z; break; }
+    }
+    render();
+  }
+  function hideHint(){ hint.classList.add('gone'); }
+
+  /* Trascinamento con mouse e dito, pinch-zoom a due dita */
+  var pointers = {}, last = null, pinchDist = 0;
+  osm.addEventListener('pointerdown', function(e){
+    if (e.target.closest('.osm-ctrl, .osm-attr')) return;
+    osm.setPointerCapture(e.pointerId);
+    pointers[e.pointerId] = {x: e.clientX, y: e.clientY};
+    last = {x: e.clientX, y: e.clientY}; osm.classList.add('dragging'); hideHint();
+  });
+  osm.addEventListener('pointermove', function(e){
+    if (!pointers[e.pointerId]) return;
+    pointers[e.pointerId] = {x: e.clientX, y: e.clientY};
+    var ids = Object.keys(pointers);
+    if (ids.length === 2) {
+      var a = pointers[ids[0]], b = pointers[ids[1]], d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (pinchDist && Math.abs(d - pinchDist) > 40) {
+        var r = osm.getBoundingClientRect();
+        setZoom(view.z + (d > pinchDist ? 1 : -1), (a.x + b.x) / 2 - r.left, (a.y + b.y) / 2 - r.top);
+        pinchDist = d;
+      } else if (!pinchDist) pinchDist = d;
+      return;
+    }
+    panBy(e.clientX - last.x, e.clientY - last.y);
+    last = {x: e.clientX, y: e.clientY};
+  });
+  function endPointer(e){
+    delete pointers[e.pointerId];
+    var ids = Object.keys(pointers);
+    if (ids.length < 2) pinchDist = 0;
+    if (ids.length === 1) last = pointers[ids[0]];
+    if (!ids.length) osm.classList.remove('dragging');
+  }
+  osm.addEventListener('pointerup', endPointer);
+  osm.addEventListener('pointercancel', endPointer);
+  osm.addEventListener('dblclick', function(e){
+    var r = osm.getBoundingClientRect(); setZoom(view.z + 1, e.clientX - r.left, e.clientY - r.top);
+  });
+  osm.addEventListener('wheel', function(e){
+    if (!e.ctrlKey && !e.metaKey) { hint.classList.remove('gone'); clearTimeout(hint._t); hint._t = setTimeout(hideHint, 1500); return; }
+    e.preventDefault();
+    var r = osm.getBoundingClientRect(); setZoom(view.z + (e.deltaY < 0 ? 1 : -1), e.clientX - r.left, e.clientY - r.top);
+  }, {passive:false});
+  osm.addEventListener('keydown', function(e){
+    var step = 80, map = {ArrowLeft:[step,0], ArrowRight:[-step,0], ArrowUp:[0,step], ArrowDown:[0,-step]};
+    if (map[e.key]) { e.preventDefault(); panBy(map[e.key][0], map[e.key][1]); }
+    else if (e.key === '+' || e.key === '=') setZoom(view.z + 1);
+    else if (e.key === '-') setZoom(view.z - 1);
+  });
+  document.getElementById('zIn').addEventListener('click', function(){ setZoom(view.z + 1); });
+  document.getElementById('zOut').addEventListener('click', function(){ setZoom(view.z - 1); });
+  document.getElementById('zHome').addEventListener('click', function(){
+    view = {lat: store.lat, lon: store.lon, z: 17}; popupOpen = true; render();
+  });
+  addEventListener('resize', render);
+  if (!fine) hint.textContent = 'Trascina per spostarti · due dita per lo zoom';
+  setTimeout(hideHint, 5000);
+  render();
+  setInterval(renderMarkers, 60000);
+
+  /* Ricerca indirizzo (Nominatim), geolocalizzazione e percorso (OSRM) */
+  var locMsg = document.getElementById('locMsg'), results = document.getElementById('locResults'),
+      storeDist = document.getElementById('storeDist'), routeLink = document.getElementById('routeLink');
+  function msg(t, err){ locMsg.textContent = t; locMsg.classList.toggle('err', !!err); }
+  function km(m){ return m < 1000 ? Math.round(m / 10) * 10 + ' m' : (m / 1000).toFixed(1).replace('.', ',') + ' km'; }
+  function mins(s){ var m = Math.max(1, Math.round(s / 60)); return m < 60 ? m + ' min' : Math.floor(m / 60) + ' h ' + (m % 60) + ' min'; }
+  function haversine(a, b){
+    var R = 6371000, r = Math.PI / 180, dLa = (b.lat - a.lat) * r, dLo = (b.lon - a.lon) * r;
+    var h = Math.sin(dLa / 2) * Math.sin(dLa / 2) + Math.cos(a.lat * r) * Math.cos(b.lat * r) * Math.sin(dLo / 2) * Math.sin(dLo / 2);
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  function updateLink(){
+    routeLink.href = origin
+      ? 'https://www.openstreetmap.org/directions?engine=' + OSM_ENGINE[mode] + '&route=' + origin.lat.toFixed(5) + '%2C' + origin.lon.toFixed(5) + '%3B' + store.lat + '%2C' + store.lon
+      : 'https://www.openstreetmap.org/?mlat=' + store.lat + '&mlon=' + store.lon + '#map=18/' + store.lat + '/' + store.lon;
+    routeLink.textContent = origin ? 'Percorso su OpenStreetMap ↗' : 'Apri su OpenStreetMap ↗';
+  }
+  function setOrigin(o){
+    origin = o; routeCoords = null; popupOpen = false;
+    results.hidden = true; results.innerHTML = '';
+    var d = haversine(o, store);
+    storeDist.innerHTML = 'In linea d\'aria: <b>' + km(d) + '</b> · calcolo il percorso…';
+    fitTo([[o.lat, o.lon], [store.lat, store.lon]]); updateLink(); route();
+  }
+  var routeReq = 0;
+  function route(){
+    if (!origin) return;
+    var id = ++routeReq, label = mode === 'foot' ? 'a piedi' : 'in auto';
+    fetch(OSRM[mode] + origin.lon + ',' + origin.lat + ';' + store.lon + ',' + store.lat + '?overview=full&geometries=geojson')
+      .then(function(r){ if (!r.ok) throw 0; return r.json(); })
+      .then(function(j){
+        if (id !== routeReq) return;
+        if (!j.routes || !j.routes.length) throw 0;
+        var rt = j.routes[0]; routeCoords = rt.geometry.coordinates;
+        storeDist.innerHTML = 'Percorso ' + label + ': <b>' + km(rt.distance) + '</b> · circa <b>' + mins(rt.duration) + '</b>';
+        msg('Ecco il percorso ' + label + ' fino al negozio.'); render();
+      })
+      .catch(function(){
+        if (id !== routeReq) return;
+        storeDist.innerHTML = 'In linea d\'aria: <b>' + km(haversine(origin, store)) + '</b>';
+        msg('Percorso non disponibile ora: apri il link su OpenStreetMap per le indicazioni.', true); render();
+      });
+  }
+  document.querySelectorAll('.mode button').forEach(function(b){
+    b.addEventListener('click', function(){
+      mode = b.dataset.mode;
+      document.querySelectorAll('.mode button').forEach(function(o){ o.setAttribute('aria-checked', o === b); });
+      updateLink(); route();
+    });
+  });
+  var lastSearch = 0;
+  document.getElementById('locForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var q = document.getElementById('locInput').value.trim();
+    if (q.length < 3) { msg('Scrivi un indirizzo, una piazza o un quartiere.', true); return; }
+    if (Date.now() - lastSearch < 1100) { msg('Un attimo, riprova tra un secondo.', true); return; } /* policy Nominatim: max 1 richiesta/s */
+    lastSearch = Date.now(); msg('Cerco "' + q + '"…');
+    var url = NOMINATIM + '?format=jsonv2&limit=5&countrycodes=it&accept-language=it&viewbox=8.70,44.52,9.15,44.33&q=' + encodeURIComponent(q);
+    fetch(url).then(function(r){ if (!r.ok) throw 0; return r.json(); }).then(function(list){
+      results.innerHTML = '';
+      if (!list.length) { results.hidden = true; msg('Nessun risultato: prova ad aggiungere "Genova" o il numero civico.', true); return; }
+      if (list.length === 1) { msg(''); setOrigin({lat: +list[0].lat, lon: +list[0].lon}); return; }
+      list.forEach(function(it){
+        var li = document.createElement('li'), b = document.createElement('button');
+        b.type = 'button'; b.textContent = it.display_name;
+        b.addEventListener('click', function(){ setOrigin({lat: +it.lat, lon: +it.lon}); });
+        li.appendChild(b); results.appendChild(li);
+      });
+      results.hidden = false; msg('Scegli il punto di partenza:');
+      results.querySelector('button').focus();
+    }).catch(function(){ msg('Ricerca non disponibile in questo momento. Riprova più tardi.', true); });
+  });
+  document.getElementById('geoBtn').addEventListener('click', function(){
+    if (!navigator.geolocation) { msg('Il tuo browser non supporta la geolocalizzazione.', true); return; }
+    msg('Rilevo la tua posizione…');
+    navigator.geolocation.getCurrentPosition(function(p){
+      msg(''); setOrigin({lat: p.coords.latitude, lon: p.coords.longitude});
+    }, function(){
+      msg('Posizione non disponibile: controlla i permessi del browser o scrivi un indirizzo.', true);
+    }, {enableHighAccuracy:true, timeout:10000, maximumAge:60000});
   });
 })();
 </script>
