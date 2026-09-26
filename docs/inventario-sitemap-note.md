@@ -132,7 +132,7 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 - **Animazioni**: comparsa delle sezioni allo scroll (IntersectionObserver), transizioni tra pagine (View Transitions API con fallback CSS), micro-interazioni. Tutte si disattivano con `prefers-reduced-motion` **o** con il pulsante "Animazioni" nella barra superiore (la scelta viene ricordata).
 - **Accessibilità**: link "salta al contenuto", menu a tendina accessibili da tastiera (Esc chiude), menu mobile con focus intrappolato, focus sul titolo a ogni cambio pagina, breadcrumb, contrasti AA, testi alternativi per i segnaposto delle foto, moduli con etichette visibili, errori accanto ai campi e riepilogo degli errori, annunci `aria-live` nel Memory.
 - **Spazio bambini**: colori vivaci, pulsanti grandi, testi brevi. Non raccoglie dati, non contiene campi di input e non ha link esterni (l'unica uscita riporta al sito).
-- **Prestazioni**: un solo file e nessuna immagine raster (icone e illustrazioni sono SVG inline). Nessun framework: il JS è vanilla, meno di 20 KB.
+- **Prestazioni**: un solo file e nessuna immagine raster (icone e illustrazioni sono SVG inline). Nessun framework: il JS è vanilla, circa 23 KB non minificati; l'intero file pesa circa 160 KB non compressi.
 
 ---
 
