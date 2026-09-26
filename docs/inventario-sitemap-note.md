@@ -86,18 +86,23 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 │   └── PTOF e qualità            ← PDF PTOF + certificazione ISO (prima non avevano una pagina)
 ├── Famiglie
 │   ├── Iscrizioni e open day     ← NUOVA: open day e riunioni presi dagli Avvisi + link ai moduli
+│   ├── Orari                     ← NUOVA: tutti gli orari (PTOF 2025–28) in una pagina
 │   ├── Rette e pagamenti         ← ex "Rette e pagamenti" (+ pulsante "Copia IBAN")
 │   ├── Modulistica               ← ex "Modulistica" (raggruppata per argomento + ricerca)
 │   ├── Calendario scolastico     ← ex articolo del 2019 "Calendario scolastico"
 │   ├── Libri di testo            ← ex "Libri di testo"
 │   └── Mensa                     ← NUOVA: contenuti presi dal PTOF
 ├── Avvisi                        ← ex "Avvisi" (filtri per pubblico, stato "In programma/Concluso")
+│   └── [singolo avviso]          ← una pagina per ogni avviso (#/avvisi/<id>), generata da un unico modello
 ├── Docenti
 │   ├── Area riservata            ← ex "Area riservata docenti" (solo interfaccia di login)
+│   ├── Circolari e documenti     ← NUOVA: interfaccia con accesso riservato (segnaposto)
+│   ├── Registro elettronico      ← NUOVA: accesso, funzioni, credenziali (URL segnaposto)
 │   └── Lavora con noi            ← NUOVA: interpello preso dagli Avvisi/PDF
 ├── Spazio bambini                ← NUOVA: Memory, "Scopri la tua scuola"
 ├── Contatti                      ← ex "Contatti" + modulo di contatto
-└── Privacy e note legali (footer) ← NUOVA: segnaposto informativa, cookie, accessibilità
+└── Footer: Privacy · Cookie · Accessibilità · Mappa del sito  ← NUOVE
+    (+ pagina "Pagina non trovata" per gli indirizzi sbagliati)
 ```
 
 **Sezioni accorpate o spostate**
@@ -141,6 +146,8 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 
 ## 4. Scelte di progetto (sintesi)
 
+- **Navigazione a prova di anteprima**: i link interni (`#/pagina`) non vengono seguiti dal browser ma gestiti dallo script. Così le pagine si aprono anche nelle anteprime che caricano il sito dentro un iframe (come quella dell'app Claude, dove prima il clic portava fuori dal sito), aprendo il file dal computer o da un server. Dove possibile l'indirizzo si aggiorna e i tasti Indietro/Avanti funzionano; i link diretti a una pagina (es. `index.html#/famiglie/rette`) aprono subito quella pagina.
+
 - **Palette**: blu petrolio ricavato dal logo (#2A5A72, dal lettering #335566), mare (#0E7C86), verde (#2F7447) e oro caldo (#E3A63A), con gradienti morbidi. Tutti i colori sono token CSS in `:root`.
 - **Immagini**: convertite in WebP e incorporate nel file (circa 170 KB in tutto), una sola copia per immagine, assegnate via JS.
 - **3D leggero**: il cubo dei percorsi nella hero è fatto solo con CSS 3D (nessuna libreria, 0 KB aggiuntivi). Si ruota trascinando, con i pulsanti o con le frecce della tastiera. Anche le carte del Memory si girano in 3D.
@@ -173,6 +180,9 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 9. **Foto**: le due foto fornite sono già inserite. I riquadri `[FOTO …]` rimasti (aule, palestra, campo, refettorio, laboratori, cappella, foto storica) vanno completati. Per la foto del cortile, e per tutte le altre con bambini, verificare le liberatorie anche se i volti sono oscurati.
 10. **Numero di telefono secondario** (010 3106429): compare su elenchi esterni ma non sul sito, quindi non è stato inserito; da confermare.
 11. **Pagina Facebook**: verificare che sia la pagina ufficiale prima di pubblicare il link.
+
+### Da sapere sull'anteprima
+- Nell'anteprima dell'app i **PDF** (cartella `documenti/`) e i **link esterni** possono non aprirsi, perché l'anteprima mostra solo il file HTML. Funzionano aprendo `index.html` dalla cartella del progetto o dal sito pubblicato.
 
 ### Funzionalità da collegare a sistemi reali
 - **Modulo "Scrivici"** (Contatti): oggi è solo dimostrativo e non invia nulla. Va collegato a un endpoint (es. servizio email o CMS) con protezione antispam e registrazione del consenso privacy.

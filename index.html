@@ -582,6 +582,37 @@ details.legend ul{ margin:.6rem 0 0; }
 .proj-strip .chip{ text-decoration:none; min-height:36px; }
 .proj-strip .chip:hover{ background:var(--blu-100); }
 
+/* Nuove pagine: orari, circolari, dettaglio avviso, 404, mappa del sito, link legali */
+.timeline{ list-style:none; margin:0 0 var(--s4); padding:0; display:grid; gap:0; }
+.timeline li{ display:grid; grid-template-columns:minmax(96px, 34%) 1fr; gap:var(--s3); padding:.6rem 0; border-bottom:1px dashed var(--line); }
+.timeline li:last-child{ border-bottom:0; }
+.tl-time{ font-weight:800; color:var(--blu-800); font-variant-numeric:tabular-nums; }
+.card h3 > .icon{ vertical-align:-.2em; color:var(--mare-600); margin-right:.2rem; }
+.gate{ display:flex; gap:var(--s4); align-items:flex-start; background:linear-gradient(135deg,#fff 0%, var(--blu-50) 100%); }
+.gate .badge-icon{ margin:0; flex:none; }
+.doc.locked{ opacity:.8; background:repeating-linear-gradient(135deg,#fff 0 12px,#FAFBFD 12px 24px); }
+.doc.locked .di{ background:var(--blu-50); color:var(--blu-700); }
+.avviso-body p{ font-size:var(--fs-lg); }
+.avviso-body .btn{ margin-top:var(--s2); }
+.plain-list{ list-style:none; margin:0; padding:0; display:grid; gap:.2rem; }
+.plain-list a{ display:block; padding:.55rem 0; border-bottom:1px solid var(--line); text-decoration:none; font-weight:700; }
+.plain-list li:last-child a{ border-bottom:0; }
+.plain-list small{ display:block; color:var(--ink-soft); font-weight:600; }
+.news-card h3 a{ color:inherit; text-decoration:none; }
+.news-card h3 a:hover{ color:var(--blu-700); text-decoration:underline; }
+.news-card .more{ margin-top:auto; font-weight:800; }
+.notfound{ display:grid; gap:var(--s5); align-items:center; justify-items:center; text-align:center; max-width:820px; }
+.notfound img{ width:min(52vw, 200px); height:auto; }
+@media (min-width:720px){ .notfound{ grid-template-columns:auto 1fr; text-align:left; justify-items:start; } }
+.sitemap-group h2{ font-size:1.15rem; }
+.sitemap-group ul{ list-style:none; margin:0; padding:0; }
+.sitemap-group a{ display:flex; align-items:center; gap:.4rem; min-height:40px; font-weight:700; text-decoration:none; border-bottom:1px solid var(--line); }
+.sitemap-group li:last-child a{ border-bottom:0; }
+.sitemap-group a:hover{ text-decoration:underline; }
+.legal-links{ display:flex; flex-wrap:wrap; gap:.3rem 1rem; }
+.legal-links a{ color:#fff; }
+.nav-link.is-current{ background:var(--blu-100); color:var(--blu-800); }
+
 /* Toast */
 .toast{ position:fixed; left:50%; bottom:24px; transform:translate(-50%, 140%); z-index:var(--z-toast); background:var(--blu-900); color:#fff; padding:.8rem 1.2rem; border-radius:999px; box-shadow:var(--sh-3); font-weight:700; display:flex; gap:.5rem; align-items:center; transition:transform var(--t-med) var(--ease-spring); max-width:calc(100vw - 32px); }
 .toast{ visibility:hidden; }
@@ -714,6 +745,7 @@ details.legend ul{ margin:.6rem 0 0; }
           <ul class="submenu" id="sm-famiglie">
             <li><a href="#/famiglie"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Tutto per le famiglie</a></li>
             <li><a href="#/famiglie/iscrizioni"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg>Iscrizioni e open day</a></li>
+            <li><a href="#/famiglie/orari"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Orari</a></li>
             <li><a href="#/famiglie/rette"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Rette e pagamenti</a></li>
             <li><a href="#/famiglie/modulistica"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Modulistica</a></li>
             <li><a href="#/famiglie/calendario"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>Calendario scolastico</a></li>
@@ -727,6 +759,8 @@ details.legend ul{ margin:.6rem 0 0; }
           <ul class="submenu" id="sm-docenti">
             <li><a href="#/docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Spazio docenti</a></li>
             <li><a href="#/docenti/area-riservata"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Area riservata</a></li>
+            <li><a href="#/docenti/circolari"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Circolari e documenti</a></li>
+            <li><a href="#/docenti/registro-elettronico"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg>Registro elettronico</a></li>
             <li><a href="#/docenti/lavora-con-noi"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg>Lavora con noi</a></li>
           </ul>
         </li>
@@ -769,6 +803,7 @@ details.legend ul{ margin:.6rem 0 0; }
           <ul class="m-sub" id="m-famiglie">
             <li><a href="#/famiglie">Tutto per le famiglie</a></li>
             <li><a href="#/famiglie/iscrizioni">Iscrizioni e open day</a></li>
+            <li><a href="#/famiglie/orari">Orari</a></li>
             <li><a href="#/famiglie/rette">Rette e pagamenti</a></li>
             <li><a href="#/famiglie/modulistica">Modulistica</a></li>
             <li><a href="#/famiglie/calendario">Calendario scolastico</a></li>
@@ -782,6 +817,8 @@ details.legend ul{ margin:.6rem 0 0; }
           <ul class="m-sub" id="m-docenti">
             <li><a href="#/docenti">Spazio docenti</a></li>
             <li><a href="#/docenti/area-riservata">Area riservata</a></li>
+            <li><a href="#/docenti/circolari">Circolari e documenti</a></li>
+            <li><a href="#/docenti/registro-elettronico">Registro elettronico</a></li>
             <li><a href="#/docenti/lavora-con-noi">Lavora con noi</a></li>
           </ul>
         </li>
@@ -862,6 +899,7 @@ details.legend ul{ margin:.6rem 0 0; }
           <h3>Famiglie</h3>
           <ul>
             <li><a href="#/famiglie/iscrizioni"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Iscrizioni e open day</a></li>
+            <li><a href="#/famiglie/orari"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Orari</a></li>
             <li><a href="#/famiglie/rette"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Rette e pagamenti</a></li>
             <li><a href="#/famiglie/modulistica"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Modulistica</a></li>
             <li><a href="#/famiglie/calendario"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Calendario scolastico</a></li>
@@ -873,8 +911,9 @@ details.legend ul{ margin:.6rem 0 0; }
           <svg class="icon icon-lg" aria-hidden="true"><use href="#i-book"/></svg>
           <h3>Docenti</h3>
           <ul>
-            <li><a href="#/docenti/area-riservata"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Area riservata e circolari</a></li>
-            <li><a href="#/docenti"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Registro elettronico</a></li>
+            <li><a href="#/docenti/area-riservata"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Area riservata</a></li>
+            <li><a href="#/docenti/circolari"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Circolari e documenti</a></li>
+            <li><a href="#/docenti/registro-elettronico"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Registro elettronico</a></li>
             <li><a href="#/docenti/lavora-con-noi"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Lavora con noi</a></li>
           </ul>
           <a class="btn btn-light" href="#/docenti">Spazio docenti</a>
@@ -884,8 +923,8 @@ details.legend ul{ margin:.6rem 0 0; }
           <svg class="icon icon-lg" aria-hidden="true"><use href="#i-smile"/></svg>
           <h3>Bambini</h3>
           <ul>
-            <li><a href="#/bambini"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Gioca a Memory</a></li>
-            <li><a href="#/bambini"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Scopri la tua scuola</a></li>
+            <li><a href="#/bambini" data-anchor="gioco"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Gioca a Memory</a></li>
+            <li><a href="#/bambini" data-anchor="scopri"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>Scopri la tua scuola</a></li>
           </ul>
           <a class="btn btn-ghost" href="#/bambini">Entra nello spazio bambini</a>
         </article>
@@ -928,10 +967,10 @@ details.legend ul{ margin:.6rem 0 0; }
         <a class="tile reveal" style="--i:0" href="#/famiglie/modulistica"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>Modulistica<small>Iscrizioni, deleghe, privacy</small></span></a>
         <a class="tile reveal" style="--i:1" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e pagamenti<small>Rette 2026/27 e IBAN</small></span></a>
         <a class="tile reveal" style="--i:2" href="#/famiglie/calendario"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario<small>Date dell'anno scolastico</small></span></a>
-        <a class="tile reveal" style="--i:3" href="#/famiglie/libri"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco per classe</small></span></a>
+        <a class="tile reveal" style="--i:3" href="#/famiglie/orari"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite, doposcuola</small></span></a>
         <a class="tile reveal" style="--i:4" href="#/avvisi"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span>Avvisi<small>Novità e appuntamenti</small></span></a>
         <a class="tile reveal" style="--i:5" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Pasti cucinati a scuola</small></span></a>
-        <a class="tile reveal" style="--i:6" href="#/docenti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso famiglie e docenti</small></span></a>
+        <a class="tile reveal" style="--i:6" href="#/docenti/registro-elettronico"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso famiglie e docenti</small></span></a>
         <a class="tile reveal" style="--i:7" href="#/contatti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span>Contatti<small>Segreteria e direzione</small></span></a>
       </div>
     </div>
@@ -1118,7 +1157,7 @@ details.legend ul{ margin:.6rem 0 0; }
         <p class="reveal">Possono essere iscritti i bambini che compiranno 3 anni entro il 30 aprile dell'anno scolastico successivo, se autonomi nelle abilità funzionali e senza uso del pannolino.</p>
         <h2 class="reveal">Le sezioni</h2>
         <p class="reveal">La sezione è il punto di riferimento principale del bambino: gli offre familiarità e quindi sicurezza affettiva, gli permette di riconoscere i compagni e di vivere i primi rapporti con il gruppo dei pari e con gli adulti di riferimento, le insegnanti. La Scuola dell'Infanzia dispone di tre aule al piano terra.</p>
-        <h2 class="reveal">La settimana tipo</h2>
+        <h2 class="reveal" id="settimana" tabindex="-1">La settimana tipo</h2>
         <p class="muted reveal" style="margin-bottom:.5rem">Orario settimanale dell'anno scolastico 2025/2026. Su smartphone la tabella si scorre di lato.</p>
         <div class="table-wrap reveal">
           <table class="week">
@@ -1244,7 +1283,7 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 class="reveal">Chi insegna</h2>
         <p class="reveal">5 insegnanti prevalenti e 7 insegnanti specialisti (inglese, musica, educazione motoria, informatica, 2 di religione, sostegno), con un'assistente per l'accoglienza.</p>
         <h2 class="reveal">Valutazione e colloqui</h2>
-        <p class="reveal">L'anno è diviso in quadrimestri. La valutazione ha carattere descrittivo-formativo ed è espressa con giudizi sintetici (ottimo, distinto, buono, discreto, sufficiente, insufficiente), accompagnati dalla descrizione dei livelli raggiunti; l'alunno viene aiutato ad autovalutarsi. Sono previsti due incontri annuali con gli insegnanti, e i colloqui individuali si prenotano dal registro elettronico.</p>
+        <p class="reveal">L'anno è diviso in quadrimestri. La valutazione ha carattere descrittivo-formativo ed è espressa con giudizi sintetici (ottimo, distinto, buono, discreto, sufficiente, insufficiente), accompagnati dalla descrizione dei livelli raggiunti; l'alunno viene aiutato ad autovalutarsi. Sono previsti due incontri annuali con gli insegnanti, e i colloqui individuali si prenotano dal <a href="#/docenti/registro-elettronico">registro elettronico</a>.</p>
         <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
         <div class="grid grid-2 reveal"><div class="photo-ph" role="img" aria-label="Spazio per una foto di una classe">[FOTO CLASSE]</div><div class="photo-ph" role="img" aria-label="Spazio per una foto del laboratorio di scienze">[FOTO LABORATORIO]</div></div>
       </div>
@@ -1376,13 +1415,14 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
       <a class="card reveal" style="--i:0" href="#/famiglie/iscrizioni"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg></span><h3>Iscrizioni e open day</h3><p class="muted">Come iscriversi, open day e incontri per i nuovi genitori.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/famiglie/orari"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Orari</h3><p class="muted">Ingressi, uscite, pranzo, pre-scuola e doposcuola di Infanzia e Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:1" href="#/famiglie/rette"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><h3>Rette e pagamenti</h3><p class="muted">IBAN per i bonifici e tabelle delle rette 2026/27.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:2" href="#/famiglie/modulistica"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Modulistica</h3><p class="muted">Moduli di iscrizione, informative privacy, deleghe per il ritiro.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:3" href="#/famiglie/calendario"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Calendario scolastico</h3><p class="muted">Inizio e fine lezioni, vacanze e giorni di chiusura.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:4" href="#/famiglie/libri"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><h3>Libri di testo</h3><p class="muted">Elenco dei libri adottati per ogni classe della Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:5" href="#/famiglie/mensa"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Mensa</h3><p class="muted">Pasti cucinati a scuola, costi, menù e allergie.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
-    <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><p>Le comunicazioni e gli appuntamenti sono pubblicati in <a href="#/avvisi"><strong>Avvisi</strong></a>. Per voti, assenze e comunicazioni personali usate il <a href="#/docenti"><strong>registro elettronico</strong></a>.</p></div>
+    <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><p>Le comunicazioni e gli appuntamenti sono pubblicati in <a href="#/avvisi"><strong>Avvisi</strong></a>. Per le comunicazioni personali e la prenotazione dei colloqui usate il <a href="#/docenti/registro-elettronico"><strong>registro elettronico</strong></a>.</p></div>
   </div>
 </section>
 
@@ -1423,6 +1463,45 @@ details.legend ul{ margin:.6rem 0 0; }
         <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg><p>Orari della segreteria: <span class="ph">[ORARIO SEGRETERIA]</span></p></div>
       </aside>
     </div>
+  </div>
+</section>
+
+
+
+<!-- ORARI -->
+<section class="page" data-route="/famiglie/orari" data-title="Orari">
+  <header class="page-hero famiglie">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Orari</h1>
+      <p class="lead">Tutti gli orari della scuola in un colpo d'occhio: ingressi, uscite, pranzo, doposcuola e segreteria.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="grid grid-2 gap-lg">
+      <article class="card reveal">
+        <span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
+        <h2 style="font-size:1.35rem">Scuola dell'Infanzia</h2>
+        <p class="muted">Dal lunedì al venerdì · 40 ore settimanali</p>
+        <ol class="timeline"><li><span class="tl-time">dalle 7:30</span><span class="tl-what">Ingresso anticipato</span></li><li><span class="tl-time">8:10 – 9:10</span><span class="tl-what">Accoglienza e routine</span></li><li><span class="tl-time">10:00</span><span class="tl-what">Merenda</span></li><li><span class="tl-time">12:00 – 12:30</span><span class="tl-what">Pranzo</span></li><li><span class="tl-time">12:00 o 14:15</span><span class="tl-what">Uscite possibili prima della fine della giornata</span></li><li><span class="tl-time">16:30</span><span class="tl-what">Uscita</span></li></ol>
+        <p style="margin:0"><a href="#/scuola/infanzia" data-anchor="settimana">La settimana tipo dell'Infanzia →</a></p>
+      </article>
+      <article class="card reveal" style="--i:1">
+        <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+        <h2 style="font-size:1.35rem">Scuola Primaria</h2>
+        <p class="muted">Dal lunedì al venerdì · 27 ore settimanali (29 per le classi 4ª e 5ª)</p>
+        <ol class="timeline"><li><span class="tl-time">dalle 7:30</span><span class="tl-what">Pre-scuola, per le famiglie che ne hanno bisogno</span></li><li><span class="tl-time">8:10 – 13:10</span><span class="tl-what">Lezioni</span></li><li><span class="tl-time">10:00 – 10:20</span><span class="tl-what">Ricreazione</span></li><li><span class="tl-time">13:10</span><span class="tl-what">Pranzo in refettorio</span></li><li><span class="tl-time">13:40 – 14:15</span><span class="tl-what">Ricreazione dopo il pranzo</span></li><li><span class="tl-time">14:15 – 16:15</span><span class="tl-what">Rientri pomeridiani (1 a settimana per le classi 1ª–3ª, 2 per le classi 4ª e 5ª) e doposcuola, tutti i pomeriggi</span></li><li><span class="tl-time">14:15 o 16:15</span><span class="tl-what">Uscita (altri orari solo per motivi eccezionali)</span></li></ol>
+        <p style="margin:0"><a href="#/scuola/primaria">Tutto sulla Primaria →</a></p>
+      </article>
+    </div>
+    <div class="grid grid-3 gap-lg" style="margin-top:var(--s5)">
+      <div class="card reveal"><h3><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg> Segreteria</h3><p class="muted" style="margin:0">Orari di apertura: <span class="ph">[ORARIO SEGRETERIA]</span><br>Tel. e fax <a href="tel:+390103629131">010 362 9131</a></p></div>
+      <div class="card reveal" style="--i:1"><h3><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg> Direzione</h3><p class="muted" style="margin:0">La Direttrice e la Coordinatrice didattica ricevono su appuntamento.</p></div>
+      <div class="card reveal" style="--i:2"><h3><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg> Colloqui</h3><p class="muted" style="margin:0">Due incontri annuali con gli insegnanti; i colloqui individuali si prenotano dal <a href="#/docenti/registro-elettronico">registro elettronico</a>.</p></div>
+    </div>
+    <div class="note reveal" style="margin-top:var(--s5)"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Gli orari di entrata e di uscita vanno rispettati, per il buon andamento delle attività e la sicurezza dei bambini. Vacanze e chiusure sono nel <a href="#/famiglie/calendario">calendario scolastico</a>.</p></div>
+    <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
   </div>
 </section>
 
@@ -1656,7 +1735,7 @@ details.legend ul{ margin:.6rem 0 0; }
     </div>
   </header>
   <div class="container page-body">
-    <div class="filter-bar" role="group" aria-label="Filtra gli avvisi">
+    <div class="filter-bar" data-for="news" role="group" aria-label="Filtra gli avvisi">
       <button type="button" data-filter="tutti" aria-pressed="true">Tutti</button>
       <button type="button" data-filter="famiglie" aria-pressed="false">Famiglie</button>
       <button type="button" data-filter="docenti" aria-pressed="false">Docenti e personale</button>
@@ -1665,32 +1744,54 @@ details.legend ul{ margin:.6rem 0 0; }
     <div class="note reveal" style="margin-bottom:var(--s5)"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p><span class="ph">[NUOVI AVVISI A.S. 2026/27]</span> — qui compariranno gli avvisi pubblicati dalla segreteria.</p></div>
     <div class="grid grid-2" id="newsList">
       <!-- data-date in formato AAAA-MM-GG: il JS calcola "In programma"/"Concluso" -->
-      <article class="card news-card" data-cat="docenti" data-date="2026-07-22">
+      <article class="card news-card" data-id="interpello-docente-infanzia-2026-27" data-link="#/docenti/lavora-con-noi" data-link-text="Vai alla scheda dell'interpello" data-cat="docenti" data-date="2026-07-22">
         <div class="news-meta"><time datetime="2026-07">Luglio 2026</time><span class="chip">Docenti e personale</span><span class="chip status"></span></div>
         <h3>Interpello: docente di Scuola dell'Infanzia a.s. 2026/27</h3>
         <p class="muted">Incarico annuale di 31 ore settimanali, dal 10 settembre 2026 al 30 giugno 2027. Candidature entro il 22 luglio 2026.</p>
-        <a href="#/docenti/lavora-con-noi">Dettagli <span class="sr-only">sull'interpello</span>→</a>
       </article>
-      <article class="card news-card" data-cat="famiglie" data-date="2026-02-02">
+      <article class="card news-card" data-id="riunione-classe-prima-2026-27" data-cat="famiglie" data-date="2026-02-02">
         <div class="news-meta"><time datetime="2026-02-02">2 febbraio 2026</time><span class="chip">Famiglie</span><span class="chip status"></span></div>
         <h3>Riunione per i genitori della futura classe prima</h3>
         <p class="muted">I genitori dei bambini che frequenteranno la classe prima nell'a.s. 2026/27 sono invitati a scuola lunedì 2 febbraio 2026 alle ore 17:00.</p>
       </article>
-      <article class="card news-card" data-cat="famiglie" data-date="2026-01-10">
+      <article class="card news-card" data-id="open-day-10-gennaio-2026" data-link="#/famiglie/iscrizioni" data-link-text="Iscrizioni e open day" data-cat="famiglie" data-date="2026-01-10">
         <div class="news-meta"><time datetime="2026-01-10">10 gennaio 2026</time><span class="chip">Famiglie</span><span class="chip status"></span></div>
         <h3>Open day</h3>
         <p class="muted">Sabato 10 gennaio 2026, dalle 9:30 alle 12:00, senza prenotazione.</p>
       </article>
-      <article class="card news-card" data-cat="famiglie" data-date="2025-11-15">
+      <article class="card news-card" data-id="open-day-15-novembre-2025" data-link="#/famiglie/iscrizioni" data-link-text="Iscrizioni e open day" data-cat="famiglie" data-date="2025-11-15">
         <div class="news-meta"><time datetime="2025-11-15">15 novembre 2025</time><span class="chip">Famiglie</span><span class="chip status"></span></div>
         <h3>Open day</h3>
         <p class="muted">Sabato 15 novembre 2025, dalle 9:30 alle 12:00, senza prenotazione.</p>
       </article>
-      <article class="card news-card" data-cat="famiglie" data-date="2025-01-30">
+      <article class="card news-card" data-id="riunione-classe-prima-2025-26" data-cat="famiglie" data-date="2025-01-30">
         <div class="news-meta"><time datetime="2025-01-30">30 gennaio 2025</time><span class="chip">Famiglie</span><span class="chip status"></span></div>
         <h3>Riunione per i genitori della futura classe prima (a.s. 2025/26)</h3>
         <p class="muted">Incontro a scuola giovedì 30 gennaio 2025 alle ore 17:00.</p>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- DETTAGLIO AVVISO (modello) -->
+<section class="page" data-route="/avvisi/dettaglio" data-title="Avviso" data-template>
+  <header class="page-hero">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1" id="avvisoTitle">Avviso</h1>
+      <p class="lead" id="avvisoMeta"></p>
+    </div>
+  </header>
+  <div class="container page-body">
+    <div class="two-col">
+      <article class="card avviso-body" id="avvisoBody"></article>
+      <aside class="stack">
+        <a class="btn btn-ghost" href="#/avvisi"><svg class="icon" aria-hidden="true"><use href="#i-left"/></svg>Tutti gli avvisi</a>
+        <div class="card">
+          <h2 style="font-size:1.1rem">Altri avvisi</h2>
+          <ul class="plain-list" id="avvisoOthers"></ul>
+        </div>
+      </aside>
     </div>
   </div>
 </section>
@@ -1708,9 +1809,10 @@ details.legend ul{ margin:.6rem 0 0; }
   </header>
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
-    <div class="grid grid-3 gap-lg">
+    <div class="grid grid-2 gap-lg">
       <a class="card reveal" style="--i:0" href="#/docenti/area-riservata"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Area riservata</h3><p class="muted">Circolari e documenti interni, con accesso tramite credenziali.</p><span class="go">Accedi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <div class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie: dal registro si prenotano anche i colloqui individuali.</p><p style="margin:0"><span class="btn btn-ghost" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg>[URL REGISTRO ELETTRONICO]</span></p></div>
+      <a class="card reveal" style="--i:1" href="#/docenti/circolari"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Circolari e documenti</h3><p class="muted">Circolari, verbali e modulistica interna per il personale.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/docenti/registro-elettronico"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie: dal registro si prenotano anche i colloqui individuali.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:2" href="#/docenti/lavora-con-noi"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg></span><h3>Lavora con noi</h3><p class="muted">Interpelli e opportunità di lavoro nella nostra scuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
     <div class="grid grid-2" style="margin-top:var(--s5)">
@@ -1758,11 +1860,88 @@ details.legend ul{ margin:.6rem 0 0; }
         <div class="card reveal">
           <h3>Dopo l'accesso troverai</h3>
           <ul style="margin:0">
-            <li>Circolari <span class="ph">[DA COLLEGARE]</span></li>
-            <li>Documenti e modulistica interna <span class="ph">[DA COLLEGARE]</span></li>
-            <li>Link al registro elettronico</li>
+            <li><a href="#/docenti/circolari">Circolari e documenti</a> <span class="ph">[DA COLLEGARE]</span></li>
+            <li>Modulistica interna <span class="ph">[DA COLLEGARE]</span></li>
+            <li><a href="#/docenti/registro-elettronico">Registro elettronico</a></li>
           </ul>
         </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- CIRCOLARI E DOCUMENTI -->
+<section class="page" data-route="/docenti/circolari" data-title="Circolari e documenti" data-hero="docenti">
+  <header class="page-hero docenti">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Circolari e documenti</h1>
+      <p class="lead">Comunicazioni, circolari e documenti interni per il personale della scuola.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="two-col">
+      <div class="stack">
+        <div class="card gate reveal">
+          <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
+          <div>
+            <h2 style="font-size:1.3rem">Sezione riservata al personale</h2>
+            <p class="muted">Circolari e documenti interni sono visibili dopo l'accesso all'area riservata.</p>
+            <a class="btn btn-primary" href="#/docenti/area-riservata"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Accedi all'area riservata</a>
+          </div>
+        </div>
+        <h2 class="reveal" style="font-size:1.3rem">Anteprima dell'elenco</h2>
+        <p class="muted reveal">Così appariranno circolari e documenti quando l'area riservata sarà collegata al sistema reale.</p>
+        <ul class="doc-list reveal" aria-label="Anteprima dell'elenco delle circolari">
+          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[VERBALE / DOCUMENTO]</span></strong><span>Documento interno · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[MODULO INTERNO]</span></strong><span>Modulistica per il personale · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+        </ul>
+      </div>
+      <aside class="stack">
+        <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p><strong>Interfaccia dimostrativa.</strong> Elenco, ricerca e download vanno collegati al sistema dell'area riservata: <span class="ph">[INTEGRAZIONE CIRCOLARI]</span></p></div>
+        <a class="tile reveal" href="#/docenti/registro-elettronico"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso e credenziali</small></span></a>
+        <a class="tile reveal" href="#/scuola/ptof-qualita"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>PTOF 2025–2028<small>Documento pubblico</small></span></a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- REGISTRO ELETTRONICO -->
+<section class="page" data-route="/docenti/registro-elettronico" data-title="Registro elettronico" data-hero="docenti">
+  <header class="page-hero docenti">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Registro elettronico</h1>
+      <p class="lead">Lo strumento che mette in comunicazione scuola, insegnanti e famiglie.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="two-col">
+      <div class="stack">
+        <div class="card reveal">
+          <h2 style="font-size:1.35rem">Accedi al registro</h2>
+          <p class="muted">Il pulsante porterà alla pagina di accesso del registro, per famiglie e docenti.</p>
+          <p><span class="btn btn-primary" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg>Vai al registro <span class="ph" style="margin-left:.3rem">[URL REGISTRO ELETTRONICO]</span></span></p>
+          <p class="muted" style="margin:0">App per smartphone: <span class="ph">[NOME APP E LINK AGLI STORE]</span></p>
+        </div>
+        <div class="grid grid-2">
+          <div class="card reveal"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Per le famiglie</h3>
+            <ul style="margin:0"><li>Prenotare i colloqui individuali con gli insegnanti</li><li><span class="ph">[ALTRE FUNZIONI PER LE FAMIGLIE]</span></li></ul></div>
+          <div class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Per i docenti</h3>
+            <ul style="margin:0"><li><span class="ph">[FUNZIONI PER I DOCENTI]</span></li></ul></div>
+        </div>
+      </div>
+      <aside class="stack">
+        <div class="card reveal">
+          <h3>Credenziali</h3>
+          <p class="muted">Per ricevere o recuperare le credenziali: <span class="ph">[PROCEDURA CREDENZIALI]</span></p>
+          <p style="margin:0">Oppure contatta la segreteria: <a href="tel:+390103629131">010 362 9131</a> · <a href="mailto:direzione@benedettineprovvidenza.net" style="overflow-wrap:anywhere">direzione@benedettineprovvidenza.net</a></p>
+        </div>
+        <a class="tile reveal" href="#/famiglie/orari"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite e colloqui</small></span></a>
       </aside>
     </div>
   </div>
@@ -1972,11 +2151,124 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="prose stack">
       <p>Titolare del trattamento: Istituto delle Suore Benedettine della Provvidenza – Via San Giuliano, 10 – 16145 Genova.</p>
-      <div class="note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p><span class="ph">[TESTO INFORMATIVA PRIVACY DEL SITO]</span> · <span class="ph">[COOKIE POLICY]</span> · <span class="ph">[DPO / RESPONSABILE PROTEZIONE DATI]</span></p></div>
+      <div class="note"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p><span class="ph">[TESTO INFORMATIVA PRIVACY DEL SITO]</span> · <span class="ph">[DPO / RESPONSABILE PROTEZIONE DATI]</span></p></div>
       <h2 style="font-size:1.35rem">Informative per gli iscritti</h2>
       <p>Le informative per le famiglie degli iscritti sono disponibili nella <a href="#/famiglie/modulistica">Modulistica</a>.</p>
       <h2 style="font-size:1.35rem">Accessibilità</h2>
-      <p>Il sito è progettato secondo le linee guida WCAG 2.1 livello AA. Le animazioni si possono disattivare con il pulsante "Animazioni" in alto. Dichiarazione di accessibilità: <span class="ph">[LINK DICHIARAZIONE AGID]</span></p>
+      <p>Tutte le informazioni sono nella pagina <a href="#/accessibilita">Accessibilità</a>. Per i dati salvati nel browser e i servizi esterni vedi <a href="#/cookie">Cookie e dati di navigazione</a>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- COOKIE -->
+<section class="page" data-route="/cookie" data-title="Cookie e dati di navigazione">
+  <header class="page-hero ">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Cookie e dati di navigazione</h1>
+      <p class="lead">Quali informazioni il sito salva sul tuo dispositivo e quali servizi esterni usa.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="prose stack">
+      <h2 class="reveal">In breve</h2>
+      <p class="reveal">Il sito non usa cookie di profilazione né strumenti di statistica sui visitatori.</p>
+      <h2 class="reveal">Preferenze salvate nel browser</h2>
+      <p class="reveal">Per ricordare alcune scelte, il sito salva nel tuo browser (archiviazione locale, non cookie) soltanto:</p>
+      <ul class="reveal">
+        <li>se hai attivato o disattivato le animazioni;</li>
+        <li>se hai scelto di mostrare o nascondere Guglielmo;</li>
+        <li>durante la visita, quali consigli di Guglielmo hai già visto.</li>
+      </ul>
+      <p class="reveal">Non sono dati personali e puoi cancellarli in qualsiasi momento dalle impostazioni del browser.</p>
+      <h2 class="reveal">Servizi esterni</h2>
+      <ul class="reveal">
+        <li><strong>Google Fonts</strong>, per i caratteri tipografici del sito.</li>
+        <li><strong>jsDelivr</strong>, per la libreria Three.js che anima Guglielmo in 3D.</li>
+        <li>I link a Facebook, Scuola in Chiaro, OpenStreetMap e al sito della Congregazione portano a servizi esterni solo se li apri.</li>
+      </ul>
+      <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Prima della pubblicazione si consiglia di ospitare caratteri e libreria sul server della scuola, così nessun dato dei visitatori viene inviato a terzi. Testo definitivo: <span class="ph">[COOKIE POLICY VERIFICATA DAL TITOLARE / DPO]</span></p></div>
+      <p class="reveal"><a href="#/privacy">Privacy e note legali →</a></p>
+    </div>
+  </div>
+</section>
+
+<!-- ACCESSIBILITÀ -->
+<section class="page" data-route="/accessibilita" data-title="Accessibilità">
+  <header class="page-hero ">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Accessibilità</h1>
+      <p class="lead">Un sito pensato per essere usato da tutti, anche da tastiera, con lettori di schermo e da smartphone.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="two-col">
+      <div class="prose stack">
+        <h2 class="reveal">Il nostro impegno</h2>
+        <p class="reveal">Il sito è progettato seguendo le linee guida internazionali WCAG 2.1 al livello AA.</p>
+        <h2 class="reveal">Cosa trovi</h2>
+        <ul class="reveal">
+          <li>Navigazione completa da tastiera, con il link "Salta al contenuto principale" e il focus sempre visibile.</li>
+          <li>Testi con contrasto adeguato e dimensioni leggibili, anche ingrandendo la pagina.</li>
+          <li>Testi alternativi per immagini e illustrazioni.</li>
+          <li>Moduli con etichette visibili e messaggi di errore vicino al campo da correggere.</li>
+          <li>Animazioni disattivabili con il pulsante "Animazioni" in alto; il sito rispetta anche l'impostazione "riduci movimento" del dispositivo.</li>
+          <li>Guglielmo, la mascotte, si nasconde con il pulsante "Guglielmo" in alto e non copre mai il contenuto su cui ti trovi.</li>
+          <li>Impaginazione pensata prima di tutto per lo smartphone.</li>
+        </ul>
+        <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Dichiarazione di accessibilità: <span class="ph">[DICHIARAZIONE DI ACCESSIBILITÀ, SE PREVISTA]</span></p></div>
+      </div>
+      <aside class="stack">
+        <div class="card reveal">
+          <h3>Hai trovato un problema?</h3>
+          <p class="muted">Segnalacelo: ci aiuti a migliorare il sito per tutti.</p>
+          <p style="margin:0"><a href="mailto:direzione@benedettineprovvidenza.net" style="overflow-wrap:anywhere">direzione@benedettineprovvidenza.net</a><br><a href="tel:+390103629131">010 362 9131</a></p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- MAPPA DEL SITO -->
+<section class="page" data-route="/mappa-del-sito" data-title="Mappa del sito">
+  <header class="page-hero ">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Mappa del sito</h1>
+      <p class="lead">Tutte le pagine del sito, in un unico elenco.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="grid grid-3 gap-lg" id="sitemap"></div>
+  </div>
+</section>
+
+<!-- PAGINA NON TROVATA -->
+<section class="page" data-route="/404" data-title="Pagina non trovata">
+  <header class="page-hero ">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Pagina non trovata</h1>
+      <p class="lead">La pagina che cerchi non esiste o è stata spostata.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="notfound reveal">
+      <img data-img="guglielmo" alt="Guglielmo, lo scoiattolo mascotte, con la sua nocciola" width="247" height="420">
+      <div>
+        <h2>Ops! Guglielmo l'ha cercata dappertutto…</h2>
+        <p class="muted">…ma questa pagina non c'è. Prova a ripartire da qui:</p>
+        <p style="display:flex;flex-wrap:wrap;gap:.6rem;margin:0">
+          <a class="btn btn-primary" href="#/"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg>Torna alla home</a>
+          <a class="btn btn-ghost" href="#/mappa-del-sito">Mappa del sito</a>
+          <a class="btn btn-ghost" href="#/contatti">Contatti</a>
+        </p>
+      </div>
     </div>
   </div>
 </section>
@@ -2012,6 +2304,7 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 id="f-fam">Famiglie</h2>
         <ul>
           <li><a href="#/famiglie/iscrizioni">Iscrizioni e open day</a></li>
+          <li><a href="#/famiglie/orari">Orari</a></li>
           <li><a href="#/famiglie/rette">Rette e pagamenti</a></li>
           <li><a href="#/famiglie/modulistica">Modulistica</a></li>
           <li><a href="#/famiglie/calendario">Calendario scolastico</a></li>
@@ -2024,15 +2317,16 @@ details.legend ul{ margin:.6rem 0 0; }
         <ul>
           <li><a href="#/avvisi">Avvisi</a></li>
           <li><a href="#/docenti">Spazio docenti</a></li>
+          <li><a href="#/docenti/registro-elettronico">Registro elettronico</a></li>
           <li><a href="#/docenti/lavora-con-noi">Lavora con noi</a></li>
           <li><a href="#/bambini">Spazio bambini</a></li>
           <li><a href="#/contatti">Contatti</a></li>
-          <li><a href="#/privacy">Privacy e note legali</a></li>
         </ul>
       </nav>
     </div>
     <div class="footer-bottom">
       <span>© <span id="year">2026</span> Istituto delle Suore Benedettine della Provvidenza · C.F./P.IVA <span class="ph">[C.F. / P.IVA]</span></span>
+      <nav class="legal-links" aria-label="Note legali"><a href="#/privacy">Privacy</a><a href="#/cookie">Cookie</a><a href="#/accessibilita">Accessibilità</a><a href="#/mappa-del-sito">Mappa del sito</a></nav>
       <span>Infanzia GE1A00300G · Primaria GE1E00800L</span>
     </div>
   </div>
@@ -2172,12 +2466,17 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     });
   });
 
-  /* ---------- Router (hash) con transizioni ---------- */
+  /* ---------- Router ----------
+     I link interni ("#/pagina") sono gestiti qui e non dal browser: così le pagine si aprono
+     ovunque, anche nelle anteprime che caricano il sito in un iframe (dove il browser
+     porterebbe il link fuori dal sito), aprendo il file dal computer o da un server.
+     Quando il contesto lo permette, l'indirizzo viene aggiornato e il tasto "indietro" funziona. */
   var pages = $$('.page');
   var byRoute = {}; pages.forEach(function(p){ byRoute[p.getAttribute('data-route')] = p; });
   var titles = {}; pages.forEach(function(p){ titles[p.getAttribute('data-route')] = p.getAttribute('data-title'); });
   var SITE = 'Scuola Benedettine – Genova';
-  var firstLoad = true;
+  var firstLoad = true, currentRoute = null;
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch(e){}
 
   // Voci di sottomenu dalla navigazione principale (unica fonte di verità)
   var sections = {};
@@ -2186,19 +2485,36 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     sections[key] = $$('.submenu a', li).map(function(a){ return { href:a.getAttribute('href'), text:a.textContent.trim() }; });
   });
 
-  function buildChrome(page, route){
-    var secKey = '/' + route.split('/')[1];
-    // Breadcrumb
+  function normalize(r){
+    r = String(r || '/').replace(/^#/, '').replace(/\?.*$/, '');
+    if (r.charAt(0) !== '/') r = '/' + r;
+    return r.replace(/\/+$/, '') || '/';
+  }
+  function routeFromUrl(){
+    var h = ''; try { h = location.hash || ''; } catch(e){}
+    return h.indexOf('#/') === 0 ? normalize(h.slice(1)) : '/';
+  }
+
+  // Risolve un indirizzo in una pagina; gli avvisi hanno una pagina di dettaglio generata dal modello
+  function resolve(route){
+    var p = byRoute[route];
+    if (p && !p.hasAttribute('data-template')) return { page:p, route:route, title:titles[route] };
+    var m = route.match(/^\/avvisi\/([a-z0-9-]+)$/);
+    if (m){ var card = $('#newsList .news-card[data-id="' + m[1] + '"]'); if (card) return fillNewsDetail(card, route); }
+    return { page:byRoute['/404'], route:'/404', title:titles['/404'] };
+  }
+
+  function buildChrome(page, route, title){
+    var parts = route.split('/').filter(Boolean), secKey = '/' + (parts[0] || '');
     var crumbs = $('.crumbs', page);
     if (crumbs){
-      var items = [{ href:'#/', text:'Home' }];
-      if (route !== secKey && titles[secKey]) items.push({ href:'#' + secKey, text:titles[secKey] });
-      items.push({ text:titles[route] });
+      var items = [{ href:'#/', text:'Home' }], acc = '';
+      for (var i = 0; i < parts.length - 1; i++){ acc += '/' + parts[i]; if (titles[acc]) items.push({ href:'#' + acc, text:titles[acc] }); }
+      items.push({ text:title });
       crumbs.innerHTML = '<ol>' + items.map(function(it){
         return '<li>' + (it.href ? '<a href="' + it.href + '">' + it.text + '</a>' : '<span aria-current="page">' + it.text + '</span>') + '</li>';
       }).join('') + '</ol>';
     }
-    // Sottonavigazione di sezione
     var wrap = $('.subnav-wrap', page);
     if (wrap && sections[secKey] && !wrap.hasChildNodes()){
       wrap.innerHTML = '<nav class="subnav" aria-label="Pagine della sezione ' + titles[secKey] + '"><ul>' +
@@ -2209,47 +2525,82 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   function markCurrent(route){
     var secKey = '/' + route.split('/')[1];
     $$('a[href^="#/"]').forEach(function(a){
-      var h = a.getAttribute('href').slice(1);
-      if (h === route && !a.closest('.page')) a.setAttribute('aria-current','page');
-      else if (a.closest('.subnav') && h === route) a.setAttribute('aria-current','page');
-      else a.removeAttribute('aria-current');
+      var h = normalize(a.getAttribute('href'));
+      a.classList.remove('is-current');
+      if (h === route && (!a.closest('.page') || a.closest('.subnav'))) a.setAttribute('aria-current', 'page');
+      else {
+        a.removeAttribute('aria-current');
+        if (a.classList.contains('nav-link') && h !== '/' && route.indexOf(h + '/') === 0) a.classList.add('is-current');
+      }
     });
     $$('.main-nav .nav-item[data-section]').forEach(function(li){ li.classList.toggle('is-current', li.getAttribute('data-section') === secKey); });
   }
 
-  function render(){
-    var hash = location.hash || '#/';
-    if (hash.indexOf('#/') !== 0) return; // ancore interne (es. #main)
-    var route = hash.slice(1).replace(/\/+$/, '') || '/';
-    var page = byRoute[route];
-    if (!page){ route = '/'; page = byRoute['/']; }
+  function render(route, opts){
+    opts = opts || {};
+    route = normalize(route);
+    var r = resolve(route), page = r.page, isFirst = firstLoad;
+    currentRoute = route;
     var swap = function(){
-      pages.forEach(function(p){ p.classList.remove('is-active','animate-in'); });
+      pages.forEach(function(p){ p.classList.remove('is-active', 'animate-in'); });
       page.classList.add('is-active');
-      buildChrome(page, route);
+      buildChrome(page, r.route === '/404' ? '/404' : route, r.title);
       markCurrent(route);
-      document.title = (route === '/' ? SITE + ' | Infanzia e Primaria paritaria' : titles[route] + ' – ' + SITE);
-      window.scrollTo(0, 0);
+      document.title = route === '/' ? SITE + ' | Infanzia e Primaria paritaria' : r.title + ' – ' + SITE;
+      var target = opts.anchor ? document.getElementById(opts.anchor) : null;
+      if (target && page.contains(target)) target.scrollIntoView({ block:'start' }); else window.scrollTo(0, 0);
       observeReveals(page);
       var cur = $('.subnav a[aria-current="page"]', page);
       if (cur && cur.parentNode.parentNode.scrollWidth > cur.parentNode.parentNode.clientWidth){ var ul = cur.parentNode.parentNode; ul.scrollLeft = cur.offsetLeft - (ul.clientWidth - cur.offsetWidth) / 2; }
-      if (route === '/') cube.refresh();
-      mascot.onRoute(route);
-      // Focus sul titolo per lettori di schermo e tastiera (non al primo caricamento)
-      if (!isFirst){ var h = $('h1', page); if (h) h.focus({ preventScroll:true }); }
+      if (r.route === '/') cube.refresh();
+      mascot.onRoute(r.route);
+      // Focus sul titolo (o sulla sezione richiesta) per lettori di schermo e tastiera
+      if (!isFirst){ var f = target || $('h1', page); if (f) f.focus({ preventScroll:true }); }
     };
-    var isFirst = firstLoad;
     closeMenus(); closeDrawer(false);
     $$('.confetti').forEach(function(c){ c.remove(); });
-    if (firstLoad){ swap(); firstLoad = false; return; }
+    if (isFirst){ swap(); firstLoad = false; return; }
     if (document.startViewTransition && motionOn()){
-      document.startViewTransition(swap);
+      try { document.startViewTransition(swap); } catch(e){ swap(); }
     } else {
       swap();
       if (motionOn()) page.classList.add('animate-in');
     }
   }
-  window.addEventListener('hashchange', render);
+
+  function setUrl(route, replace){
+    try {
+      var url = location.href.split('#')[0] + '#' + route;
+      history[replace ? 'replaceState' : 'pushState']({ route:route }, '', url);
+    } catch(e){ /* contesto che non permette di cambiare indirizzo: la navigazione funziona comunque */ }
+  }
+  function go(href, opts){
+    opts = opts || {};
+    var route = normalize(href);
+    if (route === currentRoute && !opts.anchor){
+      closeMenus(); closeDrawer(false);
+      window.scrollTo({ top:0, behavior: motionOn() ? 'smooth' : 'auto' });
+      return;
+    }
+    render(route, opts);
+    setUrl(route, false);
+  }
+  // Un solo gestore per tutti i link interni, anche quelli creati dopo (breadcrumb, sottomenu, avvisi)
+  document.addEventListener('click', function(e){
+    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest ? e.target.closest('a[href^="#/"]') : null;
+    if (!a) return;
+    e.preventDefault();
+    go(a.getAttribute('href'), { anchor:a.getAttribute('data-anchor') });
+  });
+  window.addEventListener('popstate', function(e){
+    var r = (e.state && e.state.route) || routeFromUrl();
+    if (r !== currentRoute) render(r);
+  });
+  window.addEventListener('hashchange', function(){
+    var r = routeFromUrl();
+    if (r !== currentRoute) render(r);
+  });
 
   // Scorrimento verso ancore interne nell'area bambini
   $$('[data-scroll]').forEach(function(a){
@@ -2273,13 +2624,13 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       { name:'La scuola', href:'#/scuola', text:'Chi siamo, Infanzia, Primaria, spazi e PTOF.' }
     ];
     var OFF = -24, ry = OFF, rx = -18, idx = 0;
-    var btns = $$('.path-picker button'), go = $('#cubeGo'), live = $('#cubeLive');
+    var btns = $$('.path-picker button'), goLink = $('#cubeGo'), live = $('#cubeLive');
     function apply(){ el.style.setProperty('--ry', ry + 'deg'); el.style.setProperty('--rx', rx + 'deg'); }
     function setIndex(i, announce){
       idx = ((i % 4) + 4) % 4;
       btns.forEach(function(b, n){ b.setAttribute('aria-pressed', n === idx ? 'true' : 'false'); });
-      go.setAttribute('href', faces[idx].href);
-      go.firstChild.nodeValue = 'Vai al percorso ' + faces[idx].name + ' ';
+      goLink.setAttribute('href', faces[idx].href);
+      goLink.firstChild.nodeValue = 'Vai al percorso ' + faces[idx].name + ' ';
       if (announce !== false) live.textContent = faces[idx].name + ': ' + faces[idx].text; else live.textContent = faces[idx].text;
     }
     function rotateTo(i){
@@ -2292,7 +2643,7 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     scene.addEventListener('keydown', function(e){
       if (e.key === 'ArrowRight'){ e.preventDefault(); rotateTo(idx + 1); }
       else if (e.key === 'ArrowLeft'){ e.preventDefault(); rotateTo(idx - 1); }
-      else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); location.hash = faces[idx].href; }
+      else if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); go(faces[idx].href); }
     });
     // Trascinamento con soglia; click senza trascinamento apre il percorso
     var sx = 0, sy = 0, startRy = 0, startRx = 0, dragging = false, down = false;
@@ -2310,7 +2661,7 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       if (!down) return; down = false;
       el.classList.remove('dragging');
       if (dragging){ var i = Math.round(-(ry - OFF) / 90); ry = -i * 90 + OFF; rx = -18; apply(); setIndex(i); }
-      else { location.hash = faces[idx].href; }
+      else { go(faces[idx].href); }
     }
     scene.addEventListener('pointerup', end);
     scene.addEventListener('pointercancel', function(){ down = false; el.classList.remove('dragging'); });
@@ -2342,10 +2693,34 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   });
   var ist = $('#interpelloStatus'), interpelloEnd = new Date('2026-07-22T23:59:59');
   if (new Date() <= interpelloEnd){ ist.textContent = 'Aperto fino al 22/07/2026'; ist.className = 'chip ok'; }
-  $$('.filter-bar button').forEach(function(b){
+  // Ogni avviso ha la sua pagina: #/avvisi/<id>
+  news.forEach(function(n){
+    var id = n.getAttribute('data-id'), h = $('h3', n);
+    if (!id || !h) return;
+    h.innerHTML = '<a href="#/avvisi/' + id + '">' + h.innerHTML + '</a>';
+    var more = document.createElement('a'); more.className = 'more'; more.href = '#/avvisi/' + id;
+    more.innerHTML = 'Leggi l’avviso<span class="sr-only">: ' + h.textContent + '</span> →';
+    n.appendChild(more);
+  });
+  function fillNewsDetail(card, route){
+    var title = $('h3', card).textContent.trim(), time = $('time', card);
+    var chips = $$('.chip', card).map(function(c){ return c.textContent.trim(); }).filter(Boolean);
+    $('#avvisoTitle').textContent = title;
+    $('#avvisoMeta').textContent = (time ? time.textContent : '') + (chips.length ? ' · ' + chips.join(' · ') : '');
+    var body = $('#avvisoBody'); body.innerHTML = '';
+    $$('p', card).forEach(function(p){ var q = document.createElement('p'); q.innerHTML = p.innerHTML; body.appendChild(q); });
+    var link = card.getAttribute('data-link');
+    if (link){ var a = document.createElement('a'); a.className = 'btn btn-primary'; a.href = link; a.textContent = card.getAttribute('data-link-text') || 'Approfondisci'; body.appendChild(a); }
+    $('#avvisoOthers').innerHTML = news.filter(function(n){ return n !== card; }).map(function(n){
+      var t = $('time', n);
+      return '<li><a href="#/avvisi/' + n.getAttribute('data-id') + '"><small>' + (t ? t.textContent : '') + '</small>' + $('h3', n).textContent.trim() + '</a></li>';
+    }).join('');
+    return { page:byRoute['/avvisi/dettaglio'], route:route, title:title };
+  }
+  $$('.filter-bar[data-for="news"] button').forEach(function(b){
     b.addEventListener('click', function(){
       var f = b.getAttribute('data-filter'), shown = 0;
-      $$('.filter-bar button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      $$('.filter-bar[data-for="news"] button').forEach(function(x){ x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
       news.forEach(function(n){ var ok = f === 'tutti' || n.getAttribute('data-cat') === f; n.hidden = !ok; if (ok) shown++; });
       $('#newsCount').textContent = shown + (shown === 1 ? ' avviso visualizzato' : ' avvisi visualizzati');
     });
@@ -2353,10 +2728,25 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   var home = $('#homeNews');
   news.slice(0, 3).forEach(function(n, i){
     var c = n.cloneNode(true); c.classList.add('reveal'); c.style.setProperty('--i', i);
-    var h = $('h3', c);
-    if (!$('a', c)){ var a = document.createElement('a'); a.href = '#/avvisi'; a.innerHTML = 'Leggi negli avvisi <span class="sr-only">: ' + h.textContent + '</span>→'; c.appendChild(a); }
     home.appendChild(c);
   });
+
+  /* ---------- Mappa del sito (generata dalla navigazione, così resta sempre aggiornata) ---------- */
+  (function(){
+    var box = $('#sitemap'); if (!box) return;
+    var groups = [{ title:'Pagine principali', links:[{ href:'#/', text:'Home' }] }];
+    $$('.main-nav .nav-list > li').forEach(function(li){
+      var btn = $('.nav-btn', li), link = $('.nav-link', li);
+      if (btn) groups.push({ title:btn.textContent.trim(), links:$$('.submenu a', li).map(function(a){ return { href:a.getAttribute('href'), text:a.textContent.trim() }; }) });
+      else if (link) groups[0].links.push({ href:link.getAttribute('href'), text:link.textContent.trim() });
+    });
+    groups.push({ title:'Informazioni', links:$$('.legal-links a').map(function(a){ return { href:a.getAttribute('href'), text:a.textContent.trim() }; }) });
+    box.innerHTML = groups.map(function(g, i){
+      return '<section class="card sitemap-group reveal" style="--i:' + i + '"><h2>' + g.title + '</h2><ul>' + g.links.map(function(l){
+        return '<li><a href="' + l.href + '"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>' + l.text + '</a></li>';
+      }).join('') + '</ul></section>';
+    }).join('');
+  })();
 
   /* ---------- Modulistica: filtro ---------- */
   var docFilter = $('#docFilter');
@@ -2518,6 +2908,10 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       '/famiglie': 'Qui trovi tutto quello che serve alle famiglie.',
       '/famiglie/iscrizioni': 'Vieni a trovarci all’open day!',
       '/famiglie/rette': 'Puoi copiare l’IBAN con un clic.',
+      '/famiglie/orari': 'Tutti gli orari in un colpo d’occhio!',
+      '/docenti/registro-elettronico': 'Dal registro si prenotano anche i colloqui.',
+      '/mappa-del-sito': 'Qui trovi tutte le pagine del sito.',
+      '/404': 'Ops! Questa pagina non la trovo proprio…',
       '/famiglie/modulistica': 'Cerchi un modulo? Usa la ricerca!',
       '/famiglie/calendario': 'Segna le date importanti!',
       '/famiglie/mensa': 'Gnam! Si mangia in refettorio.',
@@ -2846,7 +3240,8 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
 
   /* ---------- Avvio ---------- */
   $('#year').textContent = new Date().getFullYear();
-  render();
+  render(routeFromUrl());
+  setUrl(currentRoute, true);
   observeReveals(document);
 })();
 </script>
