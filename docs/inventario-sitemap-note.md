@@ -53,7 +53,13 @@ Documento di accompagnamento a `index.html` (sito completo in un unico file).
 - Spazi aggiuntivi: ampia terrazza, aula con LIM.
 - Valori: educazione interculturale e alla pace, rispetto delle differenze e dialogo tra culture, responsabilità, solidarietà, cura dei beni comuni.
 
-### 1.5 Link esterni
+### 1.5 Materiali forniti dalla scuola (seconda fase)
+- **Logo** "Suore Benedettine della Provvidenza" con stemma: ne è stato ritagliato lo stemma per header, footer e favicon. Il blu petrolio del lettering (#335566) è diventato il colore primario del sito.
+- **Guglielmo**, lo scoiattolo mascotte (illustrazione): scontornato e usato nell'area bambini e come versione 2D della mascotte.
+- **Foto del cortile** con i bambini (volti già oscurati nella foto originale) e **foto dell'edificio**: usate in Home, Chi siamo, Infanzia, Spazi e negli header delle sezioni La scuola e Famiglie.
+- **Testo "Perché sceglierci"**: inserito in Home così com'è stato fornito.
+
+### 1.6 Link esterni
 - Pagina Facebook "Scuola Benedettine – Genova" (non è stato possibile verificare se sia linkata dal sito attuale)
 - Sito della Congregazione: benedettineprovvidenza.it
 - Scuola in Chiaro (schede GE1E00800L e GE1A00300G)
@@ -127,8 +133,16 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 
 ## 4. Scelte di progetto (sintesi)
 
-- **Palette**: blu Albaro/mare (#1F4E8C → #0E7C86), verde (#2F7447) e oro caldo (#E3A63A), con gradienti morbidi. Il logo non era disponibile: nell'header c'è un monogramma "SB" segnaposto `[LOGO]`, e i colori vanno riallineati a quelli del logo ufficiale (sono tutti token CSS in `:root`).
+- **Palette**: blu petrolio ricavato dal logo (#2A5A72, dal lettering #335566), mare (#0E7C86), verde (#2F7447) e oro caldo (#E3A63A), con gradienti morbidi. Tutti i colori sono token CSS in `:root`.
+- **Immagini**: convertite in WebP e incorporate nel file (circa 170 KB in tutto), una sola copia per immagine, assegnate via JS.
 - **3D leggero**: il cubo dei percorsi nella hero è fatto solo con CSS 3D (nessuna libreria, 0 KB aggiuntivi). Si ruota trascinando, con i pulsanti o con le frecce della tastiera. Anche le carte del Memory si girano in 3D.
+- **Guglielmo 3D (mascotte)**: modello procedurale in Three.js con stile "cartoon" e contorno. Ha coda soffice, orecchie con ciuffi, occhi grandi, la nocciola in mano e il filo d'erba in bocca, come nell'illustrazione.
+  - *Presenza*: è sempre visibile in un angolo in basso. A ogni cambio pagina attraversa lo schermo saltellando fino all'altro angolo.
+  - *Comportamento*: segue il mouse con lo sguardo, sbatte le palpebre e respira. Se lo tocchi saluta.
+  - *Fumetti*: dice un consiglio legato alla pagina solo alla prima visita di quella pagina nella sessione; il fumetto si chiude da solo dopo 5 secondi.
+  - *Area bambini*: esulta nel Memory quando si trova una coppia e fa una piroetta quando si vince.
+  - *Discrezione*: si abbassa mentre si scorre la pagina e quando il focus da tastiera finisce sotto di lui, così non copre mai il contenuto. Si nasconde con l'interruttore "Guglielmo" nella barra in alto (la scelta viene ricordata).
+  - *Prestazioni*: Three.js (circa 170 KB compressi) si carica solo dopo il caricamento della pagina, nei momenti di inattività del browser. In riposo il rendering va a circa 30 fps e si ferma quando la scheda non è visibile. Sui dispositivi di fascia bassa, con "risparmio dati" o senza WebGL, compare l'illustrazione 2D con un'animazione CSS. Con "riduci movimento" resta fermo in un angolo.
 - **Animazioni**: comparsa delle sezioni allo scroll (IntersectionObserver), transizioni tra pagine (View Transitions API con fallback CSS), micro-interazioni. Tutte si disattivano con `prefers-reduced-motion` **o** con il pulsante "Animazioni" nella barra superiore (la scelta viene ricordata).
 - **Accessibilità**: link "salta al contenuto", menu a tendina accessibili da tastiera (Esc chiude), menu mobile con focus intrappolato, focus sul titolo a ogni cambio pagina, breadcrumb, contrasti AA, testi alternativi per i segnaposto delle foto, moduli con etichette visibili, errori accanto ai campi e riepilogo degli errori, annunci `aria-live` nel Memory.
 - **Spazio bambini**: colori vivaci, pulsanti grandi, testi brevi. Non raccoglie dati, non contiene campi di input e non ha link esterni (l'unica uscita riporta al sito).
@@ -140,14 +154,14 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 
 ### Contenuti mancanti o da verificare
 1. **Testo "Cenni storici"**: da copiare integralmente dalla pagina attuale.
-2. **Logo e colori ufficiali**: sostituire il monogramma `[LOGO]` e aggiornare i token colore.
+2. **Logo**: lo stemma è ritagliato da una GIF a bassa risoluzione. Per una resa nitida serve la versione vettoriale (SVG) o un PNG ad alta risoluzione.
 3. **Orari**: segreteria, ingresso e uscita di Infanzia e Primaria, pre/post scuola, giornata tipo dell'Infanzia.
 4. **Calendario 2026/27**: tutte le date.
 5. **Link ai PDF**: moduli di iscrizione Infanzia e Primaria, informativa Primaria, delega ritiro, rette 2026/27 Infanzia e Primaria, libri 2026/27, menù, PTOF vigente (2025–28), eventuali altri moduli non rilevati.
 6. **Iscrizioni**: modalità e scadenze di consegna, date degli open day per l'a.s. 2027/28.
 7. **Mensa**: confermare la procedura del buono pasto "TIM – Tutti in mensa" (fonte: PTOF) e la procedura per le diete speciali.
 8. **Dati legali**: C.F./P.IVA, PEC, dati del certificato ISO, testo dell'informativa privacy del sito, cookie policy, DPO, dichiarazione di accessibilità AgID.
-9. **Foto**: tutti i riquadri `[FOTO …]`. Servono foto reali in WebP/AVIF, con `width`/`height` e `loading="lazy"`, rispettando la liberatoria per le immagini dei minori.
+9. **Foto**: le due foto fornite sono già inserite. I riquadri `[FOTO …]` rimasti (aule, palestra, campo, refettorio, laboratori, cappella, foto storica) vanno completati. Per la foto del cortile, e per tutte le altre con bambini, verificare le liberatorie anche se i volti sono oscurati.
 10. **Numero di telefono secondario** (010 3106429): compare su elenchi esterni ma non sul sito, quindi non è stato inserito; da confermare.
 11. **Pagina Facebook**: verificare che sia la pagina ufficiale prima di pubblicare il link.
 
@@ -158,5 +172,5 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 - **Avvisi**: oggi sono scritti a mano nell'HTML. Conviene gestirli da un CMS o da un feed per aggiornarli senza toccare il codice. Lo stato "In programma/Concluso" si calcola già in automatico dalla data.
 - **Calendario sincronizzabile**: eventuale feed ICS/Google Calendar.
 - **Pagamenti online**: se la scuola adotta una piattaforma (es. PagoPA/gestionale), collegarla alla pagina Rette.
-- **Font**: prima della pubblicazione è consigliabile ospitare in locale i font Nunito e Baloo 2 invece di caricarli da Google Fonts (GDPR).
+- **Font e Three.js**: prima della pubblicazione è consigliabile ospitare in locale i font Nunito e Baloo 2 (oggi da Google Fonts) e la libreria Three.js (oggi da cdn.jsdelivr.net), così da non inviare dati dei visitatori a terzi (GDPR). Basta cambiare la costante `THREE_URL` nello script.
 - **Hosting**: il sito usa la navigazione a hash (`#/pagina`). Con un CMS o un generatore statico si possono avere URL "puliti" e pagine indicizzabili singolarmente (SEO).
