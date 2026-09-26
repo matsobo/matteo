@@ -59,7 +59,13 @@ Documento di accompagnamento a `index.html` (sito completo in un unico file).
 - **Foto del cortile** con i bambini (volti già oscurati nella foto originale) e **foto dell'edificio**: usate in Home, Chi siamo, Infanzia, Spazi e negli header delle sezioni La scuola e Famiglie.
 - **Testo "Perché sceglierci"**: inserito in Home così com'è stato fornito.
 
-### 1.6 Link esterni
+### 1.6 Documenti forniti dalla scuola (terza fase)
+- **PTOF 2025–2028** (67 pagine, approvato il 09/01/2026). Da qui vengono: identità e fondatrice (Santa Benedetta Cambiagio), date di parità e parifica, orari di Infanzia e Primaria, settimana tipo dell'Infanzia, quadro orario per materia, pre-scuola, doposcuola, mensa (ditta ELIOR), organico, progetti e laboratori, valutazione, ISO dal 2007 con AGIQUALITAS, accessi da via Bovio (n. 12 varco carrabile, n. 10 ascensore), ricevimento su appuntamento.
+- **Rette 2026/2027** Infanzia (€ 1.600) e Primaria (€ 1.776): iscrizione, pasti, materiale, segreteria telematica, sconto fratelli.
+- **Coordinate per i pagamenti**: IBAN e intestatario del conto, confermati.
+- I tre PDF sono pubblicati nella cartella `documenti/` e collegati dal sito.
+
+### 1.7 Link esterni
 - Pagina Facebook "Scuola Benedettine – Genova" (non è stato possibile verificare se sia linkata dal sito attuale)
 - Sito della Congregazione: benedettineprovvidenza.it
 - Scuola in Chiaro (schede GE1E00800L e GE1A00300G)
@@ -75,6 +81,7 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 │   ├── Chi siamo e storia        ← ex "Cenni storici" + testi valoriali di "Scuola"
 │   ├── Scuola dell'Infanzia      ← NUOVA: dati sparsi tra "Scuola", Modulistica e PTOF
 │   ├── Scuola Primaria           ← NUOVA: idem
+│   ├── Progetti e laboratori     ← NUOVA: iniziative del PTOF 2025–2028
 │   ├── Spazi e strutture         ← ex "Scuola" (elenco degli spazi)
 │   └── PTOF e qualità            ← PDF PTOF + certificazione ISO (prima non avevano una pagina)
 ├── Famiglie
@@ -115,18 +122,19 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 | Slogan "ogni bambino è speciale / 80 anni ad Albaro" | Hero della Home, Chi siamo | ✅ |
 | Testo "Scuola" (insegnanti, valori, ambiente) | Chi siamo | ✅ |
 | Elenco spazi e aule | Spazi e strutture, Infanzia, Primaria, Home, Spazio bambini | ✅ |
-| Cenni storici | Chi siamo › Cenni storici | ⚠️ segnaposto |
+| Cenni storici | Chi siamo › Cenni storici | ⚠️ fondatrice e date dal PTOF · testo storico ancora segnaposto |
 | Avvisi (open day, riunioni, interpello) | Avvisi, Home, Iscrizioni, Lavora con noi | ✅ |
 | Calendario scolastico | Famiglie › Calendario (+ archivio 2021) | ⚠️ date segnaposto |
 | Modulistica (iscrizioni, informative, delega) | Famiglie › Modulistica, Infanzia, Primaria | ⚠️ link parziali |
 | IBAN e intestatario | Famiglie › Rette | ✅ |
-| Rette 2026/27 Infanzia e Primaria | Famiglie › Rette | ⚠️ link segnaposto |
+| Rette 2026/27 Infanzia e Primaria | Famiglie › Rette (tabelle + PDF), Infanzia, Primaria | ✅ |
 | Rette 2022/23 | Rette › Archivio | ✅ |
 | Libri di testo 2025/26 | Famiglie › Libri di testo | ✅ |
-| PTOF | La scuola › PTOF e qualità | ✅ (2019–22) · ⚠️ PTOF vigente |
+| PTOF | La scuola › PTOF e qualità (2025–28 + archivio 2019–22) | ✅ |
 | Informative privacy | Modulistica, Infanzia, Privacy | ✅ Infanzia · ⚠️ Primaria |
 | Area riservata docenti | Docenti › Area riservata | ✅ interfaccia · ⚠️ integrazione |
-| Registro elettronico / mensa "TIM" | Docenti, Mensa, Home | ⚠️ URL segnaposto |
+| Registro elettronico | Docenti, Primaria (colloqui), Home | ⚠️ URL segnaposto |
+| Orari, mensa, progetti (PTOF 2025–28) | Infanzia, Primaria, Mensa, Progetti e laboratori | ✅ |
 | Link esterni (Facebook, Congregazione, Scuola in Chiaro) | Contatti, Chi siamo, Infanzia, Primaria | ✅ |
 
 ---
@@ -146,21 +154,22 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 - **Animazioni**: comparsa delle sezioni allo scroll (IntersectionObserver), transizioni tra pagine (View Transitions API con fallback CSS), micro-interazioni. Tutte si disattivano con `prefers-reduced-motion` **o** con il pulsante "Animazioni" nella barra superiore (la scelta viene ricordata).
 - **Accessibilità**: link "salta al contenuto", menu a tendina accessibili da tastiera (Esc chiude), menu mobile con focus intrappolato, focus sul titolo a ogni cambio pagina, breadcrumb, contrasti AA, testi alternativi per i segnaposto delle foto, moduli con etichette visibili, errori accanto ai campi e riepilogo degli errori, annunci `aria-live` nel Memory.
 - **Spazio bambini**: colori vivaci, pulsanti grandi, testi brevi. Non raccoglie dati, non contiene campi di input e non ha link esterni (l'unica uscita riporta al sito).
-- **Prestazioni**: un solo file e nessuna immagine raster (icone e illustrazioni sono SVG inline). Nessun framework: il JS è vanilla, circa 23 KB non minificati; l'intero file pesa circa 160 KB non compressi.
+- **Prestazioni**: un solo file HTML con icone SVG inline e foto WebP incorporate. Nessun framework: il JS è vanilla. I PDF sono file separati nella cartella `documenti/`.
 
 ---
 
 ## 5. Nota finale
 
 ### Contenuti mancanti o da verificare
-1. **Testo "Cenni storici"**: da copiare integralmente dalla pagina attuale.
+1. **Testo "Cenni storici"**: la fondatrice e le date di parità ci sono (dal PTOF), manca la storia della casa di Genova, da copiare dalla pagina attuale.
 2. **Logo**: lo stemma è ritagliato da una GIF a bassa risoluzione. Per una resa nitida serve la versione vettoriale (SVG) o un PNG ad alta risoluzione.
-3. **Orari**: segreteria, ingresso e uscita di Infanzia e Primaria, pre/post scuola, giornata tipo dell'Infanzia.
+3. **Orari**: quelli di Infanzia e Primaria sono completi (dal PTOF). Manca l'orario della segreteria. La settimana tipo dell'Infanzia nel PTOF è quella dell'a.s. 2025/26: va aggiornata se cambia.
 4. **Calendario 2026/27**: tutte le date.
-5. **Link ai PDF**: moduli di iscrizione Infanzia e Primaria, informativa Primaria, delega ritiro, rette 2026/27 Infanzia e Primaria, libri 2026/27, menù, PTOF vigente (2025–28), eventuali altri moduli non rilevati.
+5. **Link ai PDF**: moduli di iscrizione Infanzia e Primaria, informativa Primaria, delega ritiro, libri 2026/27, menù, eventuali altri moduli non rilevati. (Rette 2026/27 e PTOF 2025–28 ora sono collegati.)
+   - Nel PDF delle **rette della Primaria** l'intestazione della tabella dice "INFANZIA": è un refuso da correggere nel documento originale.
 6. **Iscrizioni**: modalità e scadenze di consegna, date degli open day per l'a.s. 2027/28.
-7. **Mensa**: confermare la procedura del buono pasto "TIM – Tutti in mensa" (fonte: PTOF) e la procedura per le diete speciali.
-8. **Dati legali**: C.F./P.IVA, PEC, dati del certificato ISO, testo dell'informativa privacy del sito, cookie policy, DPO, dichiarazione di accessibilità AgID.
+7. **Mensa**: aggiornata con il PTOF 2025–28 e le rette (ditta ELIOR, € 6,60 a pasto pagato a fine mese, certificato medico per allergie). Il "buono pasto" del vecchio PTOF è stato tolto perché non compare più. Manca il file del menù. **Costi dei corsi facoltativi** (inglese, teatro, pallavolo, rugby): da indicare.
+8. **Dati legali**: C.F./P.IVA, PEC, numero del certificato ISO (l'ente, AGIQUALITAS, è indicato), testo dell'informativa privacy del sito, cookie policy, DPO, dichiarazione di accessibilità AgID.
 9. **Foto**: le due foto fornite sono già inserite. I riquadri `[FOTO …]` rimasti (aule, palestra, campo, refettorio, laboratori, cappella, foto storica) vanno completati. Per la foto del cortile, e per tutte le altre con bambini, verificare le liberatorie anche se i volti sono oscurati.
 10. **Numero di telefono secondario** (010 3106429): compare su elenchi esterni ma non sul sito, quindi non è stato inserito; da confermare.
 11. **Pagina Facebook**: verificare che sia la pagina ufficiale prima di pubblicare il link.

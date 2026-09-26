@@ -561,6 +561,27 @@ h1[tabindex="-1"]:focus{ outline:none; }
 @media (min-width:768px){ .site-footer .footer-bottom{ padding-bottom:var(--s4); padding-right:150px; } }
 .footer-crest{ height:64px; width:auto; margin-bottom:var(--s3); filter:drop-shadow(0 2px 6px rgba(0,0,0,.3)); }
 
+/* Tabelle orari, legenda, rette, striscia progetti */
+table.week{ min-width:640px; font-size:.95rem; }
+table.week th[scope="row"]{ white-space:nowrap; background:var(--blu-50); }
+table.week td.span{ text-align:left; font-weight:700; color:var(--mare-700); background:#FAFCFD; }
+table.quadro td{ text-align:center; font-variant-numeric:tabular-nums; }
+table.quadro{ min-width:460px; }
+details.legend{ background:var(--surface-2); border-radius:var(--r-md); padding:var(--s3) var(--s4); }
+details.legend summary{ cursor:pointer; font-weight:800; color:var(--blu-800); min-height:32px; display:flex; align-items:center; }
+details.legend ul{ margin:.6rem 0 0; }
+.fee h3{ font-size:1.2rem; }
+.fee-main{ display:flex; flex-direction:column; padding:var(--s4); border-radius:var(--r-md); background:var(--grad-famiglie); color:#fff; margin-bottom:var(--s4); }
+.fee-main span{ font-weight:700; opacity:.95; } .fee-main strong{ font-size:2rem; line-height:1.1; font-variant-numeric:tabular-nums; } .fee-main small{ opacity:.95; font-weight:600; }
+.fee-list{ margin:0; display:grid; gap:.6rem; }
+.fee-list div{ display:grid; grid-template-columns:1fr auto; gap:.2rem .8rem; padding-bottom:.6rem; border-bottom:1px solid var(--line); }
+.fee-list div:last-child{ border-bottom:0; padding-bottom:0; }
+.fee-list dt{ font-weight:800; } .fee-list dd{ margin:0; text-align:right; font-weight:800; font-variant-numeric:tabular-nums; }
+.fee-list dd small{ display:block; font-weight:600; color:var(--ink-soft); font-size:.82rem; max-width:220px; }
+.proj-strip{ display:flex; flex-wrap:wrap; gap:.5rem; align-items:center; margin-top:var(--s5); }
+.proj-strip .chip{ text-decoration:none; min-height:36px; }
+.proj-strip .chip:hover{ background:var(--blu-100); }
+
 /* Toast */
 .toast{ position:fixed; left:50%; bottom:24px; transform:translate(-50%, 140%); z-index:var(--z-toast); background:var(--blu-900); color:#fff; padding:.8rem 1.2rem; border-radius:999px; box-shadow:var(--sh-3); font-weight:700; display:flex; gap:.5rem; align-items:center; transition:transform var(--t-med) var(--ease-spring); max-width:calc(100vw - 32px); }
 .toast{ visibility:hidden; }
@@ -683,6 +704,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
             <li><a href="#/scuola/chi-siamo"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>Chi siamo e storia</a></li>
             <li><a href="#/scuola/infanzia"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg>Scuola dell'Infanzia</a></li>
             <li><a href="#/scuola/primaria"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Scuola Primaria</a></li>
+            <li><a href="#/scuola/progetti"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>Progetti e laboratori</a></li>
             <li><a href="#/scuola/spazi"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg>Spazi e strutture</a></li>
             <li><a href="#/scuola/ptof-qualita"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>PTOF e qualità</a></li>
           </ul>
@@ -737,6 +759,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
             <li><a href="#/scuola/chi-siamo">Chi siamo e storia</a></li>
             <li><a href="#/scuola/infanzia">Scuola dell'Infanzia</a></li>
             <li><a href="#/scuola/primaria">Scuola Primaria</a></li>
+            <li><a href="#/scuola/progetti">Progetti e laboratori</a></li>
             <li><a href="#/scuola/spazi">Spazi e strutture</a></li>
             <li><a href="#/scuola/ptof-qualita">PTOF e qualità</a></li>
           </ul>
@@ -903,11 +926,11 @@ h1[tabindex="-1"]:focus{ outline:none; }
       </div>
       <div class="grid grid-4">
         <a class="tile reveal" style="--i:0" href="#/famiglie/modulistica"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>Modulistica<small>Iscrizioni, deleghe, privacy</small></span></a>
-        <a class="tile reveal" style="--i:1" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e pagamenti<small>IBAN e rette 2026/27</small></span></a>
+        <a class="tile reveal" style="--i:1" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e pagamenti<small>Rette 2026/27 e IBAN</small></span></a>
         <a class="tile reveal" style="--i:2" href="#/famiglie/calendario"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario<small>Date dell'anno scolastico</small></span></a>
         <a class="tile reveal" style="--i:3" href="#/famiglie/libri"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco per classe</small></span></a>
         <a class="tile reveal" style="--i:4" href="#/avvisi"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span>Avvisi<small>Novità e appuntamenti</small></span></a>
-        <a class="tile reveal" style="--i:5" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Refettorio e cucina interna</small></span></a>
+        <a class="tile reveal" style="--i:5" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Pasti cucinati a scuola</small></span></a>
         <a class="tile reveal" style="--i:6" href="#/docenti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso famiglie e docenti</small></span></a>
         <a class="tile reveal" style="--i:7" href="#/contatti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span>Contatti<small>Segreteria e direzione</small></span></a>
       </div>
@@ -926,15 +949,19 @@ h1[tabindex="-1"]:focus{ outline:none; }
         <a class="card reveal" style="--i:0" href="#/scuola/infanzia">
           <span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
           <h3>Scuola dell'Infanzia</h3>
-          <p class="muted">Tre aule al piano terra, il grande cortile e gli spazi verdi con giochi all'aperto.</p>
+          <p class="muted">Due sezioni per bambini dai 3 ai 5 anni, dalle 8:10 alle 16:30, con il grande cortile e gli spazi verdi.</p>
           <span class="go">Scopri l'Infanzia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
         <a class="card reveal" style="--i:1" href="#/scuola/primaria">
           <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
           <h3>Scuola Primaria</h3>
-          <p class="muted">Cinque aule tra piano terra e primo piano, palestra, aula informatica, biblioteca e laboratorio-museo di scienze naturali.</p>
+          <p class="muted">Cinque classi, 27 ore settimanali con rientri pomeridiani, doposcuola tutti i giorni, palestra, laboratori e biblioteca.</p>
           <span class="go">Scopri la Primaria <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
+      </div>
+      <div class="proj-strip reveal">
+        <span class="muted" style="font-weight:700">Progetti e laboratori:</span>
+        <a class="chip" href="#/scuola/progetti">Matematica</a><a class="chip" href="#/scuola/progetti">Robotica</a><a class="chip" href="#/scuola/progetti">Scienze in giardino</a><a class="chip" href="#/scuola/progetti">Teatro</a><a class="chip" href="#/scuola/progetti">Inglese e francese</a><a class="chip" href="#/scuola/progetti">Pallavolo e rugby</a>
       </div>
     </div>
   </section>
@@ -999,8 +1026,9 @@ h1[tabindex="-1"]:focus{ outline:none; }
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
       <a class="card reveal" style="--i:0" href="#/scuola/chi-siamo"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Chi siamo e storia</h3><p class="muted">Identità, valori educativi e cenni storici dell'Istituto.</p><span class="go">Leggi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:1" href="#/scuola/infanzia"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><h3>Scuola dell'Infanzia</h3><p class="muted">Aule, spazi, orari e documenti per l'Infanzia.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:2" href="#/scuola/primaria"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Scuola Primaria</h3><p class="muted">Classi, tempo scuola, libri di testo e mensa.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/scuola/infanzia"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><h3>Scuola dell'Infanzia</h3><p class="muted">Due sezioni, dalle 8:10 alle 16:30, con ingresso anticipato dalle 7:30.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/scuola/primaria"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Scuola Primaria</h3><p class="muted">27 ore settimanali, lezioni dalle 8:10 alle 13:10, rientri e doposcuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:3" href="#/scuola/progetti"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><h3>Progetti e laboratori</h3><p class="muted">Matematica, robotica, scienze in giardino, teatro, lingue e sport.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:3" href="#/scuola/spazi"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><h3>Spazi e strutture</h3><p class="muted">Cortile, palestra, campo, biblioteca, laboratori e cappella.</p><span class="go">Guarda <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:4" href="#/scuola/ptof-qualita"><span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span><h3>PTOF e qualità</h3><p class="muted">Piano Triennale dell'Offerta Formativa e certificazione ISO 9001:2015.</p><span class="go">Consulta <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:5" href="#/contatti"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Dove siamo</h3><p class="muted">Via San Giuliano 10 – via Bovio 12r, 16145 Genova.</p><span class="go">Contatti <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
@@ -1021,23 +1049,31 @@ h1[tabindex="-1"]:focus{ outline:none; }
   <div class="container page-body">
     <div class="two-col">
       <div class="prose stack">
-        <h2 class="reveal">La nostra identità</h2>
-        <p class="reveal">L'Istituto delle Suore Benedettine della Provvidenza si trova a Genova, nel quartiere di Albaro, in via San Giuliano 10, con accesso anche da via Bovio. I bambini vivono in un ambiente sereno e accogliente, circondato da spazi verdi e ombreggiati.</p>
+        <h2 class="reveal">Una scuola cattolica, aperta a tutti</h2>
+        <p class="reveal">L'Istituto Suore Benedettine della Provvidenza è una scuola cattolica. La sua identità si ispira all'ideale cristiano e all'esempio, allo zelo e all'esperienza educativa della Madre Fondatrice, <strong>Santa Benedetta Cambiagio</strong>.</p>
+        <p class="reveal">La scuola si trova in via San Giuliano 10, nel quartiere di Albaro, ed è aperta ad accogliere tutti coloro che la scelgono, senza distinzione di sesso, di nazionalità, di religione e di condizioni economiche.</p>
         <figure class="photo reveal"><img data-img="edificio" alt="L'edificio della scuola ad Albaro, con le persiane verdi e i pini marittimi nel cortile" width="547" height="365" loading="lazy" decoding="async"></figure>
-        <p class="reveal">Le insegnanti si prendono cura di tutti gli alunni, senza distinzione, con sensibilità, fiducia e apertura al dialogo, specialmente verso i bambini in difficoltà. Educano alla responsabilità e alla solidarietà.</p>
-
+        <h2 class="reveal">Istruire educando</h2>
+        <p class="reveal">L'obiettivo della scuola è <strong>istruire educando</strong>: porre attenzione alla persona, perché nel perseguire un'educazione integrale, ampia e approfondita, "sia un giorno di vantaggio a se stesso e agli altri", come desiderava Santa Benedetta Cambiagio.</p>
+        <p class="reveal">La scuola si ispira allo <strong>stile di famiglia</strong> voluto da Madre Benedetta: un'educazione fatta di rapporti personali, che guida gradualmente l'alunno alla sua realizzazione umana, culturale e cristiana. Madre Benedetta diceva alle sue collaboratrici di considerare ogni alunno il più grande tesoro "affidato loro da Dio".</p>
+        <p class="reveal">Le insegnanti si prendono cura di tutti gli alunni, senza distinzione, con sensibilità, fiducia e apertura al dialogo, specialmente verso i bambini in difficoltà.</p>
         <h2 class="reveal">I nostri valori educativi</h2>
         <ul class="reveal">
-          <li>Cura di ogni alunno, senza distinzione</li>
-          <li>Sensibilità, fiducia e apertura al dialogo</li>
+          <li>Collaborazione tra alunni, insegnanti, famiglie e territorio per una crescita armonica</li>
+          <li>Accettazione e stima delle diversità come occasione di arricchimento e di crescita</li>
           <li>Educazione interculturale e alla pace, rispetto delle differenze e dialogo tra culture</li>
           <li>Responsabilità, solidarietà e cura dei beni comuni</li>
+          <li>Un ambiente accogliente, dove "ogni bimbo sia speciale ed unico"</li>
         </ul>
-        <p class="muted reveal" style="font-size:.92rem">Fonte: pagina "Scuola" e PTOF del sito attuale.</p>
-
+        <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
         <h2 class="reveal" id="cenni-storici">Cenni storici</h2>
+        <ul class="reveal">
+          <li>La Congregazione delle Suore Benedettine della Provvidenza è stata fondata da Santa Benedetta Cambiagio.</li>
+          <li>La scuola è riconosciuta dallo Stato: ha ottenuto la <strong>parità il 26 settembre 2001</strong> e la <strong>parifica il 7 giugno 2002</strong>.</li>
+          <li>Dal 2007 ha un Sistema di Gestione per la Qualità certificato.</li>
+        </ul>
         <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>
-          <p><span class="ph">[TESTO CENNI STORICI]</span> — da riportare integralmente dalla pagina "Cenni storici" del sito attuale (non leggibile durante l'analisi).</p>
+          <p><span class="ph">[TESTO CENNI STORICI DELLA SCUOLA DI GENOVA]</span>: da riportare dalla pagina "Cenni storici" del sito attuale.</p>
         </div>
         <div class="photo-ph reveal" role="img" aria-label="Spazio per una foto storica dell'Istituto">[FOTO STORICA]</div>
       </div>
@@ -1045,12 +1081,14 @@ h1[tabindex="-1"]:focus{ outline:none; }
         <div class="card reveal">
           <h3>In breve</h3>
           <dl class="facts" style="grid-template-columns:1fr">
-            <div><dt>Ente gestore</dt><dd>Istituto delle Suore Benedettine della Provvidenza</dd></div>
+            <div><dt>Ente gestore</dt><dd>Istituto Suore Benedettine della Provvidenza</dd></div>
             <div><dt>Scuola dell'Infanzia</dt><dd>Paritaria · GE1A00300G</dd></div>
             <div><dt>Scuola Primaria</dt><dd>Paritaria · GE1E00800L</dd></div>
-            <div><dt>Qualità</dt><dd>Certificazione UNI EN ISO 9001:2015</dd></div>
+            <div><dt>Il nostro team</dt><dd>18 docenti e personale di supporto</dd></div>
+            <div><dt>Qualità</dt><dd>UNI EN ISO 9001:2015</dd></div>
           </dl>
         </div>
+        <a class="tile reveal" href="#/scuola/progetti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><span>Progetti e laboratori<small>Cosa facciamo durante l'anno</small></span></a>
         <a class="tile reveal" href="https://www.benedettineprovvidenza.it/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Suore Benedettine della Provvidenza<small>Sito della Congregazione (si apre in una nuova scheda)</small></span></a>
       </aside>
     </div>
@@ -1072,31 +1110,68 @@ h1[tabindex="-1"]:focus{ outline:none; }
       <div class="stack">
         <dl class="facts reveal">
           <div><dt>Codice meccanografico</dt><dd>GE1A00300G</dd></div>
-          <div><dt>Aule</dt><dd>3 aule al piano terra</dd></div>
-          <div><dt>Orario di ingresso e uscita</dt><dd><span class="ph">[ORARIO INFANZIA]</span></dd></div>
-          <div><dt>Servizi</dt><dd>Mensa con cucina interna · <span class="ph">[PRE/POST SCUOLA]</span></dd></div>
+          <div><dt>Sezioni</dt><dd>2 sezioni eterogenee (3, 4 e 5 anni): Luna e Sole</dd></div>
+          <div><dt>Orario</dt><dd>8:10 – 16:30 · 40 ore settimanali</dd></div>
+          <div><dt>Ingresso anticipato e uscite</dt><dd>Dalle 7:30 · uscite anche alle 12:00 e alle 14:15</dd></div>
         </dl>
-        <h2 class="reveal">Gli spazi dei più piccoli</h2>
-        <p class="reveal">La Scuola dell'Infanzia dispone di tre aule al piano terra e condivide con la Primaria l'ampio cortile, la palestra attrezzata, il campo in erba sintetica, il refettorio e gli spazi verdi con strutture per i giochi all'aperto.</p>
-        <h2 class="reveal">La giornata tipo</h2>
+        <h2 class="reveal">Chi può iscriversi</h2>
+        <p class="reveal">Possono essere iscritti i bambini che compiranno 3 anni entro il 30 aprile dell'anno scolastico successivo, se autonomi nelle abilità funzionali e senza uso del pannolino.</p>
+        <h2 class="reveal">Le sezioni</h2>
+        <p class="reveal">La sezione è il punto di riferimento principale del bambino: gli offre familiarità e quindi sicurezza affettiva, gli permette di riconoscere i compagni e di vivere i primi rapporti con il gruppo dei pari e con gli adulti di riferimento, le insegnanti. La Scuola dell'Infanzia dispone di tre aule al piano terra.</p>
+        <h2 class="reveal">La settimana tipo</h2>
+        <p class="muted reveal" style="margin-bottom:.5rem">Orario settimanale dell'anno scolastico 2025/2026. Su smartphone la tabella si scorre di lato.</p>
         <div class="table-wrap reveal">
-          <table>
-            <caption class="sr-only">Giornata tipo alla Scuola dell'Infanzia</caption>
-            <thead><tr><th scope="col">Orario</th><th scope="col">Attività</th></tr></thead>
+          <table class="week">
+            <caption class="sr-only">Orario settimanale della Scuola dell'Infanzia, anno scolastico 2025/2026</caption>
+            <thead><tr><th scope="col">Ora</th><th scope="col">Lunedì</th><th scope="col">Martedì</th><th scope="col">Mercoledì</th><th scope="col">Giovedì</th><th scope="col">Venerdì</th></tr></thead>
             <tbody>
-              <tr><td><span class="ph">[ORA]</span></td><td>Accoglienza <span class="ph">[DA COMPLETARE]</span></td></tr>
-              <tr><td><span class="ph">[ORA]</span></td><td>Attività in sezione <span class="ph">[DA COMPLETARE]</span></td></tr>
-              <tr><td><span class="ph">[ORA]</span></td><td>Pranzo in refettorio</td></tr>
-              <tr><td><span class="ph">[ORA]</span></td><td>Uscita <span class="ph">[DA COMPLETARE]</span></td></tr>
+              <tr><th scope="row">8:10 – 9:10</th><td colspan="5" class="span">Accoglienza, routine</td></tr>
+              <tr><th scope="row">9:10 – 10:00</th><td>Pregrafismo</td><td>Pittura e disegno</td><td>Religione (sez. A e B), matematica</td><td>Pregrafismo</td><td>Scienze</td></tr>
+              <tr><th scope="row">10:00</th><td colspan="5" class="span">Merenda</td></tr>
+              <tr><th scope="row">10:10 – 11:10</th><td>Inglese sez. B, motoria sez. A</td><td>Pregrafismo</td><td>Matematica</td><td>Inglese sez. A, motoria sez. B</td><td>Pittura e disegno</td></tr>
+              <tr><th scope="row">11:10 – 12:00</th><td>Fiabe</td><td>Fiabe</td><td>Fiabe</td><td>Musica</td><td>Fiabe</td></tr>
+              <tr><th scope="row">12:00</th><td colspan="5" class="span">Pranzo</td></tr>
+              <tr><th scope="row">12:30</th><td colspan="5" class="span">Gioco</td></tr>
+              <tr><th scope="row">14:30</th><td colspan="5" class="span">Gioco libero o guidato, fiabe</td></tr>
+              <tr><th scope="row">16:30</th><td colspan="5" class="span">Uscita</td></tr>
             </tbody>
           </table>
         </div>
+        <details class="legend reveal">
+          <summary>Che cosa si fa nelle attività</summary>
+          <ul>
+            <li><strong>Musica</strong>: canzoni mimate, filastrocche, ritmi.</li>
+            <li><strong>Scienze</strong>: alberi e animali del giardino.</li>
+            <li><strong>Pregrafismo</strong>: perline e bottoni da infilare, semi e pinzette, plastilina, palline di carta incollate, disegno.</li>
+            <li><strong>Matematica</strong>: blocchi logici a gruppi e altre attività.</li>
+            <li><strong>Gioco libero o guidato</strong>: attività-gioco, anche in aula.</li>
+            <li><strong>Fiabe</strong>: momenti tranquilli di lettura.</li>
+          </ul>
+        </details>
+        <h2 class="reveal">Il pranzo</h2>
+        <p class="reveal">Il pranzo (12:00 – 12:30) è il momento centrale della giornata e fa parte del percorso educativo: insegna una alimentazione corretta e varia, a mangiare insieme rispettando i tempi e l'ordine, a vivere il pasto in modo sereno. Il menù è esposto in bacheca e all'uscita le maestre informano i genitori su come ha mangiato il bambino. <a href="#/famiglie/mensa">Tutto sulla mensa</a></p>
+        <h2 class="reveal">Chi lavora con i bambini</h2>
+        <p class="reveal">2 insegnanti prevalenti, 4 insegnanti specialisti (inglese, musica, educazione motoria, religione), 2 assistenti per l'accoglienza, un'operatrice scolastica e 2 assistenti per il dopo mensa.</p>
+        <h2 class="reveal">L'uscita</h2>
+        <p class="reveal">I bambini possono essere ripresi solo dai genitori o da persone maggiorenni delegate, i cui nomi sono indicati nel modulo di delega consegnato all'insegnante di sezione e rinnovato ogni anno. Gli orari di entrata e di uscita vanno rispettati.</p>
+        <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
         <div class="grid grid-2 reveal"><div class="photo-ph" role="img" aria-label="Spazio per una foto delle aule dell'Infanzia">[FOTO AULA INFANZIA]</div><figure class="photo"><img data-img="cortile" alt="Il cortile della scuola: i bambini giocano all'ombra di un grande pino, accanto al porticato" width="1024" height="768" loading="lazy" decoding="async"></figure></div>
       </div>
       <aside class="stack">
         <div class="card reveal">
+          <h3>Attività e progetti</h3>
+          <ul style="margin:0 0 .6rem">
+            <li>Laboratorio di matematica con proposte gioco, una volta alla settimana</li>
+            <li>Coding con il robot Bee-Bot</li>
+            <li>Inglese, musica ed educazione motoria con insegnanti specialisti</li>
+            <li>Rugby (corso facoltativo)</li>
+          </ul>
+          <a href="#/scuola/progetti">Tutti i progetti →</a>
+        </div>
+        <div class="card reveal">
           <h3>Documenti per l'Infanzia</h3>
           <ul class="doc-list">
+            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
             <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
             <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Infanzia</strong><span>PDF · Rev. 3</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2023/01/ALL.-02-INF_INFORMATIVA_ISCRITTI_INFANZIA_Rev.-3-docx.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa privacy Infanzia (PDF, nuova scheda)</span></a></li>
           </ul>
@@ -1114,7 +1189,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
     <div class="container">
       <nav class="crumbs" aria-label="Percorso"></nav>
       <h1 tabindex="-1">Scuola Primaria</h1>
-      <p class="lead">Cinque classi, laboratori e spazi per crescere nella responsabilità e nella solidarietà.</p>
+      <p class="lead">Cinque classi, laboratori e tanti spazi per crescere nella responsabilità e nella solidarietà.</p>
     </div>
   </header>
   <div class="container subnav-wrap"></div>
@@ -1123,33 +1198,105 @@ h1[tabindex="-1"]:focus{ outline:none; }
       <div class="stack">
         <dl class="facts reveal">
           <div><dt>Codice meccanografico</dt><dd>GE1E00800L</dd></div>
-          <div><dt>Aule</dt><dd>2 al piano terra e 3 al primo piano</dd></div>
-          <div><dt>Tempo scuola</dt><dd>Dal lunedì al venerdì · <span class="ph">[ORARIO PRIMARIA]</span></dd></div>
-          <div><dt>Parità scolastica</dt><dd>Dal 26 settembre 2001 (fonte: PTOF)</dd></div>
+          <div><dt>Tempo scuola</dt><dd>27 ore settimanali (29 per le classi 4ª e 5ª)</dd></div>
+          <div><dt>Lezioni</dt><dd>Dal lunedì al venerdì, 8:10 – 13:10, più i rientri pomeridiani</dd></div>
+          <div><dt>Parità scolastica</dt><dd>Dal 26 settembre 2001 · parifica dal 7 giugno 2002</dd></div>
         </dl>
-        <h2 class="reveal">Spazi per imparare</h2>
-        <p class="reveal">Oltre alle aule, gli alunni della Primaria usano la palestra attrezzata, il campo in erba sintetica, l'aula informatica, l'aula con lavagna interattiva multimediale (LIM), la biblioteca e il laboratorio-museo di scienze naturali.</p>
-        <h2 class="reveal">Utili per l'anno scolastico</h2>
-        <div class="grid grid-2 reveal">
-          <a class="tile" href="#/famiglie/libri"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco adozioni per classe</small></span></a>
-          <a class="tile" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Buono pasto e menù</small></span></a>
-          <a class="tile" href="#/famiglie/calendario"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario<small>Vacanze e chiusure</small></span></a>
-          <a class="tile" href="#/docenti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso</small></span></a>
+        <h2 class="reveal">La giornata</h2>
+        <div class="table-wrap reveal">
+          <table>
+            <caption class="sr-only">Orari della giornata alla Scuola Primaria</caption>
+            <thead><tr><th scope="col">Orario</th><th scope="col">Che cosa succede</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">dalle 7:30</th><td>Pre-scuola, per le famiglie che ne hanno bisogno</td></tr>
+              <tr><th scope="row">8:10 – 13:10</th><td>Lezioni, dal lunedì al venerdì</td></tr>
+              <tr><th scope="row">10:00 – 10:20</th><td>Ricreazione, con gli insegnanti</td></tr>
+              <tr><th scope="row">13:10</th><td>Pranzo in refettorio</td></tr>
+              <tr><th scope="row">13:40 – 14:15</th><td>Ricreazione dopo il pranzo, con tre insegnanti</td></tr>
+              <tr><th scope="row">14:15 – 16:15</th><td>Rientri pomeridiani: 1 alla settimana per le classi 1ª, 2ª e 3ª, 2 per le classi 4ª e 5ª. Doposcuola tutti i pomeriggi</td></tr>
+              <tr><th scope="row">14:15 o 16:15</th><td>Uscita (altri orari solo per motivi eccezionali)</td></tr>
+            </tbody>
+          </table>
         </div>
+        <h2 class="reveal">Doposcuola</h2>
+        <p class="reveal">Il doposcuola si svolge tutti i pomeriggi dalle 14:15 alle 16:15. Oltre ai compiti, è un momento di aiuto per tutti: recupero dove ci sono incertezze, potenziamento per chi ha già buone conoscenze.</p>
+        <h2 class="reveal">Le materie, classe per classe</h2>
+        <div class="table-wrap reveal">
+          <table class="quadro">
+            <caption class="sr-only">Ore settimanali per materia e per classe</caption>
+            <thead><tr><th scope="col">Materia</th><th scope="col">1ª</th><th scope="col">2ª</th><th scope="col">3ª</th><th scope="col">4ª</th><th scope="col">5ª</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">Italiano</th><td>8</td><td>7</td><td>6</td><td>7</td><td>7</td></tr>
+              <tr><th scope="row">Inglese</th><td>2</td><td>2</td><td>3</td><td>3</td><td>3</td></tr>
+              <tr><th scope="row">Storia</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">Geografia</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">Matematica</th><td>8</td><td>6</td><td>6</td><td>7</td><td>7</td></tr>
+              <tr><th scope="row">Scienze</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">Tecnologia e informatica</th><td>–</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">Musica</th><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+              <tr><th scope="row">Arte e immagine</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+              <tr><th scope="row">Educazione motoria</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+              <tr><th scope="row">Religione</th><td>1</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+              <tr><th scope="row">Educazione civica</th><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <h2 class="reveal">Chi insegna</h2>
+        <p class="reveal">5 insegnanti prevalenti e 7 insegnanti specialisti (inglese, musica, educazione motoria, informatica, 2 di religione, sostegno), con un'assistente per l'accoglienza.</p>
+        <h2 class="reveal">Valutazione e colloqui</h2>
+        <p class="reveal">L'anno è diviso in quadrimestri. La valutazione ha carattere descrittivo-formativo ed è espressa con giudizi sintetici (ottimo, distinto, buono, discreto, sufficiente, insufficiente), accompagnati dalla descrizione dei livelli raggiunti; l'alunno viene aiutato ad autovalutarsi. Sono previsti due incontri annuali con gli insegnanti, e i colloqui individuali si prenotano dal registro elettronico.</p>
+        <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
         <div class="grid grid-2 reveal"><div class="photo-ph" role="img" aria-label="Spazio per una foto di una classe">[FOTO CLASSE]</div><div class="photo-ph" role="img" aria-label="Spazio per una foto del laboratorio di scienze">[FOTO LABORATORIO]</div></div>
       </div>
       <aside class="stack">
         <div class="card reveal">
+          <h3>Corsi facoltativi</h3>
+          <p class="muted">A pagamento, nel rispetto della riforma scolastica.</p>
+          <ul style="margin:0 0 .6rem"><li>Inglese</li><li>Teatro</li><li>Pallavolo</li><li>Rugby (classi 1ª, 2ª e 3ª)</li></ul>
+          <a href="#/scuola/progetti">Tutti i progetti →</a>
+        </div>
+        <div class="card reveal">
           <h3>Documenti per la Primaria</h3>
           <ul class="doc-list">
+            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
             <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
             <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
           </ul>
           <p style="margin-top:var(--s4)"><a href="#/famiglie/modulistica">Tutta la modulistica →</a></p>
         </div>
-        <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1E00800L/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
+        <div class="grid" style="gap:var(--s3)">
+          <a class="tile reveal" href="#/famiglie/libri"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco adozioni per classe</small></span></a>
+          <a class="tile reveal" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Costi, menù, allergie</small></span></a>
+          <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1E00800L/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
+        </div>
       </aside>
     </div>
+  </div>
+</section>
+
+<!-- PROGETTI E LABORATORI -->
+<section class="page" data-route="/scuola/progetti" data-title="Progetti e laboratori" data-hero="scuola">
+  <header class="page-hero scuola">
+    <div class="container">
+      <nav class="crumbs" aria-label="Percorso"></nav>
+      <h1 tabindex="-1">Progetti e laboratori</h1>
+      <p class="lead">Imparare facendo: laboratori, attività all'aperto e corsi che arricchiscono l'offerta formativa.</p>
+    </div>
+  </header>
+  <div class="container subnav-wrap"></div>
+  <div class="container page-body">
+    <div class="grid grid-3 gap-lg">
+      <article class="card reveal" style="--i:0"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Laboratorio di matematica</h3><p class="muted">Alla Primaria un'ora alla settimana è dedicata alla soluzione di problemi, sull'esperienza del progetto "Problemi al Centro" (Università di Pisa), con metodi come Bortolato, Feuerstein e ArAl. All'Infanzia, proposte gioco settimanali con materiali concreti: Montessori, Bortolato, blocchi logici, linea del 20, dadi.</p></article>
+      <article class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Robotica e coding</h3><p class="muted">Alla Primaria un laboratorio di robotica con i mattoncini Lego Spike Essential; all'Infanzia il robot Bee-Bot per allenare logica, orientamento nello spazio e primi calcoli. E, per tutti, "Programma il futuro" per il pensiero computazionale.</p></article>
+      <article class="card reveal" style="--i:2"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Scienze in giardino</h3><p class="muted">Lezioni all'aperto, in giardino o in spiaggia, per conoscere dal vero piante, animali e ambienti: il percorso "Natura contro schermo".</p></article>
+      <article class="card reveal" style="--i:3"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Leggere e scrivere</h3><p class="muted">La biblioteca per il "piacere del libro", il giornalino della scuola con testi liberi (metodo Freinet) e, dalla classe terza, temi settimanali corretti insieme all'insegnante.</p></article>
+      <article class="card reveal" style="--i:4"><span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Il Buon Mercoledì</h3><p class="muted">Ogni mercoledì tutte le classi riflettono su un tema di educazione civica: Costituzione, rispetto, ambiente, benessere, bullismo e cyberbullismo, sicurezza.</p></article>
+      <article class="card reveal" style="--i:5"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria · facoltativo</p><h3>Teatro</h3><p class="muted">Improvvisazione, lavoro sul corpo, voce e mimica, fino alla messinscena di un testo originale: un momento di libera espressione e di conoscenza di sé.</p></article>
+      <article class="card reveal" style="--i:6"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Inglese e francese</h3><p class="muted">Corso facoltativo di potenziamento dell'inglese e "Et voilà!", atelier ludici in lingua francese per le classi 4ª e 5ª.</p></article>
+      <article class="card reveal" style="--i:7"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria e Infanzia · facoltativi</p><h3>Pallavolo e rugby</h3><p class="muted">Pallavolo per la Primaria; rugby senza contatto, all'insegna del divertimento, per le classi 1ª, 2ª e 3ª e per l'Infanzia.</p></article>
+      <article class="card reveal" style="--i:8"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-chapel"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Natale e Pasqua nell'arte</h3><p class="muted">Conoscere le opere d'arte del territorio: prima in classe, poi in visita a palazzi, chiese e musei insieme alle famiglie.</p></article>
+    </div>
+    <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Corsi facoltativi a pagamento: inglese, teatro e pallavolo (Primaria), rugby (classi 1ª, 2ª, 3ª e Infanzia). Per costi e iscrizioni: <span class="ph">[DETTAGLI CORSI]</span> o chiedi in segreteria. Tutti i progetti sono descritti nel <a href="documenti/PTOF-2025-2028.pdf" target="_blank" rel="noopener">PTOF 2025–2028</a>.</p></div>
   </div>
 </section>
 
@@ -1167,14 +1314,14 @@ h1[tabindex="-1"]:focus{ outline:none; }
     <div class="grid grid-3 gap-lg">
       <article class="card reveal" style="--i:0"><figure class="photo"><img data-img="edificio" alt="L'edificio della scuola ad Albaro, con le persiane verdi e i pini marittimi nel cortile" width="547" height="365" loading="lazy" decoding="async"></figure><h3 style="margin-top:1rem">L'edificio</h3><p class="muted">In via San Giuliano 10, nel quartiere di Albaro, circondato dal verde.</p></article>
       <article class="card reveal" style="--i:0"><figure class="photo"><img data-img="cortile" alt="Il cortile della scuola: i bambini giocano all'ombra di un grande pino, accanto al porticato" width="1024" height="768" loading="lazy" decoding="async"></figure><h3 style="margin-top:1rem">Ampio cortile e terrazza</h3><p class="muted">Usati da Infanzia e Primaria, con spazi verdi e ombreggiati e strutture per i giochi all'aperto.</p></article>
-      <article class="card reveal" style="--i:1"><div class="photo-ph" role="img" aria-label="Spazio per una foto delle aule">[FOTO AULE]</div><h3 style="margin-top:1rem">Aule</h3><p class="muted">Infanzia: tre aule al piano terra. Primaria: due aule al piano terra e tre al primo piano. Un'aula è dotata di LIM.</p></article>
+      <article class="card reveal" style="--i:1"><div class="photo-ph" role="img" aria-label="Spazio per una foto delle aule">[FOTO AULE]</div><h3 style="margin-top:1rem">Aule</h3><p class="muted">Infanzia: tre aule al piano terra. Primaria: due aule al piano terra e tre al primo piano. C'è anche una piccola sala con LIM.</p></article>
       <article class="card reveal" style="--i:2"><div class="photo-ph" role="img" aria-label="Spazio per una foto della palestra">[FOTO PALESTRA]</div><h3 style="margin-top:1rem">Palestra attrezzata</h3><p class="muted">Per l'educazione motoria di tutti i bambini.</p></article>
-      <article class="card reveal" style="--i:3"><div class="photo-ph" role="img" aria-label="Spazio per una foto del campo">[FOTO CAMPO]</div><h3 style="margin-top:1rem">Campo in erba sintetica</h3><p class="muted">Per il gioco con la palla e le attività all'aperto.</p></article>
-      <article class="card reveal" style="--i:4"><div class="photo-ph" role="img" aria-label="Spazio per una foto del refettorio">[FOTO REFETTORIO]</div><h3 style="margin-top:1rem">Refettorio e cucina interna</h3><p class="muted">Il pranzo è preparato nella cucina della scuola.</p></article>
-      <article class="card reveal" style="--i:5"><div class="photo-ph" role="img" aria-label="Spazio per una foto dell'aula informatica">[FOTO AULA INFORMATICA]</div><h3 style="margin-top:1rem">Aula informatica</h3><p class="muted">Per i primi passi nel digitale.</p></article>
+      <article class="card reveal" style="--i:3"><div class="photo-ph" role="img" aria-label="Spazio per una foto del campo">[FOTO CAMPO]</div><h3 style="margin-top:1rem">Campi sportivi</h3><p class="muted">Un campetto da calcio in erba sintetica e un campo da basket e pallavolo all'aperto.</p></article>
+      <article class="card reveal" style="--i:4"><div class="photo-ph" role="img" aria-label="Spazio per una foto del refettorio">[FOTO REFETTORIO]</div><h3 style="margin-top:1rem">Refettorio</h3><p class="muted">Il pasto completo è cucinato ogni giorno in Istituto.</p></article>
+      <article class="card reveal" style="--i:5"><div class="photo-ph" role="img" aria-label="Spazio per una foto dell'aula informatica">[FOTO AULA INFORMATICA]</div><h3 style="margin-top:1rem">Aula informatica e laboratori</h3><p class="muted">Due laboratori collegati a Internet, con PC e tablet per i primi passi nel digitale.</p></article>
       <article class="card reveal" style="--i:6"><div class="photo-ph" role="img" aria-label="Spazio per una foto della biblioteca">[FOTO BIBLIOTECA]</div><h3 style="margin-top:1rem">Biblioteca</h3><p class="muted">Per scoprire il piacere della lettura.</p></article>
       <article class="card reveal" style="--i:7"><div class="photo-ph" role="img" aria-label="Spazio per una foto del laboratorio-museo">[FOTO LABORATORIO-MUSEO]</div><h3 style="margin-top:1rem">Laboratorio-museo di scienze naturali</h3><p class="muted">Per osservare e sperimentare da vicino.</p></article>
-      <article class="card reveal" style="--i:8"><div class="photo-ph" role="img" aria-label="Spazio per una foto della cappella">[FOTO CAPPELLA]</div><h3 style="margin-top:1rem">Cappella e infermeria</h3><p class="muted">La cappella dell'Istituto e un'infermeria per le piccole necessità.</p></article>
+      <article class="card reveal" style="--i:8"><div class="photo-ph" role="img" aria-label="Spazio per una foto della cappella">[FOTO CAPPELLA]</div><h3 style="margin-top:1rem">Cappella e sala medica</h3><p class="muted">La cappella dell'Istituto e una sala medica per le piccole necessità.</p></article>
     </div>
   </div>
 </section>
@@ -1193,18 +1340,22 @@ h1[tabindex="-1"]:focus{ outline:none; }
     <div class="grid grid-2 gap-lg">
       <div class="card reveal">
         <span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span>
-        <h2 style="font-size:1.4rem">Piano Triennale dell'Offerta Formativa</h2>
-        <p class="muted">Il PTOF presenta il progetto educativo, l'organizzazione e le attività della scuola.</p>
+        <h2 style="font-size:1.4rem">Piano Triennale dell'Offerta Formativa 2025–2028</h2>
+        <p class="muted">Il PTOF presenta il progetto educativo, l'organizzazione e le attività della scuola. È stato elaborato dal Collegio dei Docenti il 7 gennaio 2026 e approvato dal Consiglio di Istituto il 9 gennaio 2026 (aggiornamento 2025/26).</p>
         <ul class="doc-list">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF vigente</strong><span><span class="ph">[LINK PTOF AGGIORNATO]</span></span></span></li>
+          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2025–2028</strong><span>PDF · 67 pagine · 4,1 MB</span></span><a class="btn btn-ghost" href="documenti/PTOF-2025-2028.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2025-2028 (PDF, nuova scheda)</span></a></li>
+        </ul>
+        <h3 style="font-size:1.05rem;margin-top:var(--s5)">Archivio</h3>
+        <ul class="doc-list">
           <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2019–2022 (revisione)</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2021/12/GE1E00800L-PTOF-19-22-revisione.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2019-2022 (PDF, nuova scheda)</span></a></li>
         </ul>
       </div>
       <div class="card reveal" style="--i:1">
         <span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span>
         <h2 style="font-size:1.4rem">Certificazione di qualità</h2>
-        <p>La scuola ha un Sistema di Gestione per la Qualità certificato secondo la norma <strong>UNI EN ISO 9001:2015</strong>.</p>
-        <p class="muted">Ente certificatore e numero del certificato: <span class="ph">[DATI CERTIFICATO]</span></p>
+        <p>Dal 2007 la scuola ha un Sistema di Gestione per la Qualità certificato. Dall'anno 2016/17 è conforme alla norma <strong>UNI EN ISO 9001:2015</strong>, con certificazione rilasciata da <strong>AGIQUALITAS</strong>.</p>
+        <p>Ogni anno la Direzione confronta obiettivi e risultati, verifica il servizio didattico e misura la soddisfazione delle famiglie con questionari, i cui risultati sono analizzati con il Collegio dei Docenti.</p>
+        <p class="muted" style="margin:0">Numero del certificato: <span class="ph">[NUMERO CERTIFICATO]</span></p>
       </div>
     </div>
   </div>
@@ -1229,7 +1380,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
       <a class="card reveal" style="--i:2" href="#/famiglie/modulistica"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Modulistica</h3><p class="muted">Moduli di iscrizione, informative privacy, deleghe per il ritiro.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:3" href="#/famiglie/calendario"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Calendario scolastico</h3><p class="muted">Inizio e fine lezioni, vacanze e giorni di chiusura.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
       <a class="card reveal" style="--i:4" href="#/famiglie/libri"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><h3>Libri di testo</h3><p class="muted">Elenco dei libri adottati per ogni classe della Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:5" href="#/famiglie/mensa"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Mensa</h3><p class="muted">Refettorio con cucina interna, buoni pasto e menù.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:5" href="#/famiglie/mensa"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Mensa</h3><p class="muted">Pasti cucinati a scuola, costi, menù e allergie.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
     <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><p>Le comunicazioni e gli appuntamenti sono pubblicati in <a href="#/avvisi"><strong>Avvisi</strong></a>. Per voti, assenze e comunicazioni personali usate il <a href="#/docenti"><strong>registro elettronico</strong></a>.</p></div>
   </div>
@@ -1251,8 +1402,9 @@ h1[tabindex="-1"]:focus{ outline:none; }
         <h2 class="reveal">Come iscriversi</h2>
         <ol class="steps">
           <li class="reveal" style="--i:0"><h3>Vieni all'open day</h3><p class="muted" style="margin:0">Le porte della scuola sono aperte, senza prenotazione. Prossime date: <span class="ph">[DATE OPEN DAY A.S. 2027/28]</span></p></li>
-          <li class="reveal" style="--i:1"><h3>Scarica e compila il modulo</h3><p class="muted" style="margin:0">Trovi i moduli di iscrizione per Infanzia e Primaria, con le relative informative privacy, nella <a href="#/famiglie/modulistica">Modulistica</a>.</p></li>
-          <li class="reveal" style="--i:2"><h3>Consegna la domanda</h3><p class="muted" style="margin:0"><span class="ph">[MODALITÀ E SCADENZE DI CONSEGNA]</span> — per informazioni contatta la segreteria.</p></li>
+          <li class="reveal" style="--i:1"><h3>Verifica i requisiti</h3><p class="muted" style="margin:0">Alla Scuola dell'Infanzia possono essere iscritti i bambini che compiranno 3 anni entro il 30 aprile dell'anno scolastico successivo, se autonomi e senza uso del pannolino. L'iscrizione costa € 200,00 (non rimborsabile): vedi <a href="#/famiglie/rette">Rette e pagamenti</a>.</p></li>
+          <li class="reveal" style="--i:2"><h3>Scarica e compila il modulo</h3><p class="muted" style="margin:0">Trovi i moduli di iscrizione per Infanzia e Primaria, con le relative informative privacy, nella <a href="#/famiglie/modulistica">Modulistica</a>.</p></li>
+          <li class="reveal" style="--i:3"><h3>Consegna la domanda</h3><p class="muted" style="margin:0"><span class="ph">[MODALITÀ E SCADENZE DI CONSEGNA]</span> — per informazioni contatta la segreteria.</p></li>
         </ol>
         <h2 class="reveal">Appuntamenti passati</h2>
         <p class="muted reveal">Dall'archivio degli avvisi dell'anno scolastico 2025/26:</p>
@@ -1280,27 +1432,40 @@ h1[tabindex="-1"]:focus{ outline:none; }
     <div class="container">
       <nav class="crumbs" aria-label="Percorso"></nav>
       <h1 tabindex="-1">Rette e pagamenti</h1>
-      <p class="lead">Tutte le informazioni per pagare rette e contributi con bonifico bancario.</p>
+      <p class="lead">Le rette dell'anno scolastico 2026/2027 e le coordinate per i pagamenti.</p>
     </div>
   </header>
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="two-col">
       <div class="stack">
-        <div class="card reveal">
-          <h2 style="font-size:1.4rem">Coordinate bancarie</h2>
-          <p class="muted" style="margin-bottom:.4rem">IBAN</p>
-          <p class="iban" id="ibanValue">IT60 T030 6909 6061 0000 0003 927</p>
-          <p style="display:flex;flex-wrap:wrap;gap:.6rem"><button type="button" class="btn btn-primary" id="copyIban"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copia IBAN</button></p>
-          <dl class="facts" style="grid-template-columns:1fr">
-            <div><dt>Intestato a</dt><dd>Istituto delle Suore Benedettine della Provvidenza – Via San Giuliano, 10 – 16145 Genova</dd></div>
-            <div><dt>Causale</dt><dd><span class="ph">[CAUSALE DA INDICARE]</span></dd></div>
+        <h2 class="reveal">Rette anno scolastico 2026/2027</h2>
+        <div class="grid grid-2">
+        <div class="card reveal fee">
+          <h3>Scuola dell'Infanzia</h3>
+          <p class="fee-main"><span>Retta annuale</span><strong>€ 1.600,00</strong><small>in 8 mensilità da € 200,00 (ottobre – maggio)</small></p>
+          <dl class="fee-list">
+            <div><dt>Iscrizione</dt><dd>€ 200,00 <small>all'atto dell'iscrizione, non rimborsabile</small></dd></div>
+            <div><dt>Pasto</dt><dd>€ 6,60 <small>a pasto, soggetto ad aumento Istat; si paga a fine mese in base ai pasti</small></dd></div>
+            <div><dt>Materiale didattico</dt><dd>€ 50,00 <small>annui</small></dd></div>
+            <div><dt>Segreteria telematica</dt><dd>€ 15,00 <small>annui</small></dd></div>
           </dl>
         </div>
-        <h2 class="reveal">Rette anno scolastico 2026/2027</h2>
+        <div class="card reveal fee">
+          <h3>Scuola Primaria</h3>
+          <p class="fee-main"><span>Retta annuale</span><strong>€ 1.776,00</strong><small>in 8 mensilità da € 222,00 (ottobre – maggio)</small></p>
+          <dl class="fee-list">
+            <div><dt>Iscrizione</dt><dd>€ 200,00 <small>all'atto dell'iscrizione, non rimborsabile</small></dd></div>
+            <div><dt>Pasto</dt><dd>€ 6,60 <small>a pasto, soggetto ad aumento Istat; si paga a fine mese in base ai pasti</small></dd></div>
+            <div><dt>Materiale didattico</dt><dd>€ 50,00 <small>annui</small></dd></div>
+            <div><dt>Segreteria telematica</dt><dd>€ 15,00 <small>annui</small></dd></div>
+          </dl>
+        </div>
+        </div>
+        <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><p><strong>Sconto fratelli</strong>: se frequentano due o più figli, alla retta del figlio maggiore si applica una riduzione del 10%.</p></div>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola dell'Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola dell'Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
         </ul>
         <h3 class="reveal" style="margin-top:var(--s5)">Archivio</h3>
         <ul class="doc-list reveal">
@@ -1308,11 +1473,17 @@ h1[tabindex="-1"]:focus{ outline:none; }
         </ul>
       </div>
       <aside class="stack">
-        <div class="note info reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Importi, scadenze e agevolazioni sono indicati nei documenti delle rette. Per dubbi sui pagamenti contatta la segreteria.</p></div>
         <div class="card reveal">
-          <h3>Pagamenti online</h3>
-          <p class="muted" style="margin:0">Eventuale pagamento tramite piattaforma: <span class="ph">[SISTEMA DI PAGAMENTO DA COLLEGARE]</span></p>
+          <h2 style="font-size:1.3rem">Per effettuare i pagamenti</h2>
+          <p class="muted" style="margin-bottom:.4rem">IBAN</p>
+          <p class="iban" id="ibanValue">IT60 T030 6909 6061 0000 0003 927</p>
+          <p><button type="button" class="btn btn-primary" id="copyIban" style="width:100%"><svg class="icon" aria-hidden="true"><use href="#i-copy"/></svg>Copia IBAN</button></p>
+          <dl class="facts" style="grid-template-columns:1fr">
+            <div><dt>C/C intestato a</dt><dd>Istituto delle Suore Benedettine della Provvidenza – Via San Giuliano, 10 – 16145 Genova</dd></div>
+            <div><dt>Causale</dt><dd><span class="ph">[CAUSALE DA INDICARE]</span></dd></div>
+          </dl>
         </div>
+        <div class="note info reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Per dubbi sui pagamenti contatta la segreteria: <a href="tel:+390103629131">010 362 9131</a>.</p></div>
       </aside>
     </div>
   </div>
@@ -1439,27 +1610,35 @@ h1[tabindex="-1"]:focus{ outline:none; }
     <div class="container">
       <nav class="crumbs" aria-label="Percorso"></nav>
       <h1 tabindex="-1">Mensa</h1>
-      <p class="lead">Il pranzo si consuma nel refettorio della scuola, con i pasti preparati nella cucina interna.</p>
+      <p class="lead">Il pasto completo è cucinato ogni giorno a scuola e si consuma insieme nel refettorio.</p>
     </div>
   </header>
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="two-col">
       <div class="stack">
-        <h2 class="reveal">Buono pasto</h2>
-        <p class="reveal">Per usufruire della mensa serve il buono pasto, acquistabile in segreteria o tramite bonifico. La gestione avviene con la funzione "TIM – Tutti in mensa" del registro elettronico.</p>
-        <p class="muted reveal" style="font-size:.92rem">Fonte: PTOF. <span class="ph">[DA VERIFICARE CON LA SEGRETERIA]</span></p>
-        <h2 class="reveal">Menù</h2>
+        <h2 class="reveal">Come funziona</h2>
+        <p class="reveal">La mensa è affidata alla ditta <strong>ELIOR</strong>, che invia il proprio personale a cucinare in Istituto e prevede il pasto completo. Durante il pranzo i bambini sono seguiti dagli insegnanti.</p>
+        <dl class="facts reveal">
+          <div><dt>Costo del pasto</dt><dd>€ 6,60, soggetto ad aumento Istat</dd></div>
+          <div><dt>Pagamento</dt><dd>A fine mese, in base al numero dei pasti consumati</dd></div>
+          <div><dt>Infanzia</dt><dd>Pranzo dalle 12:00 alle 12:30</dd></div>
+          <div><dt>Primaria</dt><dd>Pranzo al termine delle lezioni (13:10), ricreazione dalle 13:40 alle 14:15</dd></div>
+        </dl>
+        <h2 class="reveal">Il menù</h2>
+        <p class="reveal">Il menù tiene conto delle esigenze dei bambini e del loro fabbisogno energetico giornaliero, ed è esposto in bacheca perché i genitori sappiano che cosa mangiano i figli a scuola. Nessun bambino è obbligato a mangiare ciò che gli crea problema. All'Infanzia, all'uscita, le maestre informano i genitori su come il bambino ha mangiato.</p>
         <ul class="doc-list reveal">
           <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span class="dt"><strong>Menù dell'anno in corso</strong><span>PDF · <span class="ph">[LINK MENÙ]</span></span></span></li>
         </ul>
+        <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
       </div>
       <aside class="stack">
         <div class="card reveal">
-          <h3>Diete speciali e allergie</h3>
-          <p class="muted" style="margin:0"><span class="ph">[PROCEDURA DIETE SPECIALI]</span></p>
+          <h3>Allergie e intolleranze</h3>
+          <p class="muted">Per ricevere un pasto alternativo, i genitori presentano in direzione una <strong>certificazione medica specialistica</strong> che attesti l'allergia o l'intolleranza.</p>
+          <p class="muted" style="margin:0">Le <strong>indisposizioni temporanee</strong> che richiedono un pasto sostitutivo vanno segnalate al mattino all'accoglienza: la scuola informa la cucina.</p>
         </div>
-        <a class="tile reveal" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>IBAN per il bonifico<small>Rette e pagamenti</small></span></a>
+        <a class="tile reveal" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e IBAN<small>Tutti i costi 2026/2027</small></span></a>
       </aside>
     </div>
   </div>
@@ -1531,7 +1710,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
       <a class="card reveal" style="--i:0" href="#/docenti/area-riservata"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Area riservata</h3><p class="muted">Circolari e documenti interni, con accesso tramite credenziali.</p><span class="go">Accedi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <div class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie. Include anche la gestione della mensa.</p><p style="margin:0"><span class="btn btn-ghost" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg>[URL REGISTRO ELETTRONICO]</span></p></div>
+      <div class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie: dal registro si prenotano anche i colloqui individuali.</p><p style="margin:0"><span class="btn btn-ghost" aria-disabled="true"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg>[URL REGISTRO ELETTRONICO]</span></p></div>
       <a class="card reveal" style="--i:2" href="#/docenti/lavora-con-noi"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg></span><h3>Lavora con noi</h3><p class="muted">Interpelli e opportunità di lavoro nella nostra scuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
     <div class="grid grid-2" style="margin-top:var(--s5)">
@@ -1706,14 +1885,15 @@ h1[tabindex="-1"]:focus{ outline:none; }
         <span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
         <h2 style="font-size:1.25rem">Indirizzo</h2>
         <address style="font-style:normal">Via San Giuliano, 10<br>Via Bovio, 12r<br>16145 Genova</address>
-        <p class="muted" style="font-size:.92rem;margin-top:.5rem">Ingressi da via San Giuliano 10 e da via Bovio.</p>
+        <p class="muted" style="font-size:.92rem;margin-top:.5rem">Ingresso principale in via San Giuliano 10. Si entra anche da via Bovio: al n. 12 c'è il varco carrabile, al n. 10 l'ascensore.</p>
         <a href="https://www.openstreetmap.org/search?query=Via%20San%20Giuliano%2010%2C%2016145%20Genova" target="_blank" rel="noopener">Apri la mappa<span class="sr-only"> (OpenStreetMap, nuova scheda)</span> →</a>
       </div>
       <div class="card reveal" style="--i:1">
         <span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
-        <h2 style="font-size:1.25rem">Telefono</h2>
+        <h2 style="font-size:1.25rem">Telefono e fax</h2>
         <p style="font-size:1.3rem;font-weight:800;margin-bottom:.4rem"><a href="tel:+390103629131">010 362 9131</a></p>
-        <p class="muted" style="margin:0">Orari della segreteria:<br><span class="ph">[ORARIO SEGRETERIA]</span></p>
+        <p class="muted" style="margin:0 0 .5rem">Orari della segreteria:<br><span class="ph">[ORARIO SEGRETERIA]</span></p>
+        <p class="muted" style="margin:0;font-size:.92rem">La Direttrice e la Coordinatrice didattica ricevono su appuntamento.</p>
       </div>
       <div class="card reveal" style="--i:2">
         <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
@@ -1823,6 +2003,7 @@ h1[tabindex="-1"]:focus{ outline:none; }
           <li><a href="#/scuola/chi-siamo">Chi siamo e storia</a></li>
           <li><a href="#/scuola/infanzia">Scuola dell'Infanzia</a></li>
           <li><a href="#/scuola/primaria">Scuola Primaria</a></li>
+          <li><a href="#/scuola/progetti">Progetti e laboratori</a></li>
           <li><a href="#/scuola/spazi">Spazi e strutture</a></li>
           <li><a href="#/scuola/ptof-qualita">PTOF e qualità</a></li>
         </ul>
@@ -2333,6 +2514,7 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       '/': 'Ciao, sono <strong>Guglielmo</strong>! Scegli un percorso: ti accompagno io.',
       '/scuola': 'Qui scopri chi siamo e dove si trova la scuola.',
       '/scuola/spazi': 'Il cortile è il mio posto preferito!',
+      '/scuola/progetti': 'Robot, teatro, scienze in giardino... che bello!',
       '/famiglie': 'Qui trovi tutto quello che serve alle famiglie.',
       '/famiglie/iscrizioni': 'Vieni a trovarci all’open day!',
       '/famiglie/rette': 'Puoi copiare l’IBAN con un clic.',
