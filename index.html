@@ -591,7 +591,7 @@ details.legend ul{ margin:.6rem 0 0; }
 .gate{ display:flex; gap:var(--s4); align-items:flex-start; background:linear-gradient(135deg,#fff 0%, var(--blu-50) 100%); }
 .gate .badge-icon{ margin:0; flex:none; }
 .doc.locked{ opacity:.8; background:repeating-linear-gradient(135deg,#fff 0 12px,#FAFBFD 12px 24px); }
-.doc.locked .di{ background:var(--blu-50); color:var(--blu-700); }
+
 .avviso-body p{ font-size:var(--fs-lg); }
 .avviso-body .btn{ margin-top:var(--s2); }
 .plain-list{ list-style:none; margin:0; padding:0; display:grid; gap:.2rem; }
@@ -613,6 +613,81 @@ details.legend ul{ margin:.6rem 0 0; }
 .legal-links a{ color:#fff; }
 .nav-link.is-current{ background:var(--blu-100); color:var(--blu-800); }
 
+
+/* =========================================================
+   10. ICONE "PREMIUM": bicromia, forme morbide, profondità
+   Ogni riquadro ha un tema (--c1 sfondo, --c2 riempimento, --c3 tratto, --c4 sagoma dietro)
+   ========================================================= */
+.badge-icon.badge-icon, .why-list .wi, .tile .ti, .stat .ti, .doc .di{
+  --c1:#E4F0F6; --c2:#9CC5DC; --c3:#1B4256; --c4:#F6B4A0;
+  --duo:var(--c2);
+  position:relative; isolation:isolate; flex:none; background:none;
+  display:grid; place-items:center; color:var(--c3);
+  border-radius:42% 38% 44% 36% / 38% 44% 36% 42%;
+  transition:transform var(--t-med) var(--ease-spring), border-radius var(--t-slow) var(--ease-out);
+}
+/* faccia del riquadro (davanti) e sagoma colorata ruotata (dietro) */
+.badge-icon.badge-icon::after, .why-list .wi::after, .tile .ti::after, .stat .ti::after, .doc .di::after,
+.badge-icon.badge-icon::before, .why-list .wi::before, .tile .ti::before, .stat .ti::before, .doc .di::before{
+  content:""; position:absolute; inset:0; border-radius:inherit;
+}
+.badge-icon.badge-icon::after, .why-list .wi::after, .tile .ti::after, .stat .ti::after, .doc .di::after{
+  z-index:-1;
+  background:
+    radial-gradient(circle at 80% 20%, #fff 0 7%, transparent 8%),
+    radial-gradient(90% 90% at 26% 16%, rgba(255,255,255,.95) 0%, rgba(255,255,255,0) 58%),
+    linear-gradient(150deg, #fff 0%, var(--c1) 45%, color-mix(in srgb, var(--c2) 40%, var(--c1)) 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.95),
+    inset 0 -5px 10px color-mix(in srgb, var(--c2) 55%, transparent),
+    0 12px 22px -12px color-mix(in srgb, var(--c3) 85%, transparent);
+}
+.badge-icon.badge-icon::before, .why-list .wi::before, .tile .ti::before, .stat .ti::before, .doc .di::before{
+  z-index:-2; inset:4% 2% 0 6%;
+  background:linear-gradient(135deg, var(--c4), color-mix(in srgb, var(--c4) 55%, #fff));
+  transform:rotate(16deg) translate(16%, 14%);
+  transition:transform var(--t-med) var(--ease-spring);
+}
+.badge-icon.badge-icon .icon, .why-list .wi .icon, .tile .ti .icon, .stat .ti .icon, .doc .di .icon{ stroke:var(--c3); stroke-width:1.8; }
+.badge-icon.badge-icon{ width:60px; height:60px; margin-bottom:var(--s5); }
+.badge-icon.badge-icon .icon{ width:30px; height:30px; }
+.tile .ti{ width:46px; height:46px; } .tile .ti .icon{ width:22px; height:22px; }
+.stat .ti{ width:50px; height:50px; }
+.doc .di{ width:46px; height:46px; }
+.stat .ti .icon, .doc .di .icon, .why-list .wi .icon{ width:24px; height:24px; }
+.why-list .wi{ width:44px; height:44px; }
+
+/* temi di colore (palette calda, non solo azzurro) */
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-sea,    .badge-icon.bg-famiglie, .wi.bg-famiglie{ --c1:#E1F5F1; --c2:#8ED6C9; --c3:#0A5B63; --c4:#FFD27A; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-lilac,  .badge-icon.bg-docenti,  .wi.bg-docenti { --c1:#EFECFF; --c2:#BEB3FF; --c3:#3B3589; --c4:#FFB9CB; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-coral,  .badge-icon.bg-bambini,  .wi.bg-bambini { --c1:#FFEEE7; --c2:#FFB59B; --c3:#9A3412; --c4:#FFE08A; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-leaf,   .badge-icon.bg-scuola,   .wi.bg-scuola  { --c1:#E7F6E9; --c2:#A3DCAE; --c3:#22583A; --c4:#FFCB7A; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-petrol, .badge-icon.bg-mare,     .wi.bg-mare    { --c1:#E3EFF6; --c2:#9CC5DC; --c3:#1B4256; --c4:#F6B4A0; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-sun,    .badge-icon.bg-oro,      .wi.bg-oro     { --c1:#FFF4D6; --c2:#FFD16A; --c3:#7A4A00; --c4:#9FDACF; }
+:is(.ti,.di,.wi,.badge-icon,.submenu .icon).t-rose{ --c1:#FFEBF2; --c2:#FFB2CA; --c3:#8C1D4A; --c4:#BFE3FF; }
+/* nelle schede la tinta del tema vince sui gradienti pieni usati altrove */
+.badge-icon.badge-icon[class*="bg-"], .why-list .wi[class*="bg-"]{ color:var(--c3)!important; }
+
+/* micro-interazioni: il riquadro "respira" al passaggio e compare con un piccolo rimbalzo */
+a.card:hover .badge-icon, .card:hover .badge-icon, .tile:hover .ti, .stat:hover .ti, .why-list li:hover .wi, .doc:hover .di{
+  transform:rotate(-7deg) scale(1.06); border-radius:36% 44% 38% 42% / 44% 36% 42% 38%;
+}
+a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .ti::before, .stat:hover .ti::before, .why-list li:hover .wi::before, .doc:hover .di::before{
+  transform:rotate(26deg) translate(24%, 14%);
+}
+.js .reveal .badge-icon, .js .reveal .wi{ transform:scale(.6) rotate(-14deg); opacity:0; transition:transform var(--t-slow) var(--ease-spring), opacity var(--t-med), border-radius var(--t-slow); transition-delay:calc(var(--i, 0) * 70ms + 120ms); }
+.js .reveal.in .badge-icon, .js .reveal.in .wi{ transform:none; opacity:1; }
+.js .reveal.in:hover .badge-icon, .js .why-list li.reveal.in:hover .wi{ transform:rotate(-7deg) scale(1.06); transition-delay:0s; }
+:root[data-motion="off"] .reveal .badge-icon, :root[data-motion="off"] .reveal .wi{ transform:none!important; opacity:1!important; }
+@media (prefers-reduced-motion: reduce){ :root:not([data-motion="on"]) .reveal .badge-icon, :root:not([data-motion="on"]) .reveal .wi{ transform:none!important; opacity:1!important; } }
+
+/* icone dei percorsi in home: vetro satinato sulle card colorate */
+.audience > .icon-lg{ width:60px; height:60px; padding:14px; border-radius:20px; background:rgba(255,255,255,.2); box-shadow:inset 0 1px 0 rgba(255,255,255,.55), 0 10px 22px -12px rgba(0,0,0,.4); --duo:rgba(255,255,255,.32); margin-bottom:var(--s3); }
+.audience.bg-bambini > .icon-lg{ background:rgba(255,255,255,.45); --duo:rgba(255,255,255,.7); }
+/* menu a tendina: icone bicromatiche morbide */
+.submenu a .icon{ width:36px; height:36px; padding:7px; border-radius:12px; background:linear-gradient(150deg,#fff, var(--c1, #E3EFF6)); color:var(--c3, #1B4256); --duo:var(--c2, #9CC5DC); stroke-width:1.8; box-shadow:inset 0 1px 0 #fff, inset 0 -3px 6px color-mix(in srgb, var(--c2, #9CC5DC) 45%, transparent), 0 6px 12px -8px var(--c3, #1B4256); transition:transform var(--t-fast) var(--ease-spring); }
+.submenu a:hover .icon, .submenu a:focus-visible .icon{ transform:rotate(-8deg) scale(1.08); }
+
 /* Toast */
 .toast{ position:fixed; left:50%; bottom:24px; transform:translate(-50%, 140%); z-index:var(--z-toast); background:var(--blu-900); color:#fff; padding:.8rem 1.2rem; border-radius:999px; box-shadow:var(--sh-3); font-weight:700; display:flex; gap:.5rem; align-items:center; transition:transform var(--t-med) var(--ease-spring); max-width:calc(100vw - 32px); }
 .toast{ visibility:hidden; }
@@ -629,22 +704,22 @@ details.legend ul{ margin:.6rem 0 0; }
      SPRITE ICONE (tratto uniforme, stile lineare)
      ========================================================= -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
-  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
-  <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></symbol>
-  <symbol id="i-smile" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></symbol>
-  <symbol id="i-school" viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/><path d="M12 5V2l3 1.5-3 1.5"/></symbol>
-  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
-  <symbol id="i-mail" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
-  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
-  <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
-  <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></symbol>
-  <symbol id="i-euro" viewBox="0 0 24 24"><path d="M4 10h11M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
-  <symbol id="i-clip" viewBox="0 0 24 24"><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
-  <symbol id="i-bell" viewBox="0 0 24 24"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
-  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
-  <symbol id="i-brief" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
-  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-home" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M5 11 12 5l7 6v9H5z"/><path d="M3 10.5 12 3l9 7.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="9" cy="8" r="3.5"/><path style="fill:var(--duo,none);stroke:none" d="M2.5 20a6.5 6.5 0 0 1 13 0z"/><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M16 4.5a3.5 3.5 0 0 1 0 7"/><path d="M18 14.5a6.5 6.5 0 0 1 3.5 5.5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M2 5h6a4 4 0 0 1 4 4v11a3 3 0 0 0-3-3H2z"/><path d="M22 5h-6a4 4 0 0 0-4 4v11a3 3 0 0 1 3-3h7z"/></symbol>
+  <symbol id="i-smile" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="9"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><path d="M9 9h.01M15 9h.01"/></symbol>
+  <symbol id="i-school" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M5 21V10l7-5 7 5v11z"/><path d="M3 21h18"/><path d="M5 21V10l7-5 7 5v11"/><path d="M10 21v-5h4v5"/><path d="M12 5V2l3 1.5-3 1.5"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></symbol>
+  <symbol id="i-mail" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="2" y="4" width="20" height="16" rx="2"/><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-file" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M8 13h8M8 17h5"/></symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M3 6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4H3z"/><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></symbol>
+  <symbol id="i-euro" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12.5" cy="12" r="9.5"/><path d="M4 10h11M4 14h9"/><path d="M19 6a7.7 7.7 0 0 0-5.2-2A7.9 7.9 0 0 0 6 12c0 4.4 3.5 8 7.8 8 2 0 3.8-.8 5.2-2"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="4" y="4" width="16" height="18" rx="2"/><rect x="8" y="2" width="8" height="4" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></symbol>
+  <symbol id="i-bell" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.9 1.9 0 0 0 3.4 0"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="3" y="11" width="18" height="11" rx="2"/><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><path d="M12 15v3"/></symbol>
+  <symbol id="i-brief" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="2" y="7" width="20" height="14" rx="2"/><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
@@ -655,23 +730,23 @@ details.legend ul{ margin:.6rem 0 0; }
   <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
   <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
-  <symbol id="i-food" viewBox="0 0 24 24"><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3zm0 0v7"/></symbol>
-  <symbol id="i-books" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5"/></symbol>
-  <symbol id="i-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></symbol>
-  <symbol id="i-tree" viewBox="0 0 24 24"><path d="M12 22v-6"/><path d="M12 2 6 10h3l-4 6h14l-4-6h3z"/></symbol>
-  <symbol id="i-ball" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14"/><circle cx="12" cy="12" r="3"/></symbol>
-  <symbol id="i-gym" viewBox="0 0 24 24"><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></symbol>
-  <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
-  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
-  <symbol id="i-flask" viewBox="0 0 24 24"><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 18L15 8V2M8 2h8M7 15h10"/></symbol>
-  <symbol id="i-chapel" viewBox="0 0 24 24"><path d="M12 2v4M10 4h4"/><path d="M6 22V12l6-6 6 6v10"/><path d="M3 22h18M10 22v-4a2 2 0 0 1 4 0v4"/></symbol>
-  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
-  <symbol id="i-board" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M7 21l5-5 5 5M8 8h8M8 11h5"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="13" cy="13" r="8"/><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3zm0 0v7"/></symbol>
+  <symbol id="i-books" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5M9 7h6"/></symbol>
+  <symbol id="i-award" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12" cy="8" r="6"/><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></symbol>
+  <symbol id="i-tree" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M12 2 6 10h3l-4 6h14l-4-6h3z"/><path d="M12 22v-6"/><path d="M12 2 6 10h3l-4 6h14l-4-6h3z"/></symbol>
+  <symbol id="i-ball" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="2" y="5" width="20" height="14" rx="2"/><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M12 5v14"/><circle cx="12" cy="12" r="3"/></symbol>
+  <symbol id="i-gym" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="4.5" y="7" width="3" height="10" rx="1"/><rect style="fill:var(--duo,none);stroke:none" x="16.5" y="7" width="3" height="10" rx="1"/><path d="M6 7v10M18 7v10M3 9v6M21 9v6M6 12h12"/></symbol>
+  <symbol id="i-monitor" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="2" y="3" width="20" height="14" rx="2"/><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/><path d="M19 14c1.5-1.5 3-3.2 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.8 0-3 .5-4.5 2-1.5-1.5-2.7-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4 3 5.5l7 7z"/></symbol>
+  <symbol id="i-flask" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M6.6 14h10.8l2.5 4.6A2 2 0 0 1 18.2 21H5.8a2 2 0 0 1-1.7-2.4z"/><path d="M9 2v6L4 18a2 2 0 0 0 1.8 3h12.4A2 2 0 0 0 20 18L15 8V2M8 2h8M7 15h10"/></symbol>
+  <symbol id="i-chapel" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M6 22V12l6-6 6 6v10z"/><path d="M12 2v4M10 4h4"/><path d="M6 22V12l6-6 6 6v10"/><path d="M3 22h18M10 22v-4a2 2 0 0 1 4 0v4"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+  <symbol id="i-board" viewBox="0 0 24 24"><rect style="fill:var(--duo,none);stroke:none" x="3" y="3" width="18" height="13" rx="1"/><rect x="3" y="3" width="18" height="13" rx="1"/><path d="M7 21l5-5 5 5M8 8h8M8 11h5"/></symbol>
   <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 16v-4M12 8h.01"/></symbol>
   <symbol id="i-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></symbol>
   <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.9 4.2A10 10 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.2 3.2M6.6 6.6C3.9 8.4 2 12 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M2 2l20 20M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
   <symbol id="i-motion" viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3M3 16h14a3 3 0 1 1-3 3M3 12h18"/></symbol>
-  <symbol id="i-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
   <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
   <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
 
@@ -731,37 +806,37 @@ details.legend ul{ margin:.6rem 0 0; }
         <li class="nav-item" data-section="/scuola">
           <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sm-scuola">La scuola <svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
           <ul class="submenu" id="sm-scuola">
-            <li><a href="#/scuola"><svg class="icon" aria-hidden="true"><use href="#i-school"/></svg>Panoramica</a></li>
-            <li><a href="#/scuola/chi-siamo"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg>Chi siamo e storia</a></li>
-            <li><a href="#/scuola/infanzia"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg>Scuola dell'Infanzia</a></li>
-            <li><a href="#/scuola/primaria"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Scuola Primaria</a></li>
-            <li><a href="#/scuola/progetti"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg>Progetti e laboratori</a></li>
-            <li><a href="#/scuola/spazi"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg>Spazi e strutture</a></li>
-            <li><a href="#/scuola/ptof-qualita"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg>PTOF e qualità</a></li>
+            <li><a href="#/scuola"><svg class="icon t-leaf" aria-hidden="true"><use href="#i-school"/></svg>Panoramica</a></li>
+            <li><a href="#/scuola/chi-siamo"><svg class="icon t-rose" aria-hidden="true"><use href="#i-heart"/></svg>Chi siamo e storia</a></li>
+            <li><a href="#/scuola/infanzia"><svg class="icon t-coral" aria-hidden="true"><use href="#i-smile"/></svg>Scuola dell'Infanzia</a></li>
+            <li><a href="#/scuola/primaria"><svg class="icon t-lilac" aria-hidden="true"><use href="#i-book"/></svg>Scuola Primaria</a></li>
+            <li><a href="#/scuola/progetti"><svg class="icon t-leaf" aria-hidden="true"><use href="#i-flask"/></svg>Progetti e laboratori</a></li>
+            <li><a href="#/scuola/spazi"><svg class="icon t-leaf" aria-hidden="true"><use href="#i-tree"/></svg>Spazi e strutture</a></li>
+            <li><a href="#/scuola/ptof-qualita"><svg class="icon t-sun" aria-hidden="true"><use href="#i-award"/></svg>PTOF e qualità</a></li>
           </ul>
         </li>
         <li class="nav-item" data-section="/famiglie">
           <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sm-famiglie">Famiglie <svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
           <ul class="submenu" id="sm-famiglie">
-            <li><a href="#/famiglie"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg>Tutto per le famiglie</a></li>
-            <li><a href="#/famiglie/iscrizioni"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg>Iscrizioni e open day</a></li>
-            <li><a href="#/famiglie/orari"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg>Orari</a></li>
-            <li><a href="#/famiglie/rette"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg>Rette e pagamenti</a></li>
-            <li><a href="#/famiglie/modulistica"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Modulistica</a></li>
-            <li><a href="#/famiglie/calendario"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg>Calendario scolastico</a></li>
-            <li><a href="#/famiglie/libri"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg>Libri di testo</a></li>
-            <li><a href="#/famiglie/mensa"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg>Mensa</a></li>
+            <li><a href="#/famiglie"><svg class="icon t-sea" aria-hidden="true"><use href="#i-users"/></svg>Tutto per le famiglie</a></li>
+            <li><a href="#/famiglie/iscrizioni"><svg class="icon t-sea" aria-hidden="true"><use href="#i-clip"/></svg>Iscrizioni e open day</a></li>
+            <li><a href="#/famiglie/orari"><svg class="icon t-coral" aria-hidden="true"><use href="#i-clock"/></svg>Orari</a></li>
+            <li><a href="#/famiglie/rette"><svg class="icon t-sun" aria-hidden="true"><use href="#i-euro"/></svg>Rette e pagamenti</a></li>
+            <li><a href="#/famiglie/modulistica"><svg class="icon t-lilac" aria-hidden="true"><use href="#i-file"/></svg>Modulistica</a></li>
+            <li><a href="#/famiglie/calendario"><svg class="icon t-rose" aria-hidden="true"><use href="#i-cal"/></svg>Calendario scolastico</a></li>
+            <li><a href="#/famiglie/libri"><svg class="icon t-coral" aria-hidden="true"><use href="#i-books"/></svg>Libri di testo</a></li>
+            <li><a href="#/famiglie/mensa"><svg class="icon t-leaf" aria-hidden="true"><use href="#i-food"/></svg>Mensa</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="#/avvisi">Avvisi</a></li>
         <li class="nav-item" data-section="/docenti">
           <button type="button" class="nav-btn" aria-expanded="false" aria-controls="sm-docenti">Docenti <svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
           <ul class="submenu" id="sm-docenti">
-            <li><a href="#/docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg>Spazio docenti</a></li>
-            <li><a href="#/docenti/area-riservata"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg>Area riservata</a></li>
-            <li><a href="#/docenti/circolari"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg>Circolari e documenti</a></li>
-            <li><a href="#/docenti/registro-elettronico"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg>Registro elettronico</a></li>
-            <li><a href="#/docenti/lavora-con-noi"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg>Lavora con noi</a></li>
+            <li><a href="#/docenti"><svg class="icon t-lilac" aria-hidden="true"><use href="#i-book"/></svg>Spazio docenti</a></li>
+            <li><a href="#/docenti/area-riservata"><svg class="icon t-petrol" aria-hidden="true"><use href="#i-lock"/></svg>Area riservata</a></li>
+            <li><a href="#/docenti/circolari"><svg class="icon t-lilac" aria-hidden="true"><use href="#i-file"/></svg>Circolari e documenti</a></li>
+            <li><a href="#/docenti/registro-elettronico"><svg class="icon t-lilac" aria-hidden="true"><use href="#i-board"/></svg>Registro elettronico</a></li>
+            <li><a href="#/docenti/lavora-con-noi"><svg class="icon t-petrol" aria-hidden="true"><use href="#i-brief"/></svg>Lavora con noi</a></li>
           </ul>
         </li>
         <li class="nav-item"><a class="nav-link" href="#/contatti">Contatti</a></li>
@@ -946,11 +1021,11 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 id="h-why" class="reveal">Perché sceglierci</h2>
         <p class="lead reveal">Perché da noi i bambini vivono in un ambiente sereno, accogliente, idoneo e stimolante.</p>
         <ul class="why-list">
-          <li class="reveal" style="--i:0"><span class="wi bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><p>Hanno tanto spazio esterno dove possono giocare in libertà.</p></li>
-          <li class="reveal" style="--i:1"><span class="wi bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><p>Gli Insegnanti hanno cura di tutti i loro alunni, senza distinzione e si dimostrano sensibili, fiduciosi ed aperti al dialogo, particolarmente con i bambini che si trovano in difficoltà.</p></li>
-          <li class="reveal" style="--i:2"><span class="wi bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></span><p>Vogliamo educare gli alunni a maturare nella responsabilità, nella solidarietà e cerchiamo di renderli attenti e disponibili al trascendente, educando il loro senso etico e religioso.</p></li>
-          <li class="reveal" style="--i:3"><span class="wi bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><p>Non ci limitiamo a valutarli solo per il profitto scolastico, ma siamo rispettosi ed attenti al loro vissuto personale, familiare, sociale, spirituale.</p></li>
-          <li class="reveal" style="--i:4"><span class="wi bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span><p>Operiamo con spirito di accoglienza, contribuendo a costruire una scuola dove tutti possano sentirsi a loro agio.</p></li>
+          <li class="reveal" style="--i:0"><span class="wi t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><p>Hanno tanto spazio esterno dove possono giocare in libertà.</p></li>
+          <li class="reveal" style="--i:1"><span class="wi t-rose"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><p>Gli Insegnanti hanno cura di tutti i loro alunni, senza distinzione e si dimostrano sensibili, fiduciosi ed aperti al dialogo, particolarmente con i bambini che si trovano in difficoltà.</p></li>
+          <li class="reveal" style="--i:2"><span class="wi t-sun"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></span><p>Vogliamo educare gli alunni a maturare nella responsabilità, nella solidarietà e cerchiamo di renderli attenti e disponibili al trascendente, educando il loro senso etico e religioso.</p></li>
+          <li class="reveal" style="--i:3"><span class="wi t-sea"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><p>Non ci limitiamo a valutarli solo per il profitto scolastico, ma siamo rispettosi ed attenti al loro vissuto personale, familiare, sociale, spirituale.</p></li>
+          <li class="reveal" style="--i:4"><span class="wi t-coral"><svg class="icon" aria-hidden="true"><use href="#i-home"/></svg></span><p>Operiamo con spirito di accoglienza, contribuendo a costruire una scuola dove tutti possano sentirsi a loro agio.</p></li>
         </ul>
       </div>
     </div>
@@ -964,14 +1039,14 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 id="h-rapidi">Servizi più richiesti</h2>
       </div>
       <div class="grid grid-4">
-        <a class="tile reveal" style="--i:0" href="#/famiglie/modulistica"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>Modulistica<small>Iscrizioni, deleghe, privacy</small></span></a>
-        <a class="tile reveal" style="--i:1" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e pagamenti<small>Rette 2026/27 e IBAN</small></span></a>
-        <a class="tile reveal" style="--i:2" href="#/famiglie/calendario"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario<small>Date dell'anno scolastico</small></span></a>
-        <a class="tile reveal" style="--i:3" href="#/famiglie/orari"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite, doposcuola</small></span></a>
-        <a class="tile reveal" style="--i:4" href="#/avvisi"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span>Avvisi<small>Novità e appuntamenti</small></span></a>
-        <a class="tile reveal" style="--i:5" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Pasti cucinati a scuola</small></span></a>
-        <a class="tile reveal" style="--i:6" href="#/docenti/registro-elettronico"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso famiglie e docenti</small></span></a>
-        <a class="tile reveal" style="--i:7" href="#/contatti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span>Contatti<small>Segreteria e direzione</small></span></a>
+        <a class="tile reveal" style="--i:0" href="#/famiglie/modulistica"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>Modulistica<small>Iscrizioni, deleghe, privacy</small></span></a>
+        <a class="tile reveal" style="--i:1" href="#/famiglie/rette"><span class="ti t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e pagamenti<small>Rette 2026/27 e IBAN</small></span></a>
+        <a class="tile reveal" style="--i:2" href="#/famiglie/calendario"><span class="ti t-rose"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario<small>Date dell'anno scolastico</small></span></a>
+        <a class="tile reveal" style="--i:3" href="#/famiglie/orari"><span class="ti t-coral"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite, doposcuola</small></span></a>
+        <a class="tile reveal" style="--i:4" href="#/avvisi"><span class="ti t-rose"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg></span><span>Avvisi<small>Novità e appuntamenti</small></span></a>
+        <a class="tile reveal" style="--i:5" href="#/famiglie/mensa"><span class="ti t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Pasti cucinati a scuola</small></span></a>
+        <a class="tile reveal" style="--i:6" href="#/docenti/registro-elettronico"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso famiglie e docenti</small></span></a>
+        <a class="tile reveal" style="--i:7" href="#/contatti"><span class="ti t-sea"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span><span>Contatti<small>Segreteria e direzione</small></span></a>
       </div>
     </div>
   </section>
@@ -986,13 +1061,13 @@ details.legend ul{ margin:.6rem 0 0; }
       </div>
       <div class="grid grid-2 gap-lg">
         <a class="card reveal" style="--i:0" href="#/scuola/infanzia">
-          <span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
+          <span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
           <h3>Scuola dell'Infanzia</h3>
           <p class="muted">Due sezioni per bambini dai 3 ai 5 anni, dalle 8:10 alle 16:30, con il grande cortile e gli spazi verdi.</p>
           <span class="go">Scopri l'Infanzia <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
         </a>
         <a class="card reveal" style="--i:1" href="#/scuola/primaria">
-          <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+          <span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
           <h3>Scuola Primaria</h3>
           <p class="muted">Cinque classi, 27 ore settimanali con rientri pomeridiani, doposcuola tutti i giorni, palestra, laboratori e biblioteca.</p>
           <span class="go">Scopri la Primaria <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span>
@@ -1024,10 +1099,10 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 id="h-spazi-home">Tanto spazio per imparare, giocare e stare insieme</h2>
       </div>
       <div class="grid grid-4">
-        <div class="stat reveal" style="--i:0"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></span><div><strong>Ampio cortile</strong><span>e spazi verdi ombreggiati</span></div></div>
-        <div class="stat reveal" style="--i:1"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-gym"/></svg></span><div><strong>Palestra attrezzata</strong><span>per l'educazione motoria</span></div></div>
-        <div class="stat reveal" style="--i:2"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><div><strong>Campo in erba sintetica</strong><span>per il gioco all'aperto</span></div></div>
-        <div class="stat reveal" style="--i:3"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><div><strong>Laboratorio-museo</strong><span>di scienze naturali</span></div></div>
+        <div class="stat reveal" style="--i:0"><span class="ti t-sun"><svg class="icon" aria-hidden="true"><use href="#i-sun"/></svg></span><div><strong>Ampio cortile</strong><span>e spazi verdi ombreggiati</span></div></div>
+        <div class="stat reveal" style="--i:1"><span class="ti t-rose"><svg class="icon" aria-hidden="true"><use href="#i-gym"/></svg></span><div><strong>Palestra attrezzata</strong><span>per l'educazione motoria</span></div></div>
+        <div class="stat reveal" style="--i:2"><span class="ti t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><div><strong>Campo in erba sintetica</strong><span>per il gioco all'aperto</span></div></div>
+        <div class="stat reveal" style="--i:3"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><div><strong>Laboratorio-museo</strong><span>di scienze naturali</span></div></div>
       </div>
       <p style="margin-top:var(--s5)"><a class="btn btn-ghost" href="#/scuola/spazi">Tutti gli spazi della scuola <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></a></p>
     </div>
@@ -1064,13 +1139,13 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
-      <a class="card reveal" style="--i:0" href="#/scuola/chi-siamo"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Chi siamo e storia</h3><p class="muted">Identità, valori educativi e cenni storici dell'Istituto.</p><span class="go">Leggi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:1" href="#/scuola/infanzia"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><h3>Scuola dell'Infanzia</h3><p class="muted">Due sezioni, dalle 8:10 alle 16:30, con ingresso anticipato dalle 7:30.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:2" href="#/scuola/primaria"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Scuola Primaria</h3><p class="muted">27 ore settimanali, lezioni dalle 8:10 alle 13:10, rientri e doposcuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:3" href="#/scuola/progetti"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><h3>Progetti e laboratori</h3><p class="muted">Matematica, robotica, scienze in giardino, teatro, lingue e sport.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:3" href="#/scuola/spazi"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><h3>Spazi e strutture</h3><p class="muted">Cortile, palestra, campo, biblioteca, laboratori e cappella.</p><span class="go">Guarda <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:4" href="#/scuola/ptof-qualita"><span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span><h3>PTOF e qualità</h3><p class="muted">Piano Triennale dell'Offerta Formativa e certificazione ISO 9001:2015.</p><span class="go">Consulta <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:5" href="#/contatti"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Dove siamo</h3><p class="muted">Via San Giuliano 10 – via Bovio 12r, 16145 Genova.</p><span class="go">Contatti <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:0" href="#/scuola/chi-siamo"><span class="badge-icon t-rose"><svg class="icon" aria-hidden="true"><use href="#i-heart"/></svg></span><h3>Chi siamo e storia</h3><p class="muted">Identità, valori educativi e cenni storici dell'Istituto.</p><span class="go">Leggi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/scuola/infanzia"><span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><h3>Scuola dell'Infanzia</h3><p class="muted">Due sezioni, dalle 8:10 alle 16:30, con ingresso anticipato dalle 7:30.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/scuola/primaria"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Scuola Primaria</h3><p class="muted">27 ore settimanali, lezioni dalle 8:10 alle 13:10, rientri e doposcuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:3" href="#/scuola/progetti"><span class="badge-icon t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><h3>Progetti e laboratori</h3><p class="muted">Matematica, robotica, scienze in giardino, teatro, lingue e sport.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:3" href="#/scuola/spazi"><span class="badge-icon t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><h3>Spazi e strutture</h3><p class="muted">Cortile, palestra, campo, biblioteca, laboratori e cappella.</p><span class="go">Guarda <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:4" href="#/scuola/ptof-qualita"><span class="badge-icon t-sun"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span><h3>PTOF e qualità</h3><p class="muted">Piano Triennale dell'Offerta Formativa e certificazione ISO 9001:2015.</p><span class="go">Consulta <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:5" href="#/contatti"><span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span><h3>Dove siamo</h3><p class="muted">Via San Giuliano 10 – via Bovio 12r, 16145 Genova.</p><span class="go">Contatti <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -1127,8 +1202,8 @@ details.legend ul{ margin:.6rem 0 0; }
             <div><dt>Qualità</dt><dd>UNI EN ISO 9001:2015</dd></div>
           </dl>
         </div>
-        <a class="tile reveal" href="#/scuola/progetti"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><span>Progetti e laboratori<small>Cosa facciamo durante l'anno</small></span></a>
-        <a class="tile reveal" href="https://www.benedettineprovvidenza.it/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Suore Benedettine della Provvidenza<small>Sito della Congregazione (si apre in una nuova scheda)</small></span></a>
+        <a class="tile reveal" href="#/scuola/progetti"><span class="ti t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-flask"/></svg></span><span>Progetti e laboratori<small>Cosa facciamo durante l'anno</small></span></a>
+        <a class="tile reveal" href="https://www.benedettineprovvidenza.it/" target="_blank" rel="noopener"><span class="ti t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Suore Benedettine della Provvidenza<small>Sito della Congregazione (si apre in una nuova scheda)</small></span></a>
       </aside>
     </div>
   </div>
@@ -1210,13 +1285,13 @@ details.legend ul{ margin:.6rem 0 0; }
         <div class="card reveal">
           <h3>Documenti per l'Infanzia</h3>
           <ul class="doc-list">
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Infanzia</strong><span>PDF · Rev. 3</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2023/01/ALL.-02-INF_INFORMATIVA_ISCRITTI_INFANZIA_Rev.-3-docx.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa privacy Infanzia (PDF, nuova scheda)</span></a></li>
+            <li class="doc"><span class="di t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
+            <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+            <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Infanzia</strong><span>PDF · Rev. 3</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2023/01/ALL.-02-INF_INFORMATIVA_ISCRITTI_INFANZIA_Rev.-3-docx.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa privacy Infanzia (PDF, nuova scheda)</span></a></li>
           </ul>
           <p style="margin-top:var(--s4)"><a href="#/famiglie/modulistica">Tutta la modulistica →</a></p>
         </div>
-        <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1A00300G/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
+        <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1A00300G/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
       </aside>
     </div>
   </div>
@@ -1297,16 +1372,16 @@ details.legend ul{ margin:.6rem 0 0; }
         <div class="card reveal">
           <h3>Documenti per la Primaria</h3>
           <ul class="doc-list">
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-            <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+            <li class="doc"><span class="di t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
+            <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+            <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
           </ul>
           <p style="margin-top:var(--s4)"><a href="#/famiglie/modulistica">Tutta la modulistica →</a></p>
         </div>
         <div class="grid" style="gap:var(--s3)">
-          <a class="tile reveal" href="#/famiglie/libri"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco adozioni per classe</small></span></a>
-          <a class="tile reveal" href="#/famiglie/mensa"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Costi, menù, allergie</small></span></a>
-          <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1E00800L/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
+          <a class="tile reveal" href="#/famiglie/libri"><span class="ti t-coral"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span>Libri di testo<small>Elenco adozioni per classe</small></span></a>
+          <a class="tile reveal" href="#/famiglie/mensa"><span class="ti t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span>Mensa<small>Costi, menù, allergie</small></span></a>
+          <a class="tile reveal" href="https://unica.istruzione.gov.it/cercalatuascuola/istituti/GE1E00800L/suore-benedettine-della-provvidenza/" target="_blank" rel="noopener"><span class="ti t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Scheda su Scuola in Chiaro<small>Ministero dell'Istruzione · nuova scheda</small></span></a>
         </div>
       </aside>
     </div>
@@ -1325,15 +1400,15 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
-      <article class="card reveal" style="--i:0"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Laboratorio di matematica</h3><p class="muted">Alla Primaria un'ora alla settimana è dedicata alla soluzione di problemi, sull'esperienza del progetto "Problemi al Centro" (Università di Pisa), con metodi come Bortolato, Feuerstein e ArAl. All'Infanzia, proposte gioco settimanali con materiali concreti: Montessori, Bortolato, blocchi logici, linea del 20, dadi.</p></article>
-      <article class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Robotica e coding</h3><p class="muted">Alla Primaria un laboratorio di robotica con i mattoncini Lego Spike Essential; all'Infanzia il robot Bee-Bot per allenare logica, orientamento nello spazio e primi calcoli. E, per tutti, "Programma il futuro" per il pensiero computazionale.</p></article>
-      <article class="card reveal" style="--i:2"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Scienze in giardino</h3><p class="muted">Lezioni all'aperto, in giardino o in spiaggia, per conoscere dal vero piante, animali e ambienti: il percorso "Natura contro schermo".</p></article>
-      <article class="card reveal" style="--i:3"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Leggere e scrivere</h3><p class="muted">La biblioteca per il "piacere del libro", il giornalino della scuola con testi liberi (metodo Freinet) e, dalla classe terza, temi settimanali corretti insieme all'insegnante.</p></article>
-      <article class="card reveal" style="--i:4"><span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Il Buon Mercoledì</h3><p class="muted">Ogni mercoledì tutte le classi riflettono su un tema di educazione civica: Costituzione, rispetto, ambiente, benessere, bullismo e cyberbullismo, sicurezza.</p></article>
-      <article class="card reveal" style="--i:5"><span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria · facoltativo</p><h3>Teatro</h3><p class="muted">Improvvisazione, lavoro sul corpo, voce e mimica, fino alla messinscena di un testo originale: un momento di libera espressione e di conoscenza di sé.</p></article>
-      <article class="card reveal" style="--i:6"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Inglese e francese</h3><p class="muted">Corso facoltativo di potenziamento dell'inglese e "Et voilà!", atelier ludici in lingua francese per le classi 4ª e 5ª.</p></article>
-      <article class="card reveal" style="--i:7"><span class="badge-icon bg-scuola"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria e Infanzia · facoltativi</p><h3>Pallavolo e rugby</h3><p class="muted">Pallavolo per la Primaria; rugby senza contatto, all'insegna del divertimento, per le classi 1ª, 2ª e 3ª e per l'Infanzia.</p></article>
-      <article class="card reveal" style="--i:8"><span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-chapel"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Natale e Pasqua nell'arte</h3><p class="muted">Conoscere le opere d'arte del territorio: prima in classe, poi in visita a palazzi, chiese e musei insieme alle famiglie.</p></article>
+      <article class="card reveal" style="--i:0"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Laboratorio di matematica</h3><p class="muted">Alla Primaria un'ora alla settimana è dedicata alla soluzione di problemi, sull'esperienza del progetto "Problemi al Centro" (Università di Pisa), con metodi come Bortolato, Feuerstein e ArAl. All'Infanzia, proposte gioco settimanali con materiali concreti: Montessori, Bortolato, blocchi logici, linea del 20, dadi.</p></article>
+      <article class="card reveal" style="--i:1"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-monitor"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Robotica e coding</h3><p class="muted">Alla Primaria un laboratorio di robotica con i mattoncini Lego Spike Essential; all'Infanzia il robot Bee-Bot per allenare logica, orientamento nello spazio e primi calcoli. E, per tutti, "Programma il futuro" per il pensiero computazionale.</p></article>
+      <article class="card reveal" style="--i:2"><span class="badge-icon t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-tree"/></svg></span><p class="chip" style="margin-bottom:.6rem">Infanzia e Primaria</p><h3>Scienze in giardino</h3><p class="muted">Lezioni all'aperto, in giardino o in spiaggia, per conoscere dal vero piante, animali e ambienti: il percorso "Natura contro schermo".</p></article>
+      <article class="card reveal" style="--i:3"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Leggere e scrivere</h3><p class="muted">La biblioteca per il "piacere del libro", il giornalino della scuola con testi liberi (metodo Freinet) e, dalla classe terza, temi settimanali corretti insieme all'insegnante.</p></article>
+      <article class="card reveal" style="--i:4"><span class="badge-icon t-sea"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Il Buon Mercoledì</h3><p class="muted">Ogni mercoledì tutte le classi riflettono su un tema di educazione civica: Costituzione, rispetto, ambiente, benessere, bullismo e cyberbullismo, sicurezza.</p></article>
+      <article class="card reveal" style="--i:5"><span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria · facoltativo</p><h3>Teatro</h3><p class="muted">Improvvisazione, lavoro sul corpo, voce e mimica, fino alla messinscena di un testo originale: un momento di libera espressione e di conoscenza di sé.</p></article>
+      <article class="card reveal" style="--i:6"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Inglese e francese</h3><p class="muted">Corso facoltativo di potenziamento dell'inglese e "Et voilà!", atelier ludici in lingua francese per le classi 4ª e 5ª.</p></article>
+      <article class="card reveal" style="--i:7"><span class="badge-icon t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-ball"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria e Infanzia · facoltativi</p><h3>Pallavolo e rugby</h3><p class="muted">Pallavolo per la Primaria; rugby senza contatto, all'insegna del divertimento, per le classi 1ª, 2ª e 3ª e per l'Infanzia.</p></article>
+      <article class="card reveal" style="--i:8"><span class="badge-icon t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-chapel"/></svg></span><p class="chip" style="margin-bottom:.6rem">Primaria</p><h3>Natale e Pasqua nell'arte</h3><p class="muted">Conoscere le opere d'arte del territorio: prima in classe, poi in visita a palazzi, chiese e musei insieme alle famiglie.</p></article>
     </div>
     <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Corsi facoltativi a pagamento: inglese, teatro e pallavolo (Primaria), rugby (classi 1ª, 2ª, 3ª e Infanzia). Per costi e iscrizioni: <span class="ph">[DETTAGLI CORSI]</span> o chiedi in segreteria. Tutti i progetti sono descritti nel <a href="documenti/PTOF-2025-2028.pdf" target="_blank" rel="noopener">PTOF 2025–2028</a>.</p></div>
   </div>
@@ -1378,19 +1453,19 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="grid grid-2 gap-lg">
       <div class="card reveal">
-        <span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span>
+        <span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span>
         <h2 style="font-size:1.4rem">Piano Triennale dell'Offerta Formativa 2025–2028</h2>
         <p class="muted">Il PTOF presenta il progetto educativo, l'organizzazione e le attività della scuola. È stato elaborato dal Collegio dei Docenti il 7 gennaio 2026 e approvato dal Consiglio di Istituto il 9 gennaio 2026 (aggiornamento 2025/26).</p>
         <ul class="doc-list">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2025–2028</strong><span>PDF · 67 pagine · 4,1 MB</span></span><a class="btn btn-ghost" href="documenti/PTOF-2025-2028.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2025-2028 (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2025–2028</strong><span>PDF · 67 pagine · 4,1 MB</span></span><a class="btn btn-ghost" href="documenti/PTOF-2025-2028.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2025-2028 (PDF, nuova scheda)</span></a></li>
         </ul>
         <h3 style="font-size:1.05rem;margin-top:var(--s5)">Archivio</h3>
         <ul class="doc-list">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2019–2022 (revisione)</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2021/12/GE1E00800L-PTOF-19-22-revisione.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2019-2022 (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>PTOF 2019–2022 (revisione)</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2021/12/GE1E00800L-PTOF-19-22-revisione.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il PTOF 2019-2022 (PDF, nuova scheda)</span></a></li>
         </ul>
       </div>
       <div class="card reveal" style="--i:1">
-        <span class="badge-icon bg-oro"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span>
+        <span class="badge-icon t-sun"><svg class="icon" aria-hidden="true"><use href="#i-award"/></svg></span>
         <h2 style="font-size:1.4rem">Certificazione di qualità</h2>
         <p>Dal 2007 la scuola ha un Sistema di Gestione per la Qualità certificato. Dall'anno 2016/17 è conforme alla norma <strong>UNI EN ISO 9001:2015</strong>, con certificazione rilasciata da <strong>AGIQUALITAS</strong>.</p>
         <p>Ogni anno la Direzione confronta obiettivi e risultati, verifica il servizio didattico e misura la soddisfazione delle famiglie con questionari, i cui risultati sono analizzati con il Collegio dei Docenti.</p>
@@ -1414,13 +1489,13 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
-      <a class="card reveal" style="--i:0" href="#/famiglie/iscrizioni"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg></span><h3>Iscrizioni e open day</h3><p class="muted">Come iscriversi, open day e incontri per i nuovi genitori.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:1" href="#/famiglie/orari"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Orari</h3><p class="muted">Ingressi, uscite, pranzo, pre-scuola e doposcuola di Infanzia e Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:1" href="#/famiglie/rette"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><h3>Rette e pagamenti</h3><p class="muted">IBAN per i bonifici e tabelle delle rette 2026/27.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:2" href="#/famiglie/modulistica"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Modulistica</h3><p class="muted">Moduli di iscrizione, informative privacy, deleghe per il ritiro.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:3" href="#/famiglie/calendario"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Calendario scolastico</h3><p class="muted">Inizio e fine lezioni, vacanze e giorni di chiusura.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:4" href="#/famiglie/libri"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><h3>Libri di testo</h3><p class="muted">Elenco dei libri adottati per ogni classe della Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:5" href="#/famiglie/mensa"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Mensa</h3><p class="muted">Pasti cucinati a scuola, costi, menù e allergie.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:0" href="#/famiglie/iscrizioni"><span class="badge-icon t-sea"><svg class="icon" aria-hidden="true"><use href="#i-clip"/></svg></span><h3>Iscrizioni e open day</h3><p class="muted">Come iscriversi, open day e incontri per i nuovi genitori.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/famiglie/orari"><span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><h3>Orari</h3><p class="muted">Ingressi, uscite, pranzo, pre-scuola e doposcuola di Infanzia e Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/famiglie/rette"><span class="badge-icon t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><h3>Rette e pagamenti</h3><p class="muted">IBAN per i bonifici e tabelle delle rette 2026/27.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/famiglie/modulistica"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Modulistica</h3><p class="muted">Moduli di iscrizione, informative privacy, deleghe per il ritiro.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:3" href="#/famiglie/calendario"><span class="badge-icon t-rose"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><h3>Calendario scolastico</h3><p class="muted">Inizio e fine lezioni, vacanze e giorni di chiusura.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:4" href="#/famiglie/libri"><span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><h3>Libri di testo</h3><p class="muted">Elenco dei libri adottati per ogni classe della Primaria.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:5" href="#/famiglie/mensa"><span class="badge-icon t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><h3>Mensa</h3><p class="muted">Pasti cucinati a scuola, costi, menù e allergie.</p><span class="go">Vai <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
     <div class="note info reveal" style="margin-top:var(--s6)"><svg class="icon" aria-hidden="true"><use href="#i-bell"/></svg><p>Le comunicazioni e gli appuntamenti sono pubblicati in <a href="#/avvisi"><strong>Avvisi</strong></a>. Per le comunicazioni personali e la prenotazione dei colloqui usate il <a href="#/docenti/registro-elettronico"><strong>registro elettronico</strong></a>.</p></div>
   </div>
@@ -1481,14 +1556,14 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="grid grid-2 gap-lg">
       <article class="card reveal">
-        <span class="badge-icon bg-bambini"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
+        <span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-smile"/></svg></span>
         <h2 style="font-size:1.35rem">Scuola dell'Infanzia</h2>
         <p class="muted">Dal lunedì al venerdì · 40 ore settimanali</p>
         <ol class="timeline"><li><span class="tl-time">dalle 7:30</span><span class="tl-what">Ingresso anticipato</span></li><li><span class="tl-time">8:10 – 9:10</span><span class="tl-what">Accoglienza e routine</span></li><li><span class="tl-time">10:00</span><span class="tl-what">Merenda</span></li><li><span class="tl-time">12:00 – 12:30</span><span class="tl-what">Pranzo</span></li><li><span class="tl-time">12:00 o 14:15</span><span class="tl-what">Uscite possibili prima della fine della giornata</span></li><li><span class="tl-time">16:30</span><span class="tl-what">Uscita</span></li></ol>
         <p style="margin:0"><a href="#/scuola/infanzia" data-anchor="settimana">La settimana tipo dell'Infanzia →</a></p>
       </article>
       <article class="card reveal" style="--i:1">
-        <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
+        <span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span>
         <h2 style="font-size:1.35rem">Scuola Primaria</h2>
         <p class="muted">Dal lunedì al venerdì · 27 ore settimanali (29 per le classi 4ª e 5ª)</p>
         <ol class="timeline"><li><span class="tl-time">dalle 7:30</span><span class="tl-what">Pre-scuola, per le famiglie che ne hanno bisogno</span></li><li><span class="tl-time">8:10 – 13:10</span><span class="tl-what">Lezioni</span></li><li><span class="tl-time">10:00 – 10:20</span><span class="tl-what">Ricreazione</span></li><li><span class="tl-time">13:10</span><span class="tl-what">Pranzo in refettorio</span></li><li><span class="tl-time">13:40 – 14:15</span><span class="tl-what">Ricreazione dopo il pranzo</span></li><li><span class="tl-time">14:15 – 16:15</span><span class="tl-what">Rientri pomeridiani (1 a settimana per le classi 1ª–3ª, 2 per le classi 4ª e 5ª) e doposcuola, tutti i pomeriggi</span></li><li><span class="tl-time">14:15 o 16:15</span><span class="tl-what">Uscita (altri orari solo per motivi eccezionali)</span></li></ol>
@@ -1543,12 +1618,12 @@ details.legend ul{ margin:.6rem 0 0; }
         </div>
         <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg><p><strong>Sconto fratelli</strong>: se frequentano due o più figli, alla retta del figlio maggiore si applica una riduzione del 10%.</p></div>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola dell'Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola dell'Infanzia</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Infanzia-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 dell'Infanzia (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span class="dt"><strong>Rette 2026/2027 – Scuola Primaria</strong><span>PDF · 1 pagina</span></span><a class="btn btn-ghost" href="documenti/Rette-Primaria-2026-2027.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2026-2027 della Primaria (PDF, nuova scheda)</span></a></li>
         </ul>
         <h3 class="reveal" style="margin-top:var(--s5)">Archivio</h3>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Rette anno scolastico 2022/2023</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2022/01/Rette-2022-2023-.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2022-2023 (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Rette anno scolastico 2022/2023</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2022/01/Rette-2022-2023-.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> le rette 2022-2023 (PDF, nuova scheda)</span></a></li>
         </ul>
       </div>
       <aside class="stack">
@@ -1588,28 +1663,28 @@ details.legend ul{ margin:.6rem 0 0; }
       <section class="reveal" aria-labelledby="mg1">
         <h2 id="mg1" style="font-size:1.35rem">Iscrizioni</h2>
         <ul class="doc-list">
-          <li class="doc" data-k="iscrizione infanzia modulo"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione – Scuola dell'Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-          <li class="doc" data-k="informativa privacy iscritti infanzia"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti – Infanzia (Rev. 3)</strong><span>PDF</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2023/01/ALL.-02-INF_INFORMATIVA_ISCRITTI_INFANZIA_Rev.-3-docx.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa privacy Infanzia (PDF, nuova scheda)</span></a></li>
-          <li class="doc" data-k="iscrizione primaria modulo"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione – Scuola Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-          <li class="doc" data-k="informativa privacy iscritti primaria"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti – Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc" data-k="iscrizione infanzia modulo"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione – Scuola dell'Infanzia</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc" data-k="informativa privacy iscritti infanzia"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti – Infanzia (Rev. 3)</strong><span>PDF</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2023/01/ALL.-02-INF_INFORMATIVA_ISCRITTI_INFANZIA_Rev.-3-docx.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa privacy Infanzia (PDF, nuova scheda)</span></a></li>
+          <li class="doc" data-k="iscrizione primaria modulo"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Modulo di iscrizione – Scuola Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc" data-k="informativa privacy iscritti primaria"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa privacy iscritti – Primaria</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
         </ul>
       </section>
       <section class="reveal" aria-labelledby="mg2">
         <h2 id="mg2" style="font-size:1.35rem">Uscita e deleghe</h2>
         <ul class="doc-list">
-          <li class="doc" data-k="autorizzazione delega ritiro alunno uscita"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Autorizzazione e delega per il ritiro dell'alunno</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc" data-k="autorizzazione delega ritiro alunno uscita"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Autorizzazione e delega per il ritiro dell'alunno</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
         </ul>
       </section>
       <section class="reveal" aria-labelledby="mg3">
         <h2 id="mg3" style="font-size:1.35rem">Altri moduli</h2>
         <ul class="doc-list">
-          <li class="doc" data-k="altri moduli"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong><span class="ph">[ALTRI MODULI PRESENTI NELLA PAGINA MODULISTICA ATTUALE]</span></strong><span>Da verificare</span></span></li>
+          <li class="doc" data-k="altri moduli"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong><span class="ph">[ALTRI MODULI PRESENTI NELLA PAGINA MODULISTICA ATTUALE]</span></strong><span>Da verificare</span></span></li>
         </ul>
       </section>
       <section class="reveal" aria-labelledby="mg4">
         <h2 id="mg4" style="font-size:1.35rem">Archivio</h2>
         <ul class="doc-list">
-          <li class="doc" data-k="informativa iscritti infanzia archivio 2019"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa iscritti Infanzia (versione 2019)</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2019/11/INFORMATIVA_ISCRITTI-INFANZIA-_scuola-SGiuliano_Genova.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa 2019 (PDF, nuova scheda)</span></a></li>
+          <li class="doc" data-k="informativa iscritti infanzia archivio 2019"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Informativa iscritti Infanzia (versione 2019)</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2019/11/INFORMATIVA_ISCRITTI-INFANZIA-_scuola-SGiuliano_Genova.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'informativa 2019 (PDF, nuova scheda)</span></a></li>
         </ul>
       </section>
       <p class="muted" id="docEmpty" hidden>Nessun modulo trovato. Prova con un'altra parola o <a href="#/contatti">contatta la segreteria</a>.</p>
@@ -1644,11 +1719,11 @@ details.legend ul{ margin:.6rem 0 0; }
           </table>
         </div>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span class="dt"><strong>Calendario scolastico 2026/2027 completo</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+          <li class="doc"><span class="di t-rose"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span class="dt"><strong>Calendario scolastico 2026/2027 completo</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
         </ul>
         <h3 class="reveal" style="margin-top:var(--s5)">Archivio</h3>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Calendario 2021</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2021/01/CALENDARIO-protetto-ILEX-2021.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il calendario 2021 (PDF, nuova scheda)</span></a></li>
+          <li class="doc"><span class="di t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span class="dt"><strong>Calendario 2021</strong><span>PDF · archivio</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2021/01/CALENDARIO-protetto-ILEX-2021.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> il calendario 2021 (PDF, nuova scheda)</span></a></li>
         </ul>
       </div>
       <aside class="stack">
@@ -1675,8 +1750,8 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="prose stack">
       <ul class="doc-list reveal">
-        <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span class="dt"><strong>Libri di testo 2026/2027</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
-        <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span class="dt"><strong>Elenco dei libri di testo adottati 2025/2026</strong><span>PDF · per classe</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2025/05/StampePerClasse.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'elenco dei libri 2025-2026 (PDF, nuova scheda)</span></a></li>
+        <li class="doc"><span class="di t-coral"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span class="dt"><strong>Libri di testo 2026/2027</strong><span>PDF · <span class="ph">[LINK]</span></span></span></li>
+        <li class="doc"><span class="di t-coral"><svg class="icon" aria-hidden="true"><use href="#i-books"/></svg></span><span class="dt"><strong>Elenco dei libri di testo adottati 2025/2026</strong><span>PDF · per classe</span></span><a class="btn btn-ghost" href="https://www.benedettineprovvidenza.net/wp-content/uploads/2025/05/StampePerClasse.pdf" target="_blank" rel="noopener">Apri<span class="sr-only"> l'elenco dei libri 2025-2026 (PDF, nuova scheda)</span></a></li>
       </ul>
       <div class="note info reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>L'elenco riporta, classe per classe, titoli, autori ed editori dei testi adottati (ad esempio, per la classe 3ª: "Learn with us 3" per inglese e "Ponti Arcobaleno Plus" per religione).</p></div>
     </div>
@@ -1707,7 +1782,7 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 class="reveal">Il menù</h2>
         <p class="reveal">Il menù tiene conto delle esigenze dei bambini e del loro fabbisogno energetico giornaliero, ed è esposto in bacheca perché i genitori sappiano che cosa mangiano i figli a scuola. Nessun bambino è obbligato a mangiare ciò che gli crea problema. All'Infanzia, all'uscita, le maestre informano i genitori su come il bambino ha mangiato.</p>
         <ul class="doc-list reveal">
-          <li class="doc"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span class="dt"><strong>Menù dell'anno in corso</strong><span>PDF · <span class="ph">[LINK MENÙ]</span></span></span></li>
+          <li class="doc"><span class="di t-leaf"><svg class="icon" aria-hidden="true"><use href="#i-food"/></svg></span><span class="dt"><strong>Menù dell'anno in corso</strong><span>PDF · <span class="ph">[LINK MENÙ]</span></span></span></li>
         </ul>
         <p class="muted reveal" style="font-size:.9rem">Fonte: PTOF 2025–2028.</p>
       </div>
@@ -1717,7 +1792,7 @@ details.legend ul{ margin:.6rem 0 0; }
           <p class="muted">Per ricevere un pasto alternativo, i genitori presentano in direzione una <strong>certificazione medica specialistica</strong> che attesti l'allergia o l'intolleranza.</p>
           <p class="muted" style="margin:0">Le <strong>indisposizioni temporanee</strong> che richiedono un pasto sostitutivo vanno segnalate al mattino all'accoglienza: la scuola informa la cucina.</p>
         </div>
-        <a class="tile reveal" href="#/famiglie/rette"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e IBAN<small>Tutti i costi 2026/2027</small></span></a>
+        <a class="tile reveal" href="#/famiglie/rette"><span class="ti t-sun"><svg class="icon" aria-hidden="true"><use href="#i-euro"/></svg></span><span>Rette e IBAN<small>Tutti i costi 2026/2027</small></span></a>
       </aside>
     </div>
   </div>
@@ -1810,14 +1885,14 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container subnav-wrap"></div>
   <div class="container page-body">
     <div class="grid grid-2 gap-lg">
-      <a class="card reveal" style="--i:0" href="#/docenti/area-riservata"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Area riservata</h3><p class="muted">Circolari e documenti interni, con accesso tramite credenziali.</p><span class="go">Accedi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:1" href="#/docenti/circolari"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Circolari e documenti</h3><p class="muted">Circolari, verbali e modulistica interna per il personale.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:2" href="#/docenti/registro-elettronico"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie: dal registro si prenotano anche i colloqui individuali.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
-      <a class="card reveal" style="--i:2" href="#/docenti/lavora-con-noi"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg></span><h3>Lavora con noi</h3><p class="muted">Interpelli e opportunità di lavoro nella nostra scuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:0" href="#/docenti/area-riservata"><span class="badge-icon t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><h3>Area riservata</h3><p class="muted">Circolari e documenti interni, con accesso tramite credenziali.</p><span class="go">Accedi <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:1" href="#/docenti/circolari"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><h3>Circolari e documenti</h3><p class="muted">Circolari, verbali e modulistica interna per il personale.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/docenti/registro-elettronico"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><h3>Registro elettronico</h3><p class="muted">Per docenti e famiglie: dal registro si prenotano anche i colloqui individuali.</p><span class="go">Apri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
+      <a class="card reveal" style="--i:2" href="#/docenti/lavora-con-noi"><span class="badge-icon t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-brief"/></svg></span><h3>Lavora con noi</h3><p class="muted">Interpelli e opportunità di lavoro nella nostra scuola.</p><span class="go">Scopri <svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg></span></a>
     </div>
     <div class="grid grid-2" style="margin-top:var(--s5)">
-      <a class="tile reveal" href="#/scuola/ptof-qualita"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>PTOF<small>Piano Triennale dell'Offerta Formativa</small></span></a>
-      <a class="tile reveal" href="#/famiglie/calendario"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario scolastico<small>Date dell'anno</small></span></a>
+      <a class="tile reveal" href="#/scuola/ptof-qualita"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>PTOF<small>Piano Triennale dell'Offerta Formativa</small></span></a>
+      <a class="tile reveal" href="#/famiglie/calendario"><span class="ti t-rose"><svg class="icon" aria-hidden="true"><use href="#i-cal"/></svg></span><span>Calendario scolastico<small>Date dell'anno</small></span></a>
     </div>
   </div>
 </section>
@@ -1884,7 +1959,7 @@ details.legend ul{ margin:.6rem 0 0; }
     <div class="two-col">
       <div class="stack">
         <div class="card gate reveal">
-          <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
+          <span class="badge-icon t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span>
           <div>
             <h2 style="font-size:1.3rem">Sezione riservata al personale</h2>
             <p class="muted">Circolari e documenti interni sono visibili dopo l'accesso all'area riservata.</p>
@@ -1894,16 +1969,16 @@ details.legend ul{ margin:.6rem 0 0; }
         <h2 class="reveal" style="font-size:1.3rem">Anteprima dell'elenco</h2>
         <p class="muted reveal">Così appariranno circolari e documenti quando l'area riservata sarà collegata al sistema reale.</p>
         <ul class="doc-list reveal" aria-label="Anteprima dell'elenco delle circolari">
-          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
-          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
-          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[VERBALE / DOCUMENTO]</span></strong><span>Documento interno · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
-          <li class="doc locked"><span class="di"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[MODULO INTERNO]</span></strong><span>Modulistica per il personale · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[TITOLO CIRCOLARE]</span></strong><span>Circolare n. [NUMERO] · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[VERBALE / DOCUMENTO]</span></strong><span>Documento interno · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
+          <li class="doc locked"><span class="di t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-lock"/></svg></span><span class="dt"><strong><span class="ph">[MODULO INTERNO]</span></strong><span>Modulistica per il personale · [DATA]</span></span><span class="btn btn-ghost" aria-disabled="true">Dopo l'accesso</span></li>
         </ul>
       </div>
       <aside class="stack">
         <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p><strong>Interfaccia dimostrativa.</strong> Elenco, ricerca e download vanno collegati al sistema dell'area riservata: <span class="ph">[INTEGRAZIONE CIRCOLARI]</span></p></div>
-        <a class="tile reveal" href="#/docenti/registro-elettronico"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso e credenziali</small></span></a>
-        <a class="tile reveal" href="#/scuola/ptof-qualita"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>PTOF 2025–2028<small>Documento pubblico</small></span></a>
+        <a class="tile reveal" href="#/docenti/registro-elettronico"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-board"/></svg></span><span>Registro elettronico<small>Accesso e credenziali</small></span></a>
+        <a class="tile reveal" href="#/scuola/ptof-qualita"><span class="ti t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-file"/></svg></span><span>PTOF 2025–2028<small>Documento pubblico</small></span></a>
       </aside>
     </div>
   </div>
@@ -1929,9 +2004,9 @@ details.legend ul{ margin:.6rem 0 0; }
           <p class="muted" style="margin:0">App per smartphone: <span class="ph">[NOME APP E LINK AGLI STORE]</span></p>
         </div>
         <div class="grid grid-2">
-          <div class="card reveal"><span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Per le famiglie</h3>
+          <div class="card reveal"><span class="badge-icon t-sea"><svg class="icon" aria-hidden="true"><use href="#i-users"/></svg></span><h3>Per le famiglie</h3>
             <ul style="margin:0"><li>Prenotare i colloqui individuali con gli insegnanti</li><li><span class="ph">[ALTRE FUNZIONI PER LE FAMIGLIE]</span></li></ul></div>
-          <div class="card reveal" style="--i:1"><span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Per i docenti</h3>
+          <div class="card reveal" style="--i:1"><span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-book"/></svg></span><h3>Per i docenti</h3>
             <ul style="margin:0"><li><span class="ph">[FUNZIONI PER I DOCENTI]</span></li></ul></div>
         </div>
       </div>
@@ -1941,7 +2016,7 @@ details.legend ul{ margin:.6rem 0 0; }
           <p class="muted">Per ricevere o recuperare le credenziali: <span class="ph">[PROCEDURA CREDENZIALI]</span></p>
           <p style="margin:0">Oppure contatta la segreteria: <a href="tel:+390103629131">010 362 9131</a> · <a href="mailto:direzione@benedettineprovvidenza.net" style="overflow-wrap:anywhere">direzione@benedettineprovvidenza.net</a></p>
         </div>
-        <a class="tile reveal" href="#/famiglie/orari"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite e colloqui</small></span></a>
+        <a class="tile reveal" href="#/famiglie/orari"><span class="ti t-coral"><svg class="icon" aria-hidden="true"><use href="#i-clock"/></svg></span><span>Orari<small>Ingressi, uscite e colloqui</small></span></a>
       </aside>
     </div>
   </div>
@@ -2061,21 +2136,21 @@ details.legend ul{ margin:.6rem 0 0; }
   <div class="container page-body">
     <div class="grid grid-3 gap-lg">
       <div class="card reveal" style="--i:0">
-        <span class="badge-icon bg-mare"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
+        <span class="badge-icon t-coral"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg></span>
         <h2 style="font-size:1.25rem">Indirizzo</h2>
         <address style="font-style:normal">Via San Giuliano, 10<br>Via Bovio, 12r<br>16145 Genova</address>
         <p class="muted" style="font-size:.92rem;margin-top:.5rem">Ingresso principale in via San Giuliano 10. Si entra anche da via Bovio: al n. 12 c'è il varco carrabile, al n. 10 l'ascensore.</p>
         <a href="https://www.openstreetmap.org/search?query=Via%20San%20Giuliano%2010%2C%2016145%20Genova" target="_blank" rel="noopener">Apri la mappa<span class="sr-only"> (OpenStreetMap, nuova scheda)</span> →</a>
       </div>
       <div class="card reveal" style="--i:1">
-        <span class="badge-icon bg-famiglie"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
+        <span class="badge-icon t-sea"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg></span>
         <h2 style="font-size:1.25rem">Telefono e fax</h2>
         <p style="font-size:1.3rem;font-weight:800;margin-bottom:.4rem"><a href="tel:+390103629131">010 362 9131</a></p>
         <p class="muted" style="margin:0 0 .5rem">Orari della segreteria:<br><span class="ph">[ORARIO SEGRETERIA]</span></p>
         <p class="muted" style="margin:0;font-size:.92rem">La Direttrice e la Coordinatrice didattica ricevono su appuntamento.</p>
       </div>
       <div class="card reveal" style="--i:2">
-        <span class="badge-icon bg-docenti"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
+        <span class="badge-icon t-lilac"><svg class="icon" aria-hidden="true"><use href="#i-mail"/></svg></span>
         <h2 style="font-size:1.25rem">Email</h2>
         <p style="font-weight:800;overflow-wrap:anywhere"><a href="mailto:direzione@benedettineprovvidenza.net">direzione@benedettineprovvidenza.net</a></p>
         <p class="muted" style="margin:0">PEC: <span class="ph">[PEC]</span></p>
@@ -2133,7 +2208,7 @@ details.legend ul{ margin:.6rem 0 0; }
             <div><dt>C.F. / P.IVA</dt><dd><span class="ph">[C.F. / P.IVA]</span></dd></div>
           </dl>
         </div>
-        <a class="tile reveal" href="https://www.facebook.com/p/Scuola-Benedettine-Genova-100070063475046/" target="_blank" rel="noopener"><span class="ti"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Pagina Facebook<small>Scuola Benedettine – Genova · nuova scheda</small></span></a>
+        <a class="tile reveal" href="https://www.facebook.com/p/Scuola-Benedettine-Genova-100070063475046/" target="_blank" rel="noopener"><span class="ti t-petrol"><svg class="icon" aria-hidden="true"><use href="#i-ext"/></svg></span><span>Pagina Facebook<small>Scuola Benedettine – Genova · nuova scheda</small></span></a>
       </aside>
     </div>
   </div>
