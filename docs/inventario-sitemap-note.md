@@ -191,5 +191,5 @@ Home  (hero con cubo 3D "Scegli il tuo percorso", percorsi Famiglie / Docenti / 
 - **Avvisi**: oggi sono scritti a mano nell'HTML. Conviene gestirli da un CMS o da un feed per aggiornarli senza toccare il codice. Lo stato "In programma/Concluso" si calcola già in automatico dalla data.
 - **Calendario sincronizzabile**: eventuale feed ICS/Google Calendar.
 - **Pagamenti online**: se la scuola adotta una piattaforma (es. PagoPA/gestionale), collegarla alla pagina Rette.
-- **Font e Three.js**: prima della pubblicazione è consigliabile ospitare in locale i font Nunito e Baloo 2 (oggi da Google Fonts) e la libreria Three.js (oggi da cdn.jsdelivr.net), così da non inviare dati dei visitatori a terzi (GDPR). Basta cambiare la costante `THREE_URL` nello script.
+- **Font**: prima della pubblicazione è consigliabile ospitare in locale i font Nunito e Baloo 2 (oggi da Google Fonts), così da non inviare dati dei visitatori a terzi (GDPR). Three.js è già ospitato sul sito (`vendor/`), con jsDelivr solo come riserva: vedi `docs/sicurezza.md`.
 - **Hosting**: il sito usa la navigazione a hash (`#/pagina`). Con un CMS o un generatore statico si possono avere URL "puliti" e pagine indicizzabili singolarmente (SEO).

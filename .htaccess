@@ -1,0 +1,41 @@
+# ============================================================
+#  Sicurezza del sito statico – server Apache (hosting tipico)
+#  Richiede mod_headers e mod_rewrite (presenti quasi ovunque).
+# ============================================================
+
+# --- Sempre HTTPS ---
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# --- Niente elenco dei file nelle cartelle ---
+Options -Indexes
+
+# --- File che NON devono essere pubblici ---
+# Cartelle di lavoro (documentazione, strumenti, configurazione dell'assistente, git)
+RedirectMatch 404 ^/(docs|tools|\.claude|\.git)(/|$)
+# File nascosti e sorgenti/configurazioni che non servono al sito
+<FilesMatch "(^\.|\.(md|py|sh|cjs|mjs|json|lock|log|env|ini|ya?ml|bak|swp|orig)$|^CLAUDE|^_headers$)">
+  Require all denied
+</FilesMatch>
+
+# --- Intestazioni di sicurezza ---
+<IfModule mod_headers.c>
+  # Solo HTTPS per un anno (attivare solo quando HTTPS funziona su tutto il dominio)
+  Header always set Strict-Transport-Security "max-age=31536000"
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()"
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  # La CSP completa è nella pagina (meta tag); qui le direttive che solo il server può dare
+  Header always set Content-Security-Policy "frame-ancestors 'self'; base-uri 'none'; object-src 'none'"
+  # Nessuna condivisione verso altri siti (CORS chiuso): non inviare Access-Control-Allow-Origin
+  Header always unset Access-Control-Allow-Origin
+  Header unset X-Powered-By
+</IfModule>
+ServerSignature Off
+# Per non mostrare la versione di Apache serve anche "ServerTokens Prod" nella configurazione
+# del server (non impostabile da .htaccess: chiederlo all'hosting o dal pannello di controllo).

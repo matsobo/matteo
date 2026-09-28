@@ -2,6 +2,7 @@
 <html lang="it">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw=' 'sha256-gbIOVyhutoX5dFUX0bquKkj6diX/RJhGHfz6GknXVSc=' 'sha256-Z+bFC/yE8e9cUH7K6vPU9W4Kk5+zRL42LDR8raS3VVw=' https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-src 'none'; worker-src 'none'; manifest-src 'self'; upgrade-insecure-requests">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Scuola Benedettine – Genova Albaro | Infanzia e Primaria paritaria</title>
 <meta name="description" content="Scuola dell'Infanzia e Primaria paritaria delle Suore Benedettine della Provvidenza a Genova Albaro. Iscrizioni, rette, modulistica, calendario, avvisi e contatti.">
@@ -688,6 +689,9 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
 .submenu a .icon{ width:36px; height:36px; padding:7px; border-radius:12px; background:linear-gradient(150deg,#fff, var(--c1, #E3EFF6)); color:var(--c3, #1B4256); --duo:var(--c2, #9CC5DC); stroke-width:1.8; box-shadow:inset 0 1px 0 #fff, inset 0 -3px 6px color-mix(in srgb, var(--c2, #9CC5DC) 45%, transparent), 0 6px 12px -8px var(--c3, #1B4256); transition:transform var(--t-fast) var(--ease-spring); }
 .submenu a:hover .icon, .submenu a:focus-visible .icon{ transform:rotate(-8deg) scale(1.08); }
 
+.hp{ position:absolute!important; left:-10000px; width:1px; height:1px; overflow:hidden; }
+.btn[disabled]{ opacity:.55; cursor:not-allowed; }
+
 /* Toast */
 .toast{ position:fixed; left:50%; bottom:24px; transform:translate(-50%, 140%); z-index:var(--z-toast); background:var(--blu-900); color:#fff; padding:.8rem 1.2rem; border-radius:999px; box-shadow:var(--sh-3); font-weight:700; display:flex; gap:.5rem; align-items:center; transition:transform var(--t-med) var(--ease-spring); max-width:calc(100vw - 32px); }
 .toast{ visibility:hidden; }
@@ -723,13 +727,11 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
   <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
   <symbol id="i-x" viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></symbol>
-  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
   <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
   <symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
   <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
   <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
-  <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
   <symbol id="i-food" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="13" cy="13" r="8"/><path d="M3 2v7a2 2 0 0 0 2 2h4a2 2 0 0 0 2-2V2M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6a2 2 0 0 0 2 2h3zm0 0v7"/></symbol>
   <symbol id="i-books" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V2H6.5A2.5 2.5 0 0 0 4 4.5z"/><path d="M4 19.5A2.5 2.5 0 0 0 6.5 22H20v-5M9 7h6"/></symbol>
   <symbol id="i-award" viewBox="0 0 24 24"><circle style="fill:var(--duo,none);stroke:none" cx="12" cy="8" r="6"/><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></symbol>
@@ -747,8 +749,6 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
   <symbol id="i-eyeoff" viewBox="0 0 24 24"><path d="M9.9 4.2A10 10 0 0 1 12 4c6.5 0 10 8 10 8a17 17 0 0 1-2.2 3.2M6.6 6.6C3.9 8.4 2 12 2 12s3.5 7 10 7a9.7 9.7 0 0 0 5.4-1.6M2 2l20 20M9.9 9.9a3 3 0 0 0 4.2 4.2"/></symbol>
   <symbol id="i-motion" viewBox="0 0 24 24"><path d="M3 8h10a3 3 0 1 0-3-3M3 16h14a3 3 0 1 1-3 3M3 12h18"/></symbol>
   <symbol id="i-send" viewBox="0 0 24 24"><path style="fill:var(--duo,none);stroke:none" d="m22 2-7 20-4-9-9-4z"/><path d="m22 2-7 20-4-9-9-4z"/><path d="M22 2 11 13"/></symbol>
-  <symbol id="i-link" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.8 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7"/></symbol>
-  <symbol id="i-rotate" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
 
   <!-- Illustrazioni per l'area bambini e il memory (colorate, non a tratto) -->
   <symbol id="k-sun" viewBox="0 0 64 64"><g stroke="#F59E0B" stroke-width="4" stroke-linecap="round"><path d="M32 4v8M32 52v8M4 32h8M52 32h8M12 12l6 6M46 46l6 6M12 52l6-6M46 18l6-6"/></g><circle cx="32" cy="32" r="14" fill="#FFD35C" stroke="#F59E0B" stroke-width="3"/><circle cx="27" cy="30" r="2" fill="#2B1B4A"/><circle cx="37" cy="30" r="2" fill="#2B1B4A"/><path d="M26 36q6 5 12 0" stroke="#2B1B4A" stroke-width="2.5" fill="none" stroke-linecap="round"/></symbol>
@@ -1911,16 +1911,16 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
     <div class="two-col">
       <div class="card reveal" style="max-width:560px">
         <h2 style="font-size:1.4rem">Accesso</h2>
-        <form class="form" id="loginForm" novalidate>
+        <form class="form" id="loginForm" method="post" action="#" novalidate>
           <div class="field">
             <label for="lg-user">Nome utente o email <span class="req" aria-hidden="true">*</span></label>
-            <input id="lg-user" name="username" type="text" autocomplete="username" required aria-describedby="lg-user-err">
+            <input id="lg-user" name="username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" maxlength="100" required aria-describedby="lg-user-err">
             <p class="err" id="lg-user-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Inserisci il nome utente o l'email.</p>
           </div>
           <div class="field">
             <label for="lg-pw">Password <span class="req" aria-hidden="true">*</span></label>
             <div class="pw-wrap">
-              <input id="lg-pw" name="password" type="password" autocomplete="current-password" required aria-describedby="lg-pw-err">
+              <input id="lg-pw" name="password" type="password" autocomplete="current-password" maxlength="128" required aria-describedby="lg-pw-err">
               <button type="button" id="pwToggle" aria-label="Mostra la password" aria-pressed="false"><svg class="icon" aria-hidden="true"><use href="#i-eye"/></svg></button>
             </div>
             <p class="err" id="lg-pw-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Inserisci la password.</p>
@@ -2162,20 +2162,21 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
         <h2 style="font-size:1.4rem">Scrivici</h2>
         <p class="muted">I campi con <span aria-hidden="true">*</span><span class="sr-only">asterisco</span> sono obbligatori.</p>
         <div class="form-status error" id="cfSummary" tabindex="-1" role="alert"></div>
-        <form class="form" id="contactForm" novalidate>
+        <form class="form" id="contactForm" method="post" action="#" novalidate>
           <div class="field">
             <label for="cf-name">Nome e cognome <span class="req" aria-hidden="true">*</span></label>
-            <input id="cf-name" name="name" type="text" autocomplete="name" required aria-describedby="cf-name-err">
+            <input id="cf-name" name="name" type="text" autocomplete="name" maxlength="100" required aria-describedby="cf-name-err">
             <p class="err" id="cf-name-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Scrivi il tuo nome e cognome.</p>
           </div>
           <div class="field">
             <label for="cf-email">Email <span class="req" aria-hidden="true">*</span></label>
-            <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required aria-describedby="cf-email-err">
+            <input id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" maxlength="254" required aria-describedby="cf-email-err">
             <p class="err" id="cf-email-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Inserisci un indirizzo email valido, ad esempio nome@esempio.it.</p>
           </div>
           <div class="field">
             <label for="cf-tel">Telefono (facoltativo)</label>
-            <input id="cf-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel">
+            <input id="cf-tel" name="tel" type="tel" autocomplete="tel" inputmode="tel" maxlength="30" pattern="[\d \+\(\)\.\/\-]{6,30}" aria-describedby="cf-tel-err">
+            <p class="err" id="cf-tel-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Usa solo numeri, spazi e i simboli + ( ) - . /</p>
           </div>
           <div class="field">
             <label for="cf-topic">Argomento</label>
@@ -2188,13 +2189,15 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
           </div>
           <div class="field">
             <label for="cf-msg">Messaggio <span class="req" aria-hidden="true">*</span></label>
-            <textarea id="cf-msg" name="message" required aria-describedby="cf-msg-err"></textarea>
+            <textarea id="cf-msg" name="message" maxlength="2000" required aria-describedby="cf-msg-err cf-msg-count"></textarea>
+            <p class="help" id="cf-msg-count" aria-live="polite">Massimo 2000 caratteri.</p>
             <p class="err" id="cf-msg-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Scrivi il tuo messaggio.</p>
           </div>
           <div class="field">
             <div class="check"><input type="checkbox" id="cf-privacy" required aria-describedby="cf-privacy-err"><label for="cf-privacy" style="font-weight:600">Ho letto l'<a href="#/privacy">informativa privacy</a> e acconsento al trattamento dei dati per ricevere una risposta. <span class="req" aria-hidden="true">*</span></label></div>
             <p class="err" id="cf-privacy-err"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg>Per inviare il messaggio devi accettare l'informativa.</p>
           </div>
+          <div class="hp" aria-hidden="true"><label for="cf-website">Lascia vuoto questo campo</label><input id="cf-website" name="website" type="text" tabindex="-1" autocomplete="off" maxlength="100"></div>
           <button type="submit" class="btn btn-primary"><svg class="icon" aria-hidden="true"><use href="#i-send"/></svg>Invia messaggio</button>
           <div class="form-status success" id="cfStatus" role="status" tabindex="-1"></div>
         </form>
@@ -2260,10 +2263,10 @@ a.card:hover .badge-icon::before, .card:hover .badge-icon::before, .tile:hover .
       <h2 class="reveal">Servizi esterni</h2>
       <ul class="reveal">
         <li><strong>Google Fonts</strong>, per i caratteri tipografici del sito.</li>
-        <li><strong>jsDelivr</strong>, per la libreria Three.js che anima Guglielmo in 3D.</li>
+        <li>La libreria <strong>Three.js</strong>, che anima Guglielmo in 3D, è ospitata sul sito stesso; solo se non fosse disponibile viene richiesta al servizio <strong>jsDelivr</strong>.</li>
         <li>I link a Facebook, Scuola in Chiaro, OpenStreetMap e al sito della Congregazione portano a servizi esterni solo se li apri.</li>
       </ul>
-      <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Prima della pubblicazione si consiglia di ospitare caratteri e libreria sul server della scuola, così nessun dato dei visitatori viene inviato a terzi. Testo definitivo: <span class="ph">[COOKIE POLICY VERIFICATA DAL TITOLARE / DPO]</span></p></div>
+      <div class="note reveal"><svg class="icon" aria-hidden="true"><use href="#i-info"/></svg><p>Prima della pubblicazione si consiglia di ospitare anche i caratteri sul server della scuola, così nessun dato dei visitatori viene inviato a terzi. Testo definitivo: <span class="ph">[COOKIE POLICY VERIFICATA DAL TITOLARE / DPO]</span></p></div>
       <p class="reveal"><a href="#/privacy">Privacy e note legali →</a></p>
     </div>
   </div>
@@ -2459,7 +2462,7 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     var next = motionOn() ? 'off' : 'on';
     try { localStorage.setItem('sb-motion', next); } catch(e){}
     applyMotion(next);
-    if (window.__sbMascot) window.__sbMascot.onMotion();
+    if (mascot) mascot.onMotion();
     toast(next === 'on' ? 'Animazioni attivate' : 'Animazioni disattivate');
   });
 
@@ -2560,6 +2563,9 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     sections[key] = $$('.submenu a', li).map(function(a){ return { href:a.getAttribute('href'), text:a.textContent.trim() }; });
   });
 
+  // Converte un testo in HTML sicuro: nessun contenuto (anche futuro, es. da un CMS) viene interpretato come codice
+  function esc(t){ return String(t == null ? '' : t).replace(/[&<>"']/g, function(c){ return { '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]; }); }
+
   function normalize(r){
     r = String(r || '/').replace(/^#/, '').replace(/\?.*$/, '');
     if (r.charAt(0) !== '/') r = '/' + r;
@@ -2587,13 +2593,13 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       for (var i = 0; i < parts.length - 1; i++){ acc += '/' + parts[i]; if (titles[acc]) items.push({ href:'#' + acc, text:titles[acc] }); }
       items.push({ text:title });
       crumbs.innerHTML = '<ol>' + items.map(function(it){
-        return '<li>' + (it.href ? '<a href="' + it.href + '">' + it.text + '</a>' : '<span aria-current="page">' + it.text + '</span>') + '</li>';
+        return '<li>' + (it.href ? '<a href="' + esc(it.href) + '">' + esc(it.text) + '</a>' : '<span aria-current="page">' + esc(it.text) + '</span>') + '</li>';
       }).join('') + '</ol>';
     }
     var wrap = $('.subnav-wrap', page);
     if (wrap && sections[secKey] && !wrap.hasChildNodes()){
-      wrap.innerHTML = '<nav class="subnav" aria-label="Pagine della sezione ' + titles[secKey] + '"><ul>' +
-        sections[secKey].map(function(s){ return '<li><a href="' + s.href + '">' + s.text + '</a></li>'; }).join('') + '</ul></nav>';
+      wrap.innerHTML = '<nav class="subnav" aria-label="Pagine della sezione ' + esc(titles[secKey]) + '"><ul>' +
+        sections[secKey].map(function(s){ return '<li><a href="' + esc(s.href) + '">' + esc(s.text) + '</a></li>'; }).join('') + '</ul></nav>';
     }
   }
 
@@ -2772,9 +2778,12 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   news.forEach(function(n){
     var id = n.getAttribute('data-id'), h = $('h3', n);
     if (!id || !h) return;
-    h.innerHTML = '<a href="#/avvisi/' + id + '">' + h.innerHTML + '</a>';
-    var more = document.createElement('a'); more.className = 'more'; more.href = '#/avvisi/' + id;
-    more.innerHTML = 'Leggi l’avviso<span class="sr-only">: ' + h.textContent + '</span> →';
+    var link = document.createElement('a'); link.setAttribute('href', '#/avvisi/' + id);
+    while (h.firstChild) link.appendChild(h.firstChild);
+    h.appendChild(link);
+    var more = document.createElement('a'); more.className = 'more'; more.setAttribute('href', '#/avvisi/' + id);
+    var sr = document.createElement('span'); sr.className = 'sr-only'; sr.textContent = ': ' + h.textContent;
+    more.append('Leggi l’avviso', sr, ' →');
     n.appendChild(more);
   });
   function fillNewsDetail(card, route){
@@ -2783,12 +2792,12 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     $('#avvisoTitle').textContent = title;
     $('#avvisoMeta').textContent = (time ? time.textContent : '') + (chips.length ? ' · ' + chips.join(' · ') : '');
     var body = $('#avvisoBody'); body.innerHTML = '';
-    $$('p', card).forEach(function(p){ var q = document.createElement('p'); q.innerHTML = p.innerHTML; body.appendChild(q); });
+    $$('p', card).forEach(function(p){ var q = p.cloneNode(true); q.removeAttribute('class'); body.appendChild(q); });
     var link = card.getAttribute('data-link');
     if (link){ var a = document.createElement('a'); a.className = 'btn btn-primary'; a.href = link; a.textContent = card.getAttribute('data-link-text') || 'Approfondisci'; body.appendChild(a); }
     $('#avvisoOthers').innerHTML = news.filter(function(n){ return n !== card; }).map(function(n){
       var t = $('time', n);
-      return '<li><a href="#/avvisi/' + n.getAttribute('data-id') + '"><small>' + (t ? t.textContent : '') + '</small>' + $('h3', n).textContent.trim() + '</a></li>';
+      return '<li><a href="#/avvisi/' + esc(n.getAttribute('data-id')) + '"><small>' + esc(t ? t.textContent : '') + '</small>' + esc($('h3', n).textContent.trim()) + '</a></li>';
     }).join('');
     return { page:byRoute['/avvisi/dettaglio'], route:route, title:title };
   }
@@ -2817,8 +2826,8 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     });
     groups.push({ title:'Informazioni', links:$$('.legal-links a').map(function(a){ return { href:a.getAttribute('href'), text:a.textContent.trim() }; }) });
     box.innerHTML = groups.map(function(g, i){
-      return '<section class="card sitemap-group reveal" style="--i:' + i + '"><h2>' + g.title + '</h2><ul>' + g.links.map(function(l){
-        return '<li><a href="' + l.href + '"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>' + l.text + '</a></li>';
+      return '<section class="card sitemap-group reveal" style="--i:' + i + '"><h2>' + esc(g.title) + '</h2><ul>' + g.links.map(function(l){
+        return '<li><a href="' + esc(l.href) + '"><svg class="icon" aria-hidden="true"><use href="#i-arrow"/></svg>' + esc(l.text) + '</a></li>';
       }).join('') + '</ul></section>';
     }).join('');
   })();
@@ -2848,34 +2857,61 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   });
   function fallbackCopy(v){ var t = document.createElement('textarea'); t.value = v; t.setAttribute('readonly',''); t.style.position='fixed'; t.style.opacity='0'; document.body.appendChild(t); t.select(); try{ document.execCommand('copy'); }catch(e){} document.body.removeChild(t); }
 
-  /* ---------- Moduli: validazione accessibile ---------- */
-  function validateField(input){
+  /* ---------- Moduli: pulizia dei dati, validazione accessibile, protezioni anti-abuso ----------
+     Nota: sono protezioni lato browser. I controlli veri (validazione, limiti di invio,
+     autenticazione) vanno ripetuti sul server quando i moduli saranno collegati. */
+  var pageShownAt = Date.now();
+  // Toglie caratteri di controllo e spazi superflui; nei campi a riga singola niente a capo
+  function clean(input){
+    if (input.type === 'checkbox' || input.type === 'password') return;
+    var v = input.value.replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F\u200B-\u200F\u2028\u2029\uFEFF]/g, '');
+    v = input.tagName === 'TEXTAREA' ? v.replace(/\n{3,}/g, '\n\n').trim() : v.replace(/\s+/g, ' ').trim();
+    if (input.maxLength > 0) v = v.slice(0, input.maxLength);
+    if (v !== input.value) input.value = v;
+  }
+  function validateField(input, tidy){
+    if (tidy) clean(input);   // la pulizia si fa uscendo dal campo e all'invio, mai mentre si scrive
     var f = input.closest('.field'), ok = input.type === 'checkbox' ? input.checked : input.checkValidity() && input.value.trim() !== '';
-    if (!input.required) ok = true;
+    if (!input.required) ok = input.checkValidity();
     f.classList.toggle('invalid', !ok);
     input.setAttribute('aria-invalid', ok ? 'false' : 'true');
     return ok;
   }
-  function wireForm(form, onOk, summary){
-    var req = $$('[required]', form);
+  function wireForm(form, onOk, summary, pause){
+    var req = $$('[required], input[pattern]', form), btn = $('button[type="submit"]', form), lockedUntil = 0, attempts = [];
+    var btnLabel = btn.innerHTML;
+    function lock(seconds, msg){
+      lockedUntil = Date.now() + seconds * 1000; btn.disabled = true; btn.setAttribute('aria-disabled', 'true');
+      if (msg) toast(msg);
+      setTimeout(function(){ btn.disabled = false; btn.removeAttribute('aria-disabled'); btn.innerHTML = btnLabel; }, seconds * 1000);
+    }
     req.forEach(function(i){
       // l'errore sparisce mentre si corregge; al blur si valida solo un campo già compilato (es. email errata)
-      i.addEventListener(i.type === 'checkbox' ? 'change' : 'input', function(){ if (i.closest('.field').classList.contains('invalid')) validateField(i); });
-      if (i.type !== 'checkbox') i.addEventListener('blur', function(){ if (i.value.trim()) validateField(i); });
+      i.addEventListener(i.type === 'checkbox' ? 'change' : 'input', function(){ if (i.closest('.field').classList.contains('invalid')) validateField(i, false); });
+      if (i.type !== 'checkbox') i.addEventListener('blur', function(){ if (i.value.trim()) validateField(i, true); });
     });
     form.addEventListener('submit', function(e){
       e.preventDefault();
-      var bad = req.filter(function(i){ return !validateField(i); });
+      if (Date.now() < lockedUntil) return;
+      // al massimo 5 invii al minuto da questa pagina, poi una pausa di 60 secondi
+      var now = Date.now(); attempts = attempts.filter(function(t){ return now - t < 60000; }); attempts.push(now);
+      if (attempts.length > 5){ lock(60, 'Troppi tentativi ravvicinati: riprova tra un minuto.'); return; }
+      $$('input:not([type=checkbox]):not([type=password]), textarea', form).forEach(clean);
+      var bad = req.filter(function(i){ return !validateField(i, true); });
       if (bad.length){
         if (summary){
           summary.innerHTML = '<strong>Controlla ' + (bad.length === 1 ? 'questo campo' : 'questi ' + bad.length + ' campi') + ':</strong><ul style="margin:.4rem 0 0">' +
-            bad.map(function(i){ return '<li><a href="#' + i.id + '" data-field="' + i.id + '">' + $('label[for="' + i.id + '"]').textContent.replace('*','').trim() + '</a></li>'; }).join('') + '</ul>';
+            bad.map(function(i){ return '<li><a href="#' + esc(i.id) + '" data-field="' + esc(i.id) + '">' + esc($('label[for="' + i.id + '"]').textContent.replace('*','').trim()) + '</a></li>'; }).join('') + '</ul>';
           summary.classList.add('show'); summary.focus();
           $$('a[data-field]', summary).forEach(function(a){ a.addEventListener('click', function(ev){ ev.preventDefault(); document.getElementById(a.getAttribute('data-field')).focus(); }); });
         } else bad[0].focus();
         return;
       }
       if (summary) summary.classList.remove('show');
+      // campo trappola compilato o invio troppo rapido: probabilmente un bot, non si invia nulla
+      var hp = $('input[name="website"]', form);
+      if ((hp && hp.value) || Date.now() - pageShownAt < 2500){ form.reset(); return; }
+      lock(pause || 10);
       onOk(form);
     });
   }
@@ -2888,8 +2924,11 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
     var s = $('#loginStatus');
     s.className = 'form-status show'; s.style.background = 'var(--blu-50)'; s.style.border = '1px solid var(--blu-100)';
     s.innerHTML = 'Area riservata non ancora collegata. <span class="ph">[INTEGRAZIONE AREA RISERVATA / SSO]</span>';
+    $('#lg-pw').value = '';   // la password non resta nella pagina
     s.focus();
-  });
+  }, null, 3);
+  var msg = $('#cf-msg'), msgCount = $('#cf-msg-count');
+  msg.addEventListener('input', function(){ var left = 2000 - msg.value.length; msgCount.textContent = left < 200 ? 'Restano ' + left + ' caratteri.' : 'Massimo 2000 caratteri.'; });
   var pwT = $('#pwToggle');
   pwT.addEventListener('click', function(){
     var i = $('#lg-pw'), show = i.type === 'password';
@@ -2968,7 +3007,12 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
   newGame();
 
   /* ---------- Guglielmo, la mascotte ---------- */
-  var THREE_URL = 'https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.min.js';
+  // Prima la copia locale ridotta (vendor/, rigenerabile con tools/build-three.sh), poi il CDN con la stessa versione.
+  var THREE_SOURCES = ['./vendor/three-guglielmo.min.js', 'https://cdn.jsdelivr.net/npm/three@0.186.1/build/three.module.js'];
+  function loadThree(i){
+    i = i || 0;
+    return import(THREE_SOURCES[i]).catch(function(err){ if (i + 1 < THREE_SOURCES.length) return loadThree(i + 1); throw err; });
+  }
   var mascot = (function(){
     var el = $('#mascot'), btn = $('#mascotBtn'), bubble = $('#mascotBubble'), text = $('#mascotText'), live = $('#mascotLive'), canvas = $('#mascotCanvas'), toggle = $('#mascotToggle');
     var api3d = null, mode = null, booted = false, side = 'right', current = null, pendingTip = null, walkTimer, bubbleTimer, duckTimer, hopTimer;
@@ -3063,7 +3107,7 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       var n = navigator, lowEnd = (n.deviceMemory && n.deviceMemory <= 2) || (n.hardwareConcurrency && n.hardwareConcurrency <= 2) || (n.connection && n.connection.saveData);
       if (lowEnd || !hasWebGL()) return useFallback();
       var timer = setTimeout(useFallback, 8000);
-      import(THREE_URL).then(function(THREE){
+      loadThree().then(function(THREE){
         clearTimeout(timer); if (mode) return;
         try { api3d = createGuglielmo(THREE, canvas); mode = '3d'; ready(); } catch(e){ api3d = null; useFallback(); }
       }, function(){ clearTimeout(timer); useFallback(); });
@@ -3123,7 +3167,6 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       celebrate: function(){ if (api3d && motionOn()) api3d.celebrate(); else hop(); say('Evviva! Hai trovato tutte le coppie!', false); }
     };
   })();
-  window.__sbMascot = mascot;
 
   /* ---------- Modello 3D di Guglielmo (Three.js caricato solo quando serve) ---------- */
   // Guglielmo 3D – modello procedurale (Three.js), stile "toon" con contorno.
@@ -3307,8 +3350,6 @@ window.SB_IMG = {"crest": "data:image/webp;base64,UklGRoA0AABXRUJQVlA4WAoAAAAQAA
       wave() { st.waveT = 0; },
       celebrate() { st.celebrateT = 0; st.waveT = 0; },
       look(x, y) { st.lookX = Math.max(-1, Math.min(1, x)); st.lookY = Math.max(-1, Math.min(1, y)); },
-      setPose(t) { st.t = t; },
-      _dbg: { root, head, st }
     };
     return api;
   }

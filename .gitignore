@@ -1,2 +1,17 @@
+# Cache Python
 __pycache__/
 *.pyc
+# Segreti e configurazioni locali: non devono MAI finire nel repository
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+secrets.*
+credentials*.json
+# Dipendenze e file temporanei
+node_modules/
+.DS_Store
+*.log
+*.bak
