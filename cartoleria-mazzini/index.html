@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="it" class="no-js">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cartoleria Mazzini · Penne, inchiostri e riparazioni · Galleria Mazzini, Genova</title>
+<meta name="description" content="Stilografiche, roller, inchiostri, idee regalo e riparazione penne in Galleria Giuseppe Mazzini 44, a Genova. Dal 1936.">
+<meta name="theme-color" content="#F3EEE4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231D2125'/%3E%3Cpath d='M9 4h14v5c0 5-2.5 10-7 19C11.5 19 9 14 9 9z' fill='%23D8BA83'/%3E%3Cpath d='M16 15v13' stroke='%231D2125' stroke-width='1.4'/%3E%3Ccircle cx='16' cy='13.5' r='1.8' fill='%231D2125'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..600&family=Instrument+Sans:wght@400..600&display=swap" rel="stylesheet">
+<!--
+  Concept: "catalogo di bottega". Ardesia ligure (scuro), ceralacca (accento), ottone del pennino (dettagli)
+  su carta avorio. Bodoni Moda per i titoli (il carattere italiano della tipografia), Instrument Sans per il testo.
+-->
+<script>
+(function(d){var h=d.documentElement;h.classList.remove("no-js");h.classList.add("js");
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("js-anim");setTimeout(function(){h.classList.remove("js-anim")},3500)}
+window.CM={heroP:0};})(document);
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.min.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/"}}</script>
+<style>
+:root{
+  --carta:#F3EEE4;--carta-2:#E8DFCF;--carta-3:#FBF8F2;
+  --ardesia:#1D2125;--ardesia-2:#2A3036;--ardesia-testo:#C4BDB0;
+  --grafite:#232327;--grafite-2:#57524A;
+  --ceralacca:#A3261E;--ceralacca-scura:#7C1B15;--ceralacca-testo:#FBE7E0;
+  --ottone:#A98244;--ottone-chiaro:#D8BA83;
+  --linea:rgba(29,33,37,.13);--linea-2:rgba(29,33,37,.38);--linea-ui:#7C776F;
+  --serif:"Bodoni Moda","Bodoni 72",Didot,"Times New Roman",serif;
+  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --g:clamp(1rem,4vw,3.5rem);--col:clamp(1rem,2vw,2rem);
+  --max:1360px;--head:72px;
+  --e-out:cubic-bezier(.16,1,.3,1);--e-io:cubic-bezier(.65,0,.35,1);
+  --grana:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .14 0 0 0 0 .11 0 0 0 0 .08 .11 0 0 0 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+*,*::before,*::after{box-sizing:border-box}
+*{margin:0}
+html{scroll-padding-top:88px;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{font:400 1.0625rem/1.6 var(--sans);color:var(--grafite);background:var(--grana),var(--carta);overflow-x:clip;-webkit-font-smoothing:antialiased}
+body.menu-open{overflow:hidden}
+img,svg,canvas{display:block;max-width:100%}
+h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.02;letter-spacing:-.015em;color:var(--ardesia);font-optical-sizing:auto;text-wrap:balance}
+h2{font-size:clamp(2.3rem,5.2vw,4.6rem)}
+h3{font-size:clamp(1.35rem,2vw,1.65rem);line-height:1.12}
+em{font-style:italic}
+p{max-width:62ch}
+a{color:inherit}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ceralacca);outline-offset:3px;border-radius:2px}
+.dark :focus-visible,.regalo :focus-visible,.footer :focus-visible{outline-color:var(--ottone-chiaro)}
+.sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+.skip{position:fixed;left:1rem;top:-4rem;z-index:100;background:var(--ardesia);color:var(--carta);padding:.8rem 1.1rem;text-decoration:none;font-weight:600;transition:top .2s}
+.skip:focus{top:1rem}
+.defs{position:absolute;width:0;height:0;overflow:hidden}
+.wrap{width:min(var(--max),100% - 2*var(--g));margin-inline:auto}
+.g12{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:var(--col)}
+.sec{padding-block:clamp(5rem,11vw,10rem);position:relative}
+.kicker{display:flex;align-items:center;gap:.8rem;font:600 .75rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--grafite-2);margin-bottom:1.4rem}
+.kicker::before{content:"";width:2.4rem;height:1px;background:currentColor;flex:none}
+.lead{font-size:clamp(1.08rem,1.3vw,1.22rem);line-height:1.6;color:var(--grafite-2)}
+.tbc{background:#F3E2A0;color:#473800;padding:.05em .4em;border-radius:2px;font:600 .8em/1.5 var(--sans);letter-spacing:.01em;-webkit-box-decoration-break:clone;box-decoration-break:clone;text-decoration:none}
+.todo{display:inline-block;margin-top:2.5rem;font:500 .82rem/1.45 var(--sans);color:var(--grafite-2);border:1px dashed var(--linea-2);padding:.55rem .8rem}
+
+/* split text */
+.sw{display:inline-block;overflow:hidden;vertical-align:top;padding:0 .08em .14em 0;margin:0 -.08em -.14em 0}
+.sw-i{display:inline-block}
+.js-anim .hero-title,.js-anim [data-hero-in]{opacity:0}
+
+/* pulsanti */
+.btn{--bg:var(--ardesia);--fg:var(--carta);--bd:var(--ardesia);--fill:var(--ceralacca);--fg-h:var(--carta);
+  position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:center;gap:.75rem;min-height:50px;padding:.85rem 1.55rem;
+  font:600 .95rem/1 var(--sans);letter-spacing:.01em;color:var(--fg);background:var(--bg);border:1px solid var(--bd);border-radius:999px;text-decoration:none;cursor:pointer;
+  transition:color .4s var(--e-out),border-color .4s var(--e-out)}
+.btn::before{content:"";position:absolute;inset:-1px;z-index:-1;background:var(--fill);border-radius:inherit;transform:translateY(101%);transition:transform .55s var(--e-out)}
+.btn:hover,.btn:focus-visible{color:var(--fg-h);border-color:var(--fill)}
+.btn:hover::before,.btn:focus-visible::before{transform:translateY(0)}
+.btn .arr{width:1.2rem;height:.7rem;flex:none;transition:transform .45s var(--e-out)}
+.btn:hover .arr{transform:translateX(4px)}
+.btn--line{--bg:transparent;--fg:var(--ardesia);--bd:var(--linea-ui);--fill:var(--ardesia)}
+.btn--carta{--bg:var(--carta);--fg:var(--ardesia);--bd:var(--carta);--fill:var(--ardesia)}
+.btn--dark-line{--bg:transparent;--fg:var(--carta);--bd:rgba(243,238,228,.45);--fill:var(--carta);--fg-h:var(--ardesia)}
+.btn--sm{min-height:44px;padding:.6rem 1.05rem;font-size:.85rem}
+.cta{display:flex;flex-wrap:wrap;gap:.75rem}
+.link-freccia{display:inline-flex;align-items:center;gap:.5rem;font-weight:600;text-decoration:none;border-bottom:1px solid currentColor;padding-bottom:.15rem}
+.link-freccia .arr{width:1.1rem;height:.65rem;transition:transform .45s var(--e-out)}
+.link-freccia:hover .arr{transform:translateX(4px)}
+
+/* barra di avanzamento */
+.progress{position:fixed;left:0;right:0;top:0;height:2px;z-index:70;pointer-events:none}
+.progress span{display:block;height:100%;background:var(--ceralacca);transform-origin:0 50%;transform:scaleX(0)}
+
+/* header */
+.site-header{position:fixed;top:0;left:0;right:0;z-index:60;transition:transform .5s var(--e-out),background-color .35s,box-shadow .35s}
+.site-header.is-scrolled{background:rgba(243,238,228,.94);box-shadow:0 1px 0 var(--linea)}
+.site-header.is-hidden{transform:translateY(-100%)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:1.5rem;height:var(--head);width:min(var(--max),100% - 2*var(--g));margin-inline:auto}
+.brand{display:flex;flex-direction:column;text-decoration:none;color:var(--ardesia);line-height:1;padding:.3rem 0}
+.brand b{font:500 1.4rem/1 var(--serif);letter-spacing:-.01em}
+.brand small{font:600 .64rem/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--grafite-2);margin-top:.4rem}
+.nav ul{list-style:none;padding:0;display:flex;align-items:center;gap:clamp(1rem,2.2vw,2.3rem)}
+.nav a{position:relative;display:inline-block;text-decoration:none;font-weight:500;font-size:.95rem;padding:.7rem 0}
+.nav a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:.45rem;height:1px;background:currentColor;transform:scaleX(0);transform-origin:100% 50%;transition:transform .5s var(--e-out)}
+.nav a:not(.btn):hover::after,.nav a.is-current::after{transform:scaleX(1);transform-origin:0 50%}
+.nav a.is-current::before{content:"";position:absolute;left:-.7rem;top:50%;width:5px;height:5px;margin-top:-2px;border-radius:50%;background:var(--ceralacca)}
+.nav .btn{min-height:44px;padding:.65rem 1.15rem;font-size:.88rem}
+.burger{display:none;align-items:center;gap:.7rem;min-height:44px;padding:.5rem .2rem .5rem .8rem;background:none;border:0;cursor:pointer;font:600 .85rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--ardesia)}
+.burger-lines{position:relative;width:26px;height:10px}
+.burger-lines::before,.burger-lines::after{content:"";position:absolute;left:0;right:0;height:1.5px;background:currentColor;transition:transform .45s var(--e-out)}
+.burger-lines::before{top:0}.burger-lines::after{bottom:0}
+.burger[aria-expanded=true] .burger-lines::before{transform:translateY(4.25px) rotate(45deg)}
+.burger[aria-expanded=true] .burger-lines::after{transform:translateY(-4.25px) rotate(-45deg)}
+@media (max-width:959px){
+  .burger{display:inline-flex}
+  .nav{position:fixed;left:0;right:0;top:var(--head);height:calc(100vh - var(--head));height:calc(100dvh - var(--head));background:var(--grana),var(--carta);padding:1.5rem var(--g) 3rem;overflow-y:auto;display:none;border-top:1px solid var(--linea)}
+  .nav.open{display:block;animation:menu-in .5s var(--e-out)}
+  .nav ul{flex-direction:column;align-items:flex-start;gap:0}
+  .nav li{width:100%;border-bottom:1px solid var(--linea)}
+  .nav li:last-child{border:0;padding-top:1.5rem}
+  .nav a:not(.btn){display:block;font:400 clamp(1.9rem,8vw,2.6rem)/1.1 var(--serif);padding:.9rem 0}
+  .nav a:not(.btn)::after,.nav a.is-current::before{display:none}
+  .site-header.menu-on{background:var(--carta)}
+}
+@keyframes menu-in{from{opacity:0;transform:translateY(-8px)}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;padding:calc(var(--head) + clamp(1.2rem,5vh,3.5rem)) 0 clamp(1.4rem,4vh,2.6rem);overflow:hidden}
+.hero-grid{position:relative;flex:1;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-template-rows:auto auto 1fr auto;column-gap:var(--col);align-content:start}
+.hero-kicker{grid-column:1/8;grid-row:1;margin:0;position:relative;z-index:2}
+.hero-since{grid-column:9/13;grid-row:1;justify-self:end;font:400 1.45rem/1 var(--serif);color:var(--ardesia);position:relative;z-index:2}
+.hero-since em{color:var(--grafite-2);font-size:.8em;margin-right:.25rem}
+.hero-title{grid-column:1/9;grid-row:2;position:relative;z-index:2;margin-top:clamp(1.4rem,5vh,3.6rem);font-size:clamp(3rem,6.9vw,7.2rem);line-height:.97;letter-spacing:-.03em}
+.hero-title em{letter-spacing:-.02em}
+.nw{white-space:nowrap}
+.scribble{position:relative;color:var(--ceralacca);white-space:nowrap}
+.scribble svg{position:absolute;left:-2%;right:-2%;bottom:-.13em;width:104%;height:.2em;overflow:visible;pointer-events:none}
+.scribble path{fill:none;stroke:var(--ceralacca);stroke-width:3;stroke-linecap:round;vector-effect:non-scaling-stroke;stroke-dasharray:1;stroke-dashoffset:0}
+.hero-copy{grid-column:1/6;grid-row:3;align-self:end;position:relative;z-index:2;padding-top:2.2rem}
+.hero-copy p{font-size:clamp(1.05rem,1.25vw,1.18rem);color:var(--grafite-2);margin-bottom:1.8rem;max-width:44ch}
+.hero-fig{grid-column:9/13;grid-row:4;justify-self:end;text-align:right;position:relative;z-index:2;margin-top:1.4rem;font-size:.82rem;line-height:1.45;color:var(--grafite-2);max-width:30ch;padding-top:.7rem;border-top:1px solid var(--linea-2)}
+.fig-n{font:italic 400 .95rem var(--serif);color:var(--ardesia);margin-right:.3rem}
+.hint-3d{display:none}
+.has-3d .hint-3d{display:inline}
+.hero-scroll{grid-column:1/5;grid-row:4;align-self:end;display:inline-flex;align-items:center;gap:.8rem;margin-top:1.4rem;font:600 .72rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--grafite-2);position:relative;z-index:2;min-height:44px}
+.hero-scroll-line{position:relative;width:1px;height:38px;background:var(--linea-2);overflow:hidden}
+.hero-scroll-line::after{content:"";position:absolute;inset:0;background:var(--ceralacca);transform-origin:50% 0;animation:scorri 2.4s var(--e-io) infinite}
+@keyframes scorri{0%{transform:scaleY(0);transform-origin:50% 0}45%{transform:scaleY(1);transform-origin:50% 0}55%{transform:scaleY(1);transform-origin:50% 100%}100%{transform:scaleY(0);transform-origin:50% 100%}}
+.hero-stage{position:absolute;z-index:1;top:-2%;right:-4%;width:58%;height:104%;pointer-events:none}
+.hero-stage canvas{position:absolute;inset:0;width:100%!important;height:100%!important;opacity:0;transition:opacity 1.2s var(--e-out)}
+.has-3d .hero-stage canvas{opacity:1}
+.has-3d .hero-stage .pen-svg{display:none}
+.pen-svg{position:absolute;left:50%;top:50%;width:86%;height:auto;overflow:visible;transform:translate(-50%,-50%) rotate(-58deg);filter:drop-shadow(18px 26px 22px rgba(29,33,37,.22))}
+@media (max-width:1023px){
+  .hero{min-height:0}
+  .hero-grid{grid-template-columns:minmax(0,1fr);grid-template-rows:none}
+  .hero-kicker,.hero-since,.hero-title,.hero-copy,.hero-fig,.hero-scroll{grid-column:1;grid-row:auto}
+  .hero-since{display:none}
+  .hero-title{font-size:clamp(2.55rem,10.4vw,4.6rem);margin-top:1.2rem}
+  .hero-stage{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:16/11;margin:.6rem 0 0;order:0}
+  .hero-stage canvas{display:none}
+  .pen-svg{width:92%;transform:translate(-50%,-50%) rotate(-30deg)}
+  .hero-copy{padding-top:.4rem}
+  .hero-fig{justify-self:start;text-align:left}
+  .hero-scroll{display:none}
+}
+
+/* STORIA */
+.storia-head{grid-column:1/10}
+.storia-aside{grid-column:1/6;grid-row:2;align-self:start;position:sticky;top:calc(var(--head) + 4vh);margin-top:clamp(3rem,6vw,5rem)}
+.odo{display:flex;font:400 clamp(6rem,12.5vw,12.5rem)/1 var(--serif);color:var(--ardesia);letter-spacing:0}
+.odo-col{display:block;height:1.04em;overflow:hidden;width:.6em;text-align:center}
+.odo-strip{display:block}
+.odo-strip span{display:block;height:1.04em;line-height:1.04}
+.odo-cap{display:flex;gap:.8rem;align-items:center;margin-top:.4rem;font:600 .75rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ceralacca)}
+.odo-cap::before{content:"";width:1.6rem;height:1px;background:currentColor}
+.foto-ph{position:relative;margin-top:2.4rem;aspect-ratio:5/4;overflow:hidden;background:var(--ardesia);color:var(--ardesia-testo)}
+.foto-ph-in{position:absolute;inset:-12% 0;background:
+  repeating-linear-gradient(90deg,transparent 0 46px,rgba(216,186,131,.09) 46px 47px),
+  repeating-linear-gradient(0deg,transparent 0 46px,rgba(216,186,131,.09) 46px 47px),
+  radial-gradient(70% 60% at 30% 35%,#343a41,#1D2125 75%)}
+.foto-ph svg{position:absolute;left:50%;top:44%;width:30%;transform:translate(-50%,-50%);stroke:var(--ottone-chiaro);fill:none;stroke-width:1;opacity:.75}
+.foto-ph p{position:absolute;left:1rem;right:1rem;bottom:1rem;font-size:.82rem;line-height:1.45;color:var(--ardesia-testo)}
+.cap-list{list-style:none;padding:0}
+.capitoli{grid-column:7/13;grid-row:2;padding:0 0 0 2.6rem;margin-top:clamp(3rem,6vw,5rem);position:relative}
+.capitoli::before,.cap-line{content:"";position:absolute;left:0;top:.5rem;bottom:0;width:1px;background:var(--linea-2)}
+.cap-line{background:var(--ceralacca);transform-origin:50% 0}
+.cap{position:relative;padding-bottom:clamp(4rem,30vh,17rem)}
+.cap:last-child{padding-bottom:0}
+.cap-y{position:relative;display:block;font:600 .78rem/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--ceralacca);margin-bottom:1rem}
+.cap-y::before{content:"";position:absolute;left:calc(-2.6rem - 5px);top:.05rem;width:11px;height:11px;border-radius:50%;background:var(--carta);border:1.5px solid var(--ceralacca)}
+.cap h3{font-size:clamp(1.8rem,3vw,2.7rem);margin-bottom:1rem}
+.cap p{color:var(--grafite-2)}
+.polaroid-wrap{margin-top:2.6rem;width:min(250px,70%)}
+.polaroid{background:var(--carta-3);padding:10px 10px 38px;transform:rotate(3.5deg);box-shadow:0 1px 1px rgba(0,0,0,.08),0 24px 40px -18px rgba(29,33,37,.45);position:relative;transition:transform .7s var(--e-out)}
+.polaroid:hover{transform:rotate(0) scale(1.02)}
+.polaroid img{width:100%;height:auto;background:#111}
+.polaroid figcaption{position:absolute;left:0;right:0;bottom:10px;text-align:center;font:italic 400 1rem var(--serif);color:var(--ardesia)}
+.storia .todo{grid-column:7/13}
+@media (max-width:1023px){
+  .storia-head,.storia-aside,.capitoli,.storia .todo{grid-column:1/-1;grid-row:auto}
+  .storia-aside{position:relative;top:auto;margin-top:2rem}
+  .odo,.odo-cap{display:none}
+  .foto-ph{margin-top:0}
+  .capitoli{margin-top:3rem;padding-left:2rem}
+  .cap-y::before{left:calc(-2rem - 5px)}
+  .cap{padding-bottom:3.5rem}
+}
+
+/* CATALOGO */
+.catalogo{background:var(--grana),var(--carta-2)}
+.sec-head{align-items:end;row-gap:1.5rem}
+.sec-head>div{grid-column:1/8}
+.sec-head>.lead{grid-column:9/13;padding-bottom:.6rem}
+.filtri{display:flex;flex-wrap:wrap;gap:.4rem .5rem;margin:clamp(2.5rem,5vw,4rem) 0 1.4rem}
+.filtri button{min-height:44px;padding:.55rem 1.05rem;border:1px solid var(--linea-ui);border-radius:999px;background:transparent;font:600 .88rem/1 var(--sans);color:var(--ardesia);cursor:pointer;transition:background-color .3s,color .3s,border-color .3s}
+.filtri button sup{font-size:.68em;margin-left:.2rem;color:var(--grafite-2)}
+.filtri button:hover{border-color:var(--ardesia)}
+.filtri button[aria-pressed=true]{background:var(--ardesia);color:var(--carta);border-color:var(--ardesia)}
+.filtri button[aria-pressed=true] sup{color:var(--ottone-chiaro)}
+.cat-grid{align-items:start}
+.voci{grid-column:1/8;list-style:none;padding:0;border-top:1px solid var(--linea-2)}
+.voce{position:relative;display:grid;grid-template-columns:3rem minmax(0,1fr) auto;column-gap:1.2rem;align-items:center;padding:1.6rem 0 1.7rem;border-bottom:1px solid var(--linea-2)}
+.voce[hidden]{display:none}
+.voce::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:1px;background:var(--ardesia);transform:scaleX(0);transform-origin:0 50%;transition:transform .8s var(--e-out)}
+.voce.is-active::after{transform:scaleX(1)}
+.voce-n{align-self:start;padding-top:.55rem;font:500 .8rem/1 var(--sans);letter-spacing:.08em;color:var(--grafite-2);font-variant-numeric:tabular-nums;transition:color .4s}
+.voce.is-active .voce-n{color:var(--ceralacca)}
+.voce-tag{font:600 .7rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--grafite-2);margin-bottom:.5rem}
+.voce h3{font-size:clamp(1.7rem,2.9vw,2.6rem);transition:transform .7s var(--e-out)}
+.voce.is-active h3{transform:translateX(.45rem)}
+.voce-desc{margin-top:.5rem;color:var(--grafite-2);max-width:48ch;font-size:1rem}
+.voce-desc a{color:var(--ceralacca);font-weight:600}
+.voce .ask{align-self:center}
+.media{position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(62% 58% at 50% 42%,#30353B 0%,#16181B 72%);color:var(--ardesia-testo)}
+.media img{width:min(58%,250px);height:auto;max-height:66%;object-fit:contain;outline:1px solid rgba(216,186,131,.4);outline-offset:12px;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
+.media img[height="235"]{width:auto;height:62%}
+.media .illu{width:52%;max-height:68%;stroke:var(--ottone-chiaro);fill:none;stroke-width:1.4;stroke-linecap:round;stroke-linejoin:round}
+.media figcaption{position:absolute;left:1rem;right:1rem;bottom:.9rem;font-size:.8rem;line-height:1.45;color:var(--ardesia-testo)}
+.voce-media{grid-column:1/-1;order:-1;aspect-ratio:16/10;margin-bottom:1.3rem}
+.vetrina{display:none}
+.catalogo .note{margin-top:2.2rem;font-size:.95rem;color:var(--grafite-2)}
+/* globo in CSS 3D */
+.globo{position:relative;width:min(46%,200px);aspect-ratio:1;perspective:700px;margin-bottom:12%}
+.globo-in{position:absolute;inset:0;transform-style:preserve-3d;transform:rotateZ(-23deg) rotateY(0);animation:globo 16s linear infinite}
+.globo-in i,.globo-in b{position:absolute;inset:0;border:1px solid var(--ottone-chiaro);border-radius:50%}
+.globo-in i:nth-child(1){transform:rotateY(0)}
+.globo-in i:nth-child(2){transform:rotateY(30deg)}
+.globo-in i:nth-child(3){transform:rotateY(60deg)}
+.globo-in i:nth-child(4){transform:rotateY(90deg)}
+.globo-in i:nth-child(5){transform:rotateY(120deg)}
+.globo-in i:nth-child(6){transform:rotateY(150deg)}
+.globo-in b:nth-of-type(1){transform:rotateX(90deg)}
+.globo-in b:nth-of-type(2){inset:13.4%;transform:translateY(-25%) rotateX(90deg)}
+.globo-in b:nth-of-type(3){inset:13.4%;transform:translateY(25%) rotateX(90deg)}
+.globo-in b:nth-of-type(2),.globo-in b:nth-of-type(3){transform-origin:50% 50%}
+.globo-stand{position:absolute;left:50%;top:50%;width:min(62%,270px);transform:translate(-50%,-44%);stroke:var(--ottone-chiaro);fill:none;stroke-width:1.4;opacity:.8}
+@keyframes globo{to{transform:rotateZ(-23deg) rotateY(360deg)}}
+@media (min-width:1024px){
+  .js .voce-media{position:absolute!important;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);margin:0}
+  .js .vetrina{display:block;grid-column:9/13;position:sticky;top:calc(var(--head) + 2rem);height:min(580px,calc(100vh - var(--head) - 5rem));perspective:1200px}
+  .vetrina-label{display:flex;justify-content:space-between;font:600 .72rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--grafite-2);margin-bottom:.9rem}
+  .vetrina-stage{position:relative;height:calc(100% - 1.7rem);transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .7s var(--e-out);box-shadow:0 40px 70px -40px rgba(29,33,37,.7)}
+  .vetrina-stage::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at var(--mx,50%) var(--my,30%),rgba(255,236,200,.13),transparent 45%)}
+  .vetrina-slide{position:absolute!important;inset:0;width:auto!important;height:auto!important;clip:auto!important;opacity:0;transform:scale(1.035);transition:opacity .55s var(--e-out),transform 1s var(--e-out);aspect-ratio:auto}
+  .vetrina-slide.is-on{opacity:1;transform:none}
+  .vetrina-slide{padding-bottom:2.2rem}
+}
+@media (max-width:1023px){
+  .sec-head>div,.sec-head>.lead,.voci{grid-column:1/-1}
+  .voce{grid-template-columns:2.4rem minmax(0,1fr);row-gap:1rem}
+  .voce .ask{grid-column:2;justify-self:start}
+  .voce.is-active h3{transform:none}
+}
+
+/* REGALO (busta 3D) */
+.regalo{background:var(--grana),var(--ceralacca);color:var(--ceralacca-testo);overflow:hidden}
+.regalo h2{color:var(--carta)}
+.regalo .kicker{color:#F5CFC4}
+.regalo .lead{color:var(--ceralacca-testo);margin-top:1.6rem}
+.regalo-testo{grid-column:1/7;align-self:center}
+.regalo-testo .btn{margin-top:2.2rem}
+.busta-wrap{grid-column:7/13;display:grid;place-items:center;padding:clamp(7rem,14vw,11rem) 0 2rem;perspective:1400px}
+.busta{position:relative;width:min(440px,84vw);aspect-ratio:3/2;perspective:1000px;transform:rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));transition:transform .7s var(--e-out)}
+.busta-retro{position:absolute;inset:0;background:#E9DFCB;border-radius:3px;box-shadow:0 40px 60px -28px rgba(40,6,3,.7)}
+.busta-card{position:absolute;left:6%;right:6%;top:5%;height:88%;z-index:2;background:var(--carta-3);border-radius:2px;padding:1.4rem 1.5rem;display:flex;flex-direction:column;gap:.35rem;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.card-k{font:italic 400 clamp(1.7rem,3.2vw,2.3rem)/1 var(--serif);color:var(--ceralacca)}
+.card-t{font:600 .66rem/1.3 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--grafite-2)}
+.card-riga{margin-top:auto;height:1px;background:var(--linea-2)}
+.card-riga+.card-riga{margin-top:1.1rem}
+.busta-tasca{position:absolute;inset:0;z-index:3;border-radius:3px;background:
+  linear-gradient(33.7deg,transparent 49.6%,rgba(80,55,20,.12) 50%,transparent 50.6%),
+  linear-gradient(-33.7deg,transparent 49.6%,rgba(80,55,20,.12) 50%,transparent 50.6%),#EFE6D4;
+  clip-path:polygon(0 0,50% 57%,100% 0,100% 100%,0 100%)}
+.busta-lembo{position:absolute;left:0;right:0;top:0;height:60%;z-index:4;transform-origin:50% 0}
+.lembo-carta{position:absolute;inset:0;background:#E3D8C2;clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 0 rgba(0,0,0,.08))}
+.sigillo{position:absolute;left:50%;top:100%;width:66px;height:66px;margin:-40px 0 0 -33px;border-radius:47% 53% 50% 48%/52% 46% 54% 48%;background:radial-gradient(circle at 36% 30%,#CF4A3D,#8E1D16 58%,#661410);box-shadow:inset 0 0 0 5px rgba(0,0,0,.12),0 6px 12px -4px rgba(60,6,3,.6);display:grid;place-items:center;font:italic 500 1.9rem/1 var(--serif);color:#F4D2C8}
+@media (max-width:1023px){
+  .regalo-testo,.busta-wrap{grid-column:1/-1}
+  .busta-wrap{padding-top:clamp(8rem,34vw,11rem)}
+}
+
+/* RIPARAZIONE (sezione scura, fissata) */
+.dark{background:var(--ardesia);color:var(--ardesia-testo)}
+.dark h2,.dark h3{color:var(--carta)}
+.dark .kicker{color:var(--ottone-chiaro)}
+.dark .lead{color:var(--ardesia-testo)}
+.ripara{min-height:100vh;display:flex;align-items:center;padding-block:clamp(4.5rem,9vh,7rem)}
+.ripara .g12{row-gap:clamp(2rem,4vh,3rem);align-items:start}
+.ripara-testo{grid-column:1/6}
+.ripara-testo h2{font-size:clamp(2.2rem,4.1vw,3.8rem)}
+.ripara-testo .lead{margin-top:1.3rem}
+.ripara-testo .cta{margin-top:1.8rem}
+.parti{grid-column:7/13;list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1.3rem 2rem;align-self:end}
+.parti li{display:grid;grid-template-columns:2rem 1fr;gap:.2rem .6rem;padding-top:.9rem;border-top:1px solid rgba(216,186,131,.28)}
+.parti-n{grid-row:1/3;font:italic 400 1.15rem/1.2 var(--serif);color:var(--ottone-chiaro)}
+.parti h3{font-size:1.2rem;line-height:1.2}
+.parti p{font-size:.9rem;line-height:1.5;color:var(--ardesia-testo)}
+.px-fig{grid-column:1/-1;margin:0}
+.px-svg{width:100%;height:auto;overflow:visible}
+.px-asse{stroke:var(--ottone-chiaro);stroke-opacity:.3;stroke-dasharray:3 7}
+.px-mark circle{fill:var(--ardesia);stroke:var(--ottone-chiaro);stroke-width:1.2}
+.px-mark text{fill:var(--ottone-chiaro);font:italic 500 15px var(--serif);text-anchor:middle}
+.px-fig figcaption{display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;margin-top:.6rem;font-size:.8rem;color:var(--ardesia-testo);border-top:1px solid rgba(216,186,131,.2);padding-top:.7rem}
+@media (max-width:1023px){
+  .ripara{min-height:0;display:block}
+  .ripara-testo,.parti{grid-column:1/-1}
+  .px-fig{order:2}
+  .parti{order:3}
+}
+@media (max-width:600px){.parti{grid-template-columns:1fr}}
+
+/* PERCHÉ NOI */
+.forza-head{grid-column:1/6;align-self:start;position:sticky;top:calc(var(--head) + 3rem)}
+.forza-head h2{font-size:clamp(2.1rem,3.9vw,3.6rem)}
+.forza-head .lead{margin-top:1.4rem}
+.ragioni{grid-column:7/13;list-style:none;padding:0;counter-reset:r}
+.ragioni li{display:grid;grid-template-columns:3.4rem 1fr;padding:1.8rem 0 1.9rem;border-top:1px solid var(--linea-2)}
+.ragioni li:last-child{border-bottom:1px solid var(--linea-2)}
+.rag-n{font:italic 400 1.2rem/1.3 var(--serif);color:var(--ceralacca)}
+.ragioni h3{margin-bottom:.45rem}
+.ragioni p{color:var(--grafite-2)}
+.voto{margin-top:clamp(4rem,8vw,7rem);padding-top:2.2rem;border-top:1px solid var(--ardesia);display:grid;grid-template-columns:auto minmax(0,1fr);gap:1rem clamp(2rem,5vw,4.5rem);align-items:end}
+.voto-num{font:400 clamp(5rem,12vw,10.5rem)/.8 var(--serif);color:var(--ardesia);letter-spacing:-.04em;font-variant-numeric:lining-nums}
+.voto-num small{font-size:.32em;letter-spacing:0;color:var(--grafite-2);margin-left:.2rem}
+.voto-bar{height:2px;background:var(--linea-2);margin-bottom:1.1rem;position:relative}
+.voto-bar span{position:absolute;inset:0;right:8%;background:var(--ceralacca);transform-origin:0 50%}
+.voto p{color:var(--grafite-2);padding-bottom:.4rem}
+@media (max-width:1023px){
+  .forza-head,.ragioni{grid-column:1/-1;position:relative;top:auto}
+  .ragioni{margin-top:2.5rem}
+  .voto{grid-template-columns:1fr}
+}
+
+/* DOVE */
+.dove{background:var(--grana),var(--carta-2)}
+.dove-testo{grid-column:1/6;align-self:center}
+.dove-testo h2{font-size:clamp(2.3rem,4.6vw,4.2rem)}
+.dove-testo>p{margin-top:1.3rem;color:var(--grafite-2)}
+.info{margin:2.2rem 0 2.4rem;border-top:1px solid var(--linea-2)}
+.info div{display:grid;grid-template-columns:7.5rem 1fr;gap:1rem;padding:1rem 0;border-bottom:1px solid var(--linea-2)}
+.info dt{font:600 .72rem/1.9 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--grafite-2)}
+.info dd{margin:0;font-weight:500}
+.info a{text-decoration:none}
+.mappa{grid-column:7/13;margin:0}
+.mappa svg{width:100%;height:auto;background:var(--carta-3);box-shadow:0 30px 60px -40px rgba(29,33,37,.55)}
+.mappa .griglia{stroke:var(--linea);stroke-width:1}
+.mappa .strada{fill:none;stroke:var(--ardesia);stroke-linecap:round}
+.mappa .draw{stroke-dasharray:1;stroke-dashoffset:0}
+.mappa .galleria{fill:none;stroke:var(--ceralacca);stroke-width:12;stroke-linecap:round}
+.mappa .vetro{fill:none;stroke:var(--carta-3);stroke-width:1.5;stroke-dasharray:2 6}
+.mappa .piazza{fill:var(--carta-2);stroke:var(--ardesia);stroke-width:1.5}
+.mappa .edificio{fill:var(--carta-2);stroke:var(--ardesia);stroke-width:1.5}
+.mappa text{font:500 13px var(--sans);fill:var(--grafite)}
+.mappa .t-it{font:italic 400 16px var(--serif);fill:var(--ardesia)}
+.mappa .t-rosso{fill:var(--ceralacca);font-weight:600}
+.pin-pulse{fill:var(--ceralacca);transform-origin:center;transform-box:fill-box;animation:pulse 2.6s var(--e-out) infinite}
+@keyframes pulse{0%{transform:scale(.6);opacity:.55}100%{transform:scale(3.2);opacity:0}}
+.mappa figcaption{margin-top:.8rem;font-size:.82rem;color:var(--grafite-2);display:flex;flex-wrap:wrap;gap:.3rem 1rem;justify-content:space-between}
+@media (max-width:1023px){
+  .dove-testo,.mappa{grid-column:1/-1}
+  .mappa{margin-top:3rem}
+}
+@media (max-width:640px){.mappa text{font-size:21px}.mappa .t-it{font-size:25px}.mappa .m-hide{display:none}.px-fig{margin-inline:calc(-1*var(--g) + 4px)}.px-fig figcaption{padding-inline:calc(var(--g) - 4px)}}
+@media (max-width:480px){.info div{grid-template-columns:1fr;gap:.2rem}}
+
+/* CONTATTI */
+.contatti-testo{grid-column:1/6;align-self:start;position:sticky;top:calc(var(--head) + 3rem)}
+.contatti-testo .lead{margin-top:1.3rem}
+.diretti{list-style:none;padding:0;margin-top:2.4rem;border-top:1px solid var(--linea-2)}
+.diretti a{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.1rem 0;border-bottom:1px solid var(--linea-2);text-decoration:none;min-height:44px}
+.diretti .k{font:400 1.35rem/1.2 var(--serif);color:var(--ardesia)}
+.diretti a:hover .k{color:var(--ceralacca)}
+.diretti .arr{width:1.2rem;height:.7rem;flex:none;transition:transform .45s var(--e-out)}
+.diretti a:hover .arr{transform:translateX(5px)}
+.foglio{grid-column:7/13;position:relative;background:var(--carta-3);padding:clamp(1.6rem,4vw,3.2rem) clamp(1.3rem,4vw,3.2rem) clamp(1.6rem,4vw,3rem) clamp(2.4rem,5vw,4.4rem);box-shadow:0 1px 0 var(--linea),0 40px 70px -50px rgba(29,33,37,.55)}
+.foglio::before{content:"";position:absolute;top:0;bottom:0;left:clamp(1.3rem,3vw,2.6rem);width:1px;background:rgba(163,38,30,.45)}
+form{display:grid;gap:1.6rem}
+.campo label,.campo .lbl{display:block;font:600 .72rem/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--grafite-2);margin-bottom:.35rem}
+.campo input,.campo select,.campo textarea{width:100%;font:400 1.1rem/1.4 var(--sans);color:var(--grafite);padding:.55rem 0;background:transparent;border:0;border-bottom:1.5px solid #8A8377;border-radius:0;transition:border-color .3s,box-shadow .3s}
+.campo select{appearance:none;-webkit-appearance:none;padding-right:2rem;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231D2125' stroke-width='1.5'/%3E%3C/svg%3E") right .3rem center/12px 8px no-repeat}
+.campo textarea{resize:vertical;line-height:2rem;padding:0;min-height:8rem;background:repeating-linear-gradient(transparent 0 calc(2rem - 1px),var(--linea) calc(2rem - 1px) 2rem);background-attachment:local}
+.campo :is(input,select,textarea):focus{outline:none;border-bottom-color:var(--ceralacca);box-shadow:0 1.5px 0 var(--ceralacca)}
+.campo :is(input,select,textarea)[aria-invalid=true]{border-bottom-color:var(--ceralacca)}
+.err{color:var(--ceralacca);font-size:.88rem;min-height:1.3em;margin-top:.35rem}
+.chk{display:flex;gap:.8rem;align-items:flex-start}
+.chk input{width:1.25rem;height:1.25rem;margin-top:.15rem;accent-color:var(--ceralacca);flex:none}
+.chk label{font:400 .95rem/1.45 var(--sans);letter-spacing:0;text-transform:none;color:var(--grafite)}
+.form-cta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 1.5rem;margin-top:.4rem}
+.form-cta small{color:var(--grafite-2);font-size:.85rem}
+.ok{display:none}
+.ok.show{display:block}
+.ok h3{margin-bottom:.8rem}
+.ok .note{margin-top:1rem;font-size:.9rem;color:var(--grafite-2)}
+@media (max-width:1023px){.contatti-testo,.foglio{grid-column:1/-1;position:relative;top:auto}.foglio{margin-top:3rem}}
+
+/* FAQ */
+.faq{padding-top:0}
+.faq-head{grid-column:1/5}
+.acc{grid-column:6/13;border-top:1px solid var(--linea-2)}
+.acc h3{font:inherit;margin:0}
+.acc button{display:flex;justify-content:space-between;align-items:center;gap:1.5rem;width:100%;min-height:44px;padding:1.45rem 0;background:none;border:0;border-bottom:1px solid var(--linea-2);text-align:left;cursor:pointer;font:400 clamp(1.25rem,2vw,1.6rem)/1.25 var(--serif);color:var(--ardesia)}
+.acc .ico{position:relative;flex:none;width:2.4rem;height:2.4rem;border:1px solid var(--linea-ui);border-radius:50%;transition:background-color .35s,color .35s,border-color .35s}
+.acc .ico::before,.acc .ico::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;margin:-.75px 0 0 -6px;background:currentColor;transition:transform .45s var(--e-out)}
+.acc .ico::after{transform:rotate(90deg)}
+.acc button[aria-expanded=true] .ico::after{transform:rotate(0)}
+.acc button:hover .ico,.acc button[aria-expanded=true] .ico{background:var(--ardesia);border-color:var(--ardesia);color:var(--carta)}
+.pan{padding:1.2rem 0 1.9rem;color:var(--grafite-2);max-width:60ch}
+.pan[hidden]{display:none}
+.pan:not([hidden]){animation:pan-in .55s var(--e-out)}
+@keyframes pan-in{from{opacity:0;transform:translateY(-6px)}}
+@media (max-width:1023px){.faq-head,.acc{grid-column:1/-1}.acc{margin-top:2rem}}
+
+/* FOOTER */
+.footer{background:var(--ardesia);color:var(--ardesia-testo);padding:clamp(4rem,9vw,7.5rem) 0 2.2rem;overflow:hidden}
+.footer-mark{font:400 clamp(3rem,11.2vw,11rem)/.9 var(--serif);color:var(--carta);letter-spacing:-.035em;max-width:none}
+.footer-mark em{color:var(--ottone-chiaro)}
+.footer-cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2rem;margin-top:clamp(3rem,6vw,5rem);padding-top:1.6rem;border-top:1px solid rgba(216,186,131,.25);font-size:.95rem;line-height:1.7}
+.footer strong{color:var(--carta);font-weight:600}
+.footer a{color:var(--ottone-chiaro)}
+.footer-cols>div:last-child{justify-self:end;text-align:right}
+@media (max-width:760px){.footer-cols{grid-template-columns:1fr}.footer-cols>div:last-child{justify-self:start;text-align:left}}
+
+.toast{position:fixed;left:50%;bottom:20px;z-index:90;max-width:min(92vw,520px);padding:.9rem 1.2rem;background:var(--ardesia);color:var(--carta);border-left:3px solid var(--ceralacca);transform:translate(-50%,calc(100% + 40px));visibility:hidden;transition:transform .5s var(--e-out),visibility 0s .5s;font-size:.95rem}
+.toast.show{transform:translate(-50%,0);visibility:visible;transition:transform .5s var(--e-out)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .globo-in{animation:none;transform:rotateZ(-23deg) rotateY(25deg)}
+  .hero-scroll-line::after{animation:none;transform:none}
+  .pin-pulse{animation:none;opacity:0}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Vai al contenuto</a>
+<div class="progress" aria-hidden="true"><span></span></div>
+
+<svg class="defs" aria-hidden="true" focusable="false">
+ <defs>
+  <linearGradient id="g-lacca" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#4c0f0b"/><stop offset=".14" stop-color="#9a2a20"/><stop offset=".28" stop-color="#e08a7c"/><stop offset=".4" stop-color="#b3342a"/><stop offset=".78" stop-color="#7a1a14"/><stop offset="1" stop-color="#3a0a07"/>
+  </linearGradient>
+  <linearGradient id="g-oro" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#6e5020"/><stop offset=".3" stop-color="#f3dca6"/><stop offset=".52" stop-color="#c49a55"/><stop offset="1" stop-color="#5a4117"/>
+  </linearGradient>
+  <linearGradient id="g-nero" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#060607"/><stop offset=".28" stop-color="#4a4a4f"/><stop offset=".45" stop-color="#18181b"/><stop offset="1" stop-color="#030303"/>
+  </linearGradient>
+  <linearGradient id="g-vetro" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#ffffff" stop-opacity=".28"/><stop offset=".35" stop-color="#ffffff" stop-opacity=".07"/><stop offset="1" stop-color="#ffffff" stop-opacity=".18"/>
+  </linearGradient>
+  <symbol id="freccia" viewBox="0 0 20 10"><path d="M0 5h18M14 1l4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.4"/></symbol>
+ </defs>
+</svg>
+
+<header class="site-header">
+ <div class="bar">
+  <a class="brand" href="#home"><b>Cartoleria Mazzini</b><small>Genova · dal 1936</small></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="menu"><span class="burger-label">Menu</span><span class="burger-lines" aria-hidden="true"></span></button>
+  <nav class="nav" id="menu" aria-label="Principale">
+   <ul>
+    <li><a href="#storia">Storia</a></li>
+    <li><a href="#prodotti">Catalogo</a></li>
+    <li><a href="#riparazioni">Riparazioni</a></li>
+    <li><a href="#dove">Dove siamo</a></li>
+    <li><a href="#faq">Domande</a></li>
+    <li><a class="btn" href="#contatti">Contatti</a></li>
+   </ul>
+  </nav>
+ </div>
+</header>
+
+<main id="main">
+
+<!-- HERO -->
+<section class="hero" id="home" aria-labelledby="hero-t">
+ <div class="wrap hero-grid">
+  <p class="kicker hero-kicker" data-hero-in>Galleria Giuseppe Mazzini 44 · Genova</p>
+  <p class="hero-since" data-hero-in><em>dal</em>1936</p>
+  <h1 class="hero-title" id="hero-t">Le penne, qui, si <span class="nw"><em>provano</em>,</span> si <em>scelgono</em> e si <span class="nw"><em class="scribble">riparano<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true" focusable="false"><path pathLength="1" d="M3 13C48 5 96 3 150 7s98 7 147-2"/></svg></em>.</span></h1>
+
+  <div class="hero-stage" aria-hidden="true">
+   <canvas id="pen3d"></canvas>
+   <svg class="pen-svg" viewBox="0 0 640 120" focusable="false">
+    <g class="pen-body">
+     <path d="M18 60C40 55 70 47 104 45V75C70 73 40 65 18 60Z" fill="url(#g-oro)"/>
+     <path d="M24 60H80" stroke="#3b2a0e" stroke-width="1.3"/><circle cx="82" cy="60" r="2.8" fill="#3b2a0e"/>
+     <path d="M100 43L178 39V81L100 77Q95 60 100 43Z" fill="url(#g-nero)"/>
+     <rect x="176" y="36" width="8" height="48" fill="url(#g-oro)"/>
+     <path d="M184 35H588Q622 36 626 60Q622 84 588 85H184Z" fill="url(#g-lacca)"/>
+     <rect x="572" y="35.3" width="6" height="49.4" fill="url(#g-oro)"/>
+    </g>
+    <g class="pen-cap">
+     <path d="M10 60Q11 33 42 31H236V89H42Q11 87 10 60Z" fill="url(#g-lacca)"/>
+     <rect x="214" y="30.5" width="16" height="59" fill="url(#g-oro)"/>
+     <path d="M34 22H198Q204 22 204 26.5Q204 31 198 31H48V33H34Z" fill="url(#g-oro)"/>
+     <circle cx="198" cy="26.5" r="5" fill="url(#g-oro)"/>
+    </g>
+   </svg>
+  </div>
+
+  <div class="hero-copy">
+   <p data-hero-in>Stilografiche, roller, inchiostri e oggetti da regalo nel centro di Genova. Al banco c'è Salvatore Pisano, in negozio dal 1979: le penne te le fa provare e, quando serve, le ripara.</p>
+   <div class="cta" data-hero-in>
+    <a class="btn" href="#prodotti">Sfoglia il catalogo <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
+    <a class="btn btn--line" href="#dove">Come arrivare</a>
+   </div>
+  </div>
+  <a class="hero-scroll" href="#storia" data-hero-in><span class="hero-scroll-line" aria-hidden="true"></span>Scorri · la storia</a>
+  <p class="hero-fig" data-hero-in><span class="fig-n">Fig. 1</span> Una stilografica. <span class="hint-3d">Muovi il puntatore per girarla, scorri per toglierle il cappuccio.</span></p>
+ </div>
+</section>
+
+<!-- STORIA -->
+<section class="sec storia" id="storia" aria-labelledby="storia-t">
+ <div class="wrap g12">
+  <header class="storia-head">
+   <p class="kicker">N° 01 — La storia</p>
+   <h2 id="storia-t" data-split>Nata per la scuola e l'ufficio, oggi è il banco di chi scrive a mano.</h2>
+  </header>
+
+  <div class="storia-aside">
+   <div class="odo" aria-hidden="true">
+    <span class="odo-col"><span class="odo-strip" style="transform:translateY(-10%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+    <span class="odo-col"><span class="odo-strip" style="transform:translateY(-90%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+    <span class="odo-col"><span class="odo-strip" style="transform:translateY(-30%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+    <span class="odo-col"><span class="odo-strip" style="transform:translateY(-60%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+   </div>
+   <p class="odo-cap" aria-hidden="true">Apertura</p>
+   <div class="foto-ph" role="img" aria-label="Segnaposto: qui andrà una foto dell'interno del negozio">
+    <div class="foto-ph-in" data-parallax="8"></div>
+    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1"/><circle cx="12" cy="12" r="3.5"/><path d="M8 5l1.5-2h5L16 5"/></svg>
+    <p>[Foto da inserire: interno del negozio, legno, vetrine e scaffali]</p>
+   </div>
+  </div>
+
+  <div class="capitoli">
+   <span class="cap-line" aria-hidden="true"></span>
+   <ol class="cap-list">
+   <li class="cap" data-year="1936" data-label="Apertura">
+    <span class="cap-y">1936</span>
+    <h3>Apre la Cartoleria Mazzini</h3>
+    <p>In Galleria Giuseppe Mazzini, a due passi da via Roma. È una cartoleria per la scuola e per l'ufficio, come tante nel centro di allora.</p>
+   </li>
+   <li class="cap" data-year="1979" data-label="Arriva Salvatore">
+    <span class="cap-y">1979</span>
+    <h3>Salvatore Pisano entra in negozio</h3>
+    <p>Negli anni si specializza nella riparazione delle penne. Oggi è lui che le apre sul banco e le rimette a scrivere.</p>
+   </li>
+   <li class="cap" data-year="2026" data-label="Oggi">
+    <span class="cap-y">Oggi</span>
+    <h3>Penne, scrittura e regalo</h3>
+    <p>Il cuore del negozio sono le penne e gli strumenti da scrittura, gli oggetti da regalo e la linea «Mazzini Gift». Al banco, il servizio di riparazione delle penne.</p>
+    <div class="polaroid-wrap" data-parallax="10">
+     <figure class="polaroid"><img src="data:image/jpeg;base64,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" width="141" height="176" alt="Penna stilografica gialla su un supporto trasparente, sfondo scuro"><figcaption>Dalla nostra vetrina</figcaption></figure>
+    </div>
+   </li>
+   </ol>
+  </div>
+  <p class="todo">[DA CONFERMARE con il titolare: dettagli e aneddoti da aggiungere alla storia]</p>
+ </div>
+</section>
+
+<!-- CATALOGO -->
+<section class="sec catalogo" id="prodotti" aria-labelledby="prodotti-t">
+ <div class="wrap">
+  <div class="g12 sec-head">
+   <div>
+    <p class="kicker">N° 02 — Catalogo</p>
+    <h2 id="prodotti-t" data-split>Penne, scrittura e idee regalo</h2>
+   </div>
+   <p class="lead">Una selezione di quello che trovi in negozio. Filtra per categoria e chiedici la disponibilità: ti rispondiamo noi.</p>
+  </div>
+
+  <div class="filtri" role="group" aria-label="Filtra per categoria">
+   <button type="button" aria-pressed="true" data-f="tutti">Tutto<sup>7</sup></button>
+   <button type="button" aria-pressed="false" data-f="penne">Penne<sup>2</sup></button>
+   <button type="button" aria-pressed="false" data-f="scrittura">Inchiostri e accessori<sup>2</sup></button>
+   <button type="button" aria-pressed="false" data-f="regalo">Idee regalo<sup>2</sup></button>
+   <button type="button" aria-pressed="false" data-f="servizi">Servizi<sup>1</sup></button>
+  </div>
+  <p class="sr-only" id="filtro-stato" aria-live="polite"></p>
+
+  <div class="g12 cat-grid">
+   <ol class="voci" data-stagger>
+    <li class="voce" data-c="penne">
+     <span class="voce-n">01</span>
+     <div><p class="voce-tag">Penne</p><h3>Stilografiche</h3><p class="voce-desc">Dalla prima stilografica al pezzo da collezione: prima di scegliere, la provi sul banco.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Stilografiche">Chiedi disponibilità<span class="sr-only">: stilografiche</span></button>
+     <figure class="voce-media media"><img src="data:image/jpeg;base64,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" width="141" height="101" alt="Stilografiche colorate e nere accanto a una busta con logo" loading="lazy"><figcaption>Stilografiche <span class="tbc">[modelli e marche da confermare]</span></figcaption></figure>
+    </li>
+    <li class="voce" data-c="penne">
+     <span class="voce-n">02</span>
+     <div><p class="voce-tag">Penne</p><h3>Roller e penne a sfera</h3><p class="voce-desc">Per firmare, prendere appunti ogni giorno o fare un regalo professionale.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Roller e penne a sfera">Chiedi disponibilità<span class="sr-only">: roller e penne a sfera</span></button>
+     <figure class="voce-media media"><img src="data:image/jpeg;base64,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" width="141" height="101" alt="Penne nere con finiture argentate appoggiate su fogli di carta" loading="lazy"><figcaption>Penne nere <span class="tbc">[modelli da confermare]</span></figcaption></figure>
+    </li>
+    <li class="voce" data-c="scrittura">
+     <span class="voce-n">03</span>
+     <div><p class="voce-tag">Inchiostri e accessori</p><h3>Inchiostri</h3><p class="voce-desc">Boccette e cartucce per far scrivere la tua penna nel tempo.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Inchiostri">Chiedi disponibilità<span class="sr-only">: inchiostri</span></button>
+     <figure class="voce-media media" aria-label="Illustrazione di una boccetta d'inchiostro">
+      <svg class="illu" viewBox="0 0 160 150" aria-hidden="true"><path d="M58 22h44v18H58z"/><path d="M62 40v10c-18 6-28 18-28 36v36c0 8 6 14 14 14h64c8 0 14-6 14-14V86c0-18-10-30-28-36V40"/><path d="M34 98c20-6 38 6 58 0s24-4 34-2" stroke-opacity=".7"/><circle cx="30" cy="140" r="0"/><path d="M40 30h80" stroke-opacity=".4"/></svg>
+      <figcaption>[Foto da inserire: inchiostri]</figcaption>
+     </figure>
+    </li>
+    <li class="voce" data-c="scrittura">
+     <span class="voce-n">04</span>
+     <div><p class="voce-tag">Inchiostri e accessori</p><h3>Matite e accessori</h3><p class="voce-desc">Matite, ricariche e quello che serve a ogni strumento da scrittura.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Matite e accessori">Chiedi disponibilità<span class="sr-only">: matite e accessori</span></button>
+     <figure class="voce-media media" aria-label="Illustrazione di due matite">
+      <svg class="illu" viewBox="0 0 160 150" aria-hidden="true"><g transform="rotate(-38 80 75)"><path d="M20 62h96l22 8-22 8H20z"/><path d="M116 62v16M130 67l8 3-8 3"/><path d="M20 62v16M30 62v16" stroke-opacity=".6"/></g><g transform="rotate(-22 80 95)"><path d="M26 88h88l20 7-20 7H26z" stroke-opacity=".75"/><path d="M114 88v14" stroke-opacity=".75"/></g></svg>
+      <figcaption>[Foto da inserire: matite e accessori]</figcaption>
+     </figure>
+    </li>
+    <li class="voce" data-c="regalo">
+     <span class="voce-n">05</span>
+     <div><p class="voce-tag">Idee regalo</p><h3>Mappamondi, bussole e clessidre</h3><p class="voce-desc">Oggetti da scrivania che raccontano una storia, per chi non vuole il solito regalo.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Mappamondi, bussole e clessidre">Chiedi disponibilità<span class="sr-only">: mappamondi, bussole e clessidre</span></button>
+     <figure class="voce-media media" aria-label="Illustrazione di un mappamondo">
+      <div class="globo" aria-hidden="true"><div class="globo-in"><i></i><i></i><i></i><i></i><i></i><i></i><b></b><b></b><b></b></div></div>
+      <svg class="globo-stand" viewBox="0 0 200 200" aria-hidden="true"><path d="M30 92a70 70 0 0 0 128 38"/><path d="M100 164v14M70 184h60"/></svg>
+      <figcaption>[Foto da inserire: mappamondi, bussole, clessidre]</figcaption>
+     </figure>
+    </li>
+    <li class="voce" data-c="regalo">
+     <span class="voce-n">06</span>
+     <div><p class="voce-tag">Idee regalo</p><h3>Mazzini Gift e biglietti</h3><p class="voce-desc">Laurea, anniversario, Natale, un regalo aziendale: te lo consigliamo noi.</p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Mazzini Gift e biglietti">Chiedi disponibilità<span class="sr-only">: Mazzini Gift e biglietti</span></button>
+     <figure class="voce-media media"><img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/4QBoRXhpZgAASUkqAAgAAAACADEBAgAHAAAAJgAAAGmHBAABAAAALgAAAAAAAABQaWNhc2EAAAIAAJAHAAQAAAAwMjIwA5ACABQAAABMAAAAAAAAADIwMTc6MTE6MjMgMTY6MzQ6MjEA/9sAhAADAgIICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgKCAgICAkJCQgICw0KCA0ICAkIAQMEBAYFBgoGBgoNDQoNDQ0NDg0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDg0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ0NDQ3/wAARCADrAI0DAREAAhEBAxEB/8QAHQAAAAYDAQAAAAAAAAAAAAAAAAECAwQHBQYICf/EAEwQAAIBAwICBgYHAgoHCQAAAAECAwAEERIhBTEGEyJBUWEHCDJxgZEJFCNCobHwcsEVM0NFUmKCktHhJDRzosLV8RYlNVNUVWOy0v/EABsBAQACAwEBAAAAAAAAAAAAAAABAgMEBQcG/8QANxEAAgECAwUFBgYCAwEAAAAAAAECAxEEITESE0FhcQVRgZGhBhQiMrHhI0JSwdHwgsJictIz/9oADAMBAAIRAxEAPwDy2NC4MUAmgBQAoAUAmgATQBmgCNACgBQCgKAFACgBQAoAwKAVQAoAYoBJoAsUAWmgBigAKAIUAZFACgDFAA0AQNAHQAzQAoAUAugBQCaAFAFQANAFigDAoAtNAHQBEUAYFAA0AWKkBioBOfgU4iE5gmEBOBMYnEJOcACTToJJBHtcxWHf0tvd7cdv9N1teWpmdCqobzYls/qs9nz0IVZbmGwMVIHNFAEUoAaaALTQBaaALFADFACgBmgBQAxQAoAjQBZoDavRf0T+vcQtbbGVklBk2J+zTtuDjlqUacnYFhXO7RxXuuGnV4pZdXkvLXwOp2XhfesVCk9G7vos356eJ6cdPTb2fDmhMEZTqeqRSi5Esum0GAVOlIo5ZpAF2zF7SnBXybs27dao82oSz4qU1ZZ9Nq597jpbdSnSjxmrLhsxz/ZHlz036r65ddQNMXXyaAOQGo7DyByAO4V61gdv3envPm2Vf+9NT4HHRjGvUUPl2n9/W5hK30c6wupKgoAUAKAFAFigBigBpoA8UAKABoBJoAiKALFAdTeoX0F669uLxlBSBBGur2S20kmfDZYxnP38d+K+F9qa/wANPDp6vafRXS88/I+19nKOyquIfdsLq83+xc3rQ+keOKKaEpreJEuIpjKRoCLPCE6rfX1kkpAkJGnqyBr1HTy+zMKvd1DjVmuqinnl4PzN+pWtiZVXpSg34vTxd/Q89SfHnzPmfGvSlyPg5u+b1/cImpMIurlQUAKAAoBWmgD0VFwDRS4D01FyA9NLkiStAEwpcDZqwEk0AKEHpN6nXQxbLgIleMdbdkSFjkYViJCCvIsEFupLBiApwPbFeP8AbFf3rG1LZ2apxz7snbhnLPxy439PwdL3fCUoaXTqSy4y0vxyWXgc9+uz01629uYUJ0C5+popXSRHwtFtJSfvNrvY5nBYns4wBuT91gaX42yvlpQUV1kl/qj53F1NnC3fzVZtv/rF3+rXU5er6M+XkwUMTzFVckMGgBQBqKAeVahgVoqpNgBKEilioVD6ugEMlANstANOKsgNkVIM10J6NNeXltaqCTPMkZxzCk9sj9lAx+FaeMxCw1CdZ/li348PWxu4LD+8V4Uu+ST6av0ueoPpC6RnhXCIVi0iWPqY4VyyBpZpFKqxXcEa1UkZwieRrx7s+DnWg5aK85Pp8X8Lqek417Tls8bQXjaP3PNn0u8Y629ddbOsAWEMzFi7LlpHYkkl2kZtTEkswJJNepdlU3Ggpy1m3N+Onpn4nxnbNRPEbuPywSgvDN/Wz6GlCuwfOsOhAsCrgFACgFpQEhBVWSh0JUEihHQCwlCLBMtSQxllqbAaYVDAy60IGXqxJ1r6pHo4T61DJJEhkixI0hQF0Zw2pQ/NQsRKEA4JJOMkGvjfafEbGHjS/XLPpHN+tj6z2cpLfTrP8kXbrLL6X8y8vWa6VaFiRo1OjVeamkUyqUWaBITFpLJHM8pYMzIddmoCsCzD5PAUdqndfNUlsrlGLz6Xb45NI+nVSMZynLSnFy/yadvGyfmedXSKyKStqcOz/aMwBA1PljsfMn4Y5V6xBKMVGOiVl0R5rUcpNylq22+rzZjRVzXYKEC6uAUAKAcSgJMQqrLEpEqAOiOgAEoQxDrUkDDrVgMMKAbdaiwM10G4H11ygPsR/av4EIRheR9pyq+4nwpoQdt+q1w4RHi/FJoVdLCzymuQhtWhp3lhgG84UL1ZK9sMSkZLOAeXilTqtUpWfJ249TpYZTgt4rpaXV87Gp+sT0phk+rwq0U12sUKXc8V1LMWljQGQPFLFE0C6pAAjpH9oJQhfRKE0qGApU6inCNreXlp5G48bWdOUJP4W+KV/PVnIvTNv9JlA+6VX+6ig/jmu8kciTMMKkwsFALq4BQAoBaUBMiqpYlI1QRcdBoAjQi4hhQDD1KBHZqsBBNAW36Luj2mAOR27hgwHf1SkrGP7TFm8wyeFVfeEr5LU7F4d0Ijg4eqSICdGtjgbsBn4EZ+TD4eIY/GyxFeVZcZfDyWi9LHreHwqoUY0u5Z9Xm/W5yy8CvO5HsmRtPkAcfI4zXrXZ8JRoQ285WV/E89x8060tnS9l4FD8en1TzN4yyfLUcfhiumjlN3IVSYwVIF1YAoAUAamgH45KiwJKS0sCShpYCqiwEO9LAiTSVYERpKAyHR7hTXE0UC85GwSMdlB2pH3/oIGbHfjG5xQg6x9FXRkTXkCKuEQqQo5BI8BF5ch2R7q+f7cxXu2CnLjL4V46+Sud3sXDb/ABcLrKPxv/HT1sXj6dOLm2tp48jITQNJyAWAyM+PJT5jHdXlGCoOriadHmr/AFfkekYiso0ZVe5Pz4HKdogRSf6KEn4Ak/lXt0VkeS1JXZzmzkkk8yST7zuaymuwVJUGaugLoACgBQANABTQC1loCRFd0BMWcGoBHnuvCiBBeXNSBstQgtb0O9HiFkumUjXmGE4O4BDTONt8EJGGBP8AKg4xQHYHq88F0iS6YbDsqT/VBz3c85+IFeYe12KvVp4dflW0+stPRep6L7NYfZoTrvWb2V0jr6trwNX9YLjxbq4s7u+tt88u1+ZFavszQ268qr0isur+1zY7dq7vDqmvzP0Wf1sUpxyfRbXLjYrBJjybSQPxIr1NLI81bOfBVkQwVJADVwLoAUAKAI0AVADFAAKfCgFKDQi4RjNBcMRGhA5bWLOyog1O7KiKObMxCqo8ySBQg6d4P0cEEcUCbrEgjyNtT7mR8b/xkhZsb88UXMN9x1B0K4cLezROQCanx3/ePzOD768E7UxHvOJnV727dNF6WPb8Jh1h8PTo/pivPV+tznX0j8T+sXjsPZXsj8z89vlXpfs7hd1hU3rJ38NEfA+0OI28RsLSKt46v9vIr30gsVsbk8tXVR/35VDfNQ1fXWsfIIosQ1BZhiKpID6qrAcEdAAx0AfV0AWmhAeigQNFCLmxdAvR/d8Tu4rKyhaa4mPZUbKqj2pJG5RxJnLO2w2G5Kg1lJRV2Sej/on9RHg9jbBb+CPiV24Bmmm19UpI9i3iDAJGpzhmzI53JA0qvLniJSfw5ItsnPfrY+pMeHI3EuDxySWCjN1aZeaWzAG88TNqkltcbyBi8kG7ktHqMGzSrbWUtfqVaORNNbhUsj0GdFzLdNcEdi1XUPOeQMsQ/sr1kniGVPGpBf3BuHkyxrjJLrsO/fPfj91c/tGoqeFqzbtaEs9bZW0uuPNdTcwEXPE00lf4ly0d/wBi2el/TFUgW3jWUXEwCKrRtgHT2sOgZNKnJyXHZAOByHjWH7PliaqVNprk1l4OzPWauOVJOdS6tno300NRuPRzbsPZKNjdkJ3PiQcjJPgATXtFKCpxUVosjyavUdWbnLVtvzKx9LfolmazkEM0QWJhcSmYmIdTEkhZdWl11airDJUHSdxsDs7VzVtY5YXepAeKsiQ8VIHtNADRQA0UAWihDD0VYqbX6MvRhecXvIrCxi62eTJOciOGIEa553APVwx5GpsEklURZHeNGrJqKuwesnq+erhZdHrTqYB1tzKFN3eOuJbhxvpUZPVQISergBIUbsZHLu3KnJ1HyMqyLRkt6lQSKiBBUOFwjiX1sfUWE3WcS4FCqzbvdcNTsrNzLTWQ9lJu9rXspJzj0OOrmzU6rXwy8/5DRVvou6FGysIUkQpNNm4mVgVZWkC6EZSMqY4hGpUgYcvsCTW8ncxvI2tuDynq2j0pI8nVwM42+sPphgkH+wup7aVjjYLtvy08Y1unHvsv75eptYVXqJvRZkzoF0lk4rf3t4H1WULmKxUJj7NyTA7F0ErSGxFtLI0h1NNcTFgpwqc+jgMPSqOpTpqMuLWXXlm+WeurN2ri684bE5txedn6Z2uWIbbnXURz2c4ett0uaOOGyjOFuMyTEYyUhK6I/wBlpHDk5H8Uo3BarojU5d01kRUGKuA/fUAkhaAMJ+v176AGihAvqqmwZvvoZ9CV9x28WzsUzjDTzuD1FrETjrZmHjghI17crAhRgMy1nNRV2RY9YfQT6vlh0ftPq9mmqSTS11duB9YupFBwXYezGmphHCvYjDNjLM7vzpSdR56F7WLOEYq6SIEm3qSBBtqWBB4mNKMRzxge87D5c6rJZBa2KJ9IfohimKzI3VMWAlGMhxndh4Sbe5u/fnFKq45MvKFyqPTlYpBCyprVYrTqYFiOiVbi+eSyhZH1o3WBpfroC6nb+D22ILEVqpznF3yWZsUlsxdtSR6LOhL2PD4YpU6uZtUsyAhtEsrFjEGUlSIV0wrgkaYxjaske4iTu8jJ8f4msETyvuFGw8T3D3k1mRjZxB6w/E2lvYtRyRaox8A0s07n/d0Dy0is1jHcq0irkAC0AenyoCcyd/P9f50AZSgFCGpILI9AfoMuukHEY7C2OhMdbd3JGpLW3XZpCMjW7sRHFHntyMCcKkjLVysrk2PXX0Uehiw4HZpZcPi6uJe1I7nVNcSkANPcSYBkkbAHcqKFRQiqqjRn8bzLG3Og8qKxUSFqQOIP1vQBsnv+RqciphuMjcDw3Pv/AOn51hnLgWijEi0UkBgCDzBGQR7jtiscdUZOBxp0pik4l0mjsUidYbW+kup2VV0R/U1MdrsTkBcyp3qxuxsupScrvtPyNmyjBc8y9eLdFplQkhXXxXstz/oMd/g3wrMa5zv6VuOl5BCm8ce5I+85H/Dy9+azU4lJM5C9L9xq4jcD/wAvqYx5BII/+IsfeTWTiUNN01YkMJU2AYWoBkgtTYBrHUA6t9F3os4VNwi2uuoikWaNbXibSBnmjnaV41u7ZurdoGgnlWNyjwqLVjMxItq+CxuKxjxNajGbjOm95TS0lTy2oStlLLZdpXbd1bNn2uHweGjh6NdxThNbE29YzzV+9Z3WVlo75K/anqU+guDgvCWAdLi4vLmaeecIgbQjdTbwagitiKKMOyMWVLia40EqymvoKGNhi6UK1PRrTufFcdHdeB85icLLD1JU56p+a4PxWZ0EoHhWZM02KaHNXIGjFUENDbSqCF1DUwJC5GSBzIHgKsVF6e/w50Bql/IMk9/6/XwrAzKkYSe+KsDjOO79Z/KoTs7lrXyMBO1pC888Vuq3FwwaVgoUyFF0oXbUxOldhsBnJ0jUa2t8u4jdvvOdPWB4lcPNHqmcwsupIQdKI6nBOB7R5EM2WGTjArLSltvMrUhslOlMsoOTkjz5netyxqnLfTC46y8u3/pXM/yErKPwAx5VVGQxIiqwB1dWAXV1FiDLiKoJAsVAXz6pPpFW3vH4fcLHLb3oYrFMoeF5QhWSGRG2aO4gyjKdiqsOb18n29RnTUMfR+ek8+F4t6N52zbV82lK/A+t7CrQqqpgKvy1FdcpJfZPrHTNnpL6KQLYdUrEwS4kh1E6tBLLEzFmLa2VOqlzn7aM4aRWDtw8DXjQxG7jfd1fxIX4N6r0tblzMmOhKpT/ABP/AKU/hlztx9b87voWxA+a+wR8u1YnRR1kTK2HjbUIsV/xXgbvc6AhKNIrF8IQOTZ3yx0dpR4Eqfu4q5jZudxw4yKyhihYY1AA43B5HY55e41DBq1/0KnTfAmHihw3xRj/APVmrC4mRM1m8h5gggjmpBDD3qcH8Kx2sZEzCXdhmhnTKN9P/BiEgkxyLqf7QUj37g8uXlW3Q1MVbQo5uydXcilj5aQTn8K6XA5/E5CTLdojdtz7zufzqiMgvq6sAjHU3AQjqAZkw0LA6mgsbz6B+h5vuO8HtR/LcStdWCVPVRSCecAruCYIpAMd5G4rDWgp05Rlo00+jyZlpTcJxnHJppp80enFhO6wSW66jJaOxSQ5V+qEiq4KnByCUn33Cq6gADDeQV04QnhpfNRbqU5d8braXrteFuGfpbhGrOGKXy1EozX/ACs7P/V9Uy0fRz0mFzCMtqkjOiXYD7Qc+WB8gBX2/ZmL95oxqcePXifG9o4XcVXFacOhvVvXYOSSmttSkHOCMHHOlwYT/sUoBUPIEznRrkxgkluTjdskE9/M6jWTaMTRmLWzCAKM4HLJLH4liTTUEtTUNAwvHOHI+zore8Z+Xh8KJEo0646Fhj9mxXybtL/+h8z7qxuJkUrFL+sz0baCwWS4CxxpcRgzM6iIGQNGgLsVCl3ZVAbGWIAJJAOWlG0iJu6OPfSCnVWl24/9NKFPcS6lBg9+SwG3jXQbyNVLM5aEH68qIlg6mrALqaAHV0BmGjqC9g+qqSDpb6Oron9Z6W2DHOLO3vr0jbfTbmzAb+1eqwx3qKw1XaDLwV5JHpR0+6Ipa3f144MJ2kUqSq6zgu4UFnjyx1rsdJbffK/M1cLQlWWJqr5U9dLcW+iv5s+ipYmsqTw9O/xNW779y7r5eSKr9HvQluE8TvjE4/g7iM6zW0BTS9tLp+0DlZGj0yN2UREXSqpkuWOnmw7doVMRGhCLSzSk8rvgrWyXdn3ZGWXZNWNGVSUrtZtfV3488joexOa+oTR884mVhSgHuppcq0D6pmrXIsK+q1KZFhiXh4bnQJDacHUUuWsUp68PRpZ+inGFblFBFdc8f6pcw3PPw+y38s1aLzDR45mdkjeKKSVIW9uEOwibDhh9lnRnIBLBQSQK3jAzFGHfH4/51cqN9V+vwqQF1FQLBCGgM00P699DIxaQ1WxU7l+iZ6LrJxbi90RlrXh1vbo2TsL+5eRxj2c/93pg4yBnB3Odeu/hM1LW56V9IeBLNG0bDIIIweR8RXKlFSVno9TfhUaaa1KIveD5L2jgh48GNu/AyY2U884Gk7e0vfmvJMfg54fEOEb5ZxfG2q8eHVHpdCqqlFVsrPKS56P+ejN26G8R1oA3tr2WHmP8Rhh5GvSey8asXQjU46Pk1/b+J8Dj8JuKritNV0N5srPUM5x4bZz+W1de5zFEkvZ/1h8v86gq0D6v51JFhgcyO8c6uiqCMVXFhQSoJNB9PnRv65wTi9rv/pHDL6LbmNdtIAR5gnI86tF2ZWSPDFzrVWHJlVv7y5+A7q6ETWkiLJFnl+ts/n+NWKjfV/gKkCerxtQkSYaEmfEH7/w2oWYcUHPbH6AqCp6bfRMdHNPDuMXRXBl4lHbq2nGqO2s4ZBg/eVZLuUDGwOocwa0sS8kjLDRnd0sGa55eM7FTelro2VMd3GCHhOW089GQSR+yQGHuPjXzXbmDdSlvYfNDPLu19NT7LsTGJSdCfyyVvH76eRrVjxBY7mOYfxN1gMB7KzKOXkG5DyZBXD7Ixip4hcI1OHBTWq6PhycVwN/HYV1KLi/mp+sHx/noy2LO4r0VHxTVmT+rBoY2gBamxA1cQ53HPx/cf1tUohoRjNSQF1dELELilmHR0IyHRlPuZSP31dFGeBlzwUwF4DnNuxgOcZPUOY2Jxt93f310YmvJEB4sHGNh3/s/9QDVrGMZeL3Z3/A4/fUkoDRfr3bfLlQkJY/H9Y2/dQGfhhGcZJ8c8xgnP686AUIgCCds7+W+c/hj4/GgPYL6ODoy1v0UsmkGHubi/uTy3V7yZITt/wDBHHXPxGtizeR06VrSaIIHEuErIrKwyGGCKhq6sbFOs4O5QvEeDdU81m3f27ckkbjPV4Pcckxk8hqVt9IrzTG4N4es6S0l8UH3Ph/58U3oel0cR7xSjiFwymuXH9n4NcTcvR/xzr4EdtnHZdfB12YeW4yPIivQcBiViKEanF69Vk/U+Nx+H3FaUeGq6PQ3y3Wt5nOHHgqblUxBjqS1xh7egaB1dW4EWI80dSijR4f+nfo19X43xeHkE4nenHdplnklQZ7hpZV2PKuhB5GrLU0GWENy7zjIxtqTOO/mdjt31lMZGSMctid8557g5z5hv3eNQSMtCBz7x3+GO7zz+dNQKNmCd/AHbz93uqbFjYXjIOw5b55clAPvxnO2O/30IQ9ImkMcezkjPLSq7/nVwe4fqxdFWsujvBLV/wCMh4XZLIfGUwI0p333kZjvvXNqK8mxJ5lnaaxbBW4KxNWJK79KXQ8yoJoxmWHLKM41DG653wDyzg454OMVysfgI4yCg3Zppp93f6etnwO92b2g8M2tU1p9CuOi/FOo4no1E2vErdbm11DBiuLcLFe2zYUEHeK6QSEy4llUgCIBenhsFRw1O1FWvm827t6vP9rLkalfFVK0vxHpplwLus4/fWRmNuyJbQVBj2xtoaFrjbR0L3GytSXGZUqUUaPHv11eCmLpPxcEdmSW2mGe8S28Bcgd4LlwfE5510KbyNWoUQV0toA2BG+2kaWBz45wwU7YzjfAOM5hI80OnkMnLA9x7LFs5/ZJzvyPzAJott9uee/BDagPMfmKWAwIie7Hhp357+XLPd51BNjYntyR3jvJ25O3Lf58vCrpAm8P4D9aZLXP+sulqCOeq6lWAEZ21ZfOKEo9+uHWgjjSNeSIqDyCgKB8MVoatmNj+ajLQANUcbgSy5rHs8CxRvpJ6HpHKmWWIfWFurKZvYt7tQyyIx30RXcLSwucffJzq01kpu2TM97q/cWXwC8LIpIIOMEHmCOYPmDUThZmRO6M2xrFYxobJqUiw29TYuhBWoZdMalj/wA6Ik8qfpI+DSR9IxKAvVz8OtSNjqZ1e4SQZ5exFGF78k+VblJ5GvURy5crqzg4y2xPLS6AnI88d3fjetk1yPCuQudyWBJ8dYK8u7GMEeXyPIDKIQRk5HcPeSh35krsN+7PvqSRq4BAXBxsRnx0nA/XnUDQ25E1Y8GODnwUb5Hd2u4+PwrKCxPVh6Ord9IOC2xXY8RtZiOQJsz9cJHcd4A23cM8jWNslZZntyK1LGMKqWuAxV0gE1UkrgxXSPo8lzC8T5AYEBhsykjGVI3B37qw7LLxlZ3MF0G6IS2kCQyyiYp2VfGDoXsoG8WCBQW+8QT31MmzMppm1FKhGO+Y06ULpjbJVSw2y1KLpiaWLnnN9KRwbF3wqbH8ZbzREjn9nPEy488TNj41tUWYpnCyIEwgO5KnB9rIYAgZ7RBXceAz3DbaNew1PFpJc7EFt+7IOV25DIOPefOjIESxhx4qWbT4ZIOD880Aw06cmU7HYAE45AjO+2QcUBuEOSGyMbNjfOdbYznyxjHx76vcmxbnqwekSz4Rx214hf6xa2y3LFoonmkWRrdoAVijBdlAkbJUFs7BTUSzRK7jvp/pIujO+mTiDYONuG3a92r+URO7v5VrOEtCXTtxRCk+ku6O/dj4o3LGLLTnVuPblXHLv5VG7kN3z+pAufpPuAgZWz4w+wI021qucnSP4y9Tvqd3Indr9S9TDv8ASpcI3xwbjxwGPscJGyHDH/xbuP6NRupFXFIS30p/DOX8C8czuP5p7gD/AO6HuI8qjdMiy5/3xGZfpUeHD+ZOM93NuEj2skfzkdjg792KKiybR5+S/kZm+lNssZXgXF+QbtS8MGx5Ha9Y+fLYA1O4feT8PPy+5DP0p1sdWOB33ZDE5ubPbSxH3ZH9rBK88gHlyp7vzLrZIl99KbCpI/gSfOcANfQLq2yNOIWzk9n9rao3HMlSRieK/SjXC56vo9G2CAes4uUPaIC4CcMmySTgju8asqHMttxWhipPpSOIHl0ctx7+My/8nFTuCu85ev2KS9Y31qrjpLHbx3HDIrF7RndJI75royCXQrIwa0tlRQVR9QLHbbFXjT2Sjlcoa+tsamIyQxUnG/aCFdPmp04AwQOXnnsUGojqXVggdYp0kYO6hc/E8s1FiCMVw2nGwK5fuOjYnHMkghTtt47VNiRyCAY8MEj4ZJH4EVWxNjYbeJtWSezlRpxyzqZQT36fD88HMhDs0ZKjB07E525O2w8MHmfcKmwJMc+ld9yvWEnJBOk43HLfw3xgAcqIkZgBR8luRxg4wPswdQ7/ABHaJ2zUWzAieIFVySNCxk6SQe0wzk+CgZ8ufdUkDsc4xtjKRuvdzLBVz3bhc4/xoSFEUidhnB7SkE5LKUGnTnvLbDT37Y2GIIHbi3U4Mg1CMRg+AUjtkfv8lz75IsFHe60JU6gFRCw5k6sEDz0nmPHyNTcEeaRY2aMDGoOMKOydeOrJI7IC5IOeQ8tNQCReAdtmGdLJkYySpTThRv8AeYnG5J88UYIsE+qN2ORpSPIOzdgls4ONjyB7ypqETYfbiwA9liM4B27RzgY3yM7gFufiBipuLEK5kywBUglXGnbfIG2ckd2N/wAqMWIMUpIDNsQY9ue2yls+ONW25GPKoRLI9xqBwADGNs53wjBuX9XJGc77+G4oCeInVjnrIGeWJBk/vPvAqbkh8PfAJcgFsNtsMYwPDcY3G+/vqCUZPiZ7Y/ZB223w3PHP4+fjQhGRu9g+P6CD4HVR6Esi2wwJQM4095J++4787eXLOTzJNIjgDicQJJI3HI+GI9Q+THNSypIuGzn+t1YPmCd/nk1BLGIYwqkAAApkgDbIdgDjxwAPgPAVS+YJM0YLMSATqcZO+yx7AeGOYx371YkkEZ595hz57H/CrkDIQY/sD8H2+WTVUGC55nzebP8AcA/ID5CoJQiM5xnvMJ+O+9GSRnGzf7KX8HbHyqANLGBBkADYk4HMrkgnxIIGM1KIItpcszamOSCgB5YDI5PLxNECJeykA+9h8Otj2/3j86uSKuGwG8pQB8VUH5g0ZVkfhshMeScnrEHwGkD8CaqCFxG5YSMAdsA4wOZyT8zQlH//2Q==" width="141" height="235" alt="Due penne in legno con una busta color avorio" loading="lazy"><figcaption>Penne in legno e busta <span class="tbc">[modelli da confermare]</span></figcaption></figure>
+    </li>
+    <li class="voce" data-c="servizi">
+     <span class="voce-n">07</span>
+     <div><p class="voce-tag">Servizi</p><h3>Riparazione penne</h3><p class="voce-desc">Salvatore Pisano si è specializzato nella riparazione delle penne. <a href="#riparazioni">Come funziona</a></p></div>
+     <button class="btn btn--line btn--sm ask" type="button" data-p="Riparazione penne">Chiedi informazioni<span class="sr-only">: riparazione penne</span></button>
+     <figure class="voce-media media" aria-label="Illustrazione di un pennino e di una lente">
+      <svg class="illu" viewBox="0 0 160 150" aria-hidden="true"><path d="M52 20h40v14c0 16-8 34-20 62C60 68 52 50 52 34z"/><path d="M72 58v38"/><circle cx="72" cy="54" r="4"/><circle cx="112" cy="96" r="22" stroke-opacity=".8"/><path d="M128 112l18 18" stroke-opacity=".8"/></svg>
+      <figcaption>[Foto da inserire: banco di riparazione]</figcaption>
+     </figure>
+    </li>
+   </ol>
+
+   <div class="vetrina" aria-hidden="true">
+    <div class="vetrina-label"><span>In vetrina</span><span class="vetrina-n">01 / 07</span></div>
+    <div class="vetrina-stage"></div>
+   </div>
+  </div>
+
+  <p class="note">Marchi trattati: <span class="tbc">[DA CONFERMARE]</span> · Prezzi: <span class="tbc">[DA CONFERMARE]</span></p>
+ </div>
+</section>
+
+<!-- MAZZINI GIFT -->
+<section class="sec regalo" id="regalo" aria-labelledby="regalo-t">
+ <div class="wrap g12">
+  <div class="regalo-testo">
+   <p class="kicker">N° 03 — Mazzini Gift</p>
+   <h2 id="regalo-t" data-split>Laurea, anniversario, Natale, regalo aziendale.</h2>
+   <p class="lead" data-reveal>La linea Mazzini Gift, i biglietti e gli oggetti particolari che trovi solo in negozio. Dicci per chi è e quanto vuoi spendere: il regalo te lo consigliamo noi.</p>
+   <button class="btn btn--carta ask" type="button" data-p="Mazzini Gift e biglietti" data-reveal>Chiedi un consiglio <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></button>
+  </div>
+  <div class="busta-wrap" aria-hidden="true">
+   <div class="busta">
+    <div class="busta-retro"></div>
+    <div class="busta-card"><span class="card-k">Mazzini Gift</span><span class="card-t">Cartoleria Mazzini · Genova</span><span class="card-riga"></span><span class="card-riga"></span></div>
+    <div class="busta-tasca"></div>
+    <div class="busta-lembo"><div class="lembo-carta"></div><div class="sigillo">M</div></div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- RIPARAZIONE -->
+<section class="dark ripara" id="riparazioni" aria-labelledby="ripara-t">
+ <div class="wrap g12">
+  <div class="ripara-testo">
+   <p class="kicker">N° 04 — Riparazione penne</p>
+   <h2 id="ripara-t" data-split>Se la stilografica non scrive più, portala al banco.</h2>
+   <p class="lead">Salvatore Pisano lavora in negozio dal 1979 e si è specializzato nella riparazione delle penne. La guarda con te e ti dice cosa si può fare.</p>
+   <div class="cta"><button class="btn btn--carta ask" type="button" data-p="Riparazione penne">Chiedi informazioni <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></button></div>
+  </div>
+  <ol class="parti">
+   <li><span class="parti-n">1</span><h3>Pennino</h3><p>La punta in metallo che tocca la carta. Il taglio centrale porta l'inchiostro al foglio.</p></li>
+   <li><span class="parti-n">2</span><h3>Alimentatore</h3><p>Il pezzo nero sotto il pennino: regola quanto inchiostro arriva alla punta.</p></li>
+   <li><span class="parti-n">3</span><h3>Impugnatura</h3><p>Dove appoggi le dita. Tiene insieme pennino e alimentatore.</p></li>
+   <li><span class="parti-n">4</span><h3>Converter o cartuccia</h3><p>Il serbatoio: il converter si ricarica dalla boccetta, la cartuccia si sostituisce.</p></li>
+   <li><span class="parti-n">5</span><h3>Fusto</h3><p>Il corpo della penna. Di solito si svita per arrivare al serbatoio.</p></li>
+   <li><span class="parti-n">6</span><h3>Cappuccio</h3><p>Protegge il pennino e tiene umido l'inchiostro quando non scrivi.</p></li>
+  </ol>
+  <figure class="px-fig">
+   <svg class="px-svg" viewBox="0 0 1000 250" role="img" aria-labelledby="px-t">
+    <title id="px-t">Schema di una stilografica scomposta in sei parti: pennino, alimentatore, impugnatura, converter, fusto e cappuccio.</title>
+    <path class="px-asse" d="M20 125H980"/>
+    <g transform="translate(150 65)">
+     <g class="px px-conv" data-x="10" data-y="70" transform="translate(10 70)">
+      <rect x="150" y="47" width="238" height="26" rx="6" fill="url(#g-vetro)" stroke="#D8BA83" stroke-opacity=".55"/>
+      <rect x="156" y="51" width="150" height="18" rx="4" fill="#243357"/>
+      <rect x="386" y="49" width="34" height="22" rx="4" fill="url(#g-oro)"/>
+      <path d="M394 49v22M402 49v22M410 49v22" stroke="#6e5020"/>
+      <g class="px-mark" transform="translate(122 60)"><circle r="13"/><text y="5">4</text></g>
+     </g>
+     <g class="px px-feed" data-x="-60" data-y="55" transform="translate(-60 55)">
+      <path d="M38 63C62 66 88 70 114 71V80C88 79 60 74 38 67Z" fill="url(#g-nero)" stroke="#fff" stroke-opacity=".14"/>
+      <path d="M70 70v7M80 71v8M90 72v8M100 72v8" stroke="#fff" stroke-opacity=".18"/>
+      <g class="px-mark" transform="translate(75 104)"><circle r="13"/><text y="5">2</text></g>
+     </g>
+     <g class="px px-nib" data-x="-120" data-y="0" transform="translate(-120 0)">
+      <path d="M18 60C40 55 70 47 104 45V75C70 73 40 65 18 60Z" fill="url(#g-oro)"/>
+      <path d="M24 60H80" stroke="#3b2a0e" stroke-width="1.3"/><circle cx="82" cy="60" r="2.8" fill="#3b2a0e"/>
+      <g class="px-mark" transform="translate(60 24)"><circle r="13"/><text y="5">1</text></g>
+     </g>
+     <g class="px px-section" data-x="-40" data-y="0" transform="translate(-40 0)">
+      <path d="M100 43L178 39V81L100 77Q95 60 100 43Z" fill="url(#g-nero)" stroke="#fff" stroke-opacity=".14"/>
+      <rect x="176" y="36" width="8" height="48" fill="url(#g-oro)"/>
+      <g class="px-mark" transform="translate(140 18)"><circle r="13"/><text y="5">3</text></g>
+     </g>
+     <g class="px px-barrel" data-x="90" data-y="0" transform="translate(90 0)">
+      <path d="M184 35H588Q622 36 626 60Q622 84 588 85H184Z" fill="url(#g-lacca)"/>
+      <rect x="572" y="35.3" width="6" height="49.4" fill="url(#g-oro)"/>
+      <g class="px-mark" transform="translate(400 16)"><circle r="13"/><text y="5">5</text></g>
+     </g>
+     <g class="px px-cap" data-x="560" data-y="-72" transform="translate(560 -72)">
+      <path d="M10 60Q11 33 42 31H236V89H42Q11 87 10 60Z" fill="url(#g-lacca)"/>
+      <rect x="214" y="30.5" width="16" height="59" fill="url(#g-oro)"/>
+      <path d="M34 22H198Q204 22 204 26.5Q204 31 198 31H48V33H34Z" fill="url(#g-oro)"/>
+      <circle cx="198" cy="26.5" r="5" fill="url(#g-oro)"/>
+      <g class="px-mark" transform="translate(-16 60)"><circle r="13"/><text y="5">6</text></g>
+     </g>
+    </g>
+   </svg>
+   <figcaption><span>Fig. 2 — Com'è fatta una stilografica</span><span>Schema indicativo</span></figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- PERCHÉ NOI -->
+<section class="sec forza" id="forza" aria-labelledby="forza-t">
+ <div class="wrap g12">
+  <div class="forza-head">
+   <p class="kicker">N° 05 — Perché venire in negozio</p>
+   <h2 id="forza-t" data-split>Una penna da cento, trecento o cinquecento euro non si sceglie da una foto.</h2>
+   <p class="lead" data-reveal>Contano il consiglio, l'autenticità e l'assistenza dopo l'acquisto. In Galleria Mazzini li trovi al banco da novant'anni.</p>
+  </div>
+  <ol class="ragioni" data-stagger>
+   <li><span class="rag-n">01</span><div><h3>Te le facciamo provare</h3><p>Conosciamo le penne: le scegliamo con te, te le mostriamo e, se serve, le ripariamo.</p></div></li>
+   <li><span class="rag-n">02</span><div><h3>In Galleria Mazzini dal 1936</h3><p>Da novant'anni un riferimento a Genova per chi ama le penne.</p></div></li>
+   <li><span class="rag-n">03</span><div><h3>Tra Corvetto e De Ferrari</h3><p>In pieno centro, nella galleria a due passi da via Roma.</p></div></li>
+   <li><span class="rag-n">04</span><div><h3>Regali che non sono souvenir</h3><p>Mappamondi, bussole, clessidre e la linea Mazzini Gift, per chi non vuole il solito regalo.</p></div></li>
+   <li><span class="rag-n">05</span><div><h3>Lo scrivono i clienti</h3><p>Nelle recensioni tornano tre cose: qualità dei prodotti, competenza e gentilezza al banco.</p></div></li>
+  </ol>
+ </div>
+ <div class="wrap">
+  <div class="voto">
+   <p class="voto-num"><span data-count="4.6" data-dec="1">4,6</span><small>/5</small></p>
+   <div>
+    <div class="voto-bar" aria-hidden="true"><span></span></div>
+    <p>Circa, su 25 recensioni online. <span class="tbc">[DA VERIFICARE prima della presentazione]</span></p>
+   </div>
+  </div>
+ </div>
+</section>
+
+<!-- DOVE -->
+<section class="sec dove" id="dove" aria-labelledby="dove-t">
+ <div class="wrap g12">
+  <div class="dove-testo">
+   <p class="kicker">N° 06 — Dove siamo</p>
+   <h2 id="dove-t" data-split>Galleria Giuseppe Mazzini 44</h2>
+   <p>In pieno centro, nella storica Galleria Mazzini: a due passi da via Roma, dal Teatro Carlo Felice e dai Palazzi dei Rolli.</p>
+   <dl class="info">
+    <div><dt>Indirizzo</dt><dd>Galleria Giuseppe Mazzini 44, Genova</dd></div>
+    <div><dt>Orari</dt><dd><span class="tbc">[DA CONFERMARE]</span></dd></div>
+    <div><dt>Telefono</dt><dd><a href="#contatti" data-k="tel"><span class="tbc">[DA CONFERMARE]</span></a></dd></div>
+    <div><dt>Email</dt><dd><a href="#contatti" data-k="email"><span class="tbc">[DA CONFERMARE]</span></a></dd></div>
+   </dl>
+   <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Galleria+Giuseppe+Mazzini+44+Genova">Apri su Google Maps<span class="sr-only"> (si apre in una nuova scheda)</span> <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a>
+  </div>
+  <figure class="mappa">
+   <svg viewBox="0 0 600 470" role="img" aria-labelledby="mappa-t">
+    <title id="mappa-t">Schema indicativo: la Galleria Mazzini corre parallela a via Roma, tra piazza Corvetto e piazza De Ferrari, accanto al Teatro Carlo Felice.</title>
+    <defs><pattern id="quadretti" width="24" height="24" patternUnits="userSpaceOnUse"><path class="griglia" d="M24 0H0V24" fill="none"/></pattern></defs>
+    <rect width="600" height="470" fill="url(#quadretti)"/>
+    <path class="strada draw" pathLength="1" stroke-width="18" stroke-opacity=".1" d="M128 352L487 114"/>
+    <path class="strada draw" pathLength="1" stroke-width="1.5" d="M122 344L481 106M134 360L493 122"/>
+    <path class="galleria draw" pathLength="1" d="M186 398L500 190"/>
+    <path class="vetro" d="M186 398L500 190"/>
+    <circle class="piazza" cx="528" cy="140" r="44"/>
+    <circle class="piazza" cx="96" cy="378" r="50"/><circle class="piazza" cx="96" cy="378" r="14"/>
+    <rect class="edificio" x="-40" y="-22" width="80" height="44" transform="translate(196 426) rotate(-33.5)"/>
+    <text class="lbl t-it" x="302" y="208" transform="rotate(-33.5 302 208)" text-anchor="middle">Via Roma</text>
+    <text class="lbl t-it t-rosso" x="290" y="314" transform="rotate(-33.5 290 314)" text-anchor="middle">Galleria Mazzini</text>
+    <text class="lbl" x="590" y="80" text-anchor="end">Piazza Corvetto</text>
+    <text class="lbl" x="96" y="306" text-anchor="middle">Piazza De Ferrari</text>
+    <text class="lbl" x="250" y="452" text-anchor="start">Teatro Carlo Felice</text>
+    <g transform="translate(432 235)">
+     <circle class="pin-pulse" r="9"/>
+     <circle r="9" fill="#A3261E" stroke="#FBF8F2" stroke-width="3"/>
+    </g>
+    <path d="M436 246l16 50h-72" fill="none" stroke="#1D2125" stroke-width="1"/>
+    <text class="lbl" x="380" y="318" style="font-weight:600">Cartoleria Mazzini</text>
+    <text class="lbl" x="380" y="342" style="fill:#57524A">n° 44<tspan class="m-hide"> · posizione indicativa</tspan></text>
+    <g transform="translate(40 50)" class="lbl"><path d="M0 18V-14M-6 -6L0 -14L6 -6" fill="none" stroke="#1D2125" stroke-width="1.4"/><text x="0" y="36" text-anchor="middle" class="t-it">N</text></g>
+   </svg>
+   <figcaption><span>Schema indicativo, non in scala.</span><span>[Qui andrà la mappa interattiva del negozio]</span></figcaption>
+  </figure>
+ </div>
+</section>
+
+<!-- CONTATTI -->
+<section class="sec contatti" id="contatti" aria-labelledby="contatti-t">
+ <div class="wrap g12">
+  <div class="contatti-testo">
+   <p class="kicker">N° 07 — Contatti</p>
+   <h2 id="contatti-t" data-split>Scrivici o chiedi disponibilità</h2>
+   <p class="lead">Dicci che penna cerchi, per chi è il regalo o cosa non va nella tua stilografica. Ti rispondiamo per confermarti disponibilità e informazioni.</p>
+   <ul class="diretti">
+    <li><a href="#contatti" data-k="email"><span><span class="k">Scrivi via email</span><br><span data-v><span class="tbc">[DA CONFERMARE]</span></span></span><svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a></li>
+    <li><a href="#contatti" data-k="tel"><span><span class="k">Chiama il negozio</span><br><span data-v><span class="tbc">[DA CONFERMARE]</span></span></span><svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></a></li>
+   </ul>
+  </div>
+
+  <div class="foglio">
+   <form id="f" novalidate>
+    <div class="campo"><label for="n">Nome</label><input id="n" name="n" autocomplete="name" required><div class="err" id="en"></div></div>
+    <div class="campo"><label for="e">Email</label><input id="e" name="e" type="email" autocomplete="email" required><div class="err" id="ee"></div></div>
+    <div class="campo"><label for="i">Cosa ti interessa</label>
+     <select id="i" name="i" required><option value="">Scegli…</option><option>Stilografiche</option><option>Roller e penne a sfera</option><option>Inchiostri</option><option>Matite e accessori</option><option>Mappamondi, bussole e clessidre</option><option>Mazzini Gift e biglietti</option><option>Riparazione penne</option><option>Altro</option></select><div class="err" id="ei"></div></div>
+    <div class="campo"><label for="m">Messaggio</label><textarea id="m" name="m" rows="4" required minlength="10"></textarea><div class="err" id="em"></div></div>
+    <div class="campo"><div class="chk"><input id="c" type="checkbox" required><label for="c">Acconsento al trattamento dei dati per essere ricontattato.</label></div><div class="err" id="ec"></div></div>
+    <div class="form-cta"><button class="btn" type="submit">Invia richiesta <svg class="arr" aria-hidden="true"><use href="#freccia"/></svg></button><small>Ti rispondiamo noi.</small></div>
+   </form>
+   <div class="ok" id="ok" role="status" tabindex="-1"><h3>Richiesta inviata (simulazione)</h3><p id="okt"></p><p class="note">Questa è una demo: nessun messaggio è stato realmente spedito.</p></div>
+  </div>
+ </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq" id="faq" aria-labelledby="faq-t">
+ <div class="wrap g12">
+  <div class="faq-head">
+   <p class="kicker">N° 08 — Domande</p>
+   <h2 id="faq-t" data-split>Domande frequenti</h2>
+  </div>
+  <div class="acc">
+   <h3><button type="button" aria-expanded="false" aria-controls="a1" id="q1">Riparate le penne?<span class="ico" aria-hidden="true"></span></button></h3>
+   <div class="pan" id="a1" role="region" aria-labelledby="q1" hidden>Sì. Salvatore Pisano si è specializzato nella riparazione delle penne. Scrivici o passa in negozio per parlarne.</div>
+   <h3><button type="button" aria-expanded="false" aria-controls="a2" id="q2">Dove si trova il negozio?<span class="ico" aria-hidden="true"></span></button></h3>
+   <div class="pan" id="a2" role="region" aria-labelledby="q2" hidden>In Galleria Giuseppe Mazzini 44, a Genova, tra Corvetto e De Ferrari.</div>
+   <h3><button type="button" aria-expanded="false" aria-controls="a3" id="q3">Come faccio a sapere se avete un prodotto?<span class="ico" aria-hidden="true"></span></button></h3>
+   <div class="pan" id="a3" role="region" aria-labelledby="q3" hidden>Usa il pulsante «Chiedi disponibilità» accanto a ogni categoria del catalogo: ti risponderemo noi.</div>
+   <h3><button type="button" aria-expanded="false" aria-controls="a4" id="q4">Fate spedizioni o vendita online?<span class="ico" aria-hidden="true"></span></button></h3>
+   <div class="pan" id="a4" role="region" aria-labelledby="q4" hidden><span class="tbc">[DA CONFERMARE]</span></div>
+   <h3><button type="button" aria-expanded="false" aria-controls="a5" id="q5">Quali sono gli orari di apertura?<span class="ico" aria-hidden="true"></span></button></h3>
+   <div class="pan" id="a5" role="region" aria-labelledby="q5" hidden><span class="tbc">[DA CONFERMARE]</span></div>
+  </div>
+ </div>
+</section>
+</main>
+
+<footer class="footer">
+ <div class="wrap">
+  <p class="footer-mark" aria-hidden="true">Cartoleria <em>Mazzini</em></p>
+  <div class="footer-cols">
+   <div><strong>Cartoleria Mazzini</strong><br>Galleria Giuseppe Mazzini 44, Genova<br>In galleria dal 1936.</div>
+   <div>Partita IVA: <span class="tbc">[DA CONFERMARE]</span><br>Instagram: <span class="tbc">[DA CONFERMARE]</span></div>
+   <div><a href="#home">Torna su</a></div>
+  </div>
+ </div>
+</footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+"use strict";
+// Da completare con i dati confermati dal titolare (es. tel: "+39...", email: "info@...")
+const CONFIG={tel:"",email:""};
+const $=(s,c=document)=>c.querySelector(s),$$=(s,c=document)=>[...c.querySelectorAll(s)];
+const root=document.documentElement;
+const mqReduce=matchMedia("(prefers-reduced-motion: reduce)");
+const mqFine=matchMedia("(hover: hover) and (pointer: fine)");
+const reduce=()=>mqReduce.matches;
+
+function toast(t){const e=$("#toast");e.textContent=t;e.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>e.classList.remove("show"),3800)}
+
+/* ---------- header: menu mobile, stato allo scroll, avanzamento ---------- */
+const header=$(".site-header"),burger=$(".burger"),menu=$("#menu");
+function setMenu(open){
+  menu.classList.toggle("open",open);burger.setAttribute("aria-expanded",open);
+  $(".burger-label",burger).textContent=open?"Chiudi":"Menu";
+  document.body.classList.toggle("menu-open",open);header.classList.toggle("menu-on",open);
+  if(open)header.classList.remove("is-hidden");
+}
+burger.addEventListener("click",()=>setMenu(!menu.classList.contains("open")));
+$$("#menu a").forEach(a=>a.addEventListener("click",()=>setMenu(false)));
+document.addEventListener("keydown",e=>{if(e.key==="Escape"&&menu.classList.contains("open")){setMenu(false);burger.focus()}});
+header.addEventListener("focusout",e=>{if(menu.classList.contains("open")&&!header.contains(e.relatedTarget))setMenu(false)});
+header.addEventListener("focusin",()=>header.classList.remove("is-hidden"));
+
+const bar=$(".progress span");let lastY=scrollY,ticking=false;
+function onScroll(){
+  const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
+  header.classList.toggle("is-scrolled",y>8);
+  if(Math.abs(y-lastY)>8){
+    if(y>lastY&&y>420&&!menu.classList.contains("open")&&!header.contains(document.activeElement))header.classList.add("is-hidden");
+    else if(y<lastY)header.classList.remove("is-hidden");
+    lastY=y;
+  }
+  bar.style.transform="scaleX("+(max>0?Math.min(1,y/max):0)+")";
+  ticking=false;
+}
+addEventListener("scroll",()=>{if(!ticking){ticking=true;requestAnimationFrame(onScroll)}},{passive:true});
+onScroll();
+
+/* ---------- catalogo: vetrina + filtri ---------- */
+const voci=$$(".voce"),stage=$(".vetrina-stage"),vetN=$(".vetrina-n"),stato=$("#filtro-stato");
+const slides=voci.map(v=>{
+  const c=$(".voce-media",v).cloneNode(true);
+  c.classList.add("vetrina-slide");c.removeAttribute("aria-label");
+  $$("img",c).forEach(img=>{img.alt="";img.removeAttribute("loading")});
+  stage.appendChild(c);return c;
+});
+function showVoce(i){
+  if(i<0)return;
+  slides.forEach((s,j)=>s.classList.toggle("is-on",i===j));
+  voci.forEach((v,j)=>v.classList.toggle("is-active",i===j));
+  vetN.textContent=$(".voce-n",voci[i]).textContent+" / 07";
+}
+voci.forEach((v,i)=>{v.addEventListener("pointerenter",()=>showVoce(i));v.addEventListener("focusin",()=>showVoce(i))});
+showVoce(0);
+
+$$(".filtri button").forEach(b=>b.addEventListener("click",()=>{
+  $$(".filtri button").forEach(x=>x.setAttribute("aria-pressed",x===b));
+  const f=b.dataset.f,vis=voci.filter(v=>{const on=f==="tutti"||v.dataset.c===f;v.hidden=!on;return on});
+  showVoce(voci.indexOf(vis[0]));
+  stato.textContent=vis.length===1?"1 categoria mostrata":vis.length+" categorie mostrate";
+  if(window.gsap&&!reduce())gsap.fromTo(vis,{opacity:0,y:14},{opacity:1,y:0,duration:.55,stagger:.05,ease:"power2.out",clearProps:"opacity,transform"});
+  if(window.ScrollTrigger)ScrollTrigger.refresh();
+}));
+
+/* "Chiedi disponibilità" precompila il form */
+$$(".ask").forEach(b=>b.addEventListener("click",()=>{
+  $("#i").value=b.dataset.p;
+  $("#contatti").scrollIntoView({behavior:reduce()?"auto":"smooth"});
+  setTimeout(()=>$("#m").focus({preventScroll:true}),reduce()?0:800);
+}));
+
+/* contatti reali: attivi solo quando CONFIG è compilato */
+$$("[data-k]").forEach(a=>{
+  const k=a.dataset.k,v=CONFIG[k];
+  if(v){a.href=(k==="tel"?"tel:":"mailto:")+v;($("[data-v]",a)||a).textContent=v.replace(/^\+39\s?/,"")}
+  else a.addEventListener("click",e=>{e.preventDefault();toast(k==="tel"?"Numero di telefono da confermare: qui partirà la chiamata.":"Indirizzo email da confermare: qui si aprirà il programma di posta.")});
+});
+
+/* FAQ */
+$$(".acc button").forEach(b=>b.addEventListener("click",()=>{
+  const open=b.getAttribute("aria-expanded")==="true";
+  b.setAttribute("aria-expanded",!open);
+  document.getElementById(b.getAttribute("aria-controls")).hidden=open;
+  if(window.ScrollTrigger)ScrollTrigger.refresh();
+}));
+
+/* form con validazione */
+const rules=[["n","en",v=>v.trim().length>=2,"Inserisci il tuo nome."],
+ ["e","ee",v=>/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v),"Inserisci un indirizzo email valido, ad esempio nome@dominio.it."],
+ ["i","ei",v=>v!=="","Scegli cosa ti interessa."],
+ ["m","em",v=>v.trim().length>=10,"Scrivi almeno 10 caratteri."]];
+$("#f").addEventListener("submit",ev=>{
+  ev.preventDefault();let first=null;
+  rules.forEach(([id,eid,test,msg])=>{
+    const el=$("#"+id),bad=!test(el.value);
+    el.setAttribute("aria-invalid",bad);el.setAttribute("aria-describedby",eid);
+    $("#"+eid).textContent=bad?msg:"";
+    if(bad&&!first)first=el;
+  });
+  const c=$("#c"),cb=!c.checked;
+  c.setAttribute("aria-invalid",cb);c.setAttribute("aria-describedby","ec");$("#ec").textContent=cb?"Per inviare la richiesta serve il tuo consenso.":"";
+  if(cb&&!first)first=c;
+  if(first){first.focus();return}
+  $("#okt").textContent="Grazie "+$("#n").value.trim()+"! Abbiamo ricevuto la tua richiesta su «"+$("#i").value+"» e ti risponderemo a "+$("#e").value.trim()+".";
+  $("#f").hidden=true;const ok=$("#ok");ok.classList.add("show");ok.focus();
+  if(window.ScrollTrigger)ScrollTrigger.refresh();
+});
+
+/* profondità: inclinazione verso il puntatore */
+function tilt(area,target,max){
+  if(!area||!target)return;let raf=0;
+  area.addEventListener("pointermove",e=>{
+    if(!mqFine.matches||reduce())return;
+    const r=area.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;
+    cancelAnimationFrame(raf);raf=requestAnimationFrame(()=>{
+      target.style.setProperty("--rx",(-y*max).toFixed(2)+"deg");target.style.setProperty("--ry",(x*max).toFixed(2)+"deg");
+      target.style.setProperty("--mx",((x+.5)*100).toFixed(1)+"%");target.style.setProperty("--my",((y+.5)*100).toFixed(1)+"%");
+    });
+  });
+  area.addEventListener("pointerleave",()=>{target.style.setProperty("--rx","0deg");target.style.setProperty("--ry","0deg")});
+}
+tilt($(".vetrina"),stage,9);
+tilt($(".regalo"),$(".busta"),10);
+
+/* ---------- animazioni (GSAP + ScrollTrigger) ---------- */
+function splitWords(el){
+  const words=[];
+  (function walk(node){
+    [...node.childNodes].forEach(n=>{
+      if(n.nodeType===3){
+        const frag=document.createDocumentFragment();
+        n.textContent.split(/(\s+)/).forEach(p=>{
+          if(!p)return;
+          if(/^\s+$/.test(p)){frag.appendChild(document.createTextNode(p));return}
+          const o=document.createElement("span"),i=document.createElement("span");
+          o.className="sw";i.className="sw-i";i.textContent=p;o.appendChild(i);frag.appendChild(o);words.push(i);
+        });
+        n.replaceWith(frag);
+      }else if(n.nodeType===1&&n.namespaceURI!=="http://www.w3.org/2000/svg")walk(n);
+    });
+  })(el);
+  return words;
+}
+
+function initMotion(){
+  const gsap=window.gsap,ST=window.ScrollTrigger;
+  if(!gsap||!ST){root.classList.remove("js-anim");return}
+  gsap.registerPlugin(ST);
+  const heroWords=splitWords($(".hero-title"));
+  const titles=$$("[data-split]").map(el=>({el,words:splitWords(el)}));
+  const strips=$$(".odo-strip");
+  gsap.set(strips,{y:0,yPercent:i=>-[1,9,3,6][i]*10});
+  const PX=$$(".px");
+
+  function setYear(y,dur){
+    String(y).split("").forEach((d,i)=>gsap.to(strips[i],{yPercent:-d*10,duration:dur,ease:"power3.inOut",delay:dur?i*.06:0,overwrite:true}));
+  }
+  function riparaTimeline(){
+    const q=s=>$(".px-"+s);
+    gsap.set(PX,{x:0,y:0});
+    const tl=gsap.timeline({defaults:{ease:"power2.inOut"}});
+    tl.to(q("cap"),{y:-72,duration:.3})
+      .to(q("cap"),{x:560,duration:.5},">-.06")
+      .to(q("barrel"),{x:90,duration:.5},"<")
+      .to(q("nib"),{x:-120,duration:.5},"<+.06")
+      .to(q("section"),{x:-40,duration:.5},"<")
+      .to(q("feed"),{x:-60,y:55,duration:.5},"<+.06")
+      .to(q("conv"),{x:10,y:70,duration:.5},"<+.05")
+      .fromTo(".px-mark",{opacity:0},{opacity:1,duration:.2,stagger:.05},"-=.1");
+    return tl;
+  }
+
+  const mm=gsap.matchMedia();
+  mm.add({reduce:"(prefers-reduced-motion: reduce)",desk:"(min-width: 1024px)",tall:"(min-height: 700px)"},ctx=>{
+    const {reduce:rm,desk,tall}=ctx.conditions;
+    root.classList.remove("js-anim");
+
+    /* odometro della storia: sempre attivo, istantaneo se le animazioni sono ridotte */
+    $$(".cap").forEach(c=>ST.create({trigger:c,start:"top 62%",end:"bottom 62%",onToggle:s=>{if(s.isActive){setYear(c.dataset.year,rm?0:1.1);$(".odo-cap").textContent=c.dataset.label}}}));
+
+    if(rm){
+      gsap.set(".busta-lembo",{rotationX:180,zIndex:1});gsap.set(".sigillo",{opacity:0});gsap.set(".busta-card",{yPercent:-52});
+      return;
+    }
+
+    /* 1. hero: ingresso del titolo parola per parola */
+    const intro=gsap.timeline({defaults:{ease:"expo.out"}});
+    intro.from(heroWords,{yPercent:115,duration:1.35,stagger:.065})
+      .from("[data-hero-in]",{opacity:0,y:18,duration:1.1,stagger:.08,ease:"power3.out"},.35)
+      .from(".hero-stage",{opacity:0,duration:1.6,ease:"power2.out"},.15)
+      .fromTo(".scribble path",{strokeDashoffset:1},{strokeDashoffset:0,duration:1.1,ease:"power2.inOut"},1);
+
+    /* hero: sezione fissata, la penna perde il cappuccio */
+    if(desk&&tall){
+      gsap.timeline({scrollTrigger:{trigger:".hero",start:"top top",end:"+=60%",pin:true,scrub:.6,onUpdate:s=>{window.CM.heroP=s.progress}}})
+        .to(".pen-svg .pen-cap",{x:-150,y:48,rotation:-9,transformOrigin:"50% 50%",ease:"power2.inOut",duration:1},0)
+        .to(".hero-title",{yPercent:-5,ease:"none",duration:1},0);
+    }else{
+      ST.create({trigger:".hero",start:"top top",end:"bottom top",onUpdate:s=>{window.CM.heroP=s.progress}});
+      gsap.to(".pen-svg .pen-cap",{x:-150,y:48,rotation:-9,transformOrigin:"50% 50%",ease:"none",scrollTrigger:{trigger:".hero-stage",start:"top 55%",end:"bottom top",scrub:.5}});
+    }
+
+    /* 2. titoli di sezione e blocchi di testo */
+    titles.forEach(({el,words})=>gsap.from(words,{yPercent:115,duration:1.15,ease:"expo.out",stagger:.04,scrollTrigger:{trigger:el,start:"top 86%",once:true}}));
+    $$("[data-reveal], .kicker:not(.hero-kicker), .lead:not([data-reveal])").forEach(el=>gsap.from(el,{opacity:0,y:24,duration:1,ease:"power3.out",scrollTrigger:{trigger:el,start:"top 90%",once:true}}));
+    $$("[data-stagger]").forEach(g=>gsap.from(g.children,{opacity:0,y:26,duration:.9,ease:"power3.out",stagger:.07,scrollTrigger:{trigger:g,start:"top 85%",once:true}}));
+
+    /* storia: linea d'inchiostro che scorre con i capitoli */
+    gsap.fromTo(".cap-line",{scaleY:0},{scaleY:1,ease:"none",scrollTrigger:{trigger:".capitoli",start:"top 62%",end:"bottom 62%",scrub:true}});
+
+    /* parallasse leggera */
+    if(desk)$$("[data-parallax]").forEach(el=>{const a=+el.dataset.parallax||8;gsap.fromTo(el,{yPercent:a},{yPercent:-a,ease:"none",scrollTrigger:{trigger:el.parentElement,start:"top bottom",end:"bottom top",scrub:true}})});
+
+    /* 3. busta Mazzini Gift: il lembo si apre con lo scroll */
+    const flap=$(".busta-lembo");
+    gsap.timeline({scrollTrigger:{trigger:".busta-wrap",start:"top 78%",end:"center 42%",scrub:.8}})
+      .to(flap,{rotationX:180,duration:1,ease:"power1.inOut",onUpdate(){flap.style.zIndex=gsap.getProperty(flap,"rotationX")>90?1:4}},0)
+      .to(".sigillo",{opacity:0,duration:.16},.32)
+      .fromTo(".busta-card",{yPercent:0},{yPercent:-52,duration:.9,ease:"power2.out"},.72);
+
+    /* 4. riparazione: sezione fissata, la penna si scompone */
+    if(desk&&tall){
+      gsap.set(".parti li",{opacity:.32});
+      const tl=riparaTimeline();
+      tl.to(".parti li",{opacity:1,duration:.2,stagger:.06},"<");
+      ST.create({trigger:".ripara",start:"top top",end:"+=140%",pin:true,scrub:.7,animation:tl});
+    }else{
+      const tl=riparaTimeline().pause();
+      ST.create({trigger:".px-fig",start:"top 75%",once:true,onEnter:()=>tl.play()});
+    }
+
+    /* 5. contatore delle recensioni */
+    $$("[data-count]").forEach(el=>{
+      const to=+el.dataset.count,dec=+el.dataset.dec||0,o={v:0};el.textContent=(0).toFixed(dec).replace(".",",");
+      gsap.to(o,{v:to,duration:1.9,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 88%",once:true},onUpdate:()=>{el.textContent=o.v.toFixed(dec).replace(".",",")}});
+    });
+    gsap.from(".voto-bar span",{scaleX:0,duration:1.9,ease:"power2.out",scrollTrigger:{trigger:".voto",start:"top 88%",once:true}});
+
+    /* 6. mappa: le strade si disegnano */
+    const mtl=gsap.timeline({scrollTrigger:{trigger:".mappa",start:"top 78%",once:true}});
+    mtl.from(".mappa .draw",{strokeDashoffset:1,duration:1.5,ease:"power2.inOut",stagger:.15})
+       .from(".mappa .piazza,.mappa .edificio",{opacity:0,scale:.8,transformOrigin:"50% 50%",duration:.8,stagger:.08,ease:"power3.out"},.4)
+       .from(".mappa .lbl",{opacity:0,y:6,duration:.6,stagger:.05},.8);
+
+    /* 7. footer */
+    gsap.from(".footer-mark",{yPercent:30,opacity:0,duration:1.4,ease:"expo.out",scrollTrigger:{trigger:".footer",start:"top 85%",once:true}});
+
+    ST.sort();
+  });
+
+  /* voce di menu attiva */
+  const links=$$('#menu a[href^="#"]');
+  $$("main section[id]").forEach(sec=>{
+    const a=links.find(l=>l.getAttribute("href")==="#"+sec.id);if(!a)return;
+    ST.create({trigger:sec,start:"top 45%",end:"bottom 45%",onToggle:s=>a.classList.toggle("is-current",s.isActive)});
+  });
+  ST.sort();
+  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(()=>ST.refresh());
+}
+document.addEventListener("DOMContentLoaded",initMotion);
+})();
+</script>
+
+<!-- Penna stilografica 3D (solo desktop, caricata su richiesta) -->
+<script type="module">
+const root=document.documentElement,stageEl=document.querySelector(".hero-stage"),canvas=document.getElementById("pen3d");
+const desk=matchMedia("(min-width: 1024px)"),reduce=matchMedia("(prefers-reduced-motion: reduce)");
+function webgl(){try{const c=document.createElement("canvas");return!!(window.WebGLRenderingContext&&(c.getContext("webgl2")||c.getContext("webgl")))}catch(e){return false}}
+if(desk.matches&&webgl())init().catch(err=>{console.warn("Penna 3D non disponibile:",err);root.classList.remove("has-3d")});
+
+async function init(){
+  const THREE=await import("three");
+  const {RoomEnvironment}=await import("three/addons/environments/RoomEnvironment.js");
+  const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:true,powerPreference:"high-performance"});
+  renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));
+  renderer.outputColorSpace=THREE.SRGBColorSpace;
+  renderer.toneMapping=THREE.NeutralToneMapping??THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure=1.05;
+  renderer.setClearColor(0x000000,0);
+
+  const scene=new THREE.Scene();
+  const pmrem=new THREE.PMREMGenerator(renderer);
+  scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;
+  const camera=new THREE.PerspectiveCamera(24,1,.1,100);camera.position.set(0,0,16);
+  const key=new THREE.DirectionalLight(0xfff1e0,1.5);key.position.set(-5,6,7);scene.add(key);
+  const rim=new THREE.DirectionalLight(0xffd9b8,.9);rim.position.set(6,-3,-4);scene.add(rim);
+
+  const lacca=new THREE.MeshPhysicalMaterial({color:0x951f17,roughness:.32,metalness:0,clearcoat:1,clearcoatRoughness:.05});
+  const laccaDS=lacca.clone();laccaDS.side=THREE.DoubleSide;
+  const oro=new THREE.MeshStandardMaterial({color:0xd6ad68,metalness:1,roughness:.22});
+  const oroDS=oro.clone();oroDS.side=THREE.DoubleSide;
+  const nero=new THREE.MeshPhysicalMaterial({color:0x111214,roughness:.3,clearcoat:.8,clearcoatRoughness:.15});
+  const incisione=new THREE.MeshBasicMaterial({color:0x2b1e0c});
+
+  const V=(x,y)=>new THREE.Vector2(x,y);
+  const lathe=(pts,mat)=>new THREE.Mesh(new THREE.LatheGeometry(pts.map(p=>V(p[0],p[1])),72),mat);
+  const ring=(r,h,y,mat)=>{const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,72),mat);m.position.y=y;return m};
+
+  /* gerarchia: galleggiamento > inclinazione (mouse) > diagonale (scroll) > rotazione sull'asse */
+  const floatG=new THREE.Group(),tilt=new THREE.Group(),diag=new THREE.Group(),spin=new THREE.Group();
+  scene.add(floatG);floatG.add(tilt);tilt.add(diag);diag.add(spin);
+
+  // fusto, anelli, impugnatura
+  spin.add(lathe([[0,-2.62],[.14,-2.61],[.215,-2.58],[.255,-2.52],[.272,-2.42],[.276,-2.25],[.278,.55],[.272,.72],[.258,.8],[.24,.84],[0,.84]],lacca));
+  spin.add(ring(.281,.05,-2.2,oro),ring(.253,.06,.86,oro));
+  spin.add(lathe([[0,.88],[.232,.88],[.226,1.0],[.21,1.2],[.2,1.38],[.206,1.48],[.19,1.56],[.16,1.6],[0,1.6]],nero));
+  // alimentatore (dietro) e pennino (davanti)
+  const feed=new THREE.Mesh(new THREE.CylinderGeometry(.03,.15,.9,24,1,false,Math.PI/2,Math.PI),nero);feed.position.y=1.9;spin.add(feed);
+  const nib=new THREE.Mesh(new THREE.CylinderGeometry(.012,.19,1.05,40,8,true,-Math.PI*.46,Math.PI*.92),oroDS);nib.position.y=1.945;spin.add(nib);
+  const slope=Math.atan(.178/1.05),r=y=>.19-.178*(y-1.42)/1.05;
+  const slit=new THREE.Mesh(new THREE.BoxGeometry(.012,.47,.006),incisione);slit.position.set(0,2.235,r(2.235)+.004);slit.rotation.x=-slope;spin.add(slit);
+  const hole=new THREE.Mesh(new THREE.CircleGeometry(.022,24),incisione);hole.position.set(0,1.99,r(1.99)+.004);hole.rotation.x=-slope;spin.add(hole);
+
+  // cappuccio con clip
+  const cap=new THREE.Group();diag.add(cap);
+  cap.add(lathe([[.286,.6],[.3,.62],[.303,.78],[.302,2.2],[.296,2.45],[.28,2.6],[.25,2.7],[.19,2.77],[.1,2.8],[0,2.81]],laccaDS));
+  cap.add(ring(.307,.11,.74,oro),ring(.305,.025,.9,oro));
+  const fin=new THREE.Mesh(new THREE.SphereGeometry(.13,32,16),oro);fin.scale.set(1,.32,1);fin.position.y=2.8;cap.add(fin);
+  const clip=new THREE.Group();
+  const bar=new THREE.Mesh(new THREE.BoxGeometry(.075,1.35,.045),oro);bar.position.y=1.8;
+  const ball=new THREE.Mesh(new THREE.SphereGeometry(.052,20,12),oro);ball.position.y=1.13;ball.scale.set(1,1.3,1);
+  const top=new THREE.Mesh(new THREE.BoxGeometry(.1,.16,.1),oro);top.position.set(0,2.44,-.035);
+  clip.add(bar,ball,top);clip.position.z=.345;
+  const clipPivot=new THREE.Group();clipPivot.rotation.y=.95;clipPivot.add(clip);cap.add(clipPivot);
+
+  // ombra morbida sulla "carta"
+  const sc=document.createElement("canvas");sc.width=256;sc.height=64;const sx=sc.getContext("2d");
+  sx.filter="blur(9px)";sx.fillStyle="rgba(29,33,37,1)";sx.beginPath();sx.roundRect(24,20,208,24,12);sx.fill();
+  const shadowTex=new THREE.CanvasTexture(sc);
+  const shadow=new THREE.Mesh(new THREE.PlaneGeometry(1,1),new THREE.MeshBasicMaterial({map:shadowTex,transparent:true,opacity:.26,depthWrite:false}));
+  shadow.scale.set(6.4,.75,1);shadow.rotation.z=Math.PI/2;
+  const shadowG=new THREE.Group();shadowG.add(shadow);shadowG.position.z=-1.6;diag.add(shadowG);
+
+  const clamp=(v,a,b)=>Math.min(b,Math.max(a,v)),lerp=(a,b,t)=>a+(b-a)*t;
+  const smooth=(a,b,v)=>{const t=clamp((v-a)/(b-a),0,1);return t*t*(3-2*t)};
+  const st={px:0,py:0,tx:0,ty:0,p:0};
+  if(!reduce.matches)addEventListener("pointermove",e=>{st.tx=e.clientX/innerWidth*2-1;st.ty=e.clientY/innerHeight*2-1},{passive:true});
+
+  function pose(t){
+    const p=st.p,u=smooth(0,.42,p),w=smooth(.22,1,p);
+    tilt.rotation.y=st.px*.45;tilt.rotation.x=st.py*.28;
+    diag.rotation.z=lerp(2.8,2.55,w)+Math.sin(t*.55)*.02;
+    spin.rotation.y=lerp(-.8,.05,w)+Math.sin(t*.4)*.18*(1-w);
+    cap.position.y=u*2.05+w*.25;cap.position.x=-w*1.3;cap.rotation.z=-w*.4;
+    floatG.position.set(lerp(.1,-.25,w),Math.sin(t*.9)*.07+lerp(-.1,.45,w),0);
+    const a=-diag.rotation.z;shadowG.position.x=Math.cos(a)*.35-Math.sin(a)*-.5;shadowG.position.y=Math.sin(a)*.35+Math.cos(a)*-.5;
+  }
+  function resize(){
+    const w=stageEl.clientWidth,h=stageEl.clientHeight;if(!w||!h)return;
+    renderer.setSize(w,h,false);camera.aspect=w/h;camera.fov=w/h<1?30:24;camera.updateProjectionMatrix();
+    if(reduce.matches){pose(0);renderer.render(scene,camera)}
+  }
+  new ResizeObserver(resize).observe(stageEl);resize();
+
+  const clock=new THREE.Clock();let running=false,visible=true;
+  function frame(){
+    if(!running)return;requestAnimationFrame(frame);
+    if(!desk.matches)return;
+    const dt=Math.min(clock.getDelta(),.05),k=1-Math.pow(.002,dt);
+    st.px+=(st.tx-st.px)*k;st.py+=(st.ty-st.py)*k;st.p+=((window.CM?.heroP||0)-st.p)*Math.min(1,k*1.5);
+    pose(clock.elapsedTime);renderer.render(scene,camera);
+  }
+  function update(){const go=visible&&!document.hidden&&!reduce.matches;if(go&&!running){running=true;clock.getDelta();frame()}else if(!go)running=false}
+  new IntersectionObserver(([e])=>{visible=e.isIntersecting;update()}).observe(document.querySelector(".hero"));
+  document.addEventListener("visibilitychange",update);
+
+  pose(0);renderer.render(scene,camera);
+  root.classList.add("has-3d");
+  update();
+}
+</script>
+</body>
+</html>
