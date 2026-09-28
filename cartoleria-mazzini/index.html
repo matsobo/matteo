@@ -18,7 +18,7 @@
 <script>
 (function(d){var h=d.documentElement;h.classList.remove("no-js");h.classList.add("js");
 if(!matchMedia("(prefers-reduced-motion: reduce)").matches){h.classList.add("js-anim");setTimeout(function(){h.classList.remove("js-anim")},3500)}
-try{if(matchMedia("(min-width: 1024px)").matches){var c=d.createElement("canvas");if(c.getContext("webgl2")||c.getContext("webgl"))h.classList.add("gl")}}catch(e){}
+try{var mob=!matchMedia("(min-width: 1024px)").matches,cn=navigator.connection,ok=!(cn&&cn.saveData)&&!(navigator.deviceMemory&&navigator.deviceMemory<3);if(ok){var c=d.createElement("canvas");if(c.getContext("webgl2")||(!mob&&c.getContext("webgl")))h.classList.add("gl")}}catch(e){}
 window.CM={heroP:0};})(document);
 </script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
@@ -146,6 +146,7 @@ button{font:inherit;color:inherit}
 .hero-fig{grid-column:9/13;grid-row:4;justify-self:end;text-align:right;position:relative;z-index:2;margin-top:1.4rem;font-size:.9rem;line-height:1.45;color:var(--grafite-2);max-width:30ch;padding-top:.7rem;border-top:1px solid var(--linea-2)}
 .fig-n{font:italic 400 .95rem var(--serif);color:var(--ardesia);margin-right:.3rem}
 .hint-3d{display:none}
+.hint-mob{display:none}
 .has-3d .hint-3d{display:inline}
 .hero-scroll{grid-column:1/5;grid-row:4;align-self:end;display:inline-flex;align-items:center;gap:.8rem;margin-top:1.4rem;font:600 .72rem/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--grafite-2);position:relative;z-index:2;min-height:44px}
 .hero-scroll-line{position:relative;width:1px;height:38px;background:var(--linea-2);overflow:hidden}
@@ -163,9 +164,9 @@ button{font:inherit;color:inherit}
   .hero-kicker,.hero-since,.hero-title,.hero-copy,.hero-fig,.hero-scroll{grid-column:1;grid-row:auto}
   .hero-since{display:none}
   .hero-title{font-size:clamp(2.55rem,10.4vw,4.6rem);margin-top:1.2rem}
-  .hero-stage{position:relative;inset:auto;transform:none;width:min(100%,540px);aspect-ratio:1/.9;margin:.2rem auto 0;order:0}
-  .hero-stage canvas{display:none}
+  .hero-stage{position:relative;inset:auto;transform:none;width:min(100%,540px);aspect-ratio:10/11;margin:.2rem auto 0;order:0}
   .pen-img{object-fit:cover}
+  .hint-desk{display:none}.hint-mob{display:inline}
   .hero-copy{padding-top:.4rem}
   .hero-fig{justify-self:start;text-align:left}
   .hero-scroll{display:none}
@@ -188,6 +189,7 @@ button{font:inherit;color:inherit}
 .foto-ph svg{position:absolute;left:50%;top:44%;width:30%;transform:translate(-50%,-50%);stroke:var(--ottone-chiaro);fill:none;stroke-width:1;opacity:.75}
 .foto-ph p{position:absolute;left:1rem;right:1rem;bottom:1rem;font-size:.82rem;line-height:1.45;color:var(--ardesia-testo)}
 .cap-list{list-style:none;padding:0}
+.odo-mob{display:none}
 .capitoli{grid-column:7/13;grid-row:2;padding:0 0 0 2.6rem;margin-top:clamp(3rem,6vw,5rem);position:relative}
 .capitoli::before,.cap-line{content:"";position:absolute;left:0;top:.5rem;bottom:0;width:1px;background:var(--linea-2)}
 .cap-line{background:var(--ceralacca);transform-origin:50% 0}
@@ -206,7 +208,11 @@ button{font:inherit;color:inherit}
 @media (max-width:1023px){
   .storia-head,.storia-aside,.capitoli,.storia .todo{grid-column:1/-1;grid-row:auto}
   .storia-aside{position:relative;top:auto;margin-top:2rem}
-  .odo,.odo-cap{display:none}
+  .storia-aside .odo,.storia-aside .odo-cap{display:none}
+  .odo-mob{display:flex;align-items:flex-end;gap:1rem;position:sticky;top:calc(var(--head) + .25rem);z-index:3;margin:0 0 2rem -2rem;padding:.3rem 0 .5rem 2rem;background:var(--grana),var(--carta);border-bottom:1px solid var(--linea);transition:top .5s var(--e-out)}
+  .head-off .odo-mob{top:0}
+  .odo-mob .odo{font-size:clamp(3.6rem,17vw,5rem)}
+  .odo-mob .odo-cap{margin:0 0 .75rem}
   .foto-ph{margin-top:0}
   .capitoli{margin-top:3rem;padding-left:2rem}
   .cap-y::before{left:calc(-2rem - 5px)}
@@ -522,7 +528,7 @@ form{display:grid;gap:1.6rem}
    </div>
   </div>
   <a class="hero-scroll" href="#storia" data-hero-in><span class="hero-scroll-line" aria-hidden="true"></span>Scorri · la storia</a>
-  <p class="hero-fig" data-hero-in><span class="fig-n">Fig. 1</span> Stilografica in resina, finiture dorate, pennino bicolore. <span class="hint-3d">Muovi il puntatore per inclinarla; scorri e il cappuccio si svita.</span></p>
+  <p class="hero-fig" data-hero-in><span class="fig-n">Fig. 1</span> Stilografica in resina, finiture dorate, pennino bicolore. <span class="hint-3d"><span class="hint-desk">Muovi il puntatore per inclinarla; scorri</span><span class="hint-mob">Scorri</span> e il cappuccio si svita.</span></p>
  </div>
 </section>
 
@@ -551,6 +557,15 @@ form{display:grid;gap:1.6rem}
 
   <div class="capitoli">
    <span class="cap-line" aria-hidden="true"></span>
+   <div class="odo-mob" aria-hidden="true">
+    <div class="odo">
+     <span class="odo-col"><span class="odo-strip" style="transform:translateY(-10%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+     <span class="odo-col"><span class="odo-strip" style="transform:translateY(-90%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+     <span class="odo-col"><span class="odo-strip" style="transform:translateY(-30%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+     <span class="odo-col"><span class="odo-strip" style="transform:translateY(-60%)"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></span></span>
+    </div>
+    <p class="odo-cap">Apertura</p>
+   </div>
    <ol class="cap-list">
    <li class="cap" data-year="1936" data-label="Apertura">
     <span class="cap-y">1936</span>
@@ -899,6 +914,7 @@ function onScroll(){
   if(Math.abs(y-lastY)>8){
     if(y>lastY&&y>420&&!menu.classList.contains("open")&&!header.contains(document.activeElement))header.classList.add("is-hidden");
     else if(y<lastY)header.classList.remove("is-hidden");
+    root.classList.toggle("head-off",header.classList.contains("is-hidden"));
     lastY=y;
   }
   bar.style.transform="scaleX("+(max>0?Math.min(1,y/max):0)+")";
@@ -1058,12 +1074,12 @@ function initMotion(){
   gsap.registerPlugin(ST);
   const heroWords=splitWords($(".hero-title"));
   const titles=$$("[data-split]").map(el=>({el,words:splitWords(el)}));
-  const strips=$$(".odo-strip");
-  gsap.set(strips,{y:0,yPercent:i=>-[1,9,3,6][i]*10});
+  const odos=$$(".odo").map(o=>$$(".odo-strip",o));
+  odos.forEach(st=>gsap.set(st,{y:0,yPercent:i=>-[1,9,3,6][i]*10}));
   const PX=$$(".px");
 
   function setYear(y,dur){
-    String(y).split("").forEach((d,i)=>gsap.to(strips[i],{yPercent:-d*10,duration:dur,ease:"power3.inOut",delay:dur?i*.06:0,overwrite:true}));
+    odos.forEach(st=>String(y).split("").forEach((d,i)=>gsap.to(st[i],{yPercent:-d*10,duration:dur,ease:"power3.inOut",delay:dur?i*.06:0,overwrite:true})));
   }
   function riparaTimeline(){
     const q=s=>$(".px-"+s);
@@ -1081,12 +1097,12 @@ function initMotion(){
   }
 
   const mm=gsap.matchMedia();
-  mm.add({reduce:"(prefers-reduced-motion: reduce)",desk:"(min-width: 1024px)",tall:"(min-height: 700px)"},ctx=>{
-    const {reduce:rm,desk,tall}=ctx.conditions;
+  mm.add({reduce:"(prefers-reduced-motion: reduce)",desk:"(min-width: 1024px)",tall:"(min-height: 700px)",touch:"(hover: none)"},ctx=>{
+    const {reduce:rm,desk,tall,touch}=ctx.conditions;
     root.classList.remove("js-anim");
 
     /* odometro della storia: sempre attivo, istantaneo se le animazioni sono ridotte */
-    $$(".cap").forEach(c=>ST.create({trigger:c,start:"top 62%",end:"bottom 62%",onToggle:s=>{if(s.isActive){setYear(c.dataset.year,rm?0:1.1);$(".odo-cap").textContent=c.dataset.label}}}));
+    $$(".cap").forEach(c=>ST.create({trigger:c,start:"top 62%",end:"bottom 62%",onToggle:s=>{if(s.isActive){setYear(c.dataset.year,rm?0:1.1);$$(".odo-cap").forEach(e=>{e.textContent=c.dataset.label})}}}));
 
     if(rm){
       gsap.set(".busta-lembo",{rotationX:180,zIndex:1});gsap.set(".sigillo",{opacity:0});gsap.set(".busta-card",{yPercent:-52});
@@ -1105,6 +1121,8 @@ function initMotion(){
       ST.create({trigger:".hero",start:"top top",end:"+=90%",pin:true,anticipatePin:1,onUpdate:s=>{window.CM.heroP=s.progress}});
     }else if(desk){
       ST.create({trigger:".hero",start:"top top",end:"bottom top",onUpdate:s=>{window.CM.heroP=s.progress}});
+    }else{
+      ST.create({trigger:".hero-stage",start:"top 32%",end:"bottom 8%",onUpdate:s=>{window.CM.heroP=s.progress}});
     }
 
     /* 2. titoli di sezione e blocchi di testo */
@@ -1116,7 +1134,7 @@ function initMotion(){
     gsap.fromTo(".cap-line",{scaleY:0},{scaleY:1,ease:"none",scrollTrigger:{trigger:".capitoli",start:"top 62%",end:"bottom 62%",scrub:true}});
 
     /* parallasse leggera */
-    if(desk)$$("[data-parallax]").forEach(el=>{const a=+el.dataset.parallax||8;gsap.fromTo(el,{yPercent:a},{yPercent:-a,ease:"none",scrollTrigger:{trigger:el.parentElement,start:"top bottom",end:"bottom top",scrub:true}})});
+    $$("[data-parallax]").forEach(el=>{const a=+el.dataset.parallax||8;gsap.fromTo(el,{yPercent:a},{yPercent:-a,ease:"none",scrollTrigger:{trigger:el.parentElement,start:"top bottom",end:"bottom top",scrub:true}})});
 
     /* 3. busta Mazzini Gift: il lembo si apre con lo scroll */
     const flap=$(".busta-lembo");
@@ -1124,6 +1142,7 @@ function initMotion(){
       .to(flap,{rotationX:180,duration:1,ease:"power1.inOut",onUpdate(){flap.style.zIndex=gsap.getProperty(flap,"rotationX")>90?1:4}},0)
       .to(".sigillo",{opacity:0,duration:.16},.32)
       .fromTo(".busta-card",{yPercent:0},{yPercent:-52,duration:.9,ease:"power2.out"},.72);
+    if(touch)gsap.fromTo(".busta",{rotationX:18,rotationY:-14},{rotationX:0,rotationY:0,ease:"none",scrollTrigger:{trigger:".busta-wrap",start:"top 95%",end:"center 45%",scrub:.8}});
 
     /* 4. riparazione: sezione fissata, la penna si scompone */
     if(desk&&tall){
@@ -1132,8 +1151,7 @@ function initMotion(){
       tl.to(".parti li",{opacity:1,duration:.2,stagger:.06},"<");
       ST.create({trigger:".ripara",start:"top top",end:"+=140%",pin:true,scrub:.7,animation:tl});
     }else{
-      const tl=riparaTimeline().pause();
-      ST.create({trigger:".px-fig",start:"top 75%",once:true,onEnter:()=>tl.play()});
+      ST.create({trigger:".px-fig",start:"top 88%",end:"bottom 42%",scrub:.6,animation:riparaTimeline()});
     }
 
     /* 5. contatore delle recensioni */
@@ -1170,7 +1188,8 @@ document.addEventListener("DOMContentLoaded",initMotion);
 /* Penna stilografica procedurale: resina marmorizzata, finiture in oro, pennino bicolore */
 async function createPen(THREE, canvas, opts = {}) {
   const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, preserveDrawingBuffer: !!opts.preserve, powerPreference: "high-performance" });
-  renderer.setPixelRatio(opts.dpr || Math.min(window.devicePixelRatio || 1, 2));
+  const lite = !!opts.lite; // smartphone: meno pixel, texture e ombre più leggere
+  renderer.setPixelRatio(opts.dpr || Math.min(window.devicePixelRatio || 1, lite ? 1.5 : 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.NeutralToneMapping !== undefined ? THREE.NeutralToneMapping : THREE.ACESFilmicToneMapping;
   renderer.toneMappingExposure = 1;
@@ -1222,7 +1241,7 @@ async function createPen(THREE, canvas, opts = {}) {
   const fbm = (x, y, z) => { let s = 0, a = 0.5, f = 1; for (let o = 0; o < 4; o++) { s += a * noise(x * f, y * f, z * f); f *= 2.02; a *= 0.5; } return s / 0.9375; };
 
   const resinTex = (() => {
-    const W = 512, H = 256, c = newCanvas(W, H), g = c.getContext("2d"), img = g.createImageData(W, H), d = img.data;
+    const W = lite ? 256 : 512, H = lite ? 128 : 256, c = newCanvas(W, H), g = c.getContext("2d"), img = g.createImageData(W, H), d = img.data;
     const dark = [52, 7, 5], base = [128, 22, 16], light = [196, 70, 52], amber = [150, 52, 22];
     for (let j = 0; j < H; j++) {
       const v = 1 - (j + 0.5) / H;
@@ -1248,7 +1267,7 @@ async function createPen(THREE, canvas, opts = {}) {
   const nibZ = v => lerp(0.165, 0.028, Math.pow(v, 1.15));   // altezza della linea centrale
   const nibC = v => lerp(0.34, 0.12, v);                        // raggio di curvatura trasversale
   const nibTex = (() => {
-    const W = 256, H = 512;
+    const W = lite ? 128 : 256, H = lite ? 256 : 512;
     const cc = newCanvas(W, H), rc = newCanvas(W, H), ac = newCanvas(W, H);
     const ci = cc.getContext("2d").createImageData(W, H), ri = rc.getContext("2d").createImageData(W, H), ai = ac.getContext("2d").createImageData(W, H);
     const gold = [232, 197, 128], goldE = [118, 84, 34], silver = [218, 220, 224], silverE = [110, 112, 118];
@@ -1373,9 +1392,9 @@ async function createPen(THREE, canvas, opts = {}) {
   shadowPlane.position.z = -1.25; shadowPlane.receiveShadow = true; scene.add(shadowPlane);
   const key = new THREE.DirectionalLight(0xffffff, 1.2);
   key.position.set(-4, 5, 10); key.castShadow = true;
-  key.shadow.mapSize.set(2048, 2048);
+  key.shadow.mapSize.set(lite ? 1024 : 2048, lite ? 1024 : 2048);
   Object.assign(key.shadow.camera, { left: -5, right: 5, top: 5, bottom: -5, near: 1, far: 30 });
-  key.shadow.radius = 16; key.shadow.blurSamples = 24; key.shadow.bias = -0.0004;
+  key.shadow.radius = lite ? 10 : 16; key.shadow.blurSamples = lite ? 12 : 24; key.shadow.bias = -0.0004;
   scene.add(key, key.target);
 
   /* coreografia: p = avanzamento dello scroll (0 → 1) */
@@ -1412,12 +1431,16 @@ const desk=matchMedia("(min-width: 1024px)"),reduce=matchMedia("(prefers-reduced
 function fallback(err){console.warn("Penna 3D non disponibile:",err);root.classList.remove("gl","has-3d")}
 async function avvia(){
   const THREE=await Promise.race([import("three"),new Promise((_,no)=>setTimeout(()=>no(new Error("timeout")),10000))]);
-  const pen=await createPen(THREE,canvas,{font:'"Newsreader", Georgia, serif'});
+  const lite=!desk.matches;
+  const pen=await createPen(THREE,canvas,{lite,font:'"Newsreader", Georgia, serif'});
   const st={px:0,py:0,tx:0,ty:0,p:0};
   let running=false,visible=true,last=0,t=0;
   const still=()=>{pen.apply(reduce.matches?1:(window.CM.heroP||0),0,0,0);pen.render()};
   new ResizeObserver(()=>{const w=stage.clientWidth,h=stage.clientHeight;if(w&&h){pen.resize(w,h);if(!running)still()}}).observe(stage);
-  addEventListener("pointermove",e=>{st.tx=e.clientX/innerWidth*2-1;st.ty=e.clientY/innerHeight*2-1},{passive:true});
+  addEventListener("pointermove",e=>{if(e.pointerType!=="mouse")return;st.tx=e.clientX/innerWidth*2-1;st.ty=e.clientY/innerHeight*2-1},{passive:true});
+  // su Android il giroscopio inclina la penna (iOS chiederebbe un permesso: lì resta ferma)
+  if(window.DeviceOrientationEvent&&typeof DeviceOrientationEvent.requestPermission!=="function")
+    addEventListener("deviceorientation",e=>{if(e.gamma==null||desk.matches)return;st.tx=Math.max(-1,Math.min(1,e.gamma/25));st.ty=Math.max(-1,Math.min(1,(e.beta-45)/30))},{passive:true});
   function frame(now){
     if(!running)return;requestAnimationFrame(frame);
     const dt=Math.min(.05,(now-last)/1000||0);last=now;t+=dt;
@@ -1426,7 +1449,7 @@ async function avvia(){
     pen.apply(st.p,st.px,st.py,t);pen.render();
   }
   function update(){
-    const go=visible&&!document.hidden&&!reduce.matches&&desk.matches;
+    const go=visible&&!document.hidden&&!reduce.matches;
     if(go&&!running){running=true;last=performance.now();requestAnimationFrame(frame)}
     else if(!go&&running){running=false;still()}
   }
