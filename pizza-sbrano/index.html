@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pizza Sbrano · Focaccia h24 alla Foce, Genova</title>
+<meta name="description" content="Pizza Sbrano, via Carlo Barabino 98r, Genova Foce. Focaccia, pizzette e panini sfornati a qualunque ora. Chiusura: da mai a mai.">
+<meta property="og:title" content="Pizza Sbrano · Chiusura: da mai a mai">
+<meta property="og:description" content="Il forno della Foce che non chiude mai. Focaccia, pizzette, panini e caffè, giorno e notte.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#0d0c0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Pizza Sbrano",
+  "servesCuisine": ["Focaccia genovese", "Pizza", "Panini"],
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Carlo Barabino 98r",
+    "postalCode": "16129",
+    "addressLocality": "Genova",
+    "addressRegion": "GE",
+    "addressCountry": "IT"
+  },
+  "openingHours": "Mo-Su 00:00-23:59"
+}
+</script>
+<style>
+:root{
+  --ink:#0d0c0a;
+  --ink-2:#161410;
+  --ink-3:#221e18;
+  --paper:#f5ebdd;
+  --muted:#bcae9b;
+  --sodium:#ffb627;
+  --sodium-soft:#ffd27a;
+  --neon:#ff5a3c;
+  --crust:#c9812f;
+  --line:rgba(245,235,221,.12);
+  --radius:18px;
+  --display:"Anton", Impact, "Arial Narrow", sans-serif;
+  --serif:"Instrument Serif", Georgia, serif;
+  --sans:"Manrope", system-ui, sans-serif;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+body{background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.6;overflow-x:hidden}
+img,svg,canvas{display:block;max-width:100%}
+a{color:inherit}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+a,button{cursor:pointer}
+:focus-visible{outline:2px solid var(--sodium);outline-offset:3px;border-radius:6px}
+.wrap{width:min(1240px,100% - 32px);margin-inline:auto}
+.eyebrow{font-family:var(--sans);font-size:.78rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sodium)}
+.tbc{display:inline-block;font-family:var(--sans);font-size:.68rem;font-weight:700;letter-spacing:.08em;background:#ffe14d;color:#1a1400;padding:.12em .5em;border-radius:4px;vertical-align:middle;white-space:nowrap}
+.serif{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:0}
+
+/* grain */
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:100;opacity:.07;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;transition:background .3s var(--ease),backdrop-filter .3s}
+.nav.scrolled{background:rgba(13,12,10,.78);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.logo{font-family:var(--display);font-size:1.7rem;letter-spacing:.04em;text-decoration:none;line-height:1;display:flex;align-items:baseline;gap:.35em}
+.logo small{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--sodium);letter-spacing:0}
+.nav ul{display:flex;gap:28px;list-style:none}
+.nav ul a{text-decoration:none;font-size:.92rem;font-weight:600;color:var(--muted);transition:color .2s}
+.nav ul a:hover{color:var(--paper)}
+.btn{display:inline-flex;align-items:center;gap:.6em;padding:.85em 1.4em;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;transition:background .25s var(--ease),color .25s,box-shadow .25s,transform .25s var(--ease);will-change:transform}
+.btn svg{width:18px;height:18px;flex:none}
+.btn-sodium{background:var(--sodium);color:#1a1200;box-shadow:0 0 0 0 rgba(255,182,39,.0)}
+.btn-sodium:hover{box-shadow:0 0 34px 2px rgba(255,182,39,.45)}
+.btn-ghost{border:1px solid rgba(245,235,221,.3)}
+.btn-ghost:hover{border-color:var(--paper);background:rgba(245,235,221,.06)}
+@media (max-width:860px){.nav ul{display:none}.nav .btn{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:grid;align-items:end;padding:120px 0 64px;overflow:hidden;isolation:isolate}
+.hero::after{content:"";position:absolute;inset:0;z-index:-2;
+  background:radial-gradient(60% 50% at 72% 40%,rgba(255,182,39,.20),transparent 70%),
+             radial-gradient(40% 40% at 15% 10%,rgba(255,90,60,.12),transparent 70%),
+             linear-gradient(180deg,#0d0c0a 0%,#110f0c 100%)}
+#focaccia{position:absolute;inset:0;z-index:-1;width:100%;height:100%}
+.hero-fallback{position:absolute;right:-8%;top:18%;width:min(70vw,780px);aspect-ratio:1.45;z-index:-1;border-radius:36px;transform:rotate(-8deg);display:none;
+  background:radial-gradient(circle at 50% 50%,rgba(255,236,170,.55) 0 7px,transparent 9px) 0 0/46px 46px,
+             radial-gradient(circle at 50% 50%,rgba(255,236,170,.4) 0 6px,transparent 8px) 23px 23px/46px 46px,
+             linear-gradient(135deg,#e2a54c,#b8702a);box-shadow:0 40px 120px rgba(255,160,40,.25),inset 0 0 60px rgba(90,40,5,.6)}
+.no-webgl .hero-fallback{display:block}
+.no-webgl #focaccia{display:none}
+.hero-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:40px;align-items:end}
+.hero h1{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(3.4rem,11.5vw,10.5rem);line-height:.86;letter-spacing:-.005em}
+.hero h1 .line{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .line > span{display:inline-block}
+.hero h1 .line-serif{font-size:.62em;line-height:1.02;padding-bottom:.08em}
+.hero h1 .serif{text-transform:none;color:var(--sodium)}
+.hero-lead{max-width:34ch;font-size:1.12rem;color:var(--muted);margin-top:22px}
+.hero-lead strong{color:var(--paper);font-weight:600}
+.hero-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+
+.sign{justify-self:end;width:min(100%,340px);background:#f2e6cf;color:#1b1610;border-radius:10px;padding:18px 20px 16px;box-shadow:0 30px 60px rgba(0,0,0,.45);transform:rotate(3deg);position:relative;font-family:var(--sans)}
+.sign::before,.sign::after{content:"";position:absolute;top:10px;width:9px;height:9px;border-radius:50%;background:#8d8475;box-shadow:inset 0 1px 1px rgba(0,0,0,.5)}
+.sign::before{left:10px}.sign::after{right:10px}
+.sign .k{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#6b604f;text-align:center}
+.sign .big{font-family:var(--display);font-size:2.2rem;line-height:1;text-align:center;margin:6px 0 10px;text-transform:uppercase}
+.sign .big em{font-family:var(--serif);font-style:italic;text-transform:none;color:#b3361f;font-size:1.05em}
+.sign .row{display:flex;justify-content:space-between;align-items:center;border-top:1px dashed #b7aa94;padding-top:10px;font-size:.88rem;font-weight:600}
+.live{display:inline-flex;align-items:center;gap:8px;color:#1f6b33}
+.live i{width:9px;height:9px;border-radius:50%;background:#23a24a;box-shadow:0 0 0 0 rgba(35,162,74,.6);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(35,162,74,.6)}70%{box-shadow:0 0 0 10px rgba(35,162,74,0)}100%{box-shadow:0 0 0 0 rgba(35,162,74,0)}}
+.clock{font-family:var(--display);font-size:1.3rem;letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.scroll-hint{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-hint span{width:1px;height:36px;background:linear-gradient(var(--sodium),transparent)}
+@media (max-width:860px){
+  .hero{align-items:end;padding-top:calc(34svh + 40px);min-height:auto}
+  #focaccia{height:46svh;bottom:auto}  .hero-grid{grid-template-columns:1fr;gap:28px}
+  .sign{justify-self:start;transform:rotate(-2deg);width:min(100%,320px)}
+  .scroll-hint{display:none}
+}
+
+/* ---------- MARQUEE ---------- */
+.marquee-wrap{overflow:hidden;padding:24px 0;margin-top:-24px;position:relative;z-index:2}
+.marquee{border-block:1px solid var(--line);background:var(--sodium);color:#1a1200;overflow:hidden;padding:14px 0;transform:rotate(-1.2deg);margin:-10px -10px 0;position:relative;z-index:2}
+.marquee-track{display:flex;width:max-content;animation:marq 38s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--display);font-size:clamp(1.6rem,3.4vw,2.6rem);text-transform:uppercase;padding-inline:.6em;white-space:nowrap;display:flex;align-items:center;gap:1.2em}
+.marquee-track span::after{content:"";width:.42em;height:.42em;border-radius:50%;background:#1a1200;opacity:.85}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* ---------- SECTION BASE ---------- */
+section{position:relative}
+.sec{padding:clamp(80px,12vw,150px) 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:24px;margin-bottom:48px;flex-wrap:wrap}
+.sec-title{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,7vw,5.6rem);line-height:.92}
+.sec-title .serif{text-transform:none;color:var(--sodium)}
+.sec-note{max-width:40ch;color:var(--muted)}
+
+/* ---------- 24 ORE (pinned) ---------- */
+.day{background:#0d0c0a;transition:background-color .1s linear}
+.day-intro{padding-top:clamp(80px,12vw,140px)}
+.day-pin{height:100vh;display:flex;align-items:center;overflow:hidden}
+.day-track{display:flex;gap:28px;padding-inline:max(16px,calc((100vw - 1240px)/2));will-change:transform}
+.hour{flex:none;width:min(420px,78vw);min-height:420px;border:1px solid var(--line);border-radius:var(--radius);padding:28px;display:flex;flex-direction:column;justify-content:space-between;background:rgba(13,12,10,.35);backdrop-filter:blur(4px);position:relative;overflow:hidden}
+.hour .t{font-family:var(--display);font-size:clamp(4.5rem,9vw,7rem);line-height:.9;letter-spacing:-.01em}
+.hour .t small{font-size:.4em;color:var(--muted)}
+.hour h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:2rem;line-height:1.1;margin-bottom:8px}
+.hour p{color:var(--muted);font-size:.98rem}
+.hour .ico{position:absolute;top:26px;right:26px;width:34px;height:34px;color:var(--sodium)}
+.day-caption{margin-top:18px;font-size:.85rem;color:var(--muted)}
+@media (max-width:860px){
+  .day-pin{height:auto;display:block;padding:24px 0 80px}
+  .day-track{flex-direction:column;padding-inline:16px;transform:none!important}
+  .hour{width:100%;min-height:300px}
+}
+
+/* ---------- BANCO (menu) ---------- */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+.card{position:relative;border-radius:var(--radius);background:var(--ink-2);border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;transform-style:preserve-3d;transition:border-color .25s,box-shadow .25s;min-height:210px}
+.card:hover{border-color:rgba(255,182,39,.5);box-shadow:0 20px 50px rgba(0,0,0,.4),0 0 0 1px rgba(255,182,39,.2)}
+.card h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1;position:relative;z-index:2}
+.card p{color:var(--muted);font-size:.95rem;margin-top:6px;position:relative;z-index:2;max-width:36ch}
+.card .art{position:absolute;inset:0;z-index:1;pointer-events:none}
+.card .art svg{width:100%;height:100%}
+.card.hero-card{grid-column:span 4;grid-row:span 2;background:linear-gradient(180deg,rgba(13,12,10,0) 30%,rgba(13,12,10,.92) 85%),#1a140c}
+.card.hero-card .art::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,12,10,0) 25%,rgba(13,12,10,.55) 55%,rgba(13,12,10,.94) 88%)}
+.card.hero-card h3{font-size:clamp(2.6rem,5.2vw,4.6rem)}
+.card.c2{grid-column:span 2}
+.card.c3{grid-column:span 2}
+.card.c4{grid-column:span 2}
+.card.c5{grid-column:span 2}
+.card.c6{grid-column:span 2;background:var(--sodium);color:#1a1200;border-color:transparent}
+.card.c6 p{color:#3d2c00}
+.card.c6:hover{box-shadow:0 20px 60px rgba(255,182,39,.3)}
+.card .tag{position:absolute;top:18px;left:18px;z-index:2;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.35em .8em;border-radius:999px;background:rgba(13,12,10,.7);border:1px solid var(--line)}
+.menu-foot{display:flex;flex-wrap:wrap;gap:12px 24px;margin-top:22px;color:var(--muted);font-size:.9rem}
+@media (max-width:980px){
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .card.hero-card{grid-column:span 2;grid-row:span 1;min-height:380px}
+  .card.c2,.card.c3,.card.c4,.card.c5,.card.c6{grid-column:span 1}
+}
+@media (max-width:560px){
+  .bento{grid-template-columns:1fr}
+  .card.hero-card,.card.c2,.card.c3,.card.c4,.card.c5,.card.c6{grid-column:span 1}
+}
+
+/* ---------- STORIA ---------- */
+.story{background:var(--paper);color:#1b1610;overflow:hidden}
+.story .eyebrow{color:#a2331c}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,90px);align-items:center}
+.story .sec-title .serif{color:#b3361f}
+.story p{font-size:1.08rem;color:#3d352a;margin-top:18px;max-width:52ch}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #1b1610;margin-top:36px}
+.fact{padding:18px 14px 0 0}
+.fact b{display:block;font-family:var(--display);font-weight:400;font-size:clamp(2.2rem,4.6vw,3.6rem);line-height:1}
+.fact span{font-size:.85rem;color:#5b5143}
+.neon-wall{position:relative;aspect-ratio:4/5;border-radius:24px;background:#120f0c;display:grid;place-items:center;overflow:hidden;box-shadow:0 40px 80px rgba(0,0,0,.25)}
+.neon-wall::before{content:"";position:absolute;inset:0;background:
+   repeating-linear-gradient(90deg,rgba(255,255,255,.025) 0 2px,transparent 2px 64px),
+   repeating-linear-gradient(0deg,rgba(255,255,255,.03) 0 2px,transparent 2px 32px)}
+.neon{position:relative;text-align:center;font-family:var(--display);text-transform:uppercase;line-height:.9;color:#ffe9e2;
+  text-shadow:0 0 4px #fff,0 0 12px var(--neon),0 0 28px var(--neon),0 0 60px var(--neon)}
+.neon .n1{font-size:clamp(3.4rem,9vw,7rem);display:block}
+.neon .n2{font-family:var(--serif);font-style:italic;text-transform:none;font-size:clamp(1.6rem,3.2vw,2.4rem);color:#fff3cf;display:block;margin-top:10px;
+  text-shadow:0 0 4px #fff,0 0 12px var(--sodium),0 0 30px var(--sodium)}
+.flicker{animation:flicker 6s infinite}
+@keyframes flicker{0%,18%,22%,25%,53%,57%,100%{opacity:1}20%,24%,55%{opacity:.35}}
+.neon-wall figcaption{position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:.72rem;color:#8e8577;letter-spacing:.06em}
+@media (max-width:860px){.story-grid{grid-template-columns:1fr}.neon-wall{aspect-ratio:1}}
+
+/* ---------- RECENSIONI ---------- */
+.reviews{text-align:center}
+.reviews .sec-title{max-width:16ch;margin-inline:auto}
+.reviews p{color:var(--muted);max-width:52ch;margin:18px auto 30px}
+.stars{display:flex;justify-content:center;gap:6px;margin-bottom:20px;color:var(--sodium)}
+.stars svg{width:26px;height:26px}
+
+/* ---------- DOVE ---------- */
+.where-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px}
+.info{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(24px,4vw,40px);background:var(--ink-2);display:flex;flex-direction:column;gap:22px}
+.info-row{display:grid;grid-template-columns:28px 1fr;gap:14px;align-items:start}
+.info-row svg{width:22px;height:22px;color:var(--sodium);margin-top:3px}
+.info-row b{display:block;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+.info-row div > span:not(.tbc),.info-row div > a{font-size:1.15rem;font-weight:600;text-decoration:none}
+.info-row a:hover{color:var(--sodium)}
+.map{border-radius:var(--radius);overflow:hidden;border:1px solid var(--line);min-height:420px;background:var(--ink-3)}
+.map iframe{width:100%;height:100%;min-height:420px;border:0;filter:grayscale(.3) contrast(1.05)}
+@media (max-width:860px){.where-grid{grid-template-columns:1fr}}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:56px 0 120px;color:var(--muted);font-size:.9rem}
+.foot-big{font-family:var(--display);text-transform:uppercase;color:var(--paper);font-size:clamp(3rem,15vw,13rem);line-height:.8;letter-spacing:-.01em;margin-bottom:28px;white-space:nowrap}
+.foot-big .serif{text-transform:none;color:var(--sodium);font-size:.45em}
+.foot-row{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px}
+@media (min-width:861px){footer{padding-bottom:56px}}
+
+/* ---------- MOBILE BAR ---------- */
+.mbar{position:fixed;left:12px;right:12px;bottom:12px;z-index:60;display:none;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;border-radius:18px;background:rgba(22,20,16,.9);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid var(--line);box-shadow:0 12px 40px rgba(0,0,0,.5)}
+.mbar a{display:flex;flex-direction:column;align-items:center;gap:3px;padding:9px 4px;border-radius:12px;text-decoration:none;font-size:.74rem;font-weight:700;min-height:48px;justify-content:center}
+.mbar a svg{width:20px;height:20px}
+.mbar a.main{background:var(--sodium);color:#1a1200}
+@media (max-width:860px){.mbar{display:grid}}
+
+/* ---------- REVEAL (solo con JS) ---------- */
+.js .rv{opacity:0;transform:translateY(40px)}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .rv{opacity:1;transform:none}
+  .marquee-track{animation:none}
+}
+</style>
+</head>
+<body>
+
+<!-- SVG sprite (icone Lucide + pattern focaccia) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+    <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+    <symbol id="i-star-o" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-sunrise" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v8M4.93 10.93l1.41 1.41M2 18h2M20 18h2M19.07 10.93l-1.41 1.41M22 22H2M8 6l4-4 4 4M16 18a4 4 0 0 0-8 0"/></symbol>
+    <symbol id="i-sunset" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 10V2M4.93 10.93l1.41 1.41M2 18h2M20 18h2M19.07 10.93l-1.41 1.41M22 22H2M16 6l-4 4-4-4M16 18a4 4 0 0 0-8 0"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.9 5.8a2 2 0 0 1-1.3 1.3L3 12l5.8 1.9a2 2 0 0 1 1.3 1.3L12 21l1.9-5.8a2 2 0 0 1 1.3-1.3L21 12l-5.8-1.9a2 2 0 0 1-1.3-1.3Z"/></symbol>
+    <symbol id="i-coffee" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 1 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"/><path d="M6 2v2M10 2v2M14 2v2"/></symbol>
+    <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+    <symbol id="i-wallet" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20M16 15h2"/></symbol>
+
+    <!-- impasto: buchi della focaccia -->
+    <radialGradient id="dimple" cx="50%" cy="45%" r="50%">
+      <stop offset="0" stop-color="#ffe7a8"/><stop offset=".55" stop-color="#f3c066"/><stop offset="1" stop-color="#d48a34" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="crust" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e8b05a"/><stop offset=".6" stop-color="#cf8a38"/><stop offset="1" stop-color="#a9621f"/>
+    </linearGradient>
+    <pattern id="holes" width="44" height="40" patternUnits="userSpaceOnUse">
+      <ellipse cx="11" cy="10" rx="7" ry="6" fill="url(#dimple)"/>
+      <ellipse cx="33" cy="30" rx="7" ry="6" fill="url(#dimple)"/>
+      <circle cx="26" cy="9" r="1.2" fill="#fff" opacity=".85"/>
+      <circle cx="6" cy="30" r="1" fill="#fff" opacity=".8"/>
+      <circle cx="40" cy="16" r=".9" fill="#fff" opacity=".7"/>
+    </pattern>
+  </defs>
+</svg>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="Pizza Sbrano, torna su"><span>SBRANO</span><small>Foce · Genova</small></a>
+    <nav aria-label="Principale">
+      <ul>
+        <li><a href="#giorno">24 ore</a></li>
+        <li><a href="#banco">Il banco</a></li>
+        <li><a href="#storia">Storia</a></li>
+        <li><a href="#dove">Dove siamo</a></li>
+      </ul>
+    </nav>
+    <a class="btn btn-sodium magnetic" href="https://www.google.com/maps/dir/?api=1&destination=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Portami lì</a>
+  </div>
+</header>
+
+<main id="top">
+  <!-- HERO -->
+  <section class="hero" aria-label="Pizza Sbrano">
+    <canvas id="focaccia" aria-hidden="true"></canvas>
+    <div class="hero-fallback" aria-hidden="true"></div>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Focacceria · Via Carlo Barabino 98r · Genova Foce</p>
+        <h1 aria-label="Sfornata a qualunque ora">
+          <span class="line"><span>Sfornata</span></span>
+          <span class="line line-serif"><span class="serif">a qualunque</span></span>
+          <span class="line"><span>ora.</span></span>
+        </h1>
+        <p class="hero-lead">Focaccia, pizzette, panini e caffè. <strong>Alle sette del mattino o alle quattro di notte</strong>: da Sbrano il forno è acceso.</p>
+        <div class="hero-cta">
+          <a class="btn btn-sodium magnetic" href="https://www.google.com/maps/dir/?api=1&destination=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Indicazioni</a>
+          <a class="btn btn-ghost magnetic" href="#banco">Cosa c'è sul banco</a>
+        </div>
+      </div>
+      <aside class="sign" aria-label="Orari">
+        <p class="k">Orario di chiusura</p>
+        <p class="big">Da <em>mai</em><br>a <em>mai</em></p>
+        <div class="row">
+          <span class="live"><i></i>Aperto ora</span>
+          <span class="clock" id="clock" aria-live="off">--:--</span>
+        </div>
+      </aside>
+    </div>
+    <div class="scroll-hint" aria-hidden="true">Scorri<span></span></div>
+  </section>
+
+  <!-- MARQUEE -->
+  <div class="marquee-wrap"><div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Focaccia</span><span>Alle patate</span><span>Alle olive</span><span>Al formaggio</span><span>Pizzette</span><span>Farinata</span><span>Panini</span><span>Caffè</span>
+      <span>Focaccia</span><span>Alle patate</span><span>Alle olive</span><span>Al formaggio</span><span>Pizzette</span><span>Farinata</span><span>Panini</span><span>Caffè</span>
+    </div>
+  </div></div>
+
+  <!-- 24 ORE -->
+  <section class="day" id="giorno" aria-labelledby="day-title">
+    <div class="wrap day-intro">
+      <div class="sec-head">
+        <h2 class="sec-title rv" id="day-title">Un giorno <span class="serif">(e una notte)</span><br>da Sbrano</h2>
+        <p class="sec-note rv">Qui non si guarda l'orologio. Cambia solo chi entra dalla porta: chi va al lavoro, chi esce da scuola, chi torna da una serata.</p>
+      </div>
+    </div>
+    <div class="day-pin">
+      <div class="day-track" id="dayTrack">
+        <article class="hour" data-bg="#1c1712">
+          <svg class="ico"><use href="#i-sunrise"/></svg>
+          <div class="t">07<small>:00</small></div>
+          <div><h3>Prima del lavoro</h3><p>Una striscia di focaccia ancora tiepida e un caffè al banco. La colazione genovese, senza discussioni.</p></div>
+        </article>
+        <article class="hour" data-bg="#22190e">
+          <svg class="ico"><use href="#i-sun"/></svg>
+          <div class="t">13<small>:00</small></div>
+          <div><h3>Pausa pranzo</h3><p>Pizzette, focaccia farcita, un panino. Si mangia in piedi o si porta via, in cinque minuti.</p></div>
+        </article>
+        <article class="hour" data-bg="#241410">
+          <svg class="ico"><use href="#i-sunset"/></svg>
+          <div class="t">18<small>:30</small></div>
+          <div><h3>Merenda lunga</h3><p>Il vassoio da portare agli amici, quello che finisce prima di arrivare a casa.</p></div>
+        </article>
+        <article class="hour" data-bg="#0f0e14">
+          <svg class="ico"><use href="#i-moon"/></svg>
+          <div class="t">03<small>:00</small></div>
+          <div><h3>Dopo la serata</h3><p>La Foce è buia, la vetrina di Sbrano no. Il posto dove finisce, da sempre, la notte genovese.</p></div>
+        </article>
+        <article class="hour" data-bg="#15120f">
+          <svg class="ico"><use href="#i-sparkles"/></svg>
+          <div class="t">05<small>:00</small></div>
+          <div><h3>E si ricomincia</h3><p>Chi rientra incrocia chi esce. Il forno, intanto, non si è mai spento.</p></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- BANCO -->
+  <section class="sec" id="banco" aria-labelledby="banco-title">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title rv" id="banco-title">Il <span class="serif">banco</span></h2>
+        <p class="sec-note rv">Quello che i clienti raccontano di trovare in vetrina. Assortimento e prezzi <span class="tbc">[DA CONFERMARE]</span></p>
+      </div>
+
+      <div class="bento">
+        <article class="card hero-card tilt rv">
+          <span class="tag">La classica</span>
+          <div class="art" aria-hidden="true">
+            <svg viewBox="0 0 600 420" preserveAspectRatio="xMidYMid slice"><rect x="-20" y="-20" width="640" height="460" fill="url(#crust)"/><rect x="-20" y="-20" width="640" height="460" fill="url(#holes)"/><rect width="600" height="420" fill="url(#holes)" transform="translate(22 20)" opacity=".35"/></svg>
+          </div>
+          <h3>Focaccia genovese</h3>
+          <p>Unta il giusto, buchi profondi, sale grosso in superficie. Quella che tutti prendono “normale”.</p>
+        </article>
+
+        <article class="card c2 tilt rv">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="210" fill="#1f180f"/>
+            <g opacity=".9"><ellipse cx="220" cy="60" rx="40" ry="26" fill="#f1d27b"/><ellipse cx="262" cy="104" rx="34" ry="22" fill="#e9c060"/><ellipse cx="200" cy="112" rx="30" ry="20" fill="#f6dc93"/><ellipse cx="250" cy="30" rx="26" ry="16" fill="#e2b453"/></g>
+            <rect width="300" height="210" fill="url(#g-fade)"/>
+            <defs><linearGradient id="g-fade" x1="0" x2="0" y1="0" y2="1"><stop offset=".3" stop-color="#161410" stop-opacity="0"/><stop offset=".85" stop-color="#161410"/></linearGradient></defs>
+          </svg></div>
+          <h3>Alle patate</h3>
+          <p>Fette sottili che in forno diventano dorate ai bordi.</p>
+        </article>
+
+        <article class="card c3 tilt rv">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="210" fill="#1f180f"/>
+            <g fill="#2b2319" stroke="#4d3f2c" stroke-width="3"><ellipse cx="210" cy="50" rx="14" ry="10"/><ellipse cx="250" cy="80" rx="14" ry="10"/><ellipse cx="200" cy="100" rx="14" ry="10"/><ellipse cx="270" cy="30" rx="14" ry="10"/><ellipse cx="240" cy="125" rx="14" ry="10"/></g>
+            <g fill="#8b6d3d"><circle cx="210" cy="50" r="3"/><circle cx="250" cy="80" r="3"/><circle cx="200" cy="100" r="3"/><circle cx="270" cy="30" r="3"/><circle cx="240" cy="125" r="3"/></g>
+            <rect width="300" height="210" fill="url(#g-fade)"/>
+          </svg></div>
+          <h3>Alle olive</h3>
+          <p>Olive nere nell'impasto e sulla crosta.</p>
+        </article>
+
+        <article class="card c4 tilt rv">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="210" fill="#1f180f"/>
+            <g><circle cx="225" cy="70" r="58" fill="#c7512b"/><circle cx="225" cy="70" r="58" fill="none" stroke="#e7a24a" stroke-width="8"/>
+            <g fill="#f5e6c4"><circle cx="205" cy="55" r="12"/><circle cx="240" cy="50" r="10"/><circle cx="230" cy="88" r="13"/><circle cx="200" cy="90" r="8"/></g></g>
+            <rect width="300" height="210" fill="url(#g-fade)"/>
+          </svg></div>
+          <h3>Pizzette</h3>
+          <p>Tonde, piccole, da mangiare in due morsi. O in uno.</p>
+        </article>
+
+        <article class="card c5 tilt rv">
+          <div class="art" aria-hidden="true"><svg viewBox="0 0 300 210" preserveAspectRatio="xMidYMid slice">
+            <rect width="300" height="210" fill="#1f180f"/>
+            <path d="M150 40 L300 0 L300 150 Z" fill="#e59a3a"/><path d="M150 40 L300 0 L300 150 Z" fill="none" stroke="#b86a22" stroke-width="4"/>
+            <g fill="#3a2410"><circle cx="230" cy="40" r="2"/><circle cx="260" cy="70" r="2"/><circle cx="250" cy="30" r="1.6"/><circle cx="280" cy="100" r="2"/><circle cx="275" cy="50" r="1.6"/></g>
+            <rect width="300" height="210" fill="url(#g-fade)"/>
+          </svg></div>
+          <h3>Farinata <span class="tbc">[DA CONFERMARE]</span></h3>
+          <p>Ceci, olio e pepe. Sottile, croccante sopra.</p>
+        </article>
+
+        <article class="card c6 tilt rv">
+          <div class="art" aria-hidden="true" style="display:flex;justify-content:flex-end;padding:22px"><svg viewBox="0 0 24 24" style="width:84px;height:84px;color:#1a1200;opacity:.85"><use href="#i-coffee"/></svg></div>
+          <h3>Bar &amp; panini</h3>
+          <p>Caffè, bibite e panini al banco, dopo la ristrutturazione. Dettagli <span class="tbc">[DA CONFERMARE]</span></p>
+        </article>
+      </div>
+
+      <div class="menu-foot">
+        <span>Focaccia venduta a peso <span class="tbc">[DA CONFERMARE]</span></span>
+        <span>Pagamenti: solo contanti? <span class="tbc">[DA CONFERMARE]</span></span>
+        <span>Illustrazioni grafiche, non foto del negozio.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORIA -->
+  <section class="story sec" id="storia" aria-labelledby="story-title">
+    <div class="wrap story-grid">
+      <div>
+        <p class="eyebrow rv">Il forno della Foce</p>
+        <h2 class="sec-title rv" id="story-title">Stesso forno,<br><span class="serif">mai spento.</span></h2>
+        <p class="rv">Per tanti genovesi Sbrano è un punto fermo della notte: la luce accesa in via Barabino quando tutto il resto è chiuso. Dopo il cambio di gestione ha riaperto nel 2018 mantenendo l'orario continuato, e più di recente ha rinnovato i locali aggiungendo il servizio bar.</p>
+        <p class="rv">È talmente parte della città da essere finito anche in una canzone di Olly, il cantautore genovese. <span class="tbc">[DA CONFERMARE titolo brano]</span></p>
+        <div class="facts rv">
+          <div class="fact"><b>24/7</b><span>forno acceso</span></div>
+          <div class="fact"><b>2018</b><span>riapertura, nuova gestione</span></div>
+          <div class="fact"><b>0</b><span>giorni di chiusura in cartello</span></div>
+        </div>
+      </div>
+      <figure class="neon-wall rv">
+        <div class="neon"><span class="n1 flicker">Sbrano</span><span class="n2">chiusura da mai a mai</span></div>
+        <figcaption>Illustrazione — insegna reale da fotografare</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- RECENSIONI -->
+  <section class="sec reviews" aria-labelledby="rev-title">
+    <div class="wrap">
+      <h2 class="sec-title rv" id="rev-title">Lo dicono <span class="serif">i genovesi</span></h2>
+      <p class="rv">Non scriviamo noi le recensioni: leggile direttamente su Google, da chi ci è passato alle sette di mattina e alle tre di notte.</p>
+      <a class="btn btn-sodium magnetic rv" href="https://www.google.com/maps/search/?api=1&query=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener">Leggi le recensioni su Google <svg><use href="#i-ext"/></svg></a>
+    </div>
+  </section>
+
+  <!-- DOVE -->
+  <section class="sec" id="dove" aria-labelledby="dove-title" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2 class="sec-title rv" id="dove-title">Dove <span class="serif">siamo</span></h2>
+        <p class="sec-note rv">Alla Foce, in via Carlo Barabino. La vetrina accesa la trovi di sicuro.</p>
+      </div>
+      <div class="where-grid">
+        <div class="info rv">
+          <div class="info-row"><svg><use href="#i-pin"/></svg><div><b>Indirizzo</b><span>Via Carlo Barabino 98r<br>16129 Genova (GE)</span></div></div>
+          <div class="info-row"><svg><use href="#i-clock"/></svg><div><b>Orari</b><span>Sempre aperto, 24 ore su 24, 7 giorni su 7</span></div></div>
+          <div class="info-row"><svg><use href="#i-phone"/></svg><div><b>Telefono</b><a href="tel:+39010540437">010 540437</a> <span class="tbc">[DA CONFERMARE]</span></div></div>
+          <div class="info-row"><svg><use href="#i-wallet"/></svg><div><b>Pagamenti</b><span>[DA CONFERMARE]</span></div></div>
+          <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:6px">
+            <a class="btn btn-sodium magnetic" href="https://www.google.com/maps/dir/?api=1&destination=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Indicazioni</a>
+            <a class="btn btn-ghost magnetic" href="tel:+39010540437"><svg><use href="#i-phone"/></svg>Chiama</a>
+          </div>
+        </div>
+        <div class="map rv">
+          <iframe title="Mappa: Pizza Sbrano, via Carlo Barabino 98r, Genova" src="https://www.google.com/maps?q=Pizza+Sbrano+Via+Carlo+Barabino+98r+16129+Genova&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-big" aria-hidden="true">Sbrano <span class="serif">h24</span></div>
+    <div class="foot-row">
+      <span>Pizza Sbrano · Via Carlo Barabino 98r, 16129 Genova</span>
+      <span>Ragione sociale e P.IVA <span class="tbc">[DA CONFERMARE]</span></span>
+    </div>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Azioni rapide">
+  <a href="tel:+39010540437"><svg><use href="#i-phone"/></svg>Chiama</a>
+  <a class="main" href="https://www.google.com/maps/dir/?api=1&destination=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Indicazioni</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Pizza+Sbrano+Via+Carlo+Barabino+98r+Genova" target="_blank" rel="noopener"><svg><use href="#i-star"/></svg>Recensioni</a>
+</nav>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/three@0.149.0/build/three.min.js"></script>
+<script>
+(function(){
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fine = matchMedia('(pointer: fine)').matches;
+
+  /* --- orologio live --- */
+  const clock = document.getElementById('clock');
+  const tick = () => { const d = new Date(); clock.textContent = String(d.getHours()).padStart(2,'0') + ':' + String(d.getMinutes()).padStart(2,'0'); };
+  tick(); setInterval(tick, 10000);
+
+  /* --- nav --- */
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav.classList.toggle('scrolled', scrollY > 40);
+  addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* --- focaccia 3D --- */
+  initFocaccia(reduce);
+
+  if (!window.gsap || !window.ScrollTrigger) return;   // contenuto già visibile senza JS di animazione
+  gsap.registerPlugin(ScrollTrigger);
+  document.documentElement.classList.add('js');
+
+  if (reduce) { document.documentElement.classList.remove('js'); return; }
+
+  /* --- Lenis --- */
+  if (window.Lenis) {
+    const lenis = new Lenis({ lerp: 0.1 });
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add(t => lenis.raf(t * 1000));
+    gsap.ticker.lagSmoothing(0);
+    document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+      const id = a.getAttribute('href'); if (id.length < 2) return;
+      const el = document.querySelector(id); if (!el) return;
+      e.preventDefault(); lenis.scrollTo(el, { offset: -70 });
+    }));
+  }
+
+  /* --- hero intro --- */
+  gsap.from('.hero h1 .line > span', { yPercent: 110, duration: 1.1, ease: 'power4.out', stagger: .12, delay: .15 });
+  gsap.from('.hero .eyebrow, .hero-lead, .hero-cta', { y: 24, opacity: 0, duration: .9, ease: 'power3.out', stagger: .1, delay: .55 });
+  gsap.from('.sign', { y: 60, rotate: 12, opacity: 0, duration: 1.1, ease: 'back.out(1.6)', delay: .8 });
+
+  /* --- reveal --- */
+  gsap.utils.toArray('.rv').forEach(el => {
+    gsap.to(el, { opacity: 1, y: 0, duration: .9, ease: 'power3.out',
+      scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
+  });
+
+  /* --- marquee rallenta/accelera con lo scroll --- */
+  gsap.to('.marquee', { xPercent: -4, ease: 'none', scrollTrigger: { trigger: '.marquee', scrub: true } });
+
+  /* --- 24 ore: pin orizzontale + cielo che cambia --- */
+  const mm = gsap.matchMedia();
+  mm.add('(min-width: 861px)', () => {
+    const track = document.getElementById('dayTrack');
+    const hours = gsap.utils.toArray('.hour');
+    const dist = () => track.scrollWidth - innerWidth;
+    const tl = gsap.to(track, { x: () => -dist(), ease: 'none',
+      scrollTrigger: { trigger: '.day-pin', start: 'top top', end: () => '+=' + dist(), pin: true, scrub: .6, invalidateOnRefresh: true,
+        onUpdate: self => {
+          const i = Math.min(hours.length - 1, Math.round(self.progress * (hours.length - 1)));
+          document.querySelector('.day').style.backgroundColor = hours[i].dataset.bg;
+        } } });
+    hours.forEach(h => gsap.from(h.querySelector('.t'), { yPercent: 40, opacity: .2, ease: 'none',
+      scrollTrigger: { trigger: h, containerAnimation: tl, start: 'left 90%', end: 'left 45%', scrub: true } }));
+  });
+
+  /* --- parallax neon --- */
+  gsap.fromTo('.neon', { y: 40 }, { y: -40, ease: 'none', scrollTrigger: { trigger: '.neon-wall', scrub: true } });
+
+  /* --- tilt card --- */
+  if (fine) {
+    document.querySelectorAll('.tilt').forEach(c => {
+      c.addEventListener('pointermove', e => {
+        const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        gsap.to(c, { rotateY: x * 8, rotateX: -y * 8, transformPerspective: 900, duration: .4, ease: 'power2.out' });
+      });
+      c.addEventListener('pointerleave', () => gsap.to(c, { rotateY: 0, rotateX: 0, duration: .6, ease: 'power3.out' }));
+    });
+    /* --- CTA magnetici --- */
+    document.querySelectorAll('.magnetic').forEach(b => {
+      b.addEventListener('pointermove', e => {
+        const r = b.getBoundingClientRect();
+        gsap.to(b, { x: (e.clientX - r.left - r.width/2) * .25, y: (e.clientY - r.top - r.height/2) * .35, duration: .3, ease: 'power2.out' });
+      });
+      b.addEventListener('pointerleave', () => gsap.to(b, { x: 0, y: 0, duration: .5, ease: 'elastic.out(1,.5)' }));
+    });
+  }
+})();
+
+/* =================== FOCACCIA 3D =================== */
+function initFocaccia(reduce){
+  const canvas = document.getElementById('focaccia');
+  const root = document.documentElement;
+  let gl = null;
+  try { gl = window.THREE && (canvas.getContext('webgl2') || canvas.getContext('webgl')); } catch(e) {}
+  if (!gl) { root.classList.add('no-webgl'); return; }
+
+  const renderer = new THREE.WebGLRenderer({ canvas, context: gl, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  renderer.outputEncoding = THREE.sRGBEncoding;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = .95;
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(32, 1, .1, 100);
+  camera.position.set(0, 0, 9);
+
+  /* --- heightfield: impasto con buchi --- */
+  const W = 5.2, H = 3.6, SX = 260, SY = 180, M = .42;
+  const cell = .36, dimples = new Map();
+  const rnd = (i, j, k) => { const s = Math.sin(i * 127.1 + j * 311.7 + k * 74.7) * 43758.5453; return s - Math.floor(s); };
+  const dimpleAt = (i, j) => {
+    const key = i + ',' + j; let d = dimples.get(key);
+    if (!d) { d = { x: (i + .5 + (rnd(i,j,1) - .5) * .6) * cell, y: (j + .5 + (rnd(i,j,2) - .5) * .6) * cell, r: .055 + rnd(i,j,3) * .035, dep: .06 + rnd(i,j,4) * .045 }; dimples.set(key, d); }
+    return d;
+  };
+  const vnoise = (x, y) => Math.sin(x * 3.1 + Math.sin(y * 2.3)) * .5 + Math.sin(y * 4.7 + x * 1.3) * .3 + Math.sin((x + y) * 9.1) * .08;
+  const rr = (x, y) => { // distanza da rettangolo arrotondato (negativa dentro)
+    const R = .55, qx = Math.abs(x) - (W/2 - R), qy = Math.abs(y) - (H/2 - R);
+    return Math.hypot(Math.max(qx,0), Math.max(qy,0)) + Math.min(Math.max(qx,qy),0) - R;
+  };
+  const smooth = (a, b, x) => { const t = Math.min(1, Math.max(0, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
+  function height(x, y){
+    const edge = smooth(.02, -.32, rr(x, y));           // 0 fuori, 1 dentro
+    let h = .16 + vnoise(x, y) * .018;
+    let dim = 0;
+    const ci = Math.floor(x / cell), cj = Math.floor(y / cell);
+    for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) {
+      const d = dimpleAt(ci + a, cj + b), dx = x - d.x, dy = y - d.y, r2 = dx*dx + dy*dy;
+      dim += d.dep * 1.35 * Math.exp(-r2 / (d.r * d.r));
+    }
+    dim *= smooth(-.05, -.45, rr(x, y));                 // niente buchi sul bordo
+    h -= dim;
+    const m = Math.min(W/2 + M - Math.abs(x), H/2 + M - Math.abs(y));
+    const wall = smooth(.16, .03, m) * .26;
+    return { h: h * edge + (edge - 1) * .03 + wall * (1 - edge), dim, edge, tray: 1 - edge };
+  }
+
+  const geo = new THREE.PlaneGeometry(W + 2 * M, H + 2 * M, SX, SY);
+  const pos = geo.attributes.position, col = new Float32Array(pos.count * 3);
+  const lin = h => new THREE.Color(h).convertSRGBToLinear();
+  const cBase = lin('#d08a36'), cPeak = lin('#9a5418'), cDim = lin('#f7cf78'), cEdge = lin('#6e3510'), cTray = lin('#2b2723');
+  const tmp = new THREE.Color();
+  for (let i = 0; i < pos.count; i++) {
+    const x = pos.getX(i), y = pos.getY(i), s = height(x, y);
+    pos.setZ(i, s.h);
+    tmp.copy(cBase).lerp(cPeak, Math.max(0, vnoise(x*1.7, y*1.7)) * .55);
+    tmp.lerp(cDim, Math.min(1, s.dim * 9));
+    tmp.lerp(cEdge, 1 - smooth(.0, -.25, rr(x, y)));
+    tmp.lerp(cTray, smooth(.0, .06, rr(x, y)));
+    col[i*3] = tmp.r; col[i*3+1] = tmp.g; col[i*3+2] = tmp.b;
+  }
+  geo.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  geo.computeVertexNormals();
+
+  const mat = new THREE.MeshPhysicalMaterial({ vertexColors: true, roughness: .5, metalness: 0, clearcoat: .55, clearcoatRoughness: .3 });
+  const slab = new THREE.Mesh(geo, mat);
+  const group = new THREE.Group();
+  group.add(slab);
+
+  /* sale grosso */
+  const N = 900, sg = new THREE.BufferGeometry(), sp = new Float32Array(N * 3);
+  for (let i = 0, k = 0; k < N && i < N * 4; i++) {
+    const x = (Math.random() - .5) * (W - .4), y = (Math.random() - .5) * (H - .4);
+    if (rr(x, y) > -.12) continue;
+    sp[k*3] = x; sp[k*3+1] = y; sp[k*3+2] = height(x, y).h + .012; k++;
+  }
+  sg.setAttribute('position', new THREE.BufferAttribute(sp, 3));
+  const salt = new THREE.Points(sg, new THREE.PointsMaterial({ color: '#fffaf0', size: .032, sizeAttenuation: true, transparent: true, opacity: .95 }));
+  group.add(salt);
+
+  group.rotation.set(-1.02, 0, .32);
+  scene.add(group);
+
+  /* luci: notte + lampione al sodio */
+  scene.add(new THREE.HemisphereLight('#6d7bb0', '#1a0f06', .35));
+  const key = new THREE.DirectionalLight('#ffe2b0', .9); key.position.set(-3, 4, 5); scene.add(key);
+  const lamp = new THREE.PointLight('#ffb627', 2.2, 12, 1.6); lamp.position.set(1.5, 1, 2.2); scene.add(lamp);
+  const neon = new THREE.PointLight('#ff5a3c', 1.6, 10, 2); neon.position.set(-3, -1.5, 2); scene.add(neon);
+
+  /* resize: posiziona la focaccia a destra su desktop, in alto su mobile */
+  let baseY = 0;
+  function resize(){
+    const w = canvas.clientWidth, h = canvas.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h; camera.updateProjectionMatrix();
+    const mobile = w < 861;
+    baseY = mobile ? .15 : .35;
+    group.position.set(mobile ? 0 : 2.6, baseY, 0);
+    const s = mobile ? Math.min(.95, w / h * .78) : Math.min(.78, w / h * .5);
+    group.scale.setScalar(s);
+  }
+  resize(); addEventListener('resize', resize);
+
+  let mx = 0, my = 0;
+  addEventListener('pointermove', e => { mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5; }, { passive: true });
+
+  if (reduce) { renderer.render(scene, camera); return; }
+
+  let running = true, raf = 0;
+  const clk = new THREE.Clock();
+  function loop(){
+    const t = clk.getElapsedTime();
+    group.rotation.z = .32 + Math.sin(t * .25) * .08 + mx * .25;
+    group.rotation.x = -1.02 + Math.sin(t * .35) * .04 + my * .15;
+    group.position.y += (baseY + Math.sin(t * .8) * .06 - group.position.y) * .05;
+    lamp.position.x += ((mx * 6 + 1) - lamp.position.x) * .06;
+    lamp.position.y += ((-my * 4 + .6) - lamp.position.y) * .06;
+    neon.intensity = 1.5 + (Math.sin(t * 13) > .96 ? -1 : 0);   // tremolio insegna
+    renderer.render(scene, camera);
+    if (running) raf = requestAnimationFrame(loop);
+  }
+  new IntersectionObserver(([e]) => {
+    running = e.isIntersecting;
+    if (running) { cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); }
+  }).observe(canvas);
+  document.addEventListener('visibilitychange', () => { running = !document.hidden; cancelAnimationFrame(raf); if (running) raf = requestAnimationFrame(loop); });
+}
+</script>
+</body>
+</html>
