@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="it">
+<head>
+{{HEAD Dove siamo · Pizza Sbrano | Pizza Sbrano, via Carlo Barabino 98r, 16129 Genova (Foce). Mappa, indicazioni stradali, recensioni su Google e TripAdvisor. Aperto 24 ore su 24.}}
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Bakery","name":"Pizza Sbrano",
+ "address":{"@type":"PostalAddress","streetAddress":"Via Carlo Barabino 98r","postalCode":"16129","addressLocality":"Genova","addressRegion":"GE","addressCountry":"IT"},
+ "openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"}}
+</script>
+<style>
+/* ---------- DOVE: mappa a tutta altezza + pannello ---------- */
+.where{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(360px,.75fr);min-height:100svh}
+.mapwrap{position:sticky;top:0;height:100svh;border-right:1px solid var(--line)}
+#map{position:absolute;inset:0;background:var(--bg-2);z-index:1}
+.map-fallback{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;color:var(--ink-2);z-index:0}
+.map-tools{position:absolute;right:16px;bottom:24px;z-index:5;display:flex;flex-direction:column;gap:6px}
+.map-tools button{width:44px;height:44px;border-radius:12px;background:var(--paper);border:1px solid var(--line);display:grid;place-items:center;font-size:1.2rem;box-shadow:0 6px 18px rgba(0,0,0,.12)}
+.map-tools button:hover{border-color:var(--ink)}
+.map-tools svg{width:18px;height:18px}
+.map-caption{position:absolute;left:16px;bottom:24px;z-index:5;background:var(--glass);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-family:var(--f-mono);font-size:.6rem;text-transform:uppercase;color:var(--ink-2)}
+
+/* tema delle tessere: notte = mappa scura */
+.leaflet-container{font-family:var(--f-text);background:var(--bg-2)}
+:root[data-theme="dark"] .leaflet-tile-pane{filter:invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.5) sepia(.25)}
+:root[data-theme="light"] .leaflet-tile-pane{filter:saturate(.55) sepia(.18) contrast(.96)}
+.leaflet-control-attribution{font-size:10px!important;background:var(--glass)!important;color:var(--ink-2)!important}
+.leaflet-control-attribution a{color:var(--ink)!important}
+.pin{position:relative;width:0;height:0}
+.pin .dot{position:absolute;left:-26px;top:-62px;width:52px;height:52px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:var(--accent);box-shadow:0 10px 24px rgba(0,0,0,.35);display:grid;place-items:center}
+.pin .dot b{transform:rotate(45deg);font-family:var(--f-logo);font-weight:400;font-size:1.5rem;color:var(--accent-ink);line-height:1}
+.pin .ring{position:absolute;left:-14px;top:-7px;width:28px;height:14px;border-radius:50%;border:2px solid var(--accent);animation:ring 2.4s infinite ease-out}
+@keyframes ring{from{transform:scale(.4);opacity:1}to{transform:scale(2.4);opacity:0}}
+.pin .lbl{position:absolute;left:34px;top:-56px;white-space:nowrap;background:var(--paper);color:var(--ink);border-radius:8px;padding:6px 10px;font-family:var(--f-mono);font-size:.62rem;text-transform:uppercase;box-shadow:0 6px 18px rgba(0,0,0,.15)}
+
+.panel{padding:112px clamp(20px,3.4vw,48px) 56px;display:flex;flex-direction:column;gap:36px}
+.panel h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(4rem,9vw,8.5rem);line-height:.8;letter-spacing:-.04em}
+.panel h1 em{font-style:normal;color:var(--accent)}
+.addr{font-family:var(--f-disp);font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.1}
+.addr small{display:block;font-family:var(--f-text);font-size:1rem;color:var(--ink-2);margin-top:6px}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.btn{display:inline-flex;align-items:center;gap:8px;min-height:46px;padding:0 18px;border-radius:999px;font-weight:600;font-size:.95rem;text-decoration:none;border:1px solid var(--ink);transition:background .2s,color .2s}
+.btn svg{width:17px;height:17px}
+.btn.fill{background:var(--ink);color:var(--bg)}
+.btn.fill:hover{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn:not(.fill):hover{background:var(--ink);color:var(--bg)}
+.facts{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--ink)}
+.facts div{padding:14px 12px 14px 0;border-bottom:1px solid var(--line)}
+.facts div:nth-child(odd){border-right:1px solid var(--line)}
+.facts div:nth-child(even){padding-left:14px}
+.facts b{display:block;font-family:var(--f-mono);font-weight:400;font-size:.62rem;text-transform:uppercase;color:var(--ink-2);margin-bottom:4px}
+.facts span:not(.tbc),.facts a{font-size:1.05rem}
+.portals h2{font-family:var(--f-mono);font-weight:400;font-size:.7rem;text-transform:uppercase;margin-bottom:10px}
+.portals ul{list-style:none;border-top:1px solid var(--ink)}
+.portals a{display:grid;grid-template-columns:40px 1fr 20px;align-items:center;gap:14px;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .3s var(--ease)}
+.portals a:hover{padding-left:8px}
+.portals .lg{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-family:var(--f-mono);font-size:.7rem;font-weight:500;color:#fff}
+.portals .t{font-family:var(--f-disp);font-size:1.45rem;line-height:1}
+.portals .d{display:block;font-size:.84rem;color:var(--ink-2);margin-top:3px;font-family:var(--f-text)}
+.portals svg{width:18px;height:18px}
+.toast{position:fixed;left:50%;bottom:96px;transform:translate(-50%,20px);opacity:0;z-index:90;background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.9rem;transition:opacity .3s,transform .3s var(--ease);pointer-events:none}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+@media (max-width:900px){
+  .where{grid-template-columns:1fr}
+  .mapwrap{position:relative;height:58svh;border-right:0;border-bottom:1px solid var(--line);margin-top:62px}
+  .panel{padding-top:36px}
+  .pin .lbl{display:none}
+}
+</style>
+</head>
+<body>
+{{SPRITE}}
+{{BAR dove}}
+{{SHEET}}
+
+<main class="where">
+  <div class="mapwrap">
+    <div class="map-fallback"><p>La mappa non si è caricata.<br><a href="https://www.openstreetmap.org/search?query=Via%20Carlo%20Barabino%2098%2C%20Genova" target="_blank" rel="noopener">Aprila su OpenStreetMap</a></p></div>
+    <div id="map" role="region" aria-label="Mappa OpenStreetMap con la posizione di Pizza Sbrano"></div>
+    <div class="map-tools">
+      <button id="zIn" aria-label="Avvicina">+</button>
+      <button id="zOut" aria-label="Allontana">−</button>
+      <button id="zHome" aria-label="Torna su Sbrano"><svg><use href="#i-pin"/></svg></button>
+    </div>
+    <p class="map-caption">Mappa © OpenStreetMap · segnaposto indicativo</p>
+  </div>
+
+  <section class="panel">
+    <h1 class="rise">Dove<br><em>siamo.</em></h1>
+
+    <div class="rise">
+      <p class="addr">Via Carlo Barabino 98r<small>16129 Genova · quartiere Foce</small></p>
+      <div class="row">
+        <a class="btn fill" href="{{LINK gdir}}" target="_blank" rel="noopener"><svg><use href="#i-nav"/></svg>Indicazioni</a>
+        <button class="btn" id="copy"><svg><use href="#i-copy"/></svg>Copia indirizzo</button>
+      </div>
+    </div>
+
+    <div class="facts rise">
+      <div><b>Orari</b><span>Sempre aperto</span></div>
+      <div><b>Adesso</b><span>Aperto · <span data-clock>--:--</span></span></div>
+      <div><b>Telefono</b><a href="{{LINK tel}}">331 942 8164</a> <span class="tbc">da confermare</span></div>
+      <div><b>Chiusura</b><span>da mai a mai</span></div>
+    </div>
+
+    <nav class="portals rise" aria-labelledby="portals-t">
+      <h2 id="portals-t">Apri in un'altra app</h2>
+      <ul>
+        <li><a href="{{LINK gsearch}}" target="_blank" rel="noopener"><span class="lg" style="background:#1a73e8">G</span><span><span class="t">Google Maps</span><span class="d">Scheda, foto e recensioni dei clienti</span></span><svg><use href="#i-ext"/></svg></a></li>
+        <li><a href="{{LINK trip}}" target="_blank" rel="noopener"><span class="lg" style="background:#00aa6c">TA</span><span><span class="t">TripAdvisor</span><span class="d">Recensioni e foto dei visitatori</span></span><svg><use href="#i-ext"/></svg></a></li>
+        <li><a href="https://maps.apple.com/place?place-id=IE8492BA85E7A494" target="_blank" rel="noopener"><span class="lg" style="background:#1d1d1f">AM</span><span><span class="t">Apple Mappe</span><span class="d">Per chi usa iPhone</span></span><svg><use href="#i-ext"/></svg></a></li>
+        <li><a href="https://waze.com/ul?q=Via%20Carlo%20Barabino%2098%2C%20Genova&navigate=yes" target="_blank" rel="noopener"><span class="lg" style="background:#33ccff;color:#062a3a">W</span><span><span class="t">Waze</span><span class="d">Navigazione in auto</span></span><svg><use href="#i-ext"/></svg></a></li>
+        <li><a href="https://www.openstreetmap.org/search?query=Via%20Carlo%20Barabino%2098%2C%20Genova" target="_blank" rel="noopener"><span class="lg" style="background:#7ebc6f;color:#10240a">OSM</span><span><span class="t">OpenStreetMap</span><span class="d">La mappa libera, anche a piedi e in bici</span></span><svg><use href="#i-ext"/></svg></a></li>
+        <li><a href="https://www.facebook.com/107380938220185" target="_blank" rel="noopener"><span class="lg" style="background:#1877f2">f</span><span><span class="t">Facebook</span><span class="d">La pagina del forno</span></span><svg><use href="#i-ext"/></svg></a></li>
+      </ul>
+    </nav>
+  </section>
+</main>
+<p class="toast" id="toast" role="status">Indirizzo copiato</p>
+
+{{FOOT}}
+{{DOCK}}
+
+<script src="assets/js/site.js"></script>
+<script src="assets/vendor/leaflet/leaflet.js"></script>
+<script>
+(function(){
+  /* posizione indicativa su via Carlo Barabino: da verificare sul posto */
+  const SB_POS = [44.39985, 8.94975];
+  const copy = document.getElementById('copy'), toast = document.getElementById('toast');
+  copy.addEventListener('click', async () => {
+    const txt = 'Pizza Sbrano, Via Carlo Barabino 98r, 16129 Genova';
+    try { await navigator.clipboard.writeText(txt); toast.textContent = 'Indirizzo copiato'; }
+    catch (e) { toast.textContent = txt; }
+    toast.classList.add('on'); setTimeout(() => toast.classList.remove('on'), 2200);
+  });
+
+  if (!window.L) return;
+  const map = L.map('map', { zoomControl: false, scrollWheelZoom: false, attributionControl: true }).setView(SB_POS, 17);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }).addTo(map);
+  const icon = L.divIcon({ className: 'pin', html: '<span class="ring"></span><span class="dot"><b>S</b></span><span class="lbl">Sbrano · aperto</span>', iconSize: [0, 0] });
+  L.marker(SB_POS, { icon, keyboard: true, title: 'Pizza Sbrano' }).addTo(map)
+    .bindPopup('<b>Pizza Sbrano</b><br>Via Carlo Barabino 98r<br><a href="{{LINK gdir}}" target="_blank" rel="noopener">Indicazioni su Google Maps</a>');
+  map.on('click', () => map.scrollWheelZoom.enable());
+  map.on('mouseout', () => map.scrollWheelZoom.disable());
+  document.getElementById('zIn').onclick = () => map.zoomIn();
+  document.getElementById('zOut').onclick = () => map.zoomOut();
+  document.getElementById('zHome').onclick = () => map.flyTo(SB_POS, 17, { duration: SB.reduced ? 0 : 1.2 });
+  /* ingresso: dall'alto della città fino al forno */
+  if (!SB.reduced) { map.setView([44.4056, 8.9463], 13); setTimeout(() => map.flyTo(SB_POS, 17, { duration: 2.4 }), 400); }
+  new ResizeObserver(() => map.invalidateSize()).observe(document.getElementById('map'));
+})();
+</script>
+</body>
+</html>

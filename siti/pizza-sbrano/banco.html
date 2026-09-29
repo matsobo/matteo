@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Il banco · Pizza Sbrano</title>
+<meta name="description" content="Focaccia genovese classica, alle patate, alle cipolle, alle olive; pizza, panini e bar. Il banco di Pizza Sbrano alla Foce, Genova, aperto 24 ore su 24.">
+<meta property="og:title" content="Il banco · Pizza Sbrano">
+<meta property="og:description" content="Focaccia genovese classica, alle patate, alle cipolle, alle olive; pizza, panini e bar. Il banco di Pizza Sbrano alla Foce, Genova, aperto 24 ore su 24.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta name="theme-color" content="#efe8da">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/site.css">
+<script>(function(){var r=document.documentElement,t=null;try{var s=JSON.parse(localStorage.getItem('sbrano-theme'));if(s&&Date.now()-s.at<216e5)t=s.t}catch(e){}if(!t){var h=new Date().getHours();t=(h>=7&&h<20)?'light':'dark'}r.dataset.theme=t;r.classList.add('js');var m=document.querySelector('meta[name=theme-color]');if(m&&t==='dark')m.content='#0f0d0b'})()</script>
+<style>
+/* ---------- BANCO: listino a sinistra, vetrina 3D fissa a destra ---------- */
+.page{padding:120px var(--gut) 40px}
+.masthead{display:grid;grid-template-columns:1fr minmax(260px,420px);gap:24px 48px;align-items:end;padding-bottom:28px;border-bottom:1px solid var(--ink)}
+.masthead h1{font-family:var(--f-disp);font-weight:400;font-size:clamp(4rem,13vw,12.5rem);line-height:.82;letter-spacing:-.03em}
+.masthead h1 em{font-family:var(--f-logo);font-style:normal;color:var(--accent);font-size:.42em;letter-spacing:0;display:inline-block;transform:rotate(-6deg) translateY(-.4em);margin-left:.1em}
+.masthead p{color:var(--ink-2);max-width:38ch}
+.masthead .mono{display:block;margin-bottom:10px;color:var(--ink)}
+
+.layout > *{min-width:0}
+.layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(24px,4vw,64px);margin-top:48px;align-items:start}
+
+/* listino */
+.group{margin-bottom:52px}
+.group h2{display:flex;justify-content:space-between;align-items:baseline;font-family:var(--f-mono);font-weight:400;font-size:.72rem;text-transform:uppercase;letter-spacing:.02em;padding-bottom:10px;border-bottom:1px solid var(--line);margin-bottom:6px}
+.group h2 span{color:var(--ink-2)}
+.item{width:100%;text-align:left;display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:2px 14px;padding:18px 12px 18px 0;border-bottom:1px solid var(--line);position:relative;transition:padding .35s var(--ease),background .25s}
+.item .n{font-family:var(--f-mono);font-size:.7rem;color:var(--ink-2);padding-top:.9em}
+.item .name{font-family:var(--f-disp);font-size:clamp(1.7rem,3vw,2.6rem);line-height:1;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.item .desc{grid-column:2;color:var(--ink-2);font-size:.95rem;max-width:46ch}
+.item .price{grid-row:1;grid-column:3;font-family:var(--f-mono);font-size:.8rem;white-space:nowrap;padding-top:.8em;text-align:right}
+.item .price small{display:block;font-size:.6rem;color:var(--ink-2)}
+.item .badge{font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:.3em .7em;color:var(--oil)}
+button.item{cursor:pointer}
+button.item::before{content:"";position:absolute;left:-14px;top:50%;width:6px;height:6px;border-radius:50%;background:var(--accent);transform:translateY(-50%) scale(0);transition:transform .3s var(--ease)}
+button.item:hover{padding-left:10px}
+button.item[aria-pressed="true"]{padding-left:14px}
+button.item[aria-pressed="true"]::before{transform:translateY(-50%) scale(1)}
+button.item[aria-pressed="true"] .name{color:var(--accent)}
+.note{border:1px dashed var(--ink-2);border-radius:12px;padding:18px 20px;color:var(--ink-2);font-size:.92rem;display:grid;gap:8px}
+.note b{color:var(--ink);font-weight:600}
+
+/* vetrina */
+.vetrina{position:sticky;top:92px}
+.glass{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:1/1.02;background:var(--bg-2);box-shadow:0 1px 0 var(--line),0 40px 80px -30px rgba(0,0,0,.35);isolation:isolate}
+.glass canvas{position:absolute;inset:0;width:100%;height:100%;cursor:grab}
+.glass::after{content:"";position:absolute;inset:0;pointer-events:none;border-radius:inherit;
+  background:linear-gradient(115deg,rgba(255,255,255,.22) 0 18%,rgba(255,255,255,0) 18.2% 60%,rgba(255,255,255,.08) 60.2% 66%,rgba(255,255,255,0) 66.2%);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.25),inset 0 -60px 80px -40px rgba(0,0,0,.25)}
+.shelf{position:absolute;left:16px;right:16px;top:14px;z-index:2;display:flex;justify-content:space-between;align-items:center;pointer-events:none}
+.shelf .mono{background:var(--glass);padding:.5em .8em;border-radius:999px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.tag{position:absolute;left:18px;bottom:18px;z-index:2;background:var(--paper);color:var(--ink);padding:12px 16px 14px;border-radius:4px;box-shadow:0 10px 24px rgba(0,0,0,.18);transform:rotate(-2deg);max-width:70%;pointer-events:none}
+.tag::before{content:"";position:absolute;top:-6px;left:22px;width:10px;height:10px;border-radius:50%;background:var(--bg-2);box-shadow:inset 0 0 0 2px var(--ink-2)}
+.tag b{display:block;font-family:var(--f-disp);font-weight:400;font-size:1.5rem;line-height:1}
+.tag span{font-family:var(--f-mono);font-size:.62rem;color:var(--ink-2)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chips button{font-family:var(--f-mono);font-size:.64rem;text-transform:uppercase;padding:.7em 1em;border-radius:999px;border:1px solid var(--line);transition:background .2s,color .2s,border-color .2s;min-height:36px}
+.chips button:hover{border-color:var(--ink)}
+.chips button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.vetrina .help{margin-top:10px;font-size:.82rem;color:var(--ink-2);display:flex;gap:8px;align-items:center}
+.vetrina .help svg{width:16px;height:16px}
+.no-webgl .glass canvas{display:none}
+.no-webgl .glass{display:grid;place-items:center;background:linear-gradient(135deg,#dca653,#b5702a)}
+
+@media (max-width:960px){
+  .page{padding-top:92px}
+  .masthead{grid-template-columns:1fr}
+  .layout{grid-template-columns:1fr;margin-top:0}
+  .vetrina{order:-1;top:62px;z-index:5;margin:0 calc(var(--gut) * -1);padding:10px var(--gut);background:var(--bg);border-bottom:1px solid var(--line)}
+  .glass{aspect-ratio:auto;height:38svh;border-radius:14px}
+  .vetrina .help{display:none}
+  .chips{margin-top:8px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+  .chips button{flex:none}
+  .tag{left:10px;bottom:10px;padding:8px 12px 10px}.tag b{font-size:1.15rem}
+  .list{margin-top:24px}
+  button.item:hover{padding-left:0}
+  .item{grid-template-columns:28px minmax(0,1fr) auto;gap:2px 10px}
+  .item .name .tbc{white-space:normal}
+}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+<symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></symbol>
+<symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+<symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+<symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+<symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+<symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></symbol>
+<symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+<symbol id="i-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+<symbol id="i-rotate" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><path d="M21 3v5h-5"/></symbol>
+<symbol id="i-hand" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 11V6a2 2 0 0 0-4 0M14 10V4a2 2 0 0 0-4 0v2M10 10.5V6a2 2 0 0 0-4 0v8"/><path d="M18 8a2 2 0 1 1 4 0v6a8 8 0 0 1-8 8h-2c-2.8 0-4.5-.86-5.99-2.34l-3.6-3.6a2 2 0 0 1 2.83-2.82L7 15"/></symbol>
+</defs></svg>
+<header class="bar" data-scroll>
+  <a class="brand" href="index.html" aria-label="Pizza Sbrano, home"><b>Sbrano</b><span>Foce · Genova</span></a>
+  <nav class="menu" aria-label="Pagine"><a href="index.html">Vetrina</a><a href="banco.html" aria-current="page">Il banco</a><a href="storia.html">La storia</a><a href="dove.html">Dove</a></nav>
+  <div class="bar-right">
+    <span class="status" title="Aperto 24 ore su 24"><i></i><span class="lbl">Aperto ·</span> <span data-clock>--:--</span></span>
+    <button class="theme-btn" data-theme-toggle aria-label="Passa da giorno a notte"><svg class="sun"><use href="#i-sun"/></svg><svg class="moon"><use href="#i-moon"/></svg></button>
+    <button class="menu-btn" data-menu aria-expanded="false" aria-controls="sheet">Menu</button>
+  </div>
+</header>
+<div class="sheet" id="sheet" role="dialog" aria-label="Menu">
+  <button class="menu-btn close" data-menu style="display:inline-flex" aria-label="Chiudi il menu"><svg class="ico"><use href="#i-x"/></svg></button>
+  <a href="index.html"><small>00</small>Vetrina</a><a href="banco.html"><small>01</small>Il banco</a><a href="storia.html"><small>02</small>La storia</a><a href="dove.html"><small>03</small>Dove</a>
+  <p class="mono" style="margin-top:auto;color:var(--ink-2)">Via Carlo Barabino 98r · 16129 Genova · sempre aperto</p>
+</div>
+
+<main class="page">
+  <header class="masthead">
+    <h1 class="rise">Il banco<em>h24</em></h1>
+    <div class="rise" data-d="120">
+      <span class="mono">Listino · prezzi da confermare</span>
+      <p>Quello che i clienti raccontano di trovare in vetrina. Tocca una focaccia nel listino e guardala nella vetrina 3D: girala, prendine un pezzo.</p>
+    </div>
+  </header>
+
+  <div class="layout">
+    <section class="list" aria-label="Listino">
+      <div class="group rise">
+        <h2>In teglia <span>focaccia genovese</span></h2>
+        <button class="item" data-top="classica" data-label="Classica" data-sub="olio · sale grosso" aria-pressed="true">
+          <span class="n">01</span><span class="name">Classica</span>
+          <span class="desc">Buchi profondi, olio che ci si ferma dentro, sale grosso sopra. Quella che al banco si chiede "normale".</span>
+          <span class="price">€ 12 / kg<small><span class="tbc">da confermare</span></small></span>
+        </button>
+        <button class="item" data-top="patate" data-label="Alle patate" data-sub="fette sottili · bordi dorati" aria-pressed="false">
+          <span class="n">02</span><span class="name">Alle patate</span>
+          <span class="desc">Fette sottili che in forno si dorano ai bordi. Tra le più nominate nelle recensioni.</span>
+          <span class="price">€ — / kg<small><span class="tbc">da confermare</span></small></span>
+        </button>
+        <button class="item" data-top="cipolle" data-label="Alle cipolle" data-sub="cipolla stufata in forno" aria-pressed="false">
+          <span class="n">03</span><span class="name">Alle cipolle <span class="tbc">disponibilità da confermare</span></span>
+          <span class="desc">La cipolla si ammorbidisce e si caramella sull'impasto.</span>
+          <span class="price">€ — / kg<small><span class="tbc">da confermare</span></small></span>
+        </button>
+        <button class="item" data-top="olive" data-label="Alle olive" data-sub="olive taggiasche" aria-pressed="false">
+          <span class="n">04</span><span class="name">Alle olive <span class="tbc">disponibilità da confermare</span></span>
+          <span class="desc">Olive piccole e scure, affondate nei buchi.</span>
+          <span class="price">€ — / kg<small><span class="tbc">da confermare</span></small></span>
+        </button>
+        <button class="item" data-top="rosmarino" data-label="Al rosmarino" data-sub="rosmarino fresco" aria-pressed="false">
+          <span class="n">05</span><span class="name">Al rosmarino <span class="tbc">disponibilità da confermare</span></span>
+          <span class="desc">Aghi di rosmarino sparsi sopra prima di infornare.</span>
+          <span class="price">€ — / kg<small><span class="tbc">da confermare</span></small></span>
+        </button>
+      </div>
+
+      <div class="group rise">
+        <h2>Dal forno <span>non in vetrina 3D</span></h2>
+        <div class="item"><span class="n">06</span><span class="name">Pizza</span><span class="desc">Al taglio e pizzette, da mangiare in piedi o da portare via. Gusti <span class="tbc">da confermare</span></span><span class="price">€ —<small><span class="tbc">da confermare</span></small></span></div>
+        <div class="item"><span class="n">07</span><span class="name">Panini</span><span class="desc">Farciti al banco. Farciture <span class="tbc">da confermare</span></span><span class="price">€ —<small><span class="tbc">da confermare</span></small></span></div>
+        <div class="item"><span class="n">08</span><span class="name">Dolci</span><span class="desc">Citati nelle recensioni online. Quali <span class="tbc">da confermare</span></span><span class="price">€ —<small><span class="tbc">da confermare</span></small></span></div>
+      </div>
+
+      <div class="group rise">
+        <h2>Al bar <span>dopo la ristrutturazione</span></h2>
+        <div class="item"><span class="n">09</span><span class="name">Caffè e bibite</span><span class="desc">Con i nuovi locali è arrivato anche il servizio bar: il caffè si prende al banco, accanto alla focaccia.</span><span class="price">€ —<small><span class="tbc">da confermare</span></small></span></div>
+      </div>
+
+      <div class="note rise">
+        <p><b>Come si compra.</b> La focaccia si vende a peso <span class="tbc">da confermare</span></p>
+        <p><b>Pagamenti.</b> Contanti, carte <span class="tbc">da confermare</span></p>
+        <p><b>Asporto e vassoi</b> per feste e uffici <span class="tbc">da confermare</span></p>
+      </div>
+    </section>
+
+    <aside class="vetrina" aria-label="Vetrina 3D">
+      <div class="glass">
+        <canvas id="scene" role="img" aria-label="Vetrina 3D: la focaccia selezionata nel listino. Trascina per girarla, tocca un pezzo per sollevarlo."></canvas>
+        <div class="shelf"><span class="mono">Vetrina · 3D</span><span class="mono" data-clock>--:--</span></div>
+        <div class="tag" aria-live="polite"><b id="tagName">Classica</b><span id="tagSub">olio · sale grosso</span></div>
+      </div>
+      <div class="chips" role="group" aria-label="Scegli la focaccia">
+        <button data-top="classica" aria-pressed="true">Classica</button>
+        <button data-top="patate" aria-pressed="false">Patate</button>
+        <button data-top="cipolle" aria-pressed="false">Cipolle</button>
+        <button data-top="olive" aria-pressed="false">Olive</button>
+        <button data-top="rosmarino" aria-pressed="false">Rosmarino</button>
+      </div>
+      <p class="help"><svg><use href="#i-rotate"/></svg>Trascina per girare la teglia, tocca un pezzo per sollevarlo. Illustrazione 3D, non una foto.</p>
+    </aside>
+  </div>
+</main>
+
+<footer class="foot">
+  <div>
+    <span class="big" aria-hidden="true">Sbrano</span>
+    <p>Pizza Sbrano · Via Carlo Barabino 98r, 16129 Genova<br>Aperto 24 ore su 24, tutti i giorni.</p>
+    <p style="margin-top:10px">Ragione sociale e P.IVA <span class="tbc">da confermare</span></p>
+  </div>
+  <div><h4>Pagine</h4><ul><li><a href="index.html">Vetrina</a></li><li><a href="banco.html">Il banco</a></li><li><a href="storia.html">La storia</a></li><li><a href="dove.html">Dove</a></li></ul></div>
+  <div><h4>Fuori di qui</h4><ul>
+    <li><a href="https://www.google.com/maps/search/?api=1&query=Pizza+Sbrano%2C+Via+Carlo+Barabino+98r%2C+16129+Genova" target="_blank" rel="noopener">Google Maps</a></li>
+    <li><a href="https://www.tripadvisor.it/Restaurant_Review-g187823-d11772301-Reviews-Pizza_Sbrano-Genoa_Italian_Riviera_Liguria.html" target="_blank" rel="noopener">TripAdvisor</a></li>
+    <li><a href="https://www.facebook.com/107380938220185" target="_blank" rel="noopener">Facebook</a></li>
+  </ul><p style="margin-top:14px;font-size:.8rem">La focaccia 3D è un'illustrazione generata al computer, non una foto del negozio.</p></div>
+</footer>
+<nav class="dock" aria-label="Azioni rapide">
+  <a href="tel:+393319428164"><svg class="ico"><use href="#i-phone"/></svg>Chiama</a>
+  <a class="main" href="https://www.google.com/maps/dir/?api=1&destination=Pizza+Sbrano%2C+Via+Carlo+Barabino+98r%2C+16129+Genova" target="_blank" rel="noopener"><svg class="ico"><use href="#i-nav"/></svg>Portami lì</a>
+  <a href="https://www.tripadvisor.it/Restaurant_Review-g187823-d11772301-Reviews-Pizza_Sbrano-Genoa_Italian_Riviera_Liguria.html" target="_blank" rel="noopener"><svg class="ico"><use href="#i-star"/></svg>Recensioni</a>
+</nav>
+
+<script src="assets/vendor/gsap.min.js"></script>
+<script src="assets/js/site.js"></script>
+<script src="assets/js/focaccia.bundle.js"></script>
+<script>
+(function(){
+  const root = document.documentElement;
+  const canvas = document.getElementById('scene');
+  let api = null;
+  try {
+    api = window.Focaccia && Focaccia.create(canvas, {
+      theme: root.dataset.theme === 'dark' ? 'night' : 'day', reduced: SB.reduced, zoom: false, autoRotate: true,
+      distance: (w, h) => w / h < 1.3 ? (w / h < 1 ? 11.5 : 10) : 8.6
+    });
+  } catch (e) { console.warn(e); }
+  if (!api) root.classList.add('no-webgl');
+  addEventListener('sb:theme', e => api && api.setTheme(e.detail === 'dark' ? 'night' : 'day'));
+
+  const tagName = document.getElementById('tagName'), tagSub = document.getElementById('tagSub');
+  const rows = [...document.querySelectorAll('button.item')], chips = [...document.querySelectorAll('.chips button')];
+  function choose(top, fromRow) {
+    rows.forEach(r => r.setAttribute('aria-pressed', r.dataset.top === top));
+    chips.forEach(c => c.setAttribute('aria-pressed', c.dataset.top === top));
+    const r = rows.find(r => r.dataset.top === top);
+    tagName.textContent = r.dataset.label; tagSub.textContent = r.dataset.sub;
+    if (api) { api.reset(); api.setTopping(top); }
+    if (fromRow && innerWidth <= 960) document.querySelector('.vetrina').scrollIntoView({ block: 'nearest' });
+  }
+  rows.forEach(r => r.addEventListener('click', () => choose(r.dataset.top, false)));
+  chips.forEach(c => c.addEventListener('click', () => choose(c.dataset.top, false)));
+})();
+</script>
+</body>
+</html>
