@@ -234,7 +234,7 @@ button { font: inherit; color: inherit; }
 .glass-fallback .bub:nth-child(5) { animation-delay: -1.7s; animation-duration: 2.5s; }
 @keyframes rise { from { transform: translateY(0); opacity: 0; } 15% { opacity: .9; } 85% { opacity: .9; } to { transform: translateY(-190px); opacity: 0; } }
 
-.ring { position: absolute; inset: -4%; width: 108%; height: 108%; color: var(--amber); opacity: .55; pointer-events: none; }
+.ring { position: absolute; z-index: 2; inset: -4%; width: 108%; height: 108%; color: var(--amber); opacity: .55; pointer-events: none; }
 .ring text { font-family: var(--f-text); font-size: 11.5px; font-weight: 700; letter-spacing: .32em; fill: currentColor; }
 
 .hero-meta {
@@ -307,7 +307,7 @@ button { font: inherit; color: inherit; }
 }
 .frame--tall { aspect-ratio: 4 / 5; }
 .frame--wide { aspect-ratio: 16 / 10; }
-.frame .soprana { width: 62%; color: var(--paper); }
+.frame .soprana { width: 70%; color: var(--paper); margin-bottom: 14%; }
 .frame .soprana .fill { fill: var(--amber); }
 .frame-texture { position: absolute; inset: 0; opacity: .07; pointer-events: none;
   background-image: repeating-linear-gradient(90deg, var(--paper) 0 1px, transparent 1px 22px), repeating-linear-gradient(0deg, var(--paper) 0 1px, transparent 1px 22px); }
@@ -321,7 +321,6 @@ button { font: inherit; color: inherit; }
   .place-grid { grid-template-columns: 4fr 1fr 6fr; gap: 0; }
   .place-notes { grid-column: 1; padding-top: 6rem; }
   .place-stack { grid-column: 3; grid-template-columns: 7fr 5fr; align-items: end; gap: 1.5rem; }
-  .place-stack .frame--amber { margin-bottom: -6rem; }
 }
 
 /* Numeri */
@@ -445,15 +444,20 @@ button { font: inherit; color: inherit; }
   box-shadow: 0 50px 80px -40px rgba(19,40,31,.7);
 }
 .poster > * { transform: translateZ(0); }
-.poster .p-top { display: flex; justify-content: space-between; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--mist); }
-.poster .p-title { align-self: end; margin-bottom: 1.5rem; font-family: var(--f-display); font-size: clamp(3.2rem, 9vw, 6.2rem); line-height: .85; letter-spacing: -.04em; font-weight: 350; }
+.poster .p-top { padding-right: 76px; display: flex; justify-content: space-between; font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--mist); }
+.poster .p-title { align-self: end; margin-bottom: 1.5rem; font-family: var(--f-display); font-size: clamp(2.8rem, 6.4vw, 5.2rem); line-height: .88; letter-spacing: -.04em; font-weight: 350; }
 .poster .p-title em { color: var(--amber); display: block; }
-.poster svg { position: absolute; right: 9%; top: 13%; width: 30%; color: var(--paper); }
-.poster svg .fill { fill: var(--amber); }
+.poster .stage3d { position: absolute; left: 0; right: 0; top: 9%; bottom: 38%; }
+.poster .stage3d canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1s var(--ease); }
+.poster .stage3d.has-webgl canvas { opacity: 1; }
+.poster .stage3d.has-webgl .mic-fallback { opacity: 0; visibility: hidden; }
+.poster .mic-fallback { position: absolute; right: 9%; top: 6%; width: 32%; color: var(--paper); transition: opacity .5s; }
+.poster .mic-fallback .fill { fill: var(--amber); }
+.poster .p-title { position: relative; z-index: 1; }
 .poster .p-foot { display: flex; justify-content: space-between; align-items: end; gap: 1rem; border-top: 1px solid var(--line-dark); padding-top: 1rem; font-size: .9rem; }
 .poster .p-foot a { color: var(--amber); }
 .poster .stamp {
-  position: absolute; left: -18px; bottom: 22%; width: 96px; height: 96px; border-radius: 50%;
+  position: absolute; right: -18px; top: -18px; width: 96px; height: 96px; border-radius: 50%;
   background: var(--amber); color: var(--ink); display: grid; place-items: center; text-align: center;
   font-size: .62rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; line-height: 1.3;
   transform: rotate(-12deg) translateZ(40px);
@@ -513,6 +517,23 @@ button { font: inherit; color: inherit; }
 .channels a svg { width: 18px; height: 18px; flex: none; transition: transform .45s var(--ease); }
 .channels a:hover svg, .channels a:focus-visible svg { transform: translate(3px, -3px); }
 .visit-card { perspective: 1000px; }
+.map-block { display: grid; gap: 1rem; }
+.map-block .map-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: .5rem 1rem; }
+.map-block h3 { font-family: var(--f-text); font-size: .75rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--amber); margin: 0; }
+.map { position: relative; height: clamp(320px, 48vw, 520px); border-radius: 6px; overflow: hidden; background: #d9d3c4; border: 1px solid var(--line-dark); z-index: 0; }
+.map .leaflet-tile-pane { filter: grayscale(1) sepia(.28) contrast(1.02) brightness(1.02); }
+.map .leaflet-control-attribution { font-size: 11px; background: rgba(243,236,223,.9); color: var(--ink); }
+.map .leaflet-control-attribution a { color: var(--ink); }
+.map .leaflet-bar a { color: var(--ink); }
+.map-fallback { position: absolute; inset: 0; display: grid; place-items: center; text-align: center; padding: 1.5rem; color: var(--ink); }
+.map.is-ready .map-fallback { display: none; }
+.pin { position: relative; width: 54px; height: 54px; }
+.pin b { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 50% 50% 50% 4px; transform: rotate(-45deg); background: var(--bottle); border: 3px solid var(--amber); box-shadow: 0 10px 20px -8px rgba(0,0,0,.6); }
+.pin b span { transform: rotate(45deg); font-family: var(--f-display); font-style: italic; font-size: 1.4rem; color: var(--amber); }
+.pin::after { content: ""; position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; margin: -27px 0 0 -27px; border-radius: 50%; border: 2px solid var(--amber); animation: ping 2.4s var(--ease) infinite; z-index: -1; }
+@keyframes ping { from { transform: scale(.6); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.leaflet-popup-content-wrapper { border-radius: 6px; font-family: var(--f-text); }
+.leaflet-popup-content b { font-family: var(--f-display); font-size: 1.15rem; font-weight: 500; }
 .ticket {
   background: var(--paper); color: var(--ink); border-radius: 6px; padding: 1.75rem;
   display: grid; gap: 1.25rem; transform-style: preserve-3d;
@@ -528,6 +549,7 @@ button { font: inherit; color: inherit; }
   .ib-hours { grid-column: 3; grid-row: 1; }
   .ib-phones { grid-column: 4; grid-row: 1; }
   .ib-channels { grid-column: 3 / 5; grid-row: 2; }
+  .map-block { grid-column: 1 / -1; }
 }
 
 /* ==========================================================================
@@ -561,6 +583,8 @@ button { font: inherit; color: inherit; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js" defer></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
 </head>
 
 <body>
@@ -607,7 +631,7 @@ button { font: inherit; color: inherit; }
         <p class="eyebrow" data-hero-in>Pub · hamburgeria · birreria — Genova</p>
         <h1 id="hero-title" data-split="hero">Burger, birra e <em>un tavolo</em> in Piazza Dante.</h1>
         <p class="hero-sub" data-hero-in>
-          Si apre alle <strong>12</strong>. A pranzo trofie al pesto e milanese da <strong>300 grammi</strong>;
+          Si apre alle <strong>12</strong>. A pranzo trofie al pesto e tagliata;
           la sera burger, una lunga lista di birre, cocktail e musica dal vivo. La domenica si canta.
           Si spende tra i <strong>10 e i 20 euro</strong>.
         </p>
@@ -689,16 +713,26 @@ button { font: inherit; color: inherit; }
         <figure class="frame frame--tall" style="margin:0">
           <div class="frame-texture"></div>
           <div class="frame-inner" data-parallax>
-            <svg class="soprana" viewBox="0 0 220 240" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" role="img" aria-label="Disegno di Porta Soprana, le due torri medievali accanto a Piazza Dante">
-              <path d="M30 230 V70 h6 v-12 h10 v12 h8 v-12 h10 v12 h8 v-12 h10 v12 h6 V230"/>
-              <path d="M130 230 V70 h6 v-12 h10 v12 h8 v-12 h10 v12 h8 v-12 h10 v12 h6 V230"/>
-              <path d="M88 230 V128 A22 22 0 0 1 132 128 V230" />
-              <path d="M88 96 H132 M88 110 H132"/>
-              <path d="M88 96 v-8 h9 v8 M106 88 h9 v8 M123 88 h9 v8"/>
-              <path class="fill" stroke="none" d="M94 230 V130 A16 16 0 0 1 126 130 V230 Z" opacity=".95"/>
-              <path d="M58 110 v18 M58 160 v18 M158 110 v18 M158 160 v18" stroke-width="4" stroke-linecap="round"/>
-              <path d="M10 230 H210" />
-            </svg>
+            <svg class="soprana" viewBox="0 0 240 262" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" role="img" aria-label="Disegno di Porta Soprana: due torri merlate e l'arco a sesto acuto, accanto a Piazza Dante">
+<path d="M20 80 V52 H28.22 V60 H36.44 V52 H44.67 V60 H52.89 V52 H61.11 V60 H69.33 V52 H77.56 V60 H85.78 V52 H94.00 V80 Z"/>
+<path d="M20 80 L26 94 M94 80 L88 94 M26 94 M26.00 94 V88 A5.17 5.17 0 0 1 36.33 88 V94 M36.33 94 V88 A5.17 5.17 0 0 1 46.67 88 V94 M46.67 94 V88 A5.17 5.17 0 0 1 57.00 88 V94 M57.00 94 V88 A5.17 5.17 0 0 1 67.33 88 V94 M67.33 94 V88 A5.17 5.17 0 0 1 77.67 88 V94 M77.67 94 V88 A5.17 5.17 0 0 1 88.00 88 V94" stroke-width="1.6"/>
+<path d="M26 94 V250 M88 94 V250 M26 94 H88"/>
+<path d="M33 100 V250 M81 100 V250" stroke-width="1" opacity=".35"/>
+<path d="M57.0 120 V140 M57.0 176 V196" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M52.0 232 V224 A5 5 0 0 1 62.0 224 V232" stroke-width="1.6"/>
+<path d="M146 80 V52 H154.22 V60 H162.44 V52 H170.67 V60 H178.89 V52 H187.11 V60 H195.33 V52 H203.56 V60 H211.78 V52 H220.00 V80 Z"/>
+<path d="M146 80 L152 94 M220 80 L214 94 M152 94 M152.00 94 V88 A5.17 5.17 0 0 1 162.33 88 V94 M162.33 94 V88 A5.17 5.17 0 0 1 172.67 88 V94 M172.67 94 V88 A5.17 5.17 0 0 1 183.00 88 V94 M183.00 94 V88 A5.17 5.17 0 0 1 193.33 88 V94 M193.33 94 V88 A5.17 5.17 0 0 1 203.67 88 V94 M203.67 94 V88 A5.17 5.17 0 0 1 214.00 88 V94" stroke-width="1.6"/>
+<path d="M152 94 V250 M214 94 V250 M152 94 H214"/>
+<path d="M159 100 V250 M207 100 V250" stroke-width="1" opacity=".35"/>
+<path d="M183.0 120 V140 M183.0 176 V196" stroke-width="3.5" stroke-linecap="round"/>
+<path d="M178.0 232 V224 A5 5 0 0 1 188.0 224 V232" stroke-width="1.6"/>
+<path d="M88 104 H93 V92 H104 V104 H114.5 V92 H125.5 V104 H136 V92 H147 V104 H152"/>
+<path class="fill" stroke="none" d="M100 250 V170 A40 40 0 0 1 120 135.36 A40 40 0 0 1 140 170 V250 Z"/>
+<path d="M100 250 V170 A40 40 0 0 1 120 135.36 A40 40 0 0 1 140 170 V250"/>
+<path d="M90 170 A50 50 0 0 1 120 124.17 A50 50 0 0 1 150 170 M90 170 H100 M140 170 H150 M90 170 V250 M150 170 V250"/>
+<path d=" M100.87 161.68 L91.09 159.60 M103.46 153.73 L94.32 149.66 M107.64 146.49 L99.55 140.61 M113.23 140.27 L106.54 132.84 M139.13 161.68 L148.91 159.60 M136.54 153.73 L145.68 149.66 M132.36 146.49 L140.45 140.61 M126.77 140.27 L133.46 132.84 M120 135.36 V124.17" stroke-width="1.4"/>
+<path d="M8 250 H232"/>
+</svg>
           </div>
           <figcaption class="cap"><span>Porta Soprana</span><span>2 min a piedi</span></figcaption>
         </figure>
@@ -724,8 +758,8 @@ button { font: inherit; color: inherit; }
         <p><strong>su Google</strong>306 recensioni. Le parole che tornano di più: panini, live, patatine.</p>
       </div>
       <div class="ledger-row">
-        <div class="ledger-val"><span data-count="300">300</span><small>g</small></div>
-        <p><strong>la milanese di maiale</strong>Servita con patatine. Da ordinare con fame vera.</p>
+        <div class="ledger-val"><span data-count="9.1" data-decimals="1">9,1</span><small>/10</small></div>
+        <p><strong>su TheFork</strong>Il voto medio di chi ha prenotato online: cucina 9,2, servizio 9,2.</p>
       </div>
       <div class="ledger-row">
         <div class="ledger-val"><span data-count="12">12</span><small>:00</small></div>
@@ -781,7 +815,7 @@ button { font: inherit; color: inherit; }
                   <li><h4>Hamburger con patatine</h4><p>Il piatto più citato nelle recensioni: «panino cotto a puntino e croccante al punto giusto».</p></li>
                   <li><h4>Il burger «più hot di Genova»</h4><p>Il nome gliel'ha dato Instagram. Il resto si scopre al tavolo.</p></li>
                   <li><h4>Tagliata</h4><p>Per chi vuole il piatto, e non il panino.</p></li>
-                  <li><h4>Milanese di maiale, 300 g</h4><p>Con patatine. Trecento grammi, non uno di meno.</p></li>
+                  <li><h4>Milanese di maiale</h4><p>Impanata e servita con patatine.</p></li>
                 </ul>
                 <div class="page-foot"><span>Alla griglia</span><span>1</span></div>
                 <div class="shade"></div>
@@ -904,13 +938,16 @@ button { font: inherit; color: inherit; }
       <div class="poster-wrap">
         <div class="poster" data-tilt>
           <div class="p-top"><span>Biblos Pub</span><span>Ogni domenica</span></div>
-          <svg viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" data-depth="30">
+          <div class="stage3d" data-karaoke>
+          <svg class="mic-fallback" viewBox="0 0 200 240" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="Un microfono">
             <circle class="fill" cx="100" cy="64" r="40"/>
             <path d="M68 44 H132 M62 64 H138 M68 84 H132 M100 24 V104" stroke="#13281F" opacity=".45"/>
             <circle cx="100" cy="64" r="40"/>
             <path d="M84 104 L90 178 H110 L116 104"/>
             <path d="M100 178 V196 Q100 222 76 222 Q52 222 52 236"/>
           </svg>
+          <canvas aria-hidden="true"></canvas>
+          </div>
           <p class="p-title" data-depth="50">Karaoke<em>la domenica</em></p>
           <div class="p-foot">
             <span>Piazza Dante 31r<br>Genova</span>
@@ -1005,6 +1042,16 @@ button { font: inherit; color: inherit; }
         </ul>
       </div>
 
+      <div class="map-block" data-reveal>
+        <div class="map-head">
+          <h3>Sulla mappa</h3>
+          <a class="link" href="https://www.openstreetmap.org/?mlat=44.40519&amp;mlon=8.93519#map=18/44.40519/8.93519" target="_blank" rel="noopener">Apri su OpenStreetMap</a>
+        </div>
+        <div class="map" id="map" role="region" aria-label="Mappa OpenStreetMap: Biblos Pub, Piazza Dante 31r, Genova">
+          <p class="map-fallback">Piazza Dante 31r, 16121 Genova<br>(la mappa richiede la connessione)</p>
+        </div>
+      </div>
+
       <div class="info-block ib-channels" data-reveal>
         <h3>Online</h3>
         <ul class="channels">
@@ -1058,6 +1105,24 @@ document.addEventListener('DOMContentLoaded', () => {
   document.addEventListener('keydown', e => {
     if (e.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { setMenu(false); toggle.focus(); }
   });
+
+  /* ---- Mappa OpenStreetMap (Leaflet) ---- */
+  const mapEl = document.getElementById('map');
+  if (mapEl && window.L) {
+    const pos = [44.40519, 8.93519]; /* Plus Code CW4P+33, Genova */
+    const map = L.map(mapEl, {
+      center: pos, zoom: 17, scrollWheelZoom: false, dragging: !L.Browser.mobile, tap: false,
+      zoomAnimation: !reduce, fadeAnimation: !reduce, markerZoomAnimation: !reduce
+    });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, subdomains: 'abc',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    const icon = L.divIcon({ className: '', html: '<div class="pin"><b><span>B</span></b></div>', iconSize: [54, 54], iconAnchor: [27, 54], popupAnchor: [0, -50] });
+    L.marker(pos, { icon, title: 'Biblos Pub', alt: 'Biblos Pub' }).addTo(map)
+      .bindPopup('<b>Biblos Pub</b><br>Piazza Dante 31r, Genova<br><a href="tel:+390100017695">010 001 7695</a>');
+    mapEl.classList.add('is-ready');
+  }
 
   /* Senza GSAP (CDN irraggiungibile) o con motion ridotto: il contenuto resta statico e leggibile */
   if (!window.gsap || !window.ScrollTrigger || reduce) return;
@@ -1307,184 +1372,312 @@ document.addEventListener('DOMContentLoaded', () => {
      Pinta 3D nella hero (Three.js) — solo da tablet/desktop in su
      ========================================================================== -->
 <script type="module">
-const stage = document.querySelector('[data-glass]');
-const canvas = stage && stage.querySelector('canvas');
+/* Scene 3D (Three.js): pinta nella hero, microfono e strumenti nelle serate.
+   Solo da 768 px in su e con WebGL disponibile; altrimenti restano le illustrazioni SVG. */
 const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const wide = matchMedia('(min-width: 768px)').matches;
+const BOTTLE = '#13281F';
 
 function webglOK() {
   try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); }
   catch (e) { return false; }
 }
 
-if (stage && canvas && wide && webglOK()) {
-  initGlass().catch(() => { /* resta la pinta in SVG */ });
+let threePromise = null;
+const loadThree = () => threePromise || (threePromise = import('three'));
+
+if (wide && webglOK()) {
+  const glassStage = document.querySelector('[data-glass]');
+  if (glassStage) loadThree().then(T => initBeer(T, glassStage)).catch(() => {});
+
+  /* La scena del karaoke si carica solo quando la locandina si avvicina */
+  const karaokeStage = document.querySelector('[data-karaoke]');
+  if (karaokeStage) {
+    const io = new IntersectionObserver(entries => {
+      if (entries.some(e => e.isIntersecting)) {
+        io.disconnect();
+        loadThree().then(T => initKaraoke(T, karaokeStage)).catch(() => {});
+      }
+    }, { rootMargin: '600px 0px' });
+    io.observe(karaokeStage);
+  }
 }
 
-async function initGlass() {
-  const THREE = await import('three');
-  const { RoomEnvironment } = await import('three/addons/environments/RoomEnvironment.js');
+/* ---------- Utilità condivise ---------- */
 
-  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'low-power' });
+/* Studio fotografico virtuale: pannelli luminosi verticali per riflessi lunghi e morbidi */
+function studioEnv(THREE, renderer) {
+  const s = new THREE.Scene();
+  const room = new THREE.Mesh(new THREE.SphereGeometry(20, 32, 16), new THREE.MeshBasicMaterial({ color: 0x1b1a17, side: THREE.BackSide }));
+  s.add(room);
+  const panel = (w, h, x, y, z, intensity, color = 0xffffff) => {
+    const m = new THREE.MeshBasicMaterial({ color, side: THREE.DoubleSide });
+    m.color.multiplyScalar(intensity);
+    const p = new THREE.Mesh(new THREE.PlaneGeometry(w, h), m);
+    p.position.set(x, y, z); p.lookAt(0, y * .3, 0);
+    s.add(p);
+  };
+  panel(2.2, 12, -7, 2, 5, 6);            /* striscia chiave a sinistra */
+  panel(1.2, 12, 7, 2, 3, 4);             /* striscia di riempimento a destra */
+  panel(10, 3, 0, 9, 2, 3);               /* softbox dall'alto */
+  panel(4, 10, 0, 2, -9, 2.6, 0xffc98a);  /* controluce caldo dietro */
+  panel(3, 2, 6, -2, -6, 1.5, 0x9fd3b8);  /* rimbalzo verde, come il fondo */
+  const tex = new THREE.PMREMGenerator(renderer).fromScene(s, 0.035).texture;
+  s.traverse(o => { if (o.geometry) o.geometry.dispose(); });
+  return tex;
+}
+
+function canvasTex(THREE, w, h, draw, srgb = true) {
+  const c = document.createElement('canvas'); c.width = w; c.height = h;
+  draw(c.getContext('2d'), w, h);
+  const t = new THREE.CanvasTexture(c);
+  if (srgb) t.colorSpace = THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  return t;
+}
+
+/* Rumore pseudo-casuale deterministico */
+function hash(x, y, z) { const s = Math.sin(x * 127.1 + y * 311.7 + z * 74.7) * 43758.5453; return s - Math.floor(s); }
+function vnoise(x, y, z) {
+  const ix = Math.floor(x), iy = Math.floor(y), iz = Math.floor(z);
+  const fx = x - ix, fy = y - iy, fz = z - iz;
+  const u = fx * fx * (3 - 2 * fx), v = fy * fy * (3 - 2 * fy), w = fz * fz * (3 - 2 * fz);
+  const l = (a, b, t) => a + (b - a) * t;
+  const c = (dx, dy, dz) => hash(ix + dx, iy + dy, iz + dz);
+  return l(l(l(c(0,0,0), c(1,0,0), u), l(c(0,1,0), c(1,1,0), u), v), l(l(c(0,0,1), c(1,0,1), u), l(c(0,1,1), c(1,1,1), u), v), w);
+}
+
+/* Avvia/ferma il loop quando la scena entra o esce dallo schermo */
+function runWhenVisible(el, frame) {
+  let running = false, visible = false;
+  const loop = () => { if (!running) return; frame(); requestAnimationFrame(loop); };
+  const start = () => { if (!running && visible && !document.hidden) { running = true; requestAnimationFrame(loop); } };
+  const stop = () => { running = false; };
+  new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible ? start() : stop(); }).observe(el);
+  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+}
+
+let mx = 0, my = 0;
+window.addEventListener('pointermove', e => {
+  mx = e.clientX / window.innerWidth * 2 - 1;
+  my = e.clientY / window.innerHeight * 2 - 1;
+}, { passive: true });
+
+/* ======================================================================
+   PINTA DI BIRRA
+   ====================================================================== */
+function initBeer(THREE, stage) {
+  const canvas = stage.querySelector('canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: false, powerPreference: 'high-performance' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
   renderer.outputColorSpace = THREE.SRGBColorSpace;
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure = 1.05;
+  renderer.toneMappingExposure = 1.0;
 
   const scene = new THREE.Scene();
-  const pmrem = new THREE.PMREMGenerator(renderer);
-  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.background = new THREE.Color(BOTTLE);
+  scene.environment = studioEnv(THREE, renderer);
 
-  const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 50);
-  camera.position.set(0, 2.2, 10.2);
-  camera.lookAt(0, 1.55, 0);
+  const camera = new THREE.PerspectiveCamera(26, 1, 0.1, 60);
+  camera.position.set(0, 4.3, 10.9);
+  camera.lookAt(0, 1.4, 0);
 
-  const key = new THREE.DirectionalLight(0xffe2b0, 2.2); key.position.set(3, 5, 4); scene.add(key);
-  const rim = new THREE.DirectionalLight(0x9fd3b8, 1.2); rim.position.set(-4, 3, -3); scene.add(rim);
-  scene.add(new THREE.AmbientLight(0xffffff, .25));
+  const key = new THREE.DirectionalLight(0xfff0d8, 2.4); key.position.set(-3, 6, 4); scene.add(key);
+  const back = new THREE.DirectionalLight(0xffb35c, 3.2); back.position.set(1, 3, -5); scene.add(back);
+  scene.add(new THREE.HemisphereLight(0xfff4e0, 0x13281f, .35));
 
-  const glassGroup = new THREE.Group();
-  scene.add(glassGroup);
+  const pint = new THREE.Group();
+  scene.add(pint);
 
-  /* Profilo di una pinta "nonic" (raggio, altezza) */
-  const outer = [[0,0],[.6,0],[.64,.06],[.67,.4],[.745,1.3],[.82,2.2],[.86,2.6],[.935,2.8],[.925,2.98],[.9,3.2]];
-  const inner = [[.87,3.2],[.892,2.98],[.9,2.8],[.83,2.62],[.79,2.2],[.712,1.3],[.635,.4],[.585,.22],[0,.2]];
-  const pts = [...outer, ...inner].map(([x, y]) => new THREE.Vector2(x, y));
-  const glassGeo = new THREE.LatheGeometry(pts, 72);
-  glassGeo.computeVertexNormals();
+  /* Profilo reale di una pinta "nonic": fondo spesso, rigonfiamento vicino al bordo */
+  const outer = [[0,0],[.6,0],[.64,.05],[.665,.35],[.745,1.3],[.82,2.2],[.855,2.58],[.93,2.78],[.93,2.92],[.9,3.2]];
+  const inner = [[.875,3.2],[.9,2.95],[.9,2.8],[.832,2.6],[.795,2.2],[.718,1.3],[.64,.4],[.6,.26],[0,.22]];
+  const glassGeo = new THREE.LatheGeometry([...outer, ...inner].map(([x, y]) => new THREE.Vector2(x, y)), 128);
   const glassMat = new THREE.MeshPhysicalMaterial({
-    color: 0xffffff, metalness: 0, roughness: .06, transparent: true, opacity: .1,
-    clearcoat: 1, clearcoatRoughness: .05, envMapIntensity: 1.6, side: THREE.DoubleSide, depthWrite: false
+    color: 0xffffff, metalness: 0, roughness: .02, transmission: 1, thickness: .35, ior: 1.52,
+    specularIntensity: 1, clearcoat: 1, clearcoatRoughness: .02, envMapIntensity: 1.0,
+    attenuationColor: new THREE.Color(0xeef6ee), attenuationDistance: 2.5, side: THREE.DoubleSide
   });
   const glass = new THREE.Mesh(glassGeo, glassMat);
-  glass.renderOrder = 5;
-  glassGroup.add(glass);
+  pint.add(glass);
+  /* Labbro del bicchiere: una linea di luce sul bordo */
+  const lip = new THREE.Mesh(new THREE.TorusGeometry(.8875, .014, 12, 128), new THREE.MeshPhysicalMaterial({
+    color: 0xffffff, roughness: 0, metalness: 0, transparent: true, opacity: .55, clearcoat: 1, envMapIntensity: 2
+  }));
+  lip.rotation.x = Math.PI / 2; lip.position.y = 3.2;
+  pint.add(lip);
 
-  /* Raggio interno alla quota y (interpolazione lineare sul profilo) */
-  const prof = [[.2,.585],[.4,.635],[1.3,.712],[2.2,.79],[2.62,.83],[2.8,.9],[2.98,.892],[3.2,.87]];
-  const rAt = y => {
-    if (y <= prof[0][0]) return prof[0][1];
-    for (let i = 1; i < prof.length; i++) {
-      if (y <= prof[i][0]) { const [y0, r0] = prof[i - 1], [y1, r1] = prof[i]; return r0 + (r1 - r0) * (y - y0) / (y1 - y0); }
-    }
-    return prof[prof.length - 1][1];
+  const prof = [[.26,.6],[.4,.64],[1.3,.718],[2.2,.795],[2.6,.832],[2.8,.9],[2.95,.9],[3.2,.875]];
+  const lerpProf = (p, y) => {
+    if (y <= p[0][0]) return p[0][1];
+    for (let i = 1; i < p.length; i++) if (y <= p[i][0]) { const [y0, r0] = p[i-1], [y1, r1] = p[i]; return r0 + (r1 - r0) * (y - y0) / (y1 - y0); }
+    return p[p.length - 1][1];
   };
+  const rIn = y => lerpProf(prof, y);
+  const outerProf = outer.slice(2).map(([r, y]) => [y, r]);
+  const rOut = y => lerpProf(outerProf, y);
 
-  /* Birra: shader con livello variabile (sopra il livello i frammenti vengono scartati) */
-  const liqPts = [new THREE.Vector2(0, .21)];
-  for (let y = .21; y <= 3.12; y += .06) liqPts.push(new THREE.Vector2(rAt(y) - .014, y));
-  const liqGeo = new THREE.LatheGeometry(liqPts, 64);
-  const uniforms = { uLevel: { value: 2.7 }, uTime: { value: 0 } };
-  const liqMat = new THREE.ShaderMaterial({
-    uniforms, transparent: true, side: THREE.DoubleSide,
+  /* Birra: shader opaco (così il vetro la rifrange), più scura al centro e sul fondo,
+     più chiara e dorata sui bordi dove lo spessore attraversato è minore */
+  const liqPts = [new THREE.Vector2(0, .23)];
+  for (let y = .23; y <= 3.1; y += .03) liqPts.push(new THREE.Vector2(rIn(y) - .006, y));
+  const uniforms = { uLevel: { value: 2.8 }, uTime: { value: 0 } };
+  const liquid = new THREE.Mesh(new THREE.LatheGeometry(liqPts, 128), new THREE.ShaderMaterial({
+    uniforms,
     vertexShader: `
-      varying float vY; varying vec3 vN; varying vec3 vV;
+      varying float vY; varying vec3 vN; varying vec3 vV; varying float vA;
       void main() {
-        vY = position.y;
+        vY = position.y; vA = atan(position.z, position.x);
         vec4 mv = modelViewMatrix * vec4(position, 1.0);
-        vN = normalize(normalMatrix * normal);
-        vV = normalize(-mv.xyz);
+        vN = normalize(normalMatrix * normal); vV = normalize(-mv.xyz);
         gl_Position = projectionMatrix * mv;
       }`,
     fragmentShader: `
       uniform float uLevel; uniform float uTime;
-      varying float vY; varying vec3 vN; varying vec3 vV;
+      varying float vY; varying vec3 vN; varying vec3 vV; varying float vA;
+      float h(float n) { return fract(sin(n) * 43758.5453); }
       void main() {
         if (vY > uLevel) discard;
-        float t = clamp(vY / max(uLevel, .001), 0., 1.);
-        vec3 deep = vec3(.46, .20, .03);
-        vec3 light = vec3(.98, .66, .16);
-        vec3 col = mix(deep, light, pow(t, .8));
-        float fres = pow(1. - abs(dot(normalize(vN), normalize(vV))), 2.2);
-        col += fres * vec3(.55, .32, .06);
-        col += .012 * sin(vY * 9. + uTime * 1.5);
-        gl_FragColor = vec4(col, .93);
+        float facing = clamp(dot(normalize(vN), normalize(vV)), 0., 1.);
+        float depth = pow(facing, 1.6);                 /* spessore di liquido attraversato */
+        float t = clamp(vY / uLevel, 0., 1.);
+        vec3 core = vec3(.36, .12, .012);               /* ambra profonda */
+        vec3 mid  = vec3(.88, .40, .035);
+        vec3 edge = vec3(1.0, .70, .18);                /* oro chiaro sui bordi */
+        vec3 col = mix(edge, mix(mid, core, .55), depth);
+        col *= mix(.72, 1.08, smoothstep(0., .85, t));  /* fondo più scuro */
+        /* controluce: bagliore caldo appena sotto la schiuma */
+        col += vec3(1., .62, .18) * smoothstep(uLevel - .55, uLevel, vY) * .35 * depth;
+        /* scie di bollicine verticali */
+        float cols = floor(vA * 14.);
+        float trail = step(.82, h(cols)) * (.5 + .5 * sin(vY * 40. - uTime * 6. + cols));
+        col += vec3(1., .85, .5) * trail * .07 * (1. - depth * .5);
+        gl_FragColor = vec4(col, 1.);
+        #include <tonemapping_fragment>
+        #include <colorspace_fragment>
       }`
-  });
-  const liquid = new THREE.Mesh(liqGeo, liqMat);
-  liquid.renderOrder = 1;
-  glassGroup.add(liquid);
-
-  /* Superficie della birra e schiuma */
-  const surface = new THREE.Mesh(new THREE.CircleGeometry(1, 64), new THREE.MeshBasicMaterial({ color: 0xf6c064 }));
-  surface.rotation.x = -Math.PI / 2;
-  surface.renderOrder = 2;
-  glassGroup.add(surface);
-
-  const foamPts = [];
-  for (let i = 0; i <= 16; i++) {
-    const a = (i / 16) * Math.PI / 2;
-    foamPts.push(new THREE.Vector2(Math.cos(a) * 1, .55 + Math.sin(a) * .45));
-  }
-  foamPts.unshift(new THREE.Vector2(1, 0));
-  foamPts.unshift(new THREE.Vector2(0, 0));
-  const foam = new THREE.Mesh(
-    new THREE.LatheGeometry(foamPts.reverse(), 64),
-    new THREE.MeshStandardMaterial({ color: 0xfff4de, roughness: .95, metalness: 0, side: THREE.DoubleSide, envMapIntensity: .6, emissive: 0x3a2e1c, emissiveIntensity: .35 })
-  );
-  foam.renderOrder = 3;
-  glassGroup.add(foam);
-
-  /* Bollicine */
-  const COUNT = 80;
-  const bubbles = new THREE.InstancedMesh(
-    new THREE.SphereGeometry(.02, 8, 6),
-    new THREE.MeshBasicMaterial({ color: 0xffe7b0, transparent: true, opacity: .75 }),
-    COUNT
-  );
-  bubbles.renderOrder = 2;
-  glassGroup.add(bubbles);
-  const bub = Array.from({ length: COUNT }, () => ({
-    a: Math.random() * Math.PI * 2, f: Math.sqrt(Math.random()) * .82,
-    y: .25 + Math.random() * 2.4, s: .35 + Math.random() * .6, w: Math.random() * 6
   }));
+  pint.add(liquid);
+
+  /* Schiuma: cupola irregolare con piccole bolle in superficie */
+  const foamGeo = new THREE.SphereGeometry(1, 96, 32, 0, Math.PI * 2, 0, Math.PI / 2);
+  {
+    const p = foamGeo.attributes.position, v = new THREE.Vector3();
+    for (let i = 0; i < p.count; i++) {
+      v.fromBufferAttribute(p, i);
+      const n = vnoise(v.x * 6 + 3, v.y * 6, v.z * 6) * .5 + vnoise(v.x * 17, v.y * 17 + 5, v.z * 17) * .22;
+      const k = 1 + (n - .36) * .16 * Math.min(1, v.y * 3 + .2);
+      p.setXYZ(i, v.x * (v.y < .02 ? 1 : k), v.y * k * .9, v.z * (v.y < .02 ? 1 : k));
+    }
+    foamGeo.computeVertexNormals();
+  }
+  const foamMat = new THREE.MeshPhysicalMaterial({
+    color: 0xfff5e2, roughness: .88, metalness: 0, sheen: 1, sheenRoughness: .6, sheenColor: new THREE.Color(0xffffff),
+    emissive: 0x6b4a1c, emissiveIntensity: .12, envMapIntensity: .8
+  });
+  const foam = new THREE.Mesh(foamGeo, foamMat);
+  pint.add(foam);
+  const foamSide = new THREE.Mesh(new THREE.CylinderGeometry(1, 1, 1, 96, 1, true), foamMat);
+  pint.add(foamSide);
+  const FB = 140;
+  const foamBubbles = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 10, 8), new THREE.MeshPhysicalMaterial({ color: 0xfffaf0, roughness: .15, clearcoat: 1, envMapIntensity: 1.2 }), FB);
+  const fb = Array.from({ length: FB }, () => ({ a: Math.random() * Math.PI * 2, f: Math.sqrt(Math.random()) * .9, s: .008 + Math.random() * .02 }));
+  pint.add(foamBubbles);
+
+  /* Bollicine che salgono, aderenti alla parete (visibili attraverso il vetro) */
+  const COUNT = 160;
+  const bubbles = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 8, 6), new THREE.MeshStandardMaterial({ color: 0xfff0c8, emissive: 0xffc15a, emissiveIntensity: .35, roughness: .1, metalness: 0 }), COUNT);
+  pint.add(bubbles);
+  const streams = Array.from({ length: 12 }, () => Math.random() * Math.PI * 2);
+  const bub = Array.from({ length: COUNT }, (_, i) => ({
+    a: i < 110 ? streams[i % 12] + (Math.random() - .5) * .04 : Math.random() * Math.PI * 2,
+    y: .3 + Math.random() * 2.3, s: .3 + Math.random() * .5, w: Math.random() * 6, r: .006 + Math.random() * .012
+  }));
+
+  /* Condensa: goccioline sul vetro freddo, solo sotto il livello iniziale della birra */
+  const DROPS = 420;
+  const drops = new THREE.InstancedMesh(new THREE.SphereGeometry(1, 12, 8), new THREE.MeshPhysicalMaterial({
+    color: 0xffffff, roughness: 0, transmission: 1, thickness: .02, ior: 1.33, clearcoat: 1, envMapIntensity: 1.6
+  }), DROPS);
+  {
+    const d = new THREE.Object3D();
+    for (let i = 0; i < DROPS; i++) {
+      const y = .15 + Math.pow(Math.random(), .8) * 2.35;
+      const a = Math.random() * Math.PI * 2;
+      const r = rOut(y) + .004;
+      const s = .008 + Math.pow(Math.random(), 3) * .03;
+      d.position.set(Math.cos(a) * r, y, Math.sin(a) * r);
+      d.lookAt(Math.cos(a) * 5, y, Math.sin(a) * 5);
+      d.scale.set(s, s * (1 + Math.random() * .6), s * .45);
+      d.updateMatrix();
+      drops.setMatrixAt(i, d.matrix);
+    }
+  }
+  pint.add(drops);
+
+  /* Sottobicchiere in cartoncino con il nome del locale */
+  const coasterTex = canvasTex(THREE, 1024, 1024, (c, w) => {
+    c.fillStyle = '#EDE2CC'; c.fillRect(0, 0, w, w);
+    for (let i = 0; i < 9000; i++) { c.fillStyle = `rgba(90,70,40,${Math.random() * .05})`; c.fillRect(Math.random() * w, Math.random() * w, 2, 2); }
+    c.strokeStyle = '#B87812'; c.lineWidth = 10; c.beginPath(); c.arc(512, 512, 470, 0, Math.PI * 2); c.stroke();
+    c.lineWidth = 3; c.beginPath(); c.arc(512, 512, 445, 0, Math.PI * 2); c.stroke();
+    c.fillStyle = '#13281F'; c.font = '700 44px Manrope, Arial, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    const txt = 'BIBLOS PUB · PIAZZA DANTE 31R · GENOVA · ';
+    const chars = [...txt + txt];
+    chars.forEach((ch, i) => {
+      const a = i / chars.length * Math.PI * 2;
+      c.save(); c.translate(512 + Math.cos(a) * 395, 512 + Math.sin(a) * 395); c.rotate(a + Math.PI / 2); c.fillText(ch, 0, 0); c.restore();
+    });
+  });
+  const cardboard = new THREE.MeshStandardMaterial({ color: 0xe9dcc3, roughness: .95 });
+  const coaster = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 1.5, .05, 96), [cardboard, new THREE.MeshStandardMaterial({ map: coasterTex, roughness: .92 }), cardboard]);
+  coaster.position.y = -.026;
+  pint.add(coaster);
+
+  const shadowTex = canvasTex(THREE, 256, 256, (c) => {
+    const g = c.createRadialGradient(128, 128, 30, 128, 128, 128);
+    g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(.55, 'rgba(0,0,0,.25)'); g.addColorStop(1, 'rgba(0,0,0,0)');
+    c.fillStyle = g; c.fillRect(0, 0, 256, 256);
+  }, false);
+  const contact = new THREE.Mesh(new THREE.PlaneGeometry(1.9, 1.9), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false }));
+  contact.rotation.x = -Math.PI / 2; contact.position.y = .002;
+  pint.add(contact);
+  /* Luce ambrata che la birra proietta sul cartoncino */
+  const caustic = new THREE.Mesh(new THREE.PlaneGeometry(2.4, 2.4), new THREE.MeshBasicMaterial({
+    map: canvasTex(THREE, 256, 256, (c) => {
+      const g = c.createRadialGradient(150, 120, 5, 128, 128, 128);
+      g.addColorStop(0, 'rgba(255,190,80,.55)'); g.addColorStop(.6, 'rgba(255,160,40,.12)'); g.addColorStop(1, 'rgba(255,160,40,0)');
+      c.fillStyle = g; c.fillRect(0, 0, 256, 256);
+    }, false), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending
+  }));
+  caustic.rotation.x = -Math.PI / 2; caustic.position.set(.35, .004, .3);
+  pint.add(caustic);
+
+  const floorShadow = new THREE.Mesh(new THREE.PlaneGeometry(4.4, 4.4), new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, opacity: .8, depthWrite: false }));
+  floorShadow.rotation.x = -Math.PI / 2; floorShadow.position.y = -.06;
+  scene.add(floorShadow);
+
   const dummy = new THREE.Object3D();
-
-  /* Fascia con il nome, stampata sul vetro */
-  const tc = document.createElement('canvas');
-  tc.width = 2048; tc.height = 160;
-  const ctx = tc.getContext('2d');
-  ctx.fillStyle = '#F3ECDF';
-  ctx.font = 'italic 300 104px Fraunces, Georgia, serif';
-  ctx.textBaseline = 'middle';
-  const label = 'Biblos  ·  Piazza Dante  ·  ';
-  let x = 0; const lw = ctx.measureText(label).width;
-  while (x < tc.width) { ctx.fillText(label, x, 84); x += lw; }
-  const tex = new THREE.CanvasTexture(tc);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  tex.anisotropy = 4;
-  const bandGeo = new THREE.CylinderGeometry(.815, .762, .5, 96, 1, true);
-  bandGeo.translate(0, 1.75, 0);
-  const bandFront = new THREE.Mesh(bandGeo, new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity: .95, side: THREE.FrontSide, depthWrite: false }));
-  const bandBack = new THREE.Mesh(bandGeo, new THREE.MeshBasicMaterial({ map: tex, transparent: true, opacity: .25, side: THREE.BackSide, depthWrite: false }));
-  bandBack.renderOrder = 4; bandFront.renderOrder = 6;
-  glassGroup.add(bandBack, bandFront);
-
-  /* Ombra morbida sotto il bicchiere */
-  const sc = document.createElement('canvas'); sc.width = sc.height = 128;
-  const sctx = sc.getContext('2d');
-  const g = sctx.createRadialGradient(64, 64, 4, 64, 64, 64);
-  g.addColorStop(0, 'rgba(0,0,0,.55)'); g.addColorStop(1, 'rgba(0,0,0,0)');
-  sctx.fillStyle = g; sctx.fillRect(0, 0, 128, 128);
-  const shadow = new THREE.Mesh(new THREE.PlaneGeometry(2.8, 2.8), new THREE.MeshBasicMaterial({ map: new THREE.CanvasTexture(sc), transparent: true, depthWrite: false }));
-  shadow.rotation.x = -Math.PI / 2; shadow.position.y = -.01;
-  scene.add(shadow);
-
-  glassGroup.position.y = -.05;
-
-  /* Aggiorna birra, superficie e schiuma in base al livello */
-  function setLevel(level) {
+  function setLevel(level, t) {
     uniforms.uLevel.value = level;
-    const r = rAt(level) - .014;
-    surface.position.y = level;
-    surface.scale.setScalar(r);
-    const fh = .12 + .2 * ((level - 1.1) / 1.6);
-    const fr = Math.min(r, rAt(level + fh) - .014);
-    foam.position.y = level - .015;
-    foam.scale.set(fr, Math.max(fh, .06), fr);
+    const r = rIn(level) - .006;
+    const fh = .12 + .2 * Math.max(0, (level - 1.3) / 1.5);
+    foam.position.y = level + .04;
+    foam.scale.set(r, fh, r);
+    foamSide.position.y = level + .02;
+    foamSide.scale.set(r, .06, r);
+    for (let i = 0; i < FB; i++) {
+      const b = fb[i];
+      const rr = r * b.f;
+      const hy = Math.sqrt(Math.max(0, 1 - b.f * b.f)) * fh * .92;
+      dummy.position.set(Math.cos(b.a) * rr, foam.position.y + hy, Math.sin(b.a) * rr);
+      dummy.scale.setScalar(b.s * (.9 + .1 * Math.sin(t * 2 + i)));
+      dummy.updateMatrix();
+      foamBubbles.setMatrixAt(i, dummy.matrix);
+    }
+    foamBubbles.instanceMatrix.needsUpdate = true;
   }
 
-  /* Dimensioni */
   function resize() {
     const w = stage.clientWidth, h = stage.clientHeight;
     renderer.setSize(w, h, false);
@@ -1492,23 +1685,15 @@ async function initGlass() {
     camera.updateProjectionMatrix();
   }
   resize();
-  new ResizeObserver(resize).observe(stage);
+  new ResizeObserver(() => { resize(); if (reduce) renderer.render(scene, camera); }).observe(stage);
 
-  /* Input: mouse e scroll */
   const hero = stage.closest('.hero');
-  let mx = 0, my = 0, sp = 0;
-  window.addEventListener('pointermove', e => {
-    mx = e.clientX / window.innerWidth * 2 - 1;
-    my = e.clientY / window.innerHeight * 2 - 1;
-  }, { passive: true });
-  const readScroll = () => {
-    const h = hero.offsetHeight;
-    sp = Math.min(Math.max(window.scrollY / (h * .9), 0), 1);
-  };
+  let sp = 0;
+  const readScroll = () => { sp = Math.min(Math.max(window.scrollY / (hero.offsetHeight * .9), 0), 1); };
   window.addEventListener('scroll', readScroll, { passive: true });
   readScroll();
 
-  let level = 2.72, rx = 0, ry = 0, spin = 0;
+  let level = 2.8, rx = 0, ry = 0, spin = 0;
   const clock = new THREE.Clock();
 
   function frame() {
@@ -1516,51 +1701,256 @@ async function initGlass() {
     const t = clock.elapsedTime;
     uniforms.uTime.value = t;
 
-    /* Lo scroll "beve" la pinta e la fa ruotare; il mouse la inclina */
-    const targetLevel = 2.72 - sp * 1.55;
-    level += (targetLevel - level) * Math.min(dt * 4, 1);
-    setLevel(level);
+    /* Lo scroll "beve" la pinta; il mouse la inclina */
+    level += ((2.8 - sp * 1.5) - level) * Math.min(dt * 4, 1);
+    setLevel(level, t);
 
-    rx += ((my * .16 + sp * .22) - rx) * Math.min(dt * 3, 1);
-    ry += ((mx * .5) - ry) * Math.min(dt * 3, 1);
-    spin += dt * .12;
-    glassGroup.rotation.set(rx, ry + spin + sp * 2.4, mx * -.05 + Math.sin(t * .6) * .015);
-    glassGroup.position.y = -.05 + Math.sin(t * .9) * .03 + sp * .35;
+    rx += ((my * .12 + .06 + sp * .18) - rx) * Math.min(dt * 3, 1);
+    ry += ((mx * .45) - ry) * Math.min(dt * 3, 1);
+    spin += dt * .08;
+    pint.rotation.set(rx, ry + spin + sp * 2.2, mx * -.04);
+    pint.position.y = sp * .3;
 
     for (let i = 0; i < COUNT; i++) {
       const b = bub[i];
-      b.y += b.s * dt;
-      if (b.y > level - .03) { b.y = .25; b.a = Math.random() * Math.PI * 2; }
-      const r = rAt(b.y) * b.f;
-      dummy.position.set(Math.cos(b.a) * r + Math.sin(t * 3 + b.w) * .012, b.y, Math.sin(b.a) * r);
-      dummy.scale.setScalar(.6 + (b.y / 3) * .8);
+      b.y += b.s * dt * (1 + b.y * .25);
+      if (b.y > level - .02) b.y = .28 + Math.random() * .1;
+      const r = rIn(b.y) - .004;
+      const a = b.a + Math.sin(t * 2 + b.w) * .01;
+      dummy.position.set(Math.cos(a) * r, b.y, Math.sin(a) * r);
+      dummy.scale.setScalar(b.r * (.7 + b.y * .25));
       dummy.updateMatrix();
       bubbles.setMatrixAt(i, dummy.matrix);
     }
     bubbles.instanceMatrix.needsUpdate = true;
-
     renderer.render(scene, camera);
   }
 
   if (reduce) {
-    /* Motion ridotto: una sola immagine statica, nessun movimento */
-    setLevel(2.72);
-    glassGroup.rotation.set(.05, .6, 0);
-    renderer.render(scene, camera);
-    new ResizeObserver(() => renderer.render(scene, camera)).observe(stage);
-  } else {
-    let running = false, visible = true;
-    const loop = () => { if (!running) return; frame(); requestAnimationFrame(loop); };
-    const start = () => { if (!running && visible && !document.hidden) { running = true; clock.getDelta(); requestAnimationFrame(loop); } };
-    const stop = () => { running = false; };
-    new IntersectionObserver(([e]) => { visible = e.isIntersecting; visible ? start() : stop(); }).observe(stage);
-    document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+    setLevel(2.8, 0);
+    pint.rotation.set(.06, .5, 0);
     frame();
-    start();
+  } else {
+    frame();
+    runWhenVisible(stage, frame);
+    document.documentElement.classList.add('has-3d');
+  }
+  stage.classList.add('has-webgl');
+}
+
+/* ======================================================================
+   KARAOKE: microfono, chitarra, rullante, bacchette e vinile
+   ====================================================================== */
+function initKaraoke(THREE, stage) {
+  const canvas = stage.querySelector('canvas');
+  const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.outputColorSpace = THREE.SRGBColorSpace;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.setClearColor(0x000000, 0);
+
+  const scene = new THREE.Scene();
+  scene.environment = studioEnv(THREE, renderer);
+  const camera = new THREE.PerspectiveCamera(30, 1, .1, 60);
+  camera.position.set(0, 0, 11);
+
+  const spot = new THREE.SpotLight(0xffe0b0, 60, 30, .5, .6); spot.position.set(-2, 7, 6); scene.add(spot);
+  const rim = new THREE.DirectionalLight(0xffb45a, 2.4); rim.position.set(4, 2, -4); scene.add(rim);
+  scene.add(new THREE.HemisphereLight(0xfff2dc, 0x13281f, .5));
+
+  const chrome = new THREE.MeshStandardMaterial({ color: 0xf2f2f2, metalness: 1, roughness: .12 });
+  const darkMetal = new THREE.MeshStandardMaterial({ color: 0x2b2b2d, metalness: .7, roughness: .42 });
+  const rig = new THREE.Group();
+  scene.add(rig);
+
+  /* --- Microfono dinamico a testa sferica --- */
+  const mic = new THREE.Group();
+  const meshTex = canvasTex(THREE, 512, 256, (c, w, h) => {
+    c.fillStyle = '#000'; c.fillRect(0, 0, w, h);
+    c.strokeStyle = '#fff'; c.lineWidth = 3;
+    for (let i = -h; i < w + h; i += 12) {
+      c.beginPath(); c.moveTo(i, 0); c.lineTo(i + h, h); c.stroke();
+      c.beginPath(); c.moveTo(i, h); c.lineTo(i + h, 0); c.stroke();
+    }
+  }, false);
+  meshTex.wrapS = meshTex.wrapT = THREE.RepeatWrapping; meshTex.repeat.set(4, 2);
+  const grille = new THREE.Mesh(new THREE.SphereGeometry(.5, 64, 32, 0, Math.PI * 2, 0, Math.PI * .72),
+    new THREE.MeshStandardMaterial({ color: 0xdcdcdc, metalness: 1, roughness: .28, alphaMap: meshTex, alphaTest: .5, side: THREE.DoubleSide }));
+  const foamBall = new THREE.Mesh(new THREE.SphereGeometry(.465, 32, 16), new THREE.MeshStandardMaterial({ color: 0x151515, roughness: 1 }));
+  const band = new THREE.Mesh(new THREE.TorusGeometry(.32, .045, 16, 64), chrome);
+  band.rotation.x = Math.PI / 2; band.position.y = -.31;
+  const collar = new THREE.Mesh(new THREE.CylinderGeometry(.31, .23, .22, 48), chrome);
+  collar.position.y = -.44;
+  const handlePts = [[0,0],[.23,0],[.215,-.3],[.19,-.8],[.165,-1.3],[.15,-1.55],[.14,-1.62],[0,-1.62]].map(([x, y]) => new THREE.Vector2(x, y));
+  const handle = new THREE.Mesh(new THREE.LatheGeometry(handlePts, 64), darkMetal);
+  handle.position.y = -.55;
+  const xlr = new THREE.Mesh(new THREE.CylinderGeometry(.145, .14, .12, 40), chrome);
+  xlr.position.y = -2.2;
+  const cable = new THREE.Mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3([
+    new THREE.Vector3(0, -2.25, 0), new THREE.Vector3(0, -2.8, .1), new THREE.Vector3(.4, -3.3, .4),
+    new THREE.Vector3(1.0, -3.1, .1), new THREE.Vector3(1.2, -2.7, -.4), new THREE.Vector3(.8, -2.5, -.8)
+  ]), 120, .045, 10, false), new THREE.MeshStandardMaterial({ color: 0x0d0d0d, roughness: .5 }));
+  mic.add(grille, foamBall, band, collar, handle, xlr, cable);
+  mic.position.set(-.1, .7, .6);
+  mic.rotation.set(.1, 0, -.42);
+  rig.add(mic);
+
+  /* --- Chitarra acustica --- */
+  const guitar = new THREE.Group();
+  const body = new THREE.Shape();
+  body.moveTo(0, -.78);
+  body.bezierCurveTo(.42, -.78, .62, -.6, .6, -.32);
+  body.bezierCurveTo(.58, -.12, .34, -.1, .34, .05);
+  body.bezierCurveTo(.34, .18, .48, .24, .47, .44);
+  body.bezierCurveTo(.46, .64, .24, .72, 0, .72);
+  body.bezierCurveTo(-.24, .72, -.46, .64, -.47, .44);
+  body.bezierCurveTo(-.48, .24, -.34, .18, -.34, .05);
+  body.bezierCurveTo(-.34, -.1, -.58, -.12, -.6, -.32);
+  body.bezierCurveTo(-.62, -.6, -.42, -.78, 0, -.78);
+  const hole = new THREE.Path(); hole.absarc(0, .2, .14, 0, Math.PI * 2, true); body.holes.push(hole);
+  const bodyGeo = new THREE.ExtrudeGeometry(body, { depth: .2, bevelEnabled: true, bevelThickness: .025, bevelSize: .025, bevelSegments: 4, curveSegments: 48 });
+  bodyGeo.translate(0, 0, -.1);
+  const woodTex = canvasTex(THREE, 512, 512, (c, w, h) => {
+    c.fillStyle = '#D9A15A'; c.fillRect(0, 0, w, h);
+    for (let x = 0; x < w; x += 3) {
+      c.strokeStyle = `rgba(${120 + Math.random() * 40},${70 + Math.random() * 30},20,${.08 + Math.random() * .18})`;
+      c.lineWidth = 1 + Math.random() * 2;
+      c.beginPath(); c.moveTo(x, 0);
+      for (let y = 0; y <= h; y += 32) c.lineTo(x + Math.sin(y * .02 + x * .05) * 3, y);
+      c.stroke();
+    }
+  });
+  woodTex.wrapS = woodTex.wrapT = THREE.RepeatWrapping; woodTex.repeat.set(1.2, 1.2);
+  const top = new THREE.MeshPhysicalMaterial({ map: woodTex, roughness: .32, clearcoat: 1, clearcoatRoughness: .08 });
+  const sides = new THREE.MeshPhysicalMaterial({ color: 0x5b2c12, roughness: .35, clearcoat: 1, clearcoatRoughness: .1 });
+  guitar.add(new THREE.Mesh(bodyGeo, [top, sides]));
+  const inside = new THREE.Mesh(new THREE.CircleGeometry(.14, 40), new THREE.MeshBasicMaterial({ color: 0x0b0704 }));
+  inside.position.set(0, .2, -.05); guitar.add(inside);
+  const rosette = new THREE.Mesh(new THREE.TorusGeometry(.17, .014, 8, 64), new THREE.MeshStandardMaterial({ color: 0x2a1a0e, roughness: .5 }));
+  rosette.position.set(0, .2, .127); guitar.add(rosette);
+  const rosette2 = rosette.clone(); rosette2.scale.setScalar(1.18); guitar.add(rosette2);
+  const ebony = new THREE.MeshStandardMaterial({ color: 0x1b120c, roughness: .45 });
+  const mahogany = new THREE.MeshPhysicalMaterial({ color: 0x6a3316, roughness: .4, clearcoat: .8 });
+  const neck = new THREE.Mesh(new THREE.BoxGeometry(.13, 1.3, .08), mahogany); neck.position.set(0, 1.3, .02); guitar.add(neck);
+  const board = new THREE.Mesh(new THREE.BoxGeometry(.125, 1.34, .02), ebony); board.position.set(0, 1.28, .07); guitar.add(board);
+  for (let i = 0; i < 14; i++) {
+    const y = .62 + 1.28 * (1 - Math.pow(.94, i + 1)) / (1 - Math.pow(.94, 14));
+    const fret = new THREE.Mesh(new THREE.BoxGeometry(.125, .008, .012), chrome); fret.position.set(0, 1.95 - (y - .62), .082); guitar.add(fret);
+  }
+  const head = new THREE.Mesh(new THREE.BoxGeometry(.2, .36, .05), mahogany); head.position.set(0, 2.14, 0); head.rotation.x = -.18; guitar.add(head);
+  for (let i = 0; i < 3; i++) for (const s of [-1, 1]) {
+    const peg = new THREE.Mesh(new THREE.CylinderGeometry(.018, .018, .1, 12), chrome);
+    peg.rotation.z = Math.PI / 2; peg.position.set(s * .14, 2.02 + i * .1, -.01); guitar.add(peg);
+    const knob = new THREE.Mesh(new THREE.SphereGeometry(.03, 12, 8), chrome); knob.scale.set(.5, 1, 1.2); knob.position.set(s * .2, 2.02 + i * .1, -.01); guitar.add(knob);
+  }
+  const bridge = new THREE.Mesh(new THREE.BoxGeometry(.34, .06, .03), ebony); bridge.position.set(0, -.42, .135); guitar.add(bridge);
+  const strMat = new THREE.MeshStandardMaterial({ color: 0xe8e2d6, metalness: 1, roughness: .25 });
+  for (let i = 0; i < 6; i++) {
+    const x0 = -.075 + i * .03, x1 = -.05 + i * .02;
+    const len = 1.95 - (-.42);
+    const s = new THREE.Mesh(new THREE.CylinderGeometry(.0035, .0035, len, 5), strMat);
+    s.position.set((x0 + x1) / 2, (1.95 - .42) / 2, .1);
+    s.rotation.z = Math.atan2(x0 - x1, len);
+    guitar.add(s);
+  }
+  guitar.scale.setScalar(1.1);
+  guitar.position.set(-1.55, .15, -1.4);
+  guitar.rotation.set(.15, .5, .5);
+  rig.add(guitar);
+
+  /* --- Rullante con bacchette --- */
+  const snare = new THREE.Group();
+  const shell = new THREE.Mesh(new THREE.CylinderGeometry(.62, .62, .38, 72, 1, true),
+    new THREE.MeshPhysicalMaterial({ color: 0xE4A43A, metalness: .2, roughness: .25, clearcoat: 1, clearcoatRoughness: .05, side: THREE.DoubleSide }));
+  const headMat = new THREE.MeshStandardMaterial({ color: 0xf4efe4, roughness: .75 });
+  const skin = new THREE.Mesh(new THREE.CircleGeometry(.62, 72), headMat); skin.rotation.x = -Math.PI / 2; skin.position.y = .2;
+  const skinB = skin.clone(); skinB.rotation.x = Math.PI / 2; skinB.position.y = -.2;
+  const hoopT = new THREE.Mesh(new THREE.TorusGeometry(.63, .026, 12, 80), chrome); hoopT.rotation.x = Math.PI / 2; hoopT.position.y = .21;
+  const hoopB = hoopT.clone(); hoopB.position.y = -.21;
+  snare.add(shell, skin, skinB, hoopT, hoopB);
+  for (let i = 0; i < 8; i++) {
+    const a = i / 8 * Math.PI * 2;
+    const lug = new THREE.Mesh(new THREE.CapsuleGeometry(.03, .12, 4, 10), chrome);
+    lug.position.set(Math.cos(a) * .655, 0, Math.sin(a) * .655); snare.add(lug);
+    const rod = new THREE.Mesh(new THREE.CylinderGeometry(.008, .008, .42, 8), chrome);
+    rod.position.set(Math.cos(a) * .64, 0, Math.sin(a) * .64); snare.add(rod);
+  }
+  const stickPts = [[0,0],[.022,.02],[.024,.3],[.022,.9],[.012,1.15],[.009,1.2],[.018,1.24],[.012,1.28],[0,1.29]].map(([x, y]) => new THREE.Vector2(x, y));
+  const stickMat = new THREE.MeshPhysicalMaterial({ color: 0xe6c690, roughness: .45, clearcoat: .6 });
+  const stick1 = new THREE.Mesh(new THREE.LatheGeometry(stickPts, 16), stickMat);
+  stick1.position.set(-.5, .32, .25); stick1.rotation.set(0, .3, -1.25);
+  const stick2 = stick1.clone(); stick2.position.set(-.45, .36, -.15); stick2.rotation.set(0, -.35, -1.15);
+  snare.add(stick1, stick2);
+  snare.position.set(1.35, -1.25, .3);
+  snare.rotation.set(.5, 0, -.12);
+  rig.add(snare);
+
+  /* --- Disco in vinile --- */
+  const grooves = canvasTex(THREE, 1024, 1024, (c, w) => {
+    c.fillStyle = '#0c0c0c'; c.fillRect(0, 0, w, w);
+    for (let r = 200; r < 505; r += 2.2) {
+      c.strokeStyle = `rgba(255,255,255,${.03 + Math.random() * .05})`; c.lineWidth = 1;
+      c.beginPath(); c.arc(512, 512, r, 0, Math.PI * 2); c.stroke();
+    }
+    c.fillStyle = '#E4A43A'; c.beginPath(); c.arc(512, 512, 175, 0, Math.PI * 2); c.fill();
+    c.fillStyle = '#13281F'; c.textAlign = 'center';
+    c.font = 'italic 600 74px Fraunces, Georgia, serif'; c.fillText('Biblos', 512, 480);
+    c.font = '700 30px Manrope, Arial, sans-serif'; c.fillText('KARAOKE · DOMENICA', 512, 590);
+    c.fillStyle = '#0c0c0c'; c.beginPath(); c.arc(512, 512, 12, 0, Math.PI * 2); c.fill();
+  });
+  const vinylSide = new THREE.MeshStandardMaterial({ color: 0x111111, roughness: .3 });
+  const vinyl = new THREE.Mesh(new THREE.CylinderGeometry(.85, .85, .02, 96), [vinylSide, new THREE.MeshPhysicalMaterial({ map: grooves, roughness: .35, clearcoat: .6, clearcoatRoughness: .2, envMapIntensity: .45 }), vinylSide]);
+  const vinylHolder = new THREE.Group();
+  vinylHolder.add(vinyl);
+  vinylHolder.position.set(1.45, 1.35, -1.2);
+  vinylHolder.rotation.set(1.3, 0, -.35);
+  rig.add(vinylHolder);
+
+  const items = [
+    { o: mic, base: mic.position.clone(), ph: 0, amp: .06 },
+    { o: guitar, base: guitar.position.clone(), ph: 1.7, amp: .09 },
+    { o: snare, base: snare.position.clone(), ph: 3.1, amp: .07 },
+    { o: vinylHolder, base: vinylHolder.position.clone(), ph: 4.4, amp: .1 }
+  ];
+
+  function resize() {
+    const w = stage.clientWidth, h = stage.clientHeight;
+    renderer.setSize(w, h, false);
+    camera.aspect = w / h;
+    /* Allontana la camera se lo spazio è stretto, così tutto resta in quadro */
+    camera.position.z = Math.max(10.5, 11 / Math.min(camera.aspect, 1.05) * .95);
+    camera.updateProjectionMatrix();
+  }
+  resize();
+  new ResizeObserver(() => { resize(); if (reduce) renderer.render(scene, camera); }).observe(stage);
+
+  const section = stage.closest('section');
+  let sp = 0, rx = 0, ry = 0;
+  const readScroll = () => {
+    const r = section.getBoundingClientRect();
+    sp = Math.min(Math.max((window.innerHeight - r.top) / (window.innerHeight + r.height), 0), 1);
+  };
+  window.addEventListener('scroll', readScroll, { passive: true });
+  readScroll();
+
+  const clock = new THREE.Clock();
+  function frame() {
+    const dt = Math.min(clock.getDelta(), .05);
+    const t = clock.elapsedTime;
+    rx += ((my * .18) - rx) * Math.min(dt * 3, 1);
+    ry += ((mx * .45 + (sp - .5) * .9) - ry) * Math.min(dt * 3, 1);
+    rig.rotation.set(rx, ry, 0);
+    items.forEach(it => { it.o.position.y = it.base.y + Math.sin(t * 1.1 + it.ph) * it.amp; });
+    mic.rotation.z = -.42 + Math.sin(t * .8) * .04;
+    guitar.rotation.y = .5 + Math.sin(t * .5) * .08;
+    snare.rotation.y = t * .15;
+    vinyl.rotation.y = t * 1.4;
+    renderer.render(scene, camera);
   }
 
+  frame();
+  if (!reduce) runWhenVisible(stage, frame);
   stage.classList.add('has-webgl');
-  if (!reduce) document.documentElement.classList.add('has-3d');
 }
 </script>
 </body>
