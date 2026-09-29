@@ -139,7 +139,7 @@ button.item[aria-pressed="true"] .name{color:var(--accent)}
 
     <aside class="vetrina" aria-label="Vetrina 3D">
       <div class="glass">
-        <canvas id="scene" role="img" aria-label="Vetrina 3D: la focaccia selezionata nel listino. Trascina per girarla, tocca un pezzo per sollevarlo."></canvas>
+        <canvas id="sceneB" role="img" aria-label="Vetrina 3D: la focaccia selezionata nel listino. Trascina per girarla, tocca un pezzo per sollevarlo."></canvas>
         <div class="shelf"><span class="mono">Vetrina · 3D</span><span class="mono" data-clock>--:--</span></div>
         <div class="tag" aria-live="polite"><b id="tagName">Classica</b><span id="tagSub">olio · sale grosso</span></div>
       </div>
@@ -164,7 +164,7 @@ button.item[aria-pressed="true"] .name{color:var(--accent)}
 <script>
 (function(){
   const root = document.documentElement;
-  const canvas = document.getElementById('scene');
+  const canvas = document.getElementById('sceneB');
   let api = null;
   try {
     api = window.Focaccia && Focaccia.create(canvas, {

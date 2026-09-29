@@ -2,6 +2,10 @@
 
 Via Carlo Barabino 98r, Genova Foce · aperto 24/7.
 
+## Demo in un solo file
+
+`dist/pizza-sbrano.html` contiene l'intero sito (4 pagine collegate, font, 3D e mappa inclusi): basta aprirlo nel browser. Si rigenera con `python3 src/build.py && python3 src/single.py`.
+
 ## Pagine
 
 | File | Struttura |
