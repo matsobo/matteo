@@ -7,8 +7,9 @@
   /* ---------- Menu (mobile) ---------- */
   var label = document.querySelector('.label');
   var menuBtn = document.querySelector('.menu-btn');
+  var setMenu = function(){};
   if (menuBtn) {
-    var setMenu = function(open){
+    setMenu = function(open){
       label.classList.toggle('open', open);
       menuBtn.setAttribute('aria-expanded', open);
       menuBtn.querySelector('.txt').textContent = open ? 'Chiudi' : 'Menu';
@@ -59,34 +60,60 @@
     items.forEach(function(el, i){ el.style.transitionDelay = (el.dataset.reveal || 0) + 'ms'; io.observe(el); });
   } else items.forEach(function(el){ el.classList.add('in'); });
 
-  /* ---------- Transizione tra pagine: tenda del camerino ---------- */
-  var curtain = document.querySelector('.curtain');
+  /* ---------- Pagine interne + tenda del camerino ----------
+     Il sito è un unico file: ogni pagina è una <section class="view">
+     raggiungibile con un indirizzo proprio (#bottega, #storia, ...),
+     con cronologia del browser, titolo e voce di menu aggiornati. */
+  var views = {}, current = null, curtain = document.querySelector('.curtain');
+  document.querySelectorAll('.view').forEach(function(v){ views[v.id] = v; });
+  var HOME = 'bottega';
+  function routeOf(hash){ var r = (hash || '').replace(/^#\/?/, ''); return views[r] ? r : null; }
+
+  function show(route, fromCurtain){
+    if (!views[route]) route = HOME;
+    if (route === current) return;
+    current = route;
+    Object.keys(views).forEach(function(k){ views[k].classList.toggle('active', k === route); });
+    document.querySelectorAll('.index a').forEach(function(a){
+      if (routeOf(a.getAttribute('href')) === route) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+    });
+    document.title = views[route].dataset.title || document.title;
+    window.scrollTo(0, 0);
+    if (label && label.classList.contains('open')) setMenu(false);
+    var h = views[route].querySelector('h1');
+    if (h && fromCurtain !== 'init') { h.setAttribute('tabindex', '-1'); h.focus({preventScroll: true}); }
+    document.dispatchEvent(new CustomEvent('bl:view', {detail: route}));
+    if (fromCurtain === true) openCurtain();
+  }
   function openCurtain(){
-    if (!curtain) return;
     requestAnimationFrame(function(){
-      doc.classList.remove('tx-in');
       curtain.classList.remove('closing');
       void curtain.offsetWidth;
-      curtain.classList.add('opening'); /* resta aperta sotto lo schermo fino alla prossima chiusura */
+      curtain.classList.add('opening');
     });
   }
-  try { sessionStorage.removeItem('bl-tx'); } catch (e) {}
-  if (doc.classList.contains('tx-in')) openCurtain();
-  window.addEventListener('pageshow', function(e){ if (e.persisted && curtain) { curtain.classList.remove('closing'); doc.classList.remove('tx-in'); } });
-
-  document.addEventListener('click', function(e){
-    var a = e.target.closest('a[href]');
-    if (!a || reduce || !curtain) return;
-    var href = a.getAttribute('href');
-    if (e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-    if (a.target === '_blank' || a.hasAttribute('download') || !/^[\w-]+\.html(#.*)?$/.test(href)) return;
-    if (a.getAttribute('aria-current') === 'page') { e.preventDefault(); return; }
-    e.preventDefault();
-    try { sessionStorage.setItem('bl-tx', '1'); } catch (err) {}
-    /* riporta le strisce in alto senza animazione, poi chiude dall'alto */
+  function closeCurtain(done){
     curtain.classList.add('reset'); curtain.classList.remove('opening');
     void curtain.offsetWidth;
     curtain.classList.remove('reset'); curtain.classList.add('closing');
-    setTimeout(function(){ location.href = href; }, 620);
+    setTimeout(done, 600);
+  }
+
+  document.addEventListener('click', function(e){
+    var a = e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var r = routeOf(a.getAttribute('href'));
+    if (!r) return;
+    e.preventDefault();
+    if (r === current) { if (label && label.classList.contains('open')) setMenu(false); window.scrollTo({top: 0, behavior: reduce ? 'auto' : 'smooth'}); return; }
+    if (reduce || !curtain) { location.hash = r; return; }
+    closeCurtain(function(){ pendingCurtain = true; location.hash = r; });
   });
+  var pendingCurtain = false;
+  window.addEventListener('hashchange', function(){
+    var r = routeOf(location.hash);
+    if (!r) return; /* es. #main del link "vai al contenuto" */
+    show(r, pendingCurtain); pendingCurtain = false;
+  });
+  show(routeOf(location.hash) || HOME, 'init');
 })();

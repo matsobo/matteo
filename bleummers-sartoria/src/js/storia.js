@@ -20,6 +20,7 @@
     update();
     window.addEventListener('scroll', update, {passive: true});
     window.addEventListener('resize', update);
+    document.addEventListener('bl:view', function(e){ if (e.detail === 'storia') update(); });
   }
 
   /* ---------- Punti sulla foto della vetrina ---------- */

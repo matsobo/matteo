@@ -33,6 +33,7 @@
   function kick(){ if (!running) { running = true; requestAnimationFrame(frame); } }
   rack.addEventListener('scroll', kick, {passive: true});
   window.addEventListener('resize', kick);
+  document.addEventListener('bl:view', function(e){ if (e.detail === 'collezioni') kick(); });
   kick();
 
   /* Passaggio del mouse: la gruccia si muove come se la sfiorassi */
@@ -110,9 +111,10 @@
     var g = e.target.closest('.garment');
     if (!g || !dlg) return;
     var h = g.closest('.hanger');
-    dlg.querySelector('[data-f="img"]').src = h.dataset.img || '';
-    dlg.querySelector('[data-f="img"]').alt = h.dataset.alt || '';
-    dlg.querySelector('[data-f="img"]').parentNode.hidden = !h.dataset.img;
+    var im = h.querySelector('.photo img');
+    dlg.querySelector('[data-f="img"]').src = im ? im.src : '';
+    dlg.querySelector('[data-f="img"]').alt = im ? im.alt : '';
+    dlg.querySelector('[data-f="img"]').parentNode.hidden = !im;
     dlg.querySelector('[data-f="ex"]').hidden = h.dataset.example !== '1';
     dlg.querySelector('[data-f="cat"]').textContent = h.dataset.catLabel;
     dlg.querySelector('[data-f="name"]').innerHTML = h.querySelector('.tag b').innerHTML;

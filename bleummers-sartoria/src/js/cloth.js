@@ -23,14 +23,14 @@
   var rnd = (function(seed){ return function(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }; })(1964);
 
   var col = cnv(), g = col.getContext('2d');
-  g.fillStyle = '#1b2236'; g.fillRect(0, 0, S, S);
+  g.fillStyle = '#1c3326'; g.fillRect(0, 0, S, S);
   for (var i = -S; i < S * 2; i += 4) { /* armatura diagonale (twill) */
     g.strokeStyle = 'rgba(255,255,255,' + (0.025 + rnd() * 0.03) + ')';
     g.lineWidth = 1.4; g.beginPath(); g.moveTo(i, 0); g.lineTo(i + S, S); g.stroke();
   }
   for (i = 0; i < 9000; i++) { /* fibre di lana */
     var x = rnd() * S, y = rnd() * S, a = rnd() * Math.PI, l = 2 + rnd() * 7;
-    g.strokeStyle = rnd() > .5 ? 'rgba(120,135,170,.10)' : 'rgba(5,8,18,.18)';
+    g.strokeStyle = rnd() > .5 ? 'rgba(120,160,130,.10)' : 'rgba(4,12,8,.2)';
     g.lineWidth = .8; g.beginPath(); g.moveTo(x, y); g.lineTo(x + Math.cos(a) * l, y + Math.sin(a) * l); g.stroke();
   }
   for (var sx = 40; sx < S; sx += 72) { /* righe di gesso, tratteggiate come un vero gessato */
@@ -67,7 +67,7 @@
   key.shadow.mapSize.set(1024, 1024); key.shadow.radius = 6;
   key.shadow.camera.left = -3; key.shadow.camera.right = 3; key.shadow.camera.top = 3; key.shadow.camera.bottom = -3;
   scene.add(key);
-  var rim = new T.DirectionalLight(0xb8c4ff, .6); rim.position.set(3, -1, -2); scene.add(rim);
+  var rim = new T.DirectionalLight(0xc8e6d0, .6); rim.position.set(3, -1, -2); scene.add(rim);
 
   var W = 3.3, Hh = 2.5, SX = 84, SY = 64;
   var geo = new T.PlaneGeometry(W, Hh, SX, SY);
@@ -145,6 +145,7 @@
 
   function resize(){
     var w = box.clientWidth, h = box.clientHeight;
+    if (!w || !h) return;
     renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
     cam.position.z = w / h < 1.1 ? 6.4 : 5.4;
   }
@@ -163,7 +164,8 @@
   }
   function start(){ if (running || reduce) return; running = true; prev = performance.now(); requestAnimationFrame(loop); }
   function stop(){ running = false; }
-  resize(); draw(0);
+  resize(); if (box.clientWidth) draw(0);
+  document.addEventListener('bl:view', function(e){ if (e.detail === 'bottega') { resize(); draw(clock); } });
   window.addEventListener('resize', function(){ resize(); draw(clock); });
   new IntersectionObserver(function(es){ visible = es[0].isIntersecting; visible && !document.hidden ? start() : stop(); }).observe(box);
   document.addEventListener('visibilitychange', function(){ !document.hidden && visible ? start() : stop(); });
