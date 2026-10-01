@@ -123,9 +123,7 @@ p{margin:0}
 .occ h3{font-size:clamp(1.9rem,4vw,3.4rem);transition:transform .4s var(--ease),color .3s}
 .occ p{color:var(--ink-soft);max-width:40ch}
 .occ.is-on h3{transform:translateX(14px);color:var(--peony)}
-.occ-float{position:fixed;left:0;top:0;z-index:5;width:220px;margin:0;pointer-events:none;color:var(--ink);opacity:0;background:var(--card);border:1px solid var(--ink);padding:14px;box-shadow:8px 8px 0 var(--blush)}
-.occ-float svg{width:100%;height:auto}
-@media (max-width:900px){.occ-list{grid-column:1/-1}.occ{grid-template-columns:40px 1fr}.occ p{grid-column:2}.occ-float{display:none}}
+@media (max-width:900px){.occ-list{grid-column:1/-1}.occ{grid-template-columns:40px 1fr}.occ p{grid-column:2}}
 
 /* ---------- III: componi ---------- */
 .composer{grid-column:1/span 7;display:grid;gap:30px}
@@ -150,6 +148,9 @@ p{margin:0}
 .preview{grid-column:8/-1;align-self:start;position:sticky;top:96px;background:var(--card);border:1px solid var(--ink);padding:22px;box-shadow:10px 10px 0 var(--paper-2)}
 .preview-art{position:relative;border-bottom:1px dashed var(--line);margin-bottom:16px}
 .preview-art svg{width:100%;max-height:320px;margin:0 auto}
+#bouquet3d{display:none;width:100%;height:380px}
+.has-bouquet3d #bouquet3d{display:block}
+.has-bouquet3d #bouquet{display:none}
 .preview-art .hand{position:absolute;right:6px;bottom:8px;transform:rotate(-5deg)}
 .msg-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
 .msg{margin:8px 0 18px;font-family:var(--display);font-size:1.3rem;line-height:1.3}

@@ -35,37 +35,17 @@
     }, { passive: true });
   }
 
-  /* ---------- II: indice occasioni con tavola che segue il cursore ---------- */
-  var float = $('#occFloat'), figUse = $('#occFigUse'), fx = 0, fy = 0, cx = 0, cy = 0, floatOn = false;
-  if (finePointer && float) {
-    $$('.occ').forEach(function (li) {
-      li.addEventListener('pointerenter', function () {
-        $$('.occ').forEach(function (o) { o.classList.remove('is-on'); });
-        li.classList.add('is-on');
-        figUse.setAttribute('href', '#' + li.getAttribute('data-fig'));
-        floatOn = true;
-        if (window.gsap && !reduce) gsap.to(float, { opacity: 1, scale: 1, duration: .3 });
-        else float.style.opacity = 1;
-      });
-    });
-    $('#occList').addEventListener('pointerleave', function () {
-      floatOn = false;
-      $$('.occ').forEach(function (o) { o.classList.remove('is-on'); });
-      if (window.gsap && !reduce) gsap.to(float, { opacity: 0, scale: .9, duration: .25 }); else float.style.opacity = 0;
-    });
-    addEventListener('pointermove', function (e) { fx = e.clientX + 28; fy = e.clientY - 120; }, { passive: true });
-    (function follow() {
-      if (floatOn) {
-        cx += (fx - cx) * (reduce ? 1 : .16); cy += (fy - cy) * (reduce ? 1 : .16);
-        var x = Math.min(cx, innerWidth - 250);
-        float.style.transform = 'translate(' + x + 'px,' + cy + 'px)';
-      }
-      requestAnimationFrame(follow);
-    })();
-  }
+  /* ---------- II: indice occasioni (solo evidenziazione della voce) ---------- */
+  $$('.occ').forEach(function (li) {
+    li.addEventListener('pointerenter', function () { li.classList.add('is-on'); });
+    li.addEventListener('pointerleave', function () { li.classList.remove('is-on'); });
+  });
 
   /* ---------- III: componi il mazzo ---------- */
   var form = $('#composer'), msg = $('#msg'), heads = $('#bqHeads');
+  var bq = null, bqCanvas = $('#bouquet3d');
+  if (window.PetaliBouquet && bqCanvas) bq = window.PetaliBouquet.init(bqCanvas, { still: reduce });
+  if (bq) root.classList.add('has-bouquet3d');
   var SVGNS = 'http://www.w3.org/2000/svg';
   var spots = [[150, 160, 30], [114, 178, 26], [186, 176, 26], [132, 128, 22], [170, 126, 22], [96, 140, 18], [204, 140, 18], [150, 102, 18]];
   function flowerHead(x, y, r, c1, c2, rot) {
@@ -101,6 +81,7 @@
     }
     text += '. Mi potete dire disponibilità e prezzo?';
     msg.textContent = text;
+    if (bq) { bq.set(tone, shape); return; }
     while (heads.firstChild) heads.removeChild(heads.firstChild);
     var n = shape === 'una pianta' ? 3 : spots.length;
     for (var i = 0; i < n; i++) {
