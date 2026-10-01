@@ -105,29 +105,41 @@
     </section>
 
     <section class="c-bench" aria-labelledby="h-bench">
-      <div class="bench-head"><h2 id="h-bench" class="mono">Banco di prova · pannello porta</h2><span aria-hidden="true">Luce a strisce · 5000 K</span></div>
-      <div class="bench-stage" id="benchStage">
-        <canvas id="panel3d" aria-hidden="true"></canvas>
-        <span class="lamp-dot" id="lampDot" aria-hidden="true"></span>
-        <div class="bench-fallback"><img src="assets/img/dopo.jpg" alt="Utilitaria blu riparata e riverniciata, fotografia dimostrativa" width="900" height="900"></div>
-        <p class="bench-hint" id="benchHint">Muovi il cursore sul pannello: è la luce che usa il carrozziere per leggere le bozze.</p>
+      <div class="bench-head"><h2 id="h-bench" class="mono">Simulatore di riparazione · urto frontale</h2><span aria-hidden="true">Ponte 1</span></div>
+      <div class="bench-stage" id="carStage">
+        <canvas id="car3d" role="img" aria-label="Utilitaria in 3D con urto frontale. Interventi completati: 0 su 4."></canvas>
+        <div class="hotspots" id="hotspots" role="group" aria-label="Punti da riparare sull'auto">
+          <button type="button" class="hs" data-part="0">1</button>
+          <button type="button" class="hs" data-part="1">2</button>
+          <button type="button" class="hs" data-part="2">3</button>
+          <button type="button" class="hs" data-part="3">4</button>
+        </div>
+        <div class="bench-fallback"><img src="assets/img/prima.jpg" alt="Utilitaria blu con il frontale distrutto, fotografia dimostrativa" width="900" height="900"></div>
+        <p class="bench-hint">Trascina per girare l'auto. Tocca i punti arancioni per ripararla.</p>
+        <div class="rot"><button type="button" id="rotL" aria-label="Ruota l'auto a sinistra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" id="rotR" aria-label="Ruota l'auto a destra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button></div>
       </div>
       <div class="bench-ctrl">
-        <ol class="steps" aria-label="Fasi della riparazione">
-          <li><button type="button" data-t="0" aria-pressed="true"><span>Fase 1</span><b>Bozza</b></button></li>
-          <li><button type="button" data-t="0.33" aria-pressed="false"><span>Fase 2</span><b>Lattoneria</b></button></li>
-          <li><button type="button" data-t="0.58" aria-pressed="false"><span>Fase 3</span><b>Fondo</b></button></li>
-          <li><button type="button" data-t="1" aria-pressed="false"><span>Fase 4</span><b>Vernice</b></button></li>
+        <ol class="vstep" id="vstep" aria-label="Interventi">
+          <li><button type="button" data-part="0"><span class="ind" aria-hidden="true"><i>1</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Paraurti</b><span>Smontaggio e fissaggio</span></span></button></li>
+          <li><button type="button" data-part="1"><span class="ind" aria-hidden="true"><i>2</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Lattoneria</b><span>Cofano e parafango</span></span></button></li>
+          <li><button type="button" data-part="2"><span class="ind" aria-hidden="true"><i>3</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Fanale</b><span>Gruppo ottico nuovo</span></span></button></li>
+          <li><button type="button" data-part="3"><span class="ind" aria-hidden="true"><i>4</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Verniciatura</b><span>Dopo la lattoneria</span></span></button></li>
         </ol>
-        <div class="range"><label for="repair">Avanzamento</label><input id="repair" type="range" min="0" max="100" value="0" aria-describedby="stageOut"></div>
-        <p class="stage-out" id="stageOut" aria-live="polite">Bozza: la lamiera è deformata. Sotto la luce a strisce le linee si spezzano, ed è così che si legge un danno.</p>
-        <div class="chips" role="group" aria-label="Colore della vernice">
-          <span>Tinta</span>
-          <button type="button" class="chip c-blu" data-paint="#1d3557" aria-pressed="true" aria-label="Blu scuro metallizzato"></button>
-          <button type="button" class="chip c-ner" data-paint="#121212" aria-pressed="false" aria-label="Nero pastello"></button>
-          <button type="button" class="chip c-ros" data-paint="#8f1d1d" aria-pressed="false" aria-label="Rosso scuro"></button>
-          <button type="button" class="chip c-ver" data-paint="#2f4a3a" aria-pressed="false" aria-label="Verde inglese"></button>
-          <button type="button" class="chip c-bia" data-paint="#e9e7e1" aria-pressed="false" aria-label="Bianco"></button>
+        <div class="job">
+          <p class="job-out" id="jobOut" aria-live="polite">Un'utilitaria è arrivata con il muso ammaccato: paraurti staccato, cofano e parafango piegati, fanale rotto, porta strisciata. Scegli da dove cominciare.</p>
+          <div class="job-btns">
+            <button type="button" class="btn tape-btn" id="fixAll">Ripara tutto</button>
+            <button type="button" class="btn ghost-d" id="resetCar">Rimetti il danno</button>
+          </div>
+          <div class="chips" role="group" aria-label="Colore della vernice">
+            <span>Tinta</span>
+            <button type="button" class="chip c-blu" data-paint="#2c5d97" aria-pressed="true" aria-label="Blu"></button>
+            <button type="button" class="chip c-ros" data-paint="#8f1d1d" aria-pressed="false" aria-label="Rosso"></button>
+            <button type="button" class="chip c-ver" data-paint="#2f4a3a" aria-pressed="false" aria-label="Verde"></button>
+            <button type="button" class="chip c-bia" data-paint="#e4e2dc" aria-pressed="false" aria-label="Bianco"></button>
+            <button type="button" class="chip c-ner" data-paint="#161616" aria-pressed="false" aria-label="Nero"></button>
+          </div>
+          <p class="note">Simulazione illustrativa su un'auto generica.</p>
         </div>
       </div>
     </section>
@@ -210,7 +222,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/three.min.js" defer></script>
-<script src="assets/js/scene3d.js" defer></script>
+<script src="assets/js/car3d.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>
 </html>

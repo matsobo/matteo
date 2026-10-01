@@ -10,5 +10,6 @@
 | three.js (bundle ridotto) | three.js authors | MIT | assets/vendor/three.min.js |
 | Leaflet 1.9 | Volodymyr Agafonkin | BSD-2-Clause | assets/vendor/leaflet |
 | Tile mappa | © OpenStreetMap contributors | ODbL | caricati solo dopo clic/consenso |
-| Pannello 3D | generato via codice (scene3d.js) | — | nessuna immagine esterna |
+| Auto 3D del simulatore | generata via codice (car3d.js) | — | utilitaria generica, nessun modello/immagine esterna, nessun marchio |
+| Riferimenti di design | 21st.dev: "Volumetric Studio" (alexperezcedeno), "Vertical Titled Stepper" (sean0205); UI UX Pro Max (regole three.js/UX) | — | solo idee riscritte in JS vanilla, nessun codice copiato |
 | img/prima.jpg, img/dopo.jpg | **ORIGINE DA VERIFICARE** (dalla bozza precedente; aspetto da immagine generata) | ? | **Sostituire con foto reali di un lavoro Borgo Car prima della pubblicazione** |
