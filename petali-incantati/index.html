@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Petali Incantati — Fiorista a Manesseno, Sant'Olcese (GE)</title>
+<meta name="description" content="Petali Incantati, fiorista in via Don Luigi Sturzo a Manesseno (Sant'Olcese, Genova): fiori per matrimoni, battesimi, comunioni, cordoglio, piante e composizioni su richiesta.">
+<meta name="theme-color" content="#f4efe6">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Petali Incantati · Fiorista a Manesseno">
+<meta property="og:description" content="Fiori per matrimoni, battesimi, comunioni e cordoglio, piante e composizioni. Via Don Luigi Sturzo, Manesseno — Val Polcevera.">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/gloock-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/figtree-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Florist",
+  "name": "Petali Incantati",
+  "telephone": "+39 010 713027",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Don Luigi Sturzo 6",
+    "addressLocality": "Sant'Olcese",
+    "postalCode": "16010",
+    "addressRegion": "GE",
+    "addressCountry": "IT"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 44.4775, "longitude": 8.9198 },
+  "areaServed": ["Manesseno", "Sant'Olcese", "Val Polcevera", "Genova"],
+  "sameAs": ["https://www.facebook.com/petalincantati2020/"]
+}
+</script>
+<script src="assets/js/consent.js" defer></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/js/scene3d.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<!-- Sprite icone (Lucide, ISC) -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+  <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 16.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 1 1 12 7.5a4.5 4.5 0 1 1 4.5 4.5 4.5 4.5 0 1 1-4.5 4.5"/><path d="M12 7.5V9M7.5 12H9M16.5 12H15M12 16.5V15"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="pt" viewBox="-1 -1 2 1"><path d="M0 0C-.5-.25-.58-.8 0-1 .58-.8.5-.25 0 0Z"/></symbol>
+  <symbol id="f-sposa" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="100" cy="70" r="22"/><circle cx="66" cy="84" r="18"/><circle cx="134" cy="84" r="18"/><circle cx="82" cy="54" r="15"/><circle cx="120" cy="52" r="15"/><circle cx="100" cy="100" r="16"/><path d="M100 70m-10 0a10 10 0 1 0 20 0 10 10 0 1 0-20 0M66 84m-7 0a7 7 0 1 0 14 0 7 7 0 1 0-14 0M134 84m-7 0a7 7 0 1 0 14 0 7 7 0 1 0-14 0"/><path d="M90 116 96 200M100 116v86M110 116l-6 84M84 112l8 90M116 112l-8 90"/><path d="M84 150c16 10 28 10 32 0M84 150l-14 30M116 150l16 28M70 180l10-12M132 178l-10-10"/></g></symbol>
+  <symbol id="f-giglio" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M100 230V110"/><path d="M100 110c-8-30-30-52-56-60 10 26 30 46 56 60Z"/><path d="M100 110c8-30 30-52 56-60-10 26-30 46-56 60Z"/><path d="M100 110c-6-36-2-70 0-86 2 16 6 50 0 86Z"/><path d="M100 104l-14-40M100 104l14-40M100 104V58"/><circle cx="86" cy="62" r="2.5"/><circle cx="114" cy="62" r="2.5"/><circle cx="100" cy="56" r="2.5"/><path d="M100 180c-20-4-40-20-46-40 20 4 40 18 46 40ZM100 200c20-6 36-22 40-42-18 6-34 20-40 42Z"/></g></symbol>
+  <symbol id="f-culla" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"><path d="M100 232V120M100 170 70 120M100 150l34-46M100 130 82 80M100 120l16-50M70 120l-20-22M70 120l-8-30M134 104l18-20M134 104l4-30M82 80 66 62M82 80l2-26M116 70l-8-24M116 70l18-18"/><g fill="currentColor"><circle cx="50" cy="96" r="5"/><circle cx="62" cy="88" r="5"/><circle cx="152" cy="82" r="5"/><circle cx="138" cy="72" r="5"/><circle cx="66" cy="60" r="5"/><circle cx="84" cy="52" r="5"/><circle cx="108" cy="44" r="5"/><circle cx="134" cy="50" r="5"/><circle cx="100" cy="64" r="4"/><circle cx="120" cy="96" r="4"/><circle cx="78" cy="104" r="4"/></g></g></symbol>
+  <symbol id="f-corona" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="100" cy="112" r="62"/><circle cx="100" cy="112" r="40"/><g id="lf"><path d="M100 52c-10-8-12-18-8-24 8 4 12 14 8 24Z"/></g><use href="#lf" transform="rotate(30 100 112)"/><use href="#lf" transform="rotate(60 100 112)"/><use href="#lf" transform="rotate(90 100 112)"/><use href="#lf" transform="rotate(120 100 112)"/><use href="#lf" transform="rotate(150 100 112)"/><use href="#lf" transform="rotate(180 100 112)"/><use href="#lf" transform="rotate(210 100 112)"/><use href="#lf" transform="rotate(240 100 112)"/><use href="#lf" transform="rotate(270 100 112)"/><use href="#lf" transform="rotate(300 100 112)"/><use href="#lf" transform="rotate(330 100 112)"/><path d="M84 172l-12 50 18-12 8 18 6-54M116 172l12 50-18-12-8 18"/></g></symbol>
+  <symbol id="f-vaso" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M64 160h72l-10 66H74Z"/><path d="M58 160h84"/><path d="M100 160V90M100 130c-26-2-46-18-52-40 26 2 44 16 52 40ZM100 112c24-6 40-26 42-48-22 6-38 22-42 48ZM100 90c-12-16-12-36-2-54 10 18 10 38 2 54Z"/><path d="M60 100c14 4 28 14 40 30M142 64c-14 10-30 26-42 48"/></g></symbol>
+  <symbol id="f-nastro" viewBox="0 0 200 240"><g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M100 96c-24 0-36-16-34-34 10 4 18 2 22-6 6 8 18 10 28 2 6 10 16 12 20 6 2 18-12 32-36 32Z"/><path d="M88 70c4 8 16 10 24 2M96 60c4 4 10 4 12 0"/><path d="M100 96v134M100 150c-22-2-38-16-42-34 20 2 36 14 42 34ZM100 176c20-6 34-20 36-38-18 6-32 18-36 38Z"/><path d="M100 196c-14-10-34-12-40-4 6 10 26 8 40 4Zm0 0c14-10 34-12 40-4-6 10-26 8-40 4Zm0 0-18 34M100 196l16 34"/></g></symbol>
+  <symbol id="peonia" viewBox="0 0 400 520">
+      <path d="M200 300 C196 380 210 440 204 520" stroke="#4d5a3f" stroke-width="6" fill="none"/>
+      <path d="M204 410c-50-6-86-40-92-70 40 6 76 30 92 70Z" fill="#7a8a5c"/>
+      <path d="M206 450c46-10 76-46 80-74-36 8-66 34-80 74Z" fill="#5f6f46"/>
+      <use href="#pt" transform="translate(200 215) rotate(0.0) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(25.7) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(51.4) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(77.1) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(102.9) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(128.6) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(154.3) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(180.0) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(205.7) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(231.4) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(257.1) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(282.9) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(308.6) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(334.3) scale(1.35 150.00)" fill="#f4cbd3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(17.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(47.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(77.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(107.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(137.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(167.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(197.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(227.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(257.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(287.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(317.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(347.0) scale(0.97 120.00)" fill="#eeb3c3" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(34.0) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(66.7) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(99.5) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(132.2) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(164.9) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(197.6) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(230.4) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(263.1) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(295.8) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(328.5) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(361.3) scale(0.66 92.00)" fill="#e597ad" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(51.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(91.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(131.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(171.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(211.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(251.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(291.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(331.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(371.0) scale(0.43 66.00)" fill="#d97393" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(68.0) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(119.4) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(170.9) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(222.3) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(273.7) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(325.1) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(376.6) scale(0.23 42.00)" fill="#c64d72" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(85.0) scale(0.10 22.00)" fill="#a8284f" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(157.0) scale(0.10 22.00)" fill="#a8284f" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(229.0) scale(0.10 22.00)" fill="#a8284f" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(301.0) scale(0.10 22.00)" fill="#a8284f" opacity="1"/>
+      <use href="#pt" transform="translate(200 215) rotate(373.0) scale(0.10 22.00)" fill="#a8284f" opacity="1"/>
+    </symbol>
+</svg>
+
+<header class="top" id="top">
+  <a class="mark" href="#contenuto" aria-label="Petali Incantati, inizio pagina">
+    <span class="mark-name">Petali Incantati</span>
+    <span class="mark-loc">fiori · Manesseno</span>
+  </a>
+  <nav class="tavole" aria-label="Sezioni">
+    <ol>
+      <li><a href="#tav-1"><span>I</span>Il fiore</a></li>
+      <li><a href="#tav-2"><span>II</span>Occasioni</a></li>
+      <li><a href="#tav-3"><span>III</span>Componi</a></li>
+      <li><a href="#tav-4"><span>IV</span>Stagione</a></li>
+      <li><a href="#tav-5"><span>V</span>Dove</a></li>
+    </ol>
+  </nav>
+  <a class="top-call" href="tel:+39010713027"><svg aria-hidden="true"><use href="#i-phone"/></svg><span>010 713027</span></a>
+</header>
+
+<main id="contenuto">
+
+  <!-- TAVOLA I — HERO -->
+  <section class="plate hero" id="tav-1" aria-labelledby="h-hero">
+    <div class="hero-pin">
+      <p class="plate-no" aria-hidden="true">Tav. I</p>
+
+      <div class="hero-stage" aria-hidden="true">
+        <canvas id="bloom" aria-hidden="true"></canvas>
+        <svg class="bloom-fallback" viewBox="0 0 400 520" role="presentation">
+          <use href="#peonia"/>
+        </svg>
+        <span class="tape tape-a"></span><span class="tape tape-b"></span>
+        <p class="hand hand-1">Paeonia — si apre scorrendo</p>
+      </div>
+
+      <div class="hero-copy">
+        <h1 id="h-hero" class="hero-title">
+          <span class="ln"><span>Petali</span></span>
+          <span class="ln ln-indent"><span>Incantati</span></span>
+        </h1>
+        <p class="hero-lead">Fiorista a <strong>Manesseno</strong>, in via Don Luigi Sturzo, nel comune di Sant'Olcese. Fiori per matrimoni, battesimi, comunioni e per l'ultimo saluto; piante e composizioni preparate su richiesta.</p>
+        <div class="hero-actions">
+          <a class="btn btn-ink" href="#tav-3">Componi il tuo mazzo</a>
+          <a class="btn btn-line" href="tel:+39010713027"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama il negozio</a>
+        </div>
+      </div>
+
+      <aside class="label-card" aria-label="Cartellino d'erbario">
+        <p class="lc-head">Herbarium · Val Polcevera</p>
+        <dl>
+          <div><dt>Esemplare</dt><dd>Petali Incantati</dd></div>
+          <div><dt>Località</dt><dd>Manesseno, Sant'Olcese (GE)</dd></div>
+          <div><dt>Indirizzo</dt><dd>Via Don Luigi Sturzo 6 <span class="tbc">[civico DA CONFERMARE]</span></dd></div>
+          <div><dt>Leg.</dt><dd><span class="tbc">[nome titolare DA CONFERMARE]</span></dd></div>
+        </dl>
+        <p class="lc-no" aria-hidden="true">N° 16010</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- TAVOLA II — OCCASIONI -->
+  <section class="plate occasions" id="tav-2" aria-labelledby="h-occ">
+    <div class="plate-grid">
+      <header class="plate-head">
+        <p class="plate-no" aria-hidden="true">Tav. II</p>
+        <h2 id="h-occ" class="h2 rv">Per quale <em>giorno</em>?</h2>
+        <p class="plate-note rv">Le occasioni per cui il negozio prepara fiori, come le descrivono le sue schede pubbliche. Su computer, passa sopra una voce per vedere la sua tavola.</p>
+      </header>
+
+      <ol class="occ-list" id="occList">
+        <li class="occ rv" data-fig="f-sposa">
+          <span class="occ-n">01</span>
+          <h3>Matrimoni</h3>
+          <p>Bouquet della sposa e fiori per la cerimonia. Allestimenti di chiesa e sala <span class="tbc">[DA CONFERMARE]</span>.</p>
+        </li>
+        <li class="occ rv" data-fig="f-giglio">
+          <span class="occ-n">02</span>
+          <h3>Comunioni e cresime</h3>
+          <p>Composizioni chiare per la festa e per la tavola.</p>
+        </li>
+        <li class="occ rv" data-fig="f-culla">
+          <span class="occ-n">03</span>
+          <h3>Battesimi</h3>
+          <p>Fiori delicati per il primo giorno importante.</p>
+        </li>
+        <li class="occ rv" data-fig="f-corona">
+          <span class="occ-n">04</span>
+          <h3>Cordoglio</h3>
+          <p>Corone, cuscini e mazzi per l'ultimo saluto. Si possono ordinare per telefono.</p>
+        </li>
+        <li class="occ rv" data-fig="f-vaso">
+          <span class="occ-n">05</span>
+          <h3>Piante</h3>
+          <p>Piante da interno e da balcone per ogni occasione.</p>
+        </li>
+        <li class="occ rv" data-fig="f-nastro">
+          <span class="occ-n">06</span>
+          <h3>Su richiesta</h3>
+          <p>Composizioni personalizzate: un compleanno, un grazie, un anniversario.</p>
+        </li>
+      </ol>
+
+      <figure class="occ-float" id="occFloat" aria-hidden="true">
+        <svg viewBox="0 0 200 240"><use id="occFigUse" href="#f-sposa"/></svg>
+      </figure>
+    </div>
+  </section>
+
+  <!-- TAVOLA III — COMPONI -->
+  <section class="plate compose" id="tav-3" aria-labelledby="h-comp">
+    <div class="plate-grid">
+      <header class="plate-head">
+        <p class="plate-no" aria-hidden="true">Tav. III</p>
+        <h2 id="h-comp" class="h2 rv">Componi il <em>tuo</em> mazzo</h2>
+        <p class="plate-note rv">Scegli occasione, toni e forma: prepariamo per te il messaggio da leggere al telefono o da incollare in chat. Nessun dato viene inviato da questa pagina.</p>
+      </header>
+
+      <form class="composer" id="composer" novalidate>
+        <fieldset>
+          <legend><span>a.</span> Occasione</legend>
+          <div class="chips">
+            <label><input type="radio" name="occ" value="un matrimonio" checked><span>Matrimonio</span></label>
+            <label><input type="radio" name="occ" value="una comunione o cresima"><span>Comunione</span></label>
+            <label><input type="radio" name="occ" value="un battesimo"><span>Battesimo</span></label>
+            <label><input type="radio" name="occ" value="un compleanno"><span>Compleanno</span></label>
+            <label><input type="radio" name="occ" value="un saluto di cordoglio"><span>Cordoglio</span></label>
+            <label><input type="radio" name="occ" value="un regalo"><span>Un regalo</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>b.</span> Toni</legend>
+          <div class="chips swatches">
+            <label><input type="radio" name="tone" value="bianchi e avorio" data-c="#f7f1e6,#e9dfcc,#c9d3b4" checked><span><i class="sw sw-bianco"></i>Bianchi</span></label>
+            <label><input type="radio" name="tone" value="rosa cipria" data-c="#f4cbd3,#e7a3b4,#c9d3b4"><span><i class="sw sw-cipria"></i>Rosa cipria</span></label>
+            <label><input type="radio" name="tone" value="colori accesi" data-c="#d8344f,#f08a24,#f5c542"><span><i class="sw sw-acceso"></i>Accesi</span></label>
+            <label><input type="radio" name="tone" value="lilla e viola" data-c="#c8b3e0,#8a6bb5,#c9d3b4"><span><i class="sw sw-lilla"></i>Lilla</span></label>
+            <label><input type="radio" name="tone" value="a scelta del fiorista" data-c="#a8284f,#f4cbd3,#7a8a5c"><span><i class="sw sw-libero"></i>Decidete voi</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span>c.</span> Forma</legend>
+          <div class="chips">
+            <label><input type="radio" name="form" value="un mazzo" checked><span>Mazzo</span></label>
+            <label><input type="radio" name="form" value="una composizione"><span>Composizione</span></label>
+            <label><input type="radio" name="form" value="una pianta"><span>Pianta</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field">
+          <label for="when"><span>d.</span> Per quando</label>
+          <input id="when" name="when" type="date">
+        </div>
+      </form>
+
+      <div class="preview" aria-live="polite">
+        <div class="preview-art" aria-hidden="true">
+          <svg viewBox="0 0 300 340" id="bouquet">
+            <g id="bqStems" stroke="#4d5a3f" stroke-width="3" fill="none" stroke-linecap="round">
+              <path d="M150 330 L138 200"/><path d="M150 330 L160 196"/><path d="M150 330 L118 214"/><path d="M150 330 L184 212"/><path d="M150 330 L150 190"/>
+            </g>
+            <g id="bqLeaves" fill="#7a8a5c">
+              <path d="M128 230c-30-6-48-26-52-44 22 4 42 18 52 44Z"/><path d="M172 228c30-8 46-30 48-48-22 6-40 22-48 48Z"/>
+            </g>
+            <g id="bqHeads"></g>
+            <path d="M126 262 L174 262 L162 330 L138 330 Z" fill="#e9dfcc" stroke="#1d2620" stroke-width="1.2"/>
+            <path d="M138 276 q12 10 24 0" stroke="#a8284f" stroke-width="3" fill="none"/>
+          </svg>
+          <p class="hand">la tua bozza</p>
+        </div>
+        <p class="msg-label">Messaggio pronto</p>
+        <blockquote class="msg" id="msg">Buongiorno, vorrei un mazzo per un matrimonio, nei toni bianchi e avorio.</blockquote>
+        <div class="msg-actions">
+          <button class="btn btn-ink" type="button" id="copyMsg"><svg aria-hidden="true"><use href="#i-copy"/></svg>Copia il messaggio</button>
+          <a class="btn btn-line" href="tel:+39010713027"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama e leggilo</a>
+        </div>
+        <p class="tiny">Prezzi, disponibilità e consegne si concordano con il negozio <span class="tbc">[consegna a domicilio DA CONFERMARE]</span>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAVOLA IV — STAGIONE -->
+  <section class="plate season" id="tav-4" aria-labelledby="h-season">
+    <div class="plate-grid">
+      <header class="plate-head">
+        <p class="plate-no" aria-hidden="true">Tav. IV</p>
+        <h2 id="h-season" class="h2 rv">Di stagione a <em id="seasonMonth">ottobre</em></h2>
+        <p class="plate-note rv">Fiori e piante che in questo mese sono nel loro periodo migliore, tra i campi della Riviera e le serre. Il calendario si aggiorna da solo ogni mese; la disponibilità in negozio va chiesta al banco.</p>
+      </header>
+      <ul class="season-list" id="seasonList"></ul>
+      <div class="season-wheel" aria-hidden="true">
+        <svg viewBox="0 0 320 320" id="wheel"></svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAVOLA V — DOVE -->
+  <section class="plate where" id="tav-5" aria-labelledby="h-where">
+    <div class="plate-grid">
+      <header class="plate-head">
+        <p class="plate-no" aria-hidden="true">Tav. V</p>
+        <h2 id="h-where" class="h2 rv">In via Don Sturzo, <em>Manesseno</em></h2>
+        <p class="plate-note rv">Nella frazione di Manesseno, in Val Polcevera, a pochi minuti da Genova Bolzaneto.</p>
+      </header>
+
+      <div class="where-info rv">
+        <dl class="facts">
+          <div><dt>Indirizzo</dt><dd>Via Don Luigi Sturzo 6 <span class="tbc">[civico DA CONFERMARE]</span><br>16010 Sant'Olcese (GE), loc. Manesseno</dd></div>
+          <div><dt>Telefono</dt><dd><a href="tel:+39010713027">010 713027</a> <span class="tbc">[DA CONFERMARE]</span></dd></div>
+          <div><dt>Orari</dt><dd><span class="tbc">[orari di apertura DA CONFERMARE]</span></dd></div>
+          <div><dt>Social</dt><dd><a href="https://www.facebook.com/petalincantati2020/" rel="noopener" target="_blank">Facebook · petalincantati2020<span class="sr"> (si apre in una nuova scheda)</span></a></dd></div>
+        </dl>
+        <div class="where-actions">
+          <a class="btn btn-ink" href="https://www.google.com/maps/dir/?api=1&amp;destination=Petali+Incantati+Via+Don+Luigi+Sturzo+Sant%27Olcese" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni</a>
+          <a class="btn btn-line" href="https://www.google.com/maps/search/?api=1&amp;query=Petali+Incantati+Manesseno+Sant%27Olcese" target="_blank" rel="noopener">Recensioni su Google<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+          <a class="btn btn-line" href="https://www.matrimonio.com/fiori-matrimonio/petali-incantati--e133592" target="_blank" rel="noopener">Recensioni su Matrimonio.com<svg aria-hidden="true"><use href="#i-ext"/></svg></a>
+        </div>
+      </div>
+
+      <div class="map-box rv">
+        <div class="map" id="map" role="region" aria-label="Mappa di Manesseno"></div>
+        <div class="map-gate" id="mapGate">
+          <svg aria-hidden="true"><use href="#i-pin"/></svg>
+          <p><strong>Mappa di Manesseno</strong><br>La mappa carica i contenuti da OpenStreetMap, un servizio esterno.</p>
+          <button class="btn btn-ink" type="button" id="mapLoad">Mostra la mappa</button>
+          <p class="tiny">Oppure apri <a href="https://www.openstreetmap.org/?mlat=44.4775&amp;mlon=8.9198#map=16/44.4775/8.9198" target="_blank" rel="noopener">OpenStreetMap</a> in una nuova scheda.</p>
+        </div>
+        <p class="tiny map-note">Segnaposto sulla frazione di Manesseno <span class="tbc">[posizione esatta DA CONFERMARE]</span></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="photos" aria-labelledby="h-photos">
+    <h2 id="h-photos" class="sr">Foto del negozio</h2>
+    <figure class="mount m1"><div class="slot"><span>Vetrina</span></div><figcaption>Foto della vetrina — da scattare</figcaption></figure>
+    <figure class="mount m2"><div class="slot"><span>Al banco</span></div><figcaption>Una composizione del negozio — da scattare</figcaption></figure>
+    <figure class="mount m3"><div class="slot"><span>Un bouquet</span></div><figcaption>Un bouquet da sposa realizzato — da scattare</figcaption></figure>
+  </section>
+</main>
+
+<footer class="foot">
+  <p class="foot-big" aria-hidden="true">Petali <em>Incantati</em></p>
+  <div class="foot-grid">
+    <div>
+      <p><strong>Petali Incantati</strong> — <span class="tbc">[ragione sociale DA CONFERMARE]</span></p>
+      <p>Sede: Via Don Luigi Sturzo 6, 16010 Sant'Olcese (GE) <span class="tbc">[DA CONFERMARE]</span></p>
+      <p>P.IVA <span class="tbc">[DA CONFERMARE]</span> · REA <span class="tbc">[se società, DA CONFERMARE]</span></p>
+      <p>Email <span class="tbc">[DA CONFERMARE]</span> · Tel. <a href="tel:+39010713027">010 713027</a></p>
+    </div>
+    <nav aria-label="Note legali">
+      <ul>
+        <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="cookie.html">Cookie</a></li>
+        <li><button type="button" class="linklike" data-consent-open>Preferenze cookie</button></li>
+        <li><a href="accessibilita.html">Accessibilità</a></li>
+        <li><a href="crediti.html">Crediti</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="tiny">Sito dimostrativo. Illustrazioni grafiche: le foto reali del negozio sono da inserire.</p>
+</footer>
+
+<nav class="mbar" aria-label="Azioni rapide">
+  <a href="tel:+39010713027"><svg aria-hidden="true"><use href="#i-phone"/></svg>Chiama</a>
+  <a class="main" href="#tav-3"><svg aria-hidden="true"><use href="#i-flower"/></svg>Componi</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Petali+Incantati+Via+Don+Luigi+Sturzo+Sant%27Olcese" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni</a>
+</nav>
+</body>
+</html>
