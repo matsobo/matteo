@@ -1,28 +1,30 @@
-/* Lo stender: grucce in prospettiva che oscillano con lo scorrimento */
+/* Lo stender: grucce in prospettiva che si inclinano mentre lo stender scorre */
 (function(){
   var rack = document.querySelector('.rack');
   if (!rack) return;
   var reduce = window.BL && window.BL.reduce;
   var items = Array.prototype.slice.call(rack.querySelectorAll('.hanger'));
   var count = document.querySelector('.rack-ui .count');
-  var st = items.map(function(){ return {a: 0, v: 0}; });
+  var st = items.map(function(){ return {a: 0}; });
   var lastX = rack.scrollLeft, vel = 0, running = false;
 
-  /* Rotazione verso il centro + oscillazione a molla */
+  /* Rotazione verso il centro + inclinazione solo durante lo scorrimento */
   function frame(){
     var r = rack.getBoundingClientRect(), cx = r.left + r.width / 2, settled = true, nearest = 0, best = 1e9;
     var dx = rack.scrollLeft - lastX; lastX = rack.scrollLeft;
     vel += (dx - vel) * .3;
+    if (Math.abs(vel) < .02) vel = 0;
     items.forEach(function(el, i){
       var b = el.getBoundingClientRect(), c = b.left + b.width / 2;
       var d = Math.max(-1, Math.min(1, (c - cx) / (r.width / 2)));
       if (Math.abs(c - cx) < best) { best = Math.abs(c - cx); nearest = i; }
       if (reduce) return;
       var s = st[i];
-      s.v += (-vel * .45 - s.a * 0.09) - s.v * .2;   /* forza dallo scorrimento, ritorno elastico, attrito */
-      s.a += s.v * .5;
-      s.a = Math.max(-9, Math.min(9, s.a));
-      if (Math.abs(s.a) > .05 || Math.abs(s.v) > .05) settled = false;
+      /* inclinazione proporzionale alla velocità: si muove solo mentre lo stender scorre,
+         poi torna dritta senza dondolare (nessun effetto molla) */
+      var target = Math.max(-7, Math.min(7, -vel * .55));
+      s.a += (target - s.a) * .18;
+      if (Math.abs(s.a) < .03 && Math.abs(target) < .03) s.a = 0; else settled = false;
       el.style.setProperty('--ry', (d * -38).toFixed(2) + 'deg');
       el.style.setProperty('--sw', s.a.toFixed(2) + 'deg');
     });
@@ -35,14 +37,6 @@
   window.addEventListener('resize', kick);
   document.addEventListener('bl:view', function(e){ if (e.detail === 'collezioni') kick(); });
   kick();
-
-  /* Passaggio del mouse: la gruccia si muove come se la sfiorassi */
-  items.forEach(function(el, i){
-    el.addEventListener('pointerenter', function(e){
-      if (reduce || e.pointerType !== 'mouse') return;
-      st[i].v += (e.movementX || 2) > 0 ? 1.6 : -1.6; kick();
-    });
-  });
 
   /* Trascinamento con il mouse (il touch usa lo scroll nativo) */
   var drag = null, moved = false;

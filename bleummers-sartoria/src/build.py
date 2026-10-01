@@ -174,14 +174,6 @@ home=f'''    <p class="masthead"><span>N° 27/R</span><span>Via Domenico Fiasell
     </div>'''
 
 # ------------------------------------------------------------------ STORIA
-SPOTS=[(15,33,"La tenda chiara con la scritta «Bleummer's» in corsivo verde: il logo di questo sito è ricavato da lì."),
-       (81,11.5,"Il numero civico 27 sul pilastro in pietra."),
-       (47,49,"Giacche appese in vetrina, in diversi colori."),
-       (34,41,"Camicie esposte nella loro confezione."),
-       (51,63,"Capi piegati sul ripiano basso."),
-       (28.5,57,"La vetrina in legno, illuminata dall'interno.")]
-spots=''.join(f'<button class="spot" type="button" style="left:{x}%;top:{y}%" aria-label="Dettaglio {i+1}: {t}" aria-pressed="false">{i+1}</button>' for i,(x,y,t) in enumerate(SPOTS))
-spotlist=''.join(f'<li><button type="button" aria-pressed="false"><b>{i+1}</b><span>{t}</span></button></li>' for i,(x,y,t) in enumerate(SPOTS))
 storia=f'''    <p class="masthead"><span>Il registro</span><span>Bleummer's dal 1964</span><b>Genova</b></p>
     <div class="story-head">
       <div>
@@ -189,10 +181,10 @@ storia=f'''    <p class="masthead"><span>Il registro</span><span>Bleummer's dal 
         <h1 data-reveal="80">Il registro della bottega</h1>
         <p class="lede" data-reveal="160" style="font-size:1.2rem">Dal 1964 Bleummer's vende abbigliamento da uomo a Genova. Il registro qui sotto riporta solo fatti verificati; le righe in giallo vanno completate con il titolare.</p>
       </div>
-      <p data-reveal="200" style="font-family:var(--display);font-size:clamp(4rem,10vw,7.5rem);line-height:.85;margin:0"><span data-years>62</span><span style="display:block;font-family:var(--mono);font-size:.85rem;letter-spacing:.14em;text-transform:uppercase;margin-top:10px;color:var(--muted)">anni di attività · dal 1964</span></p>
+      <p class="years-big" data-reveal="200"><span data-years>62</span><small>anni di attività · dal 1964</small></p>
     </div>
     <div class="story-body">
-      <div class="tape-wrap" aria-hidden="true"><div class="tape"></div><span class="tape-pin">1964</span></div>
+      <div class="tape-wrap" aria-hidden="true"><div class="tape-clip"><div class="tape"></div></div><span class="tape-pin"><small>Anno</small><span class="tape-year">1964</span></span></div>
       <ol class="ledger">
         <li data-reveal><div><div class="y">1964</div><p class="src">Fonte: registri delle imprese</p></div>
           <div><h3>Apre Bleummer's</h3><p>L'attività è registrata con il nome «Bleummer's dal 1964». {TBC.replace('[DA CONFERMARE]',"[DA CONFERMARE: chi l'ha fondata e perché si chiama così]")}</p></div></li>
@@ -206,16 +198,20 @@ storia=f'''    <p class="masthead"><span>Il registro</span><span>Bleummer's dal 
           <div><h3>Le righe da scrivere</h3><p><span class="tbc">[DA RACCOGLIERE: foto d'epoca, ricordi dei clienti storici, marchi trattati negli anni]</span></p></div></li>
       </ol>
     </div>
-    <section class="shopfront" aria-labelledby="h-vetrina">
-      <figure class="spots" data-reveal>
-        <img src="assets/img/vetrina.webp" width="765" height="1020" alt="La vetrina di Bleummer's al 27/R di Via Fiasella" loading="lazy">
-        {spots}
-        <figcaption>Tocca i numeri per leggere i dettagli della vetrina.</figcaption>
+    <section class="findus" aria-labelledby="h-findus">
+      <figure data-reveal>
+        <div class="photo"><img src="assets/img/vetrina.webp" width="765" height="1020" alt="La vetrina di Bleummer's al 27/R di Via Fiasella, con la tenda chiara e la scritta verde" loading="lazy"></div>
+        <figcaption>La vetrina al 27/R di Via Domenico Fiasella.</figcaption>
       </figure>
       <div data-reveal="100">
-        <p class="kicker">La vetrina oggi</p>
-        <h2 id="h-vetrina">Cosa si vede al 27/R</h2>
-        <ol class="spot-list">{spotlist}</ol>
+        <p class="kicker">Passa in negozio</p>
+        <h2 id="h-findus">Come trovarci</h2>
+        <ol>
+          <li><div><b>Cerca la tenda chiara</b>Con la scritta «Bleummer's» in verde, al civico 27/R di Via Domenico Fiasella, 16121 Genova.</div></li>
+          <li><div><b>Controlla l'orario</b>{status()}Lunedì 15:30–19:00 · da martedì a sabato 9:00–12:30 e 15:30–19:00 · domenica chiuso.</div></li>
+          <li><div><b>Chiedi prima, se cerchi qualcosa di preciso</b>Una telefonata allo 010 542234 ti dice subito se il capo che cerchi è disponibile.</div></li>
+        </ol>
+        <div class="cta"><a class="tag-btn red" href="{GDIR}" target="_blank" rel="noopener">{ic('nav')}Indicazioni</a><a class="tag-btn" href="{TEL}">{ic('phone')}Chiama</a><a class="tag-btn light" href="contatti.html">Mappa e contatti</a></div>
       </div>
     </section>'''
 
