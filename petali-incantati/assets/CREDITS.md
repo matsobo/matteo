@@ -10,9 +10,11 @@
 | three.js | npm three | three.js authors | MIT | bundle esbuild con la scena |
 | Leaflet + icone marker | npm leaflet | Volodymyr Agafonkin e contributori | BSD-2-Clause | — |
 | Icone (telefono, navigazione, copia, pin, fiore, link esterno) | lucide.dev | Lucide contributors | ISC | inline come SVG sprite |
-| Peonia 3D, bouquet 3D del compositore (peonie, rose, ranuncoli, foglie, carta, vasi), texture dei petali, peonia SVG di fallback, favicon | generati in codice per questo sito | — | del cliente | — |
+| Foto delle peonie (hero e compositore), dei ranuncoli in vaso, del mazzo misto, della peonia magenta | fornite da Matteo (4 file) | **[autore DA CONFERMARE]** | **[licenza DA VERIFICARE prima della pubblicazione]** | ritaglio dello sfondo, pulizia dei bordi, ricolorazione dei petali per i toni, composizioni, mappe di profondità e ombre |
+| Vaso in terracotta del compositore, favicon | disegnati in codice per questo sito | — | del cliente | — |
 | Mappa (tile) | tile.openstreetmap.org | OpenStreetMap contributors | ODbL | caricata solo dopo clic/consenso |
 
-Nessuna fotografia di terzi è usata. Le cornici "da scattare" vanno riempite con foto reali del negozio.
+Le cornici "da scattare" vanno riempite con foto reali del negozio.
 
-La foto di peonia magenta fornita da Matteo è stata usata solo come riferimento visivo per colori e forma: non è inclusa nel sito.
+Le foto fornite da Matteo sono usate nel sito: prima di metterlo online va verificato che la licenza ne consenta l'uso commerciale sul sito del cliente (in alternativa: foto scattate in negozio).
+La prima foto di riferimento (peonia magenta in giardino) non è inclusa.

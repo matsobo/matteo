@@ -20,6 +20,16 @@ for p in order + ['assets/js/main.js']:
     html = html.replace('<script src="%s" defer></script>\n' % p, '')
 scripts = ''.join('<script>\n%s\n</script>\n' % r(p).replace('</script', '<\\/script') for p in order + ['assets/vendor/leaflet/leaflet.js'])
 scripts += '<script>\n%s\n</script>\n' % main
+# immagini (foto) incorporate come data URI
+import glob
+imgs = {}
+for f in sorted(glob.glob('assets/img/peonia/*') + glob.glob('assets/img/mazzi/*')):
+    mime = 'image/webp' if f.endswith('.webp') else 'image/png'
+    imgs[f] = 'data:%s;base64,%s' % (mime, b64(f))
+for f, uri in imgs.items():
+    html = html.replace('src="%s"' % f, 'src="%s"' % uri)
+import json
+scripts = '<script>window.__PI_IMG = %s;</script>\n' % json.dumps({k: v for k, v in imgs.items() if '/mazzi/' in k or 'profondita' in k or 'ombra' in k}) + scripts
 html = html.replace('</body>', scripts + '</body>')
 open('../petali-incantati-singolo.html', 'w', encoding='utf-8').write(html)
 print('ok', len(html))

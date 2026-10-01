@@ -26,9 +26,8 @@
   /* ---------- I: peonia 3D ---------- */
   var bloom = null, canvas = $('#bloom');
   if (window.PetaliBloom && canvas) {
-    bloom = window.PetaliBloom.init(canvas, reduce ? { still: true, open: 0.8 } : { open: 0.05 });
+    bloom = window.PetaliBloom.init(canvas, reduce ? { still: true, open: 1 } : { open: 0 });
   }
-  if (!bloom) root.classList.add('no-webgl');
   if (bloom && !reduce && finePointer) {
     addEventListener('pointermove', function (e) {
       bloom.pointer(e.clientX / innerWidth * 2 - 1, e.clientY / innerHeight * 2 - 1);
@@ -42,37 +41,33 @@
   });
 
   /* ---------- III: componi il mazzo ---------- */
-  var form = $('#composer'), msg = $('#msg'), heads = $('#bqHeads');
-  var bq = null, bqCanvas = $('#bouquet3d');
-  if (window.PetaliBouquet && bqCanvas) bq = window.PetaliBouquet.init(bqCanvas, { still: reduce });
-  if (bq) root.classList.add('has-bouquet3d');
-  var SVGNS = 'http://www.w3.org/2000/svg';
-  var spots = [[150, 160, 30], [114, 178, 26], [186, 176, 26], [132, 128, 22], [170, 126, 22], [96, 140, 18], [204, 140, 18], [150, 102, 18]];
-  function flowerHead(x, y, r, c1, c2, rot) {
-    var g = document.createElementNS(SVGNS, 'g');
-    g.setAttribute('transform', 'translate(' + x + ' ' + y + ') rotate(' + rot + ')');
-    for (var i = 0; i < 8; i++) {
-      var e = document.createElementNS(SVGNS, 'ellipse');
-      e.setAttribute('cx', 0); e.setAttribute('cy', -r * .5); e.setAttribute('rx', r * .42); e.setAttribute('ry', r * .62);
-      e.setAttribute('fill', c1); e.setAttribute('stroke', 'rgba(29,38,32,.35)'); e.setAttribute('stroke-width', '.8');
-      e.setAttribute('transform', 'rotate(' + (i * 45) + ')');
-      g.appendChild(e);
-    }
-    var c = document.createElementNS(SVGNS, 'circle');
-    c.setAttribute('r', r * .34); c.setAttribute('fill', c2); g.appendChild(c);
-    return g;
+  var form = $('#composer'), msg = $('#msg'), bqBox = $('#bqPhoto');
+  var TONO = { 'bianchi e avorio': 'bianchi', 'rosa cipria': 'cipria', 'colori accesi': 'accesi', 'lilla e viola': 'lilla', 'a scelta del fiorista': 'libero' };
+  var FORMA = { 'un mazzo': 'mazzo', 'una composizione': 'composizione', 'una pianta': 'pianta' };
+  function imgPath(p) { return (window.__PI_IMG && window.__PI_IMG[p]) || p; }
+  function showPhoto(src) {
+    var cur = bqBox.querySelector('img:not(.leaving)');
+    if (cur && cur.getAttribute('src') === src) return;
+    var next = new Image(); next.alt = ''; next.width = 720; next.height = 842; next.src = src;
+    var swap = function () {
+      if (reduce) { bqBox.innerHTML = ''; bqBox.appendChild(next); return; }
+      next.className = 'entering'; bqBox.appendChild(next);
+      requestAnimationFrame(function () { requestAnimationFrame(function () { next.className = ''; }); });
+      if (cur) { cur.className = 'leaving'; setTimeout(function () { if (cur.parentNode) cur.parentNode.removeChild(cur); }, 500); }
+    };
+    (next.decode ? next.decode() : Promise.resolve()).then(swap, swap);
   }
-  function wrapperPath(form) {
-    if (form === 'una pianta') return 'M112 258 L188 258 L176 330 L124 330 Z';
-    if (form === 'una composizione') return 'M96 250 Q150 300 204 250 L192 300 Q150 330 108 300 Z';
-    return 'M126 262 L174 262 L162 330 L138 330 Z';
+  if (bqBox && finePointer && !reduce) {
+    bqBox.addEventListener('pointermove', function (e) {
+      var r = bqBox.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+      $$('img', bqBox).forEach(function (im) { if (!im.classList.contains('leaving')) im.style.transform = 'rotateY(' + (x * 10) + 'deg) rotateX(' + (-y * 6) + 'deg)'; });
+    });
+    bqBox.addEventListener('pointerleave', function () { $$('img', bqBox).forEach(function (im) { im.style.transform = ''; }); });
   }
   function update() {
     if (!form) return;
     var fd = new FormData(form);
     var occ = fd.get('occ'), tone = fd.get('tone'), shape = fd.get('form'), when = fd.get('when');
-    var toneInput = form.querySelector('input[name="tone"]:checked');
-    var cols = (toneInput.getAttribute('data-c') || '').split(',');
     var text = 'Buongiorno, vorrei ' + shape + ' per ' + occ + ', ';
     text += tone === 'a scelta del fiorista' ? 'con colori a vostra scelta' : 'nei toni ' + tone;
     if (when) {
@@ -81,16 +76,7 @@
     }
     text += '. Mi potete dire disponibilità e prezzo?';
     msg.textContent = text;
-    if (bq) { bq.set(tone, shape); return; }
-    while (heads.firstChild) heads.removeChild(heads.firstChild);
-    var n = shape === 'una pianta' ? 3 : spots.length;
-    for (var i = 0; i < n; i++) {
-      var s = spots[i];
-      heads.appendChild(flowerHead(s[0], s[1] + (shape === 'una pianta' ? 40 : 0), s[2], cols[i % 2], cols[2] || '#7a8a5c', i * 23));
-    }
-    var wrap = $('#bouquet > path');
-    if (wrap) wrap.setAttribute('d', wrapperPath(shape));
-    if (window.gsap && !reduce) gsap.from(heads.children, { scale: 0, transformOrigin: '50% 50%', duration: .5, stagger: .04, ease: 'back.out(2)' });
+    if (bqBox) showPhoto(imgPath('assets/img/mazzi/' + FORMA[shape] + '-' + TONO[tone] + '.webp'));
   }
   if (form) {
     form.addEventListener('change', update);
@@ -117,6 +103,7 @@
   });
 
   /* ---------- IV: di stagione (dati locali, nessuna API) ---------- */
+  var SVGNS = 'http://www.w3.org/2000/svg';
   var MESI = ['gennaio', 'febbraio', 'marzo', 'aprile', 'maggio', 'giugno', 'luglio', 'agosto', 'settembre', 'ottobre', 'novembre', 'dicembre'];
   var STAGIONE = [
     [['Elleboro', 'Helleborus niger'], ['Mimosa', 'Acacia dealbata'], ['Anemone', 'Anemone coronaria'], ['Ranuncolo', 'Ranunculus asiaticus']],
@@ -225,17 +212,13 @@
     gsap.from('.hero-title .ln > span', { yPercent: 105, duration: 1.2, ease: 'power4.out', stagger: .12, delay: .1 });
     gsap.from('.hero-lead, .hero-actions', { y: 24, opacity: 0, duration: .9, ease: 'power3.out', stagger: .1, delay: .5 });
     gsap.from('.label-card', { y: 50, rotate: 4, opacity: 0, duration: 1, ease: 'power3.out', delay: .7 });
-    if (bloom) {
-      var o = { v: 0.05 };
-      gsap.to(o, { v: 0.32, duration: 2.2, ease: 'power2.out', delay: .2, onUpdate: function () { bloom.setOpen(o.v); } });
-    }
 
     // fioritura legata allo scroll: la tavola I resta ferma mentre il fiore si apre
     var desk = matchMedia('(min-width: 901px)').matches;
     ScrollTrigger.create({
       trigger: '.hero', start: 'top top', end: desk ? '+=90%' : 'bottom top',
       pin: desk ? '.hero-pin' : false, scrub: true,
-      onUpdate: function (self) { if (bloom) bloom.setOpen(0.32 + self.progress * 0.68); }
+      onUpdate: function (self) { if (bloom) bloom.setOpen(self.progress); }
     });
     if (desk) {
       gsap.to('.hero-copy', { yPercent: -10, opacity: .15, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: '+=90%', scrub: true } });

@@ -85,9 +85,12 @@ p{margin:0}
 .hero .plate-no{position:absolute;top:96px;left:var(--rail)}
 .hero-stage{grid-column:5/-1;grid-row:1/-1;position:relative;align-self:stretch;min-height:520px}
 #bloom{position:absolute;inset:0;width:100%;height:100%}
-.bloom-fallback{position:absolute;right:6%;top:6%;height:88%;width:auto;display:none}
-.no-webgl #bloom{display:none}
-.no-webgl .bloom-fallback{display:block}
+.bloom-photos{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .4s var(--ease)}
+.bloom-photos img{position:absolute;left:50%;top:2%;height:96%;width:auto;max-width:none;transform:translateX(-50%);opacity:0;transition:opacity .25s linear;filter:drop-shadow(14px 18px 22px rgba(60,30,20,.18))}
+.bloom-photos img:first-child{opacity:1}
+.bloom-3d .bloom-photos{visibility:hidden}
+#bloom{opacity:0;transition:opacity .6s}
+.bloom-3d #bloom{opacity:1}
 .tape{position:absolute;width:120px;height:30px;background:rgba(233,223,204,.75);border:1px solid rgba(29,38,32,.08);box-shadow:0 1px 2px rgba(0,0,0,.05)}
 .tape-a{top:9%;right:14%;transform:rotate(8deg)}
 .tape-b{bottom:16%;left:12%;transform:rotate(-12deg)}
@@ -148,9 +151,10 @@ p{margin:0}
 .preview{grid-column:8/-1;align-self:start;position:sticky;top:96px;background:var(--card);border:1px solid var(--ink);padding:22px;box-shadow:10px 10px 0 var(--paper-2)}
 .preview-art{position:relative;border-bottom:1px dashed var(--line);margin-bottom:16px}
 .preview-art svg{width:100%;max-height:320px;margin:0 auto}
-#bouquet3d{display:none;width:100%;height:380px}
-.has-bouquet3d #bouquet3d{display:block}
-.has-bouquet3d #bouquet{display:none}
+.bq-photo{position:relative;height:380px;perspective:900px}
+.bq-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;transition:opacity .45s var(--ease),transform .5s var(--ease)}
+.bq-photo img.leaving{opacity:0;transform:scale(.97)}
+.bq-photo img.entering{opacity:0;transform:scale(1.03)}
 .preview-art .hand{position:absolute;right:6px;bottom:8px;transform:rotate(-5deg)}
 .msg-label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft)}
 .msg{margin:8px 0 18px;font-family:var(--display);font-size:1.3rem;line-height:1.3}
