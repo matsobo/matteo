@@ -3,14 +3,12 @@
 ## Immagini
 | File | Autore | Licenza | Note |
 |---|---|---|---|
-| assets/img/burger.svg | realizzato per il progetto | proprietà del committente | illustrazione, da sostituire con foto reali |
-| assets/img/pollo.svg | realizzato per il progetto | proprietà del committente | illustrazione |
-| assets/img/panino.svg | realizzato per il progetto | proprietà del committente | illustrazione |
-| assets/img/vaschetta.svg | realizzato per il progetto | proprietà del committente | illustrazione |
+| assets/img/burger-maragliano.webp / .jpg | foto fornita da Matteo (2026-10-02) | **da verificare**: autore e licenza non indicati | scontornata (rembg), ritagliata e ridimensionata; usata per il rilievo 3D dell'hero. Foto indicativa, non è un prodotto Maragliano |
+| assets/img/burger-maragliano-depth.png | derivata dalla foto sopra | come sopra | mappa di profondità calcolata dalla sagoma |
+| assets/js/burger-data.js | derivato dalla foto sopra | come sopra | le due immagini come data URI (servono a WebGL anche da file://) |
 | assets/img/favicon.svg | realizzato per il progetto | proprietà del committente | — |
-| Modello 3D (scene3d.js) | realizzato per il progetto, texture dipinte via codice | proprietà del committente | ogni strato accetta il ritaglio fotografico dell'ingrediente |
 
-Nessuna foto stock è stata usata: in questa sessione il proxy di rete bloccava Unsplash, Pexels, Wikimedia Commons e Openverse, quindi non è stato possibile verificare alla fonte la licenza di alcuna foto.
+Nessuna foto stock scaricata: nella sessione di creazione il proxy di rete bloccava Unsplash, Pexels, Wikimedia Commons e Openverse, quindi non è stato possibile verificare alla fonte la licenza di alcuna foto.
 
 ## Font (self-hosted, da @fontsource)
 - Ultra — Apache-2.0

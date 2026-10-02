@@ -10,7 +10,7 @@
 <meta property="og:locale" content="it_IT">
 <meta property="og:title" content="Maragliano dal 1920 · Via Frugoni 15r, Genova">
 <meta property="og:description" content="Nata polleria nel 1920, oggi anche hamburgeria: pollo arrosto, gastronomia e hamburger da comporre al banco.">
-<meta property="og:image" content="assets/img/burger.svg">
+<meta property="og:image" content="assets/img/burger-maragliano.jpg">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/ultra-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="assets/css/style.css">
@@ -44,6 +44,7 @@
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/three.min.js" defer></script>
 <script src="assets/vendor/leaflet/leaflet.js" defer></script>
+<script src="assets/js/burger-data.js" defer></script>
 <script src="assets/js/scene3d.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </head>
@@ -102,9 +103,9 @@
     <div class="hero-scena">
       <div class="piatto" aria-hidden="true"></div>
       <canvas id="burger3d" aria-hidden="true"></canvas>
-      <img class="burger-statico" src="assets/img/burger.svg" alt="Illustrazione: hamburger scomposto in pane, insalata, formaggio, carne e pane." width="480" height="420">
+      <img class="burger-statico" src="assets/img/burger-maragliano.webp" alt="Hamburger con pane al sesamo, pomodoro, formaggio fuso, carne alla griglia e insalata." width="1100" height="867">
       <p class="cartellino" aria-hidden="true">Hamburger artigianale<b>da ~5 €</b>prezzo indicativo <span class="tbc">[DA CONFERMARE]</span></p>
-      <p class="scena-nota">Modello 3D illustrativo: va texturizzato con le foto del banco Maragliano.</p>
+      <p class="scena-nota">Foto indicativa in rilievo 3D: da sostituire con uno scatto del banco Maragliano.</p>
     </div>
   </section>
 
@@ -116,37 +117,37 @@
       <p class="nota rv">Le voci arrivano dal listino pubblico per l’asporto e la consegna a domicilio. Assortimento e prezzi vanno confermati con la bottega prima della pubblicazione. <span class="tbc">[DA CONFERMARE]</span></p>
     </div>
     <ol class="listino">
-      <li class="voce" data-img="assets/img/pollo.svg">
+      <li class="voce">
         <span class="voce-n">01</span><h3>Pollo arrosto con patate</h3>
         <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
         <p>Il mestiere da cui è partito tutto: nel 1920 Maragliano apre come polleria.</p>
       </li>
-      <li class="voce" data-img="assets/img/pollo.svg">
+      <li class="voce">
         <span class="voce-n">02</span><h3>Menu mezzo pollo</h3>
         <span class="voce-prezzo">12 €<small>listino consegna · da confermare</small></span>
         <p>Mezzo pollo arrosto, un contorno e una cola.</p>
       </li>
-      <li class="voce" data-img="assets/img/pollo.svg">
+      <li class="voce">
         <span class="voce-n">03</span><h3>Menu pollo intero</h3>
         <span class="voce-prezzo">17 €<small>listino consegna · da confermare</small></span>
         <p>Pollo intero, un contorno e una cola: per la tavola di casa.</p>
       </li>
-      <li class="voce" data-img="assets/img/burger.svg">
+      <li class="voce">
         <span class="voce-n">04</span><h3>Hamburger artigianale</h3>
         <span class="voce-prezzo">~5 €<small>indicativo · da confermare</small></span>
         <p>Scegli il pane e la carne (manzo, tacchino, spinaci o salsiccia), poi le aggiunte. <a href="#componi">Provalo qui sotto</a>.</p>
       </li>
-      <li class="voce" data-img="assets/img/panino.svg">
+      <li class="voce">
         <span class="voce-n">05</span><h3>Panino tacchino, asparagi e crema di scampi</h3>
         <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
         <p>Uno dei panini speciali del listino.</p>
       </li>
-      <li class="voce" data-img="assets/img/panino.svg">
+      <li class="voce">
         <span class="voce-n">06</span><h3>Integrale con pollo, verdure e salsa BBQ</h3>
         <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
         <p>Pane integrale, pollo, verdure e salsa barbecue.</p>
       </li>
-      <li class="voce" data-img="assets/img/vaschetta.svg">
+      <li class="voce">
         <span class="voce-n">07</span><h3>Gastronomia da asporto</h3>
         <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
         <p>Rosticceria, salumeria e piatti pronti da portare via.</p>
@@ -154,9 +155,7 @@
     </ol>
     <div class="listino-foot">
       <span>Consegna a domicilio tramite piattaforme di delivery.</span>
-      <span>Illustrazioni grafiche: non sono foto dei prodotti.</span>
     </div>
-    <div class="segui" aria-hidden="true"><img src="assets/img/pollo.svg" alt=""></div>
   </section>
 
   <!-- 02 STORIA: il rotolo di carta -->

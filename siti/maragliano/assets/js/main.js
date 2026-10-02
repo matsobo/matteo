@@ -2,7 +2,6 @@
 (function () {
   'use strict';
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var fine = window.matchMedia('(pointer: fine)').matches;
   var $ = function (s, c) { return (c || document).querySelector(s); };
   var $$ = function (s, c) { return Array.prototype.slice.call((c || document).querySelectorAll(s)); };
 
@@ -140,27 +139,6 @@
     form.addEventListener('change', function () { disegna(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
     disegna(false);
-  }
-
-  /* ======================================================
-     3. LISTINO — immagine che segue il cursore (solo mouse)
-     ====================================================== */
-  var segui = $('.segui');
-  if (segui && fine && !reduce) {
-    var img = $('img', segui), sx = 0, sy = 0, tx = 0, ty = 0, on = false;
-    $$('.voce').forEach(function (v) {
-      v.addEventListener('pointerenter', function () {
-        img.src = v.getAttribute('data-img');
-        on = true; segui.style.visibility = 'visible'; segui.style.opacity = '1';
-      });
-      v.addEventListener('pointerleave', function () { on = false; segui.style.opacity = '0'; segui.style.visibility = 'hidden'; });
-    });
-    window.addEventListener('pointermove', function (e) { tx = e.clientX + 24; ty = e.clientY - 180; }, { passive: true });
-    (function seguiLoop() {
-      sx += (tx - sx) * 0.18; sy += (ty - sy) * 0.18;
-      if (on) segui.style.transform = 'translate(' + sx.toFixed(1) + 'px,' + sy.toFixed(1) + 'px) rotate(' + ((tx - sx) * 0.04).toFixed(2) + 'deg)';
-      requestAnimationFrame(seguiLoop);
-    })();
   }
 
   /* ======================================================

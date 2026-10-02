@@ -25,7 +25,9 @@ html = html.replace('<link rel="preload" href="assets/fonts/ultra-latin-400-norm
 html = html.replace('<meta property="og:image" content="assets/img/burger.svg">\n', '')
 
 # --- immagini SVG inline
-html = re.sub(r'(src|href|data-img)="assets/img/([^"]+\.svg)"', lambda m: f'{m.group(1)}="{b64("assets/img/"+m.group(2), "image/svg+xml")}"', html)
+MIMES = {'svg':'image/svg+xml','webp':'image/webp','jpg':'image/jpeg','png':'image/png'}
+html = re.sub(r'(src|href|content)="assets/img/([^"]+\.(svg|webp|jpg|png))"', lambda m: f'{m.group(1)}="{b64("assets/img/"+m.group(2), MIMES[m.group(3)])}"' if m.group(1)!='content' else '', html)
+html = html.replace('<meta property="og:image" >\n', '').replace('<meta property="og:image" >', '')
 
 # --- script: tolti dalla head, inline in fondo al body nello stesso ordine
 srcs = re.findall(r'<script src="([^"]+)" defer></script>\n', html)
