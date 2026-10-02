@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" role="img" aria-label="Illustrazione di un pollo arrosto con patate">
+<g stroke="#1f1a17" stroke-width="4" stroke-linejoin="round" stroke-linecap="round">
+<ellipse cx="200" cy="236" rx="176" ry="40" fill="#fbf7f1"/>
+<ellipse cx="200" cy="230" rx="140" ry="26" fill="#efe2d2"/>
+<path d="M92 196c-6-70 54-116 120-110 66 6 104 50 98 104-4 30-46 46-108 46s-106-12-110-40z" fill="#c9762f"/>
+<path d="M120 150c20-30 52-44 90-42" fill="none" stroke="#f3c98c" stroke-width="6" opacity=".8"/>
+<path d="M300 150c26-12 52-6 62 10 8 14-6 26-22 22l-8 14c-8 8-20 2-18-8l4-12c-10-2-18-10-18-26z" fill="#b5641f"/>
+<path d="M80 160c-26-10-50 0-54 18-4 14 10 22 24 16l10 12c8 6 20-2 16-12l-4-10c10-4 12-14 8-24z" fill="#b5641f"/>
+<g fill="#e9b34a"><path d="M118 238l22-12 18 14-20 12z"/><path d="M232 244l26-10 16 16-26 8z"/><path d="M180 250l18-14 22 10-18 14z"/><path d="M286 228l20-6 10 14-20 6z"/></g>
+</g>
+<g fill="#7a1512" opacity=".55"><circle cx="160" cy="140" r="3"/><circle cx="220" cy="128" r="3"/><circle cx="250" cy="160" r="3"/><circle cx="190" cy="176" r="3"/><circle cx="130" cy="186" r="3"/></g>
+</svg>

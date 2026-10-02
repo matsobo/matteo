@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Maragliano dal 1920 — Polleria, gastronomia e hamburger · Via Frugoni 15r, Genova</title>
+<meta name="description" content="Maragliano, via Innocenzo Frugoni 15r a Genova: dal 1920 pollo arrosto con patate, gastronomia da asporto e hamburger artigianali da comporre al banco (manzo, tacchino, spinaci, salsiccia).">
+<meta name="theme-color" content="#f2e6d9">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="it_IT">
+<meta property="og:title" content="Maragliano dal 1920 · Via Frugoni 15r, Genova">
+<meta property="og:description" content="Nata polleria nel 1920, oggi anche hamburgeria: pollo arrosto, gastronomia e hamburger da comporre al banco.">
+<meta property="og:image" content="assets/img/burger.svg">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="assets/fonts/ultra-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": ["Restaurant","LocalBusiness"],
+  "name": "Maragliano — Gastronomia Hamburgeria",
+  "foundingDate": "1920",
+  "servesCuisine": ["Hamburger","Pollo arrosto","Gastronomia"],
+  "telephone": "+39 010 564949",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Via Innocenzo Frugoni 15r",
+    "postalCode": "16121",
+    "addressLocality": "Genova",
+    "addressRegion": "GE",
+    "addressCountry": "IT"
+  },
+  "geo": {"@type": "GeoCoordinates","latitude": 44.404129,"longitude": 8.94141},
+  "openingHoursSpecification": [
+    {"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens": "07:00","closes": "19:00"},
+    {"@type": "OpeningHoursSpecification","dayOfWeek": "Saturday","opens": "07:00","closes": "13:00"}
+  ]
+}
+</script>
+<script src="assets/js/consent.js" defer></script>
+<script src="assets/vendor/gsap.min.js" defer></script>
+<script src="assets/vendor/ScrollTrigger.min.js" defer></script>
+<script src="assets/vendor/lenis.min.js" defer></script>
+<script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/vendor/leaflet/leaflet.js" defer></script>
+<script src="assets/js/scene3d.js" defer></script>
+<script src="assets/js/main.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+
+<svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
+  <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
+  <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+  <symbol id="i-orologio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
+  <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
+  <symbol id="i-mappa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+</svg>
+
+<!-- Navigazione: rail verticale (desktop) -->
+<header class="rail" aria-label="Intestazione">
+  <a class="rail-brand" href="#top">Maragliano<small>dal 1920</small></a>
+  <nav aria-label="Sezioni">
+    <ol>
+      <li><a href="#banco"><b>01</b>Banco</a></li>
+      <li><a href="#bottega"><b>02</b>Storia</a></li>
+      <li><a href="#componi"><b>03</b>Componi</a></li>
+      <li><a href="#orari"><b>04</b>Orari</a></li>
+      <li><a href="#dove"><b>05</b>Dove</a></li>
+    </ol>
+  </nav>
+  <p class="rail-stato js-stato"><span class="dot" aria-hidden="true"></span><span class="js-stato-testo">Orari</span></p>
+</header>
+
+<!-- Navigazione: barra superiore (mobile) -->
+<div class="top">
+  <a class="top-brand" href="#top">Maragliano<small>1920</small></a>
+  <p class="top-stato js-stato"><span class="dot" aria-hidden="true"></span><span class="js-stato-testo">Orari</span></p>
+</div>
+
+<main id="contenuto">
+  <!-- HERO -->
+  <section class="hero" id="top" aria-labelledby="h1">
+    <div class="hero-head">
+      <p class="kicker"><span>Via Innocenzo Frugoni 15r</span><span>16121 Genova</span><span>Polleria · Gastronomia · Hamburgeria</span></p>
+      <div>
+        <p class="anno" aria-hidden="true"><span class="dal">Al banco dal</span>1920</p>
+        <h1 id="h1">
+          <span class="riga"><span>Era una polleria.</span></span>
+          <span class="riga"><span>Oggi fa anche <em>hamburger</em></span></span>
+          <span class="riga"><span>da comporre al banco.</span></span>
+        </h1>
+      </div>
+      <p class="lead">Pollo arrosto con patate, gastronomia da portare via e hamburger artigianali in cui scegli tu la carne: <strong>manzo, tacchino, spinaci o salsiccia</strong>.</p>
+      <div class="azioni">
+        <a class="btn btn-rosso" href="#componi">Componi il tuo hamburger</a>
+        <a class="btn" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>010 564949</a>
+      </div>
+    </div>
+
+    <div class="hero-scena">
+      <div class="piatto" aria-hidden="true"></div>
+      <canvas id="burger3d" aria-hidden="true"></canvas>
+      <img class="burger-statico" src="assets/img/burger.svg" alt="Illustrazione: hamburger scomposto in pane, insalata, formaggio, carne e pane." width="480" height="420">
+      <p class="cartellino" aria-hidden="true">Hamburger artigianale<b>da ~5 €</b>prezzo indicativo <span class="tbc">[DA CONFERMARE]</span></p>
+      <p class="scena-nota">Modello 3D illustrativo: va texturizzato con le foto del banco Maragliano.</p>
+    </div>
+  </section>
+
+  <!-- 01 LISTINO -->
+  <section class="sez" id="banco" aria-labelledby="banco-t">
+    <div class="listino-head">
+      <p class="sez-num">01 — Il banco</p>
+      <h2 class="titolo rv" id="banco-t">Il listino <em>del banco</em></h2>
+      <p class="nota rv">Le voci arrivano dal listino pubblico per l’asporto e la consegna a domicilio. Assortimento e prezzi vanno confermati con la bottega prima della pubblicazione. <span class="tbc">[DA CONFERMARE]</span></p>
+    </div>
+    <ol class="listino">
+      <li class="voce" data-img="assets/img/pollo.svg">
+        <span class="voce-n">01</span><h3>Pollo arrosto con patate</h3>
+        <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
+        <p>Il mestiere da cui è partito tutto: nel 1920 Maragliano apre come polleria.</p>
+      </li>
+      <li class="voce" data-img="assets/img/pollo.svg">
+        <span class="voce-n">02</span><h3>Menu mezzo pollo</h3>
+        <span class="voce-prezzo">12 €<small>listino consegna · da confermare</small></span>
+        <p>Mezzo pollo arrosto, un contorno e una cola.</p>
+      </li>
+      <li class="voce" data-img="assets/img/pollo.svg">
+        <span class="voce-n">03</span><h3>Menu pollo intero</h3>
+        <span class="voce-prezzo">17 €<small>listino consegna · da confermare</small></span>
+        <p>Pollo intero, un contorno e una cola: per la tavola di casa.</p>
+      </li>
+      <li class="voce" data-img="assets/img/burger.svg">
+        <span class="voce-n">04</span><h3>Hamburger artigianale</h3>
+        <span class="voce-prezzo">~5 €<small>indicativo · da confermare</small></span>
+        <p>Scegli il pane e la carne (manzo, tacchino, spinaci o salsiccia), poi le aggiunte. <a href="#componi">Provalo qui sotto</a>.</p>
+      </li>
+      <li class="voce" data-img="assets/img/panino.svg">
+        <span class="voce-n">05</span><h3>Panino tacchino, asparagi e crema di scampi</h3>
+        <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
+        <p>Uno dei panini speciali del listino.</p>
+      </li>
+      <li class="voce" data-img="assets/img/panino.svg">
+        <span class="voce-n">06</span><h3>Integrale con pollo, verdure e salsa BBQ</h3>
+        <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
+        <p>Pane integrale, pollo, verdure e salsa barbecue.</p>
+      </li>
+      <li class="voce" data-img="assets/img/vaschetta.svg">
+        <span class="voce-n">07</span><h3>Gastronomia da asporto</h3>
+        <span class="voce-prezzo"><span class="tbc">[DA CONFERMARE]</span></span>
+        <p>Rosticceria, salumeria e piatti pronti da portare via.</p>
+      </li>
+    </ol>
+    <div class="listino-foot">
+      <span>Consegna a domicilio tramite piattaforme di delivery.</span>
+      <span>Illustrazioni grafiche: non sono foto dei prodotti.</span>
+    </div>
+    <div class="segui" aria-hidden="true"><img src="assets/img/pollo.svg" alt=""></div>
+  </section>
+
+  <!-- 02 STORIA: il rotolo di carta -->
+  <section class="bottega" id="bottega" aria-labelledby="bottega-t">
+    <div class="bottega-pin">
+      <div class="bottega-testa">
+        <p class="sez-num">02 — La bottega</p>
+        <h2 class="titolo" id="bottega-t">Un mestiere <em>che cambia forma</em></h2>
+        <p>Dal pollame al banco di gastronomia, fino agli hamburger. Il nome sull’insegna resta sempre lo stesso: Maragliano.</p>
+        <p class="timbro" aria-label="Anni di bottega"><span>anni di bottega</span><b class="js-anni">106</b><span>1920 — oggi</span></p>
+      </div>
+      <div class="rotolo">
+        <div class="rotolo-asse" aria-hidden="true"></div>
+        <div class="foglio">
+          <div class="tappa">
+            <span class="tappa-q">1920</span>
+            <div><h3>La polleria</h3><p>Maragliano nasce come negozio di pollame. Pollo arrosto e pollame sono il mestiere di partenza.</p></div>
+          </div>
+          <div class="tappa">
+            <span class="tappa-q">Poi</span>
+            <div><h3>La gastronomia</h3><p>Al banco si aggiungono rosticceria, salumeria e piatti pronti da portare via.</p></div>
+          </div>
+          <div class="tappa">
+            <span class="tappa-q">Oggi</span>
+            <div><h3>L’hamburgeria</h3><p>Hamburger artigianali da comporre: manzo, tacchino, spinaci o salsiccia, nel pane che scegli.</p></div>
+          </div>
+          <p class="foglio-nota">Nomi della famiglia, date intermedie e foto d’epoca <span class="tbc">[DA CONFERMARE]</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 COMPONI (interazione firma) -->
+  <section class="sez componi" id="componi" aria-labelledby="componi-t">
+    <p class="sez-num">03 — Al banco si sceglie tutto</p>
+    <h2 class="titolo" id="componi-t">Componi il tuo <em>hamburger</em></h2>
+    <p class="nota">Scegli il pane, la carne e le aggiunte: lo scontrino si compone da solo. Poi chiama e ordina, o passa in via Frugoni.</p>
+
+    <div class="componi-grid">
+      <form class="scelte" id="builder" aria-describedby="builder-nota">
+        <fieldset>
+          <legend><span>1.</span> Il pane</legend>
+          <div class="opzioni">
+            <label><input type="radio" name="pane" value="Classico" checked><span>Classico</span></label>
+            <label><input type="radio" name="pane" value="Integrale"><span>Integrale</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span>2.</span> La carne</legend>
+          <div class="opzioni">
+            <label><input type="radio" name="carne" value="Manzo" checked><span>Manzo</span></label>
+            <label><input type="radio" name="carne" value="Tacchino"><span>Tacchino</span></label>
+            <label><input type="radio" name="carne" value="Spinaci"><span>Spinaci</span></label>
+            <label><input type="radio" name="carne" value="Salsiccia"><span>Salsiccia</span></label>
+          </div>
+        </fieldset>
+        <fieldset>
+          <legend><span>3.</span> Le aggiunte <span class="tbc">[DA CONFERMARE]</span></legend>
+          <div class="opzioni">
+            <label><input type="checkbox" name="extra" value="Formaggio" checked><span>Formaggio</span></label>
+            <label><input type="checkbox" name="extra" value="Insalata" checked><span>Insalata</span></label>
+            <label><input type="checkbox" name="extra" value="Pomodoro"><span>Pomodoro</span></label>
+            <label><input type="checkbox" name="extra" value="Cipolla"><span>Cipolla</span></label>
+            <label><input type="checkbox" name="extra" value="Salsa BBQ"><span>Salsa BBQ</span></label>
+          </div>
+        </fieldset>
+        <p class="nota mono" id="builder-nota">Pane e carni dal listino pubblico. Le aggiunte sono esempi da verificare con la bottega.</p>
+      </form>
+
+      <figure class="pila" aria-hidden="true">
+        <svg id="pila-svg" viewBox="0 0 300 340"></svg>
+        <figcaption class="pila-cap">il tuo hamburger, strato per strato</figcaption>
+      </figure>
+
+      <div class="scontrino" role="region" aria-labelledby="scontrino-t" aria-live="polite">
+        <h3 id="scontrino-t">MARAGLIANO</h3>
+        <p class="c">dal 1920 · Via I. Frugoni 15r<br>16121 Genova</p>
+        <hr>
+        <dl id="scontrino-righe">
+          <dt>Pane</dt><dd>Classico</dd>
+          <dt>Carne</dt><dd>Manzo</dd>
+          <dt>+</dt><dd>Formaggio</dd>
+          <dt>+</dt><dd>Insalata</dd>
+        </dl>
+        <hr>
+        <dl><dt>Totale</dt><dd>al banco <span class="tbc">[DA CONFERMARE]</span></dd></dl>
+        <hr>
+        <p class="c">Grazie e arrivederci</p>
+        <a class="btn btn-rosso" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Ordina: 010 564949</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 ORARI -->
+  <section class="sez" id="orari" aria-labelledby="orari-t">
+    <div class="orari-grid">
+      <div class="orari-testa">
+        <p class="sez-num">04 — Orari</p>
+        <h2 class="titolo rv" id="orari-t">Si apre <em>alle sette</em></h2>
+        <p class="nota rv">Dal lunedì al venerdì il banco è aperto dalle 7 alle 19, il sabato fino all’una. Domenica e festivi chiuso.</p>
+      </div>
+      <div class="cartello rv">
+        <p class="cartello-stato js-stato"><span class="dot" aria-hidden="true"></span><span class="js-stato-testo">Orari</span></p>
+        <table>
+          <caption class="sr-only">Orari di apertura settimanali</caption>
+          <tbody>
+            <tr data-g="1"><th scope="row">Lunedì</th><td>07:00 – 19:00</td></tr>
+            <tr data-g="2"><th scope="row">Martedì</th><td>07:00 – 19:00</td></tr>
+            <tr data-g="3"><th scope="row">Mercoledì</th><td>07:00 – 19:00</td></tr>
+            <tr data-g="4"><th scope="row">Giovedì</th><td>07:00 – 19:00</td></tr>
+            <tr data-g="5"><th scope="row">Venerdì</th><td>07:00 – 19:00</td></tr>
+            <tr data-g="6"><th scope="row">Sabato</th><td>07:00 – 13:00</td></tr>
+            <tr data-g="0"><th scope="row">Domenica</th><td>chiuso</td></tr>
+          </tbody>
+        </table>
+        <p class="cartello-nota">Orari ricavati da schede pubbliche <span class="tbc">[DA CONFERMARE]</span>. Il segnale “aperto ora” tiene conto delle festività nazionali e di San Giovanni Battista (24 giugno), patrono di Genova.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- RECENSIONI -->
+  <section class="sez recensioni" aria-labelledby="rec-t">
+    <h2 class="titolo rv" id="rec-t">Le recensioni non le scriviamo noi</h2>
+    <div class="rv">
+      <p>Leggi su Google cosa dice chi passa al banco di via Frugoni.</p>
+      <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=Gastronomia+Maragliano+Via+Innocenzo+Frugoni+15r+Genova" target="_blank" rel="noopener noreferrer">Recensioni su Google<svg aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only">(si apre in una nuova scheda)</span></a>
+    </div>
+  </section>
+
+  <!-- 05 DOVE -->
+  <section class="sez" id="dove" aria-labelledby="dove-t">
+    <p class="sez-num">05 — Dove</p>
+    <h2 class="titolo rv" id="dove-t">Via Frugoni, <em>15 rosso</em></h2>
+    <div class="dove-grid">
+      <div class="indirizzo">
+        <dl>
+          <div><dt>Indirizzo</dt><dd>Via Innocenzo Frugoni 15r<br>16121 Genova (GE)</dd></div>
+          <div><dt>Telefono</dt><dd><a href="tel:+39010564949">010 564949</a></dd></div>
+          <div><dt>Email</dt><dd><span class="tbc">[DA CONFERMARE]</span></dd></div>
+          <div><dt>Servizi</dt><dd>Asporto · consegna a domicilio</dd></div>
+        </dl>
+        <div class="azioni">
+          <a class="btn btn-rosso" href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Innocenzo+Frugoni+15r+16121+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni<span class="sr-only">(si apre in una nuova scheda)</span></a>
+          <a class="btn" href="https://www.openstreetmap.org/?mlat=44.404129&amp;mlon=8.94141#map=18/44.404129/8.94141" target="_blank" rel="noopener noreferrer">OpenStreetMap<span class="sr-only">(si apre in una nuova scheda)</span></a>
+        </div>
+      </div>
+      <div class="mappa">
+        <div id="mappa" role="region" aria-label="Mappa: Via Innocenzo Frugoni 15r, Genova"></div>
+        <div class="mappa-placeholder" id="mappa-ph">
+          <svg width="44" height="44" aria-hidden="true"><use href="#i-mappa"/></svg>
+          <p>La mappa carica contenuti da OpenStreetMap: il tuo indirizzo IP viene inviato ai loro server. Si attiva solo se lo chiedi tu.</p>
+          <button class="btn" type="button" id="mappa-btn">Mostra mappa</button>
+        </div>
+        <p class="mappa-attr">Mappa © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>. Posizione del segnaposto indicativa <span class="tbc">[DA CONFERMARE]</span></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot">
+    <div class="foot-legale">
+      <h2>MARAGLIANO</h2>
+      <p>Ragione sociale: <span class="tbc">[DA CONFERMARE]</span><br>
+      Sede: Via Innocenzo Frugoni 15r, 16121 Genova (GE)<br>
+      P.IVA 03551680105 <span class="tbc">[DA CONFERMARE]</span><br>
+      REA e capitale sociale (se società): <span class="tbc">[DA CONFERMARE]</span><br>
+      Email: <span class="tbc">[DA CONFERMARE]</span> · Tel. <a href="tel:+39010564949">010 564949</a></p>
+    </div>
+    <nav class="foot-link" aria-label="Note legali">
+      <ul>
+        <li><a href="privacy.html">Informativa privacy</a></li>
+        <li><a href="cookie.html">Cookie policy</a></li>
+        <li><button type="button" class="js-preferenze">Preferenze cookie</button></li>
+        <li><a href="accessibilita.html">Accessibilità</a></li>
+        <li><a href="crediti.html">Crediti e licenze</a></li>
+      </ul>
+    </nav>
+    <p class="foot-fine"><span>*** dal 1920 al banco di via Frugoni ***</span><span>Sito dimostrativo · bozza da validare</span></p>
+  </div>
+</footer>
+
+<nav class="mbar" aria-label="Azioni rapide">
+  <a class="primo" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Innocenzo+Frugoni+15r+16121+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni</a>
+  <a href="#orari"><svg aria-hidden="true"><use href="#i-orologio"/></svg>Orari</a>
+</nav>
+</body>
+</html>
