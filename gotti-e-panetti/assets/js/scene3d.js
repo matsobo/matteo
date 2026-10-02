@@ -369,6 +369,7 @@
   if (!reduce) {
     var done0 = 0;
     window.addEventListener('scroll', function () {
+      var v = document.body.getAttribute('data-view'); if (v && v !== 'banco') return;
       var max = document.documentElement.scrollHeight - innerHeight; if (max <= 0) return;
       var target = Math.floor(scrollY / max * 10);
       while (done0 < target) { done0++; cut(); }
@@ -381,6 +382,7 @@
   }
   document.addEventListener('visibilitychange', function () { if (!document.hidden) wake(); });
   window.addEventListener('resize', resize);
+  document.addEventListener('gp:view', function (e) { if (e.detail === 'banco') { resize(); wake(); } });
 
   // immagine iniziale: qualche fetta già sul banco
   for (var f = 0; f < 4; f++) cutInstant();

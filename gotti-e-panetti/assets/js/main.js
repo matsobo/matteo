@@ -29,7 +29,51 @@
       return /\.html$/.test(f) ? f : null;
     } catch (e) { return null; }
   }
-  if (wipe && gs && !reduce) {
+  /* versione a file unico: le pagine sono viste [data-view] con indirizzo #hash */
+  var views = document.querySelectorAll('[data-view]');
+  var ROUTES = { banco: '01', storia: '02', listino: '03', dove: '04', privacy: '··', cookie: '··', crediti: '··' };
+  if (views.length) {
+    var active = null;
+    var viewOf = function (h) { h = (h || '').replace('#', ''); return ROUTES[h] ? h : null; };
+    var activate = function (name, focus) {
+      var sec = null;
+      views.forEach(function (v) { var on = v.getAttribute('data-view') === name; v.hidden = !on; if (on) sec = v; });
+      active = name;
+      document.body.setAttribute('data-view', name);
+      document.querySelectorAll('.tickets a, .mbar a').forEach(function (a) {
+        if (a.getAttribute('href') === '#' + name) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+      });
+      current = ROUTES[name]; showNum(current);
+      if (sec && sec.getAttribute('data-title')) document.title = sec.getAttribute('data-title');
+      if (window.gpLenis) window.gpLenis.scrollTo(0, { immediate: true }); else window.scrollTo(0, 0);
+      document.dispatchEvent(new CustomEvent('gp:view', { detail: name }));
+      window.dispatchEvent(new Event('resize'));
+      if (ST) ST.refresh();
+      if (focus && sec) { var h = sec.querySelector('h1'); if (h) { h.setAttribute('tabindex', '-1'); h.focus({ preventScroll: true }); } }
+    };
+    var go = function (name, push) {
+      if (!name || name === active) return;
+      if (push) { try { history.pushState(null, '', '#' + name); } catch (e) { location.hash = name; } }
+      if (!wipe || !gs || reduce) { activate(name, true); return; }
+      wipeNum.textContent = ROUTES[name]; wipe.classList.add('on');
+      gs.fromTo(lama, { rotate: -120 }, { rotate: 160, duration: 1.2, ease: 'power2.out' });
+      gs.fromTo(wipe, { clipPath: 'circle(0% at 100% 0%)' }, {
+        clipPath: 'circle(150% at 100% 0%)', duration: .5, ease: 'power3.in',
+        onComplete: function () {
+          activate(name, true);
+          gs.to(wipe, { clipPath: 'circle(0% at 0% 100%)', duration: .6, ease: 'power3.inOut', delay: .12, onComplete: function () { wipe.classList.remove('on'); } });
+        },
+      });
+    };
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href^="#"]');
+      if (!a || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button !== 0) return;
+      var name = viewOf(a.getAttribute('href')); if (!name) return;
+      e.preventDefault(); go(name, true);
+    });
+    window.addEventListener('popstate', function () { go(viewOf(location.hash) || 'banco', false); });
+    activate(viewOf(location.hash) || 'banco', false);
+  } else if (wipe && gs && !reduce) {
     var flag = null;
     try { flag = sessionStorage.getItem('gp-wipe'); sessionStorage.removeItem('gp-wipe'); } catch (e) { /* ignora */ }
     if (flag) {
@@ -134,6 +178,7 @@
 
   if (window.Lenis) {
     var lenis = new window.Lenis({ lerp: .11, smoothWheel: true });
+    window.gpLenis = lenis;
     lenis.on('scroll', ST.update);
     gs.ticker.add(function (t) { lenis.raf(t * 1000); });
     gs.ticker.lagSmoothing(0);
