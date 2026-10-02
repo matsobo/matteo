@@ -14,7 +14,12 @@ html=html.replace('<link rel="stylesheet" href="assets/css/style.css">',f'<style
 html=html.replace('<link rel="stylesheet" href="assets/vendor/leaflet/leaflet.css">',f'<style>\n{lcss}\n</style>')
 html=re.sub(r'<link rel="preload"[^>]+>\n','',html)
 html=html.replace('href="assets/img/favicon.svg"',f'href="{b64("assets/img/favicon.svg","image/svg+xml")}"')
-html=html.replace('src="assets/img/flacone.svg"',f'src="{b64("assets/img/flacone.svg","image/svg+xml")}"')
+imgs={}
+def img_uri(m):
+    f=m.group(1)
+    if f not in imgs: imgs[f]=b64('assets/img/'+f,{'webp':'image/webp','png':'image/png','jpg':'image/jpeg','svg':'image/svg+xml'}[f.rsplit('.',1)[1]])
+    return imgs[f]
+html=re.sub(r'(?<=")assets/img/([\w.-]+)(?=")', img_uri, html)
 
 # main.js: icone marker incorporate + ancore legali senza Lenis
 main=rd('assets/js/main.js')
@@ -25,7 +30,7 @@ main=main.replace("var t = document.querySelector(id); if (!t) return;","var t =
 assert 'mergeOptions' in main and "contains('legal')" in main
 
 # script inline, nello stesso ordine (defer -> in fondo al body)
-order=['assets/js/consent.js','assets/vendor/gsap.min.js','assets/vendor/ScrollTrigger.min.js','assets/vendor/lenis.min.js','assets/vendor/three.min.js','assets/vendor/leaflet/leaflet.js','assets/js/scene3d.js']
+order=['assets/js/consent.js','assets/vendor/gsap.min.js','assets/vendor/ScrollTrigger.min.js','assets/vendor/lenis.min.js','assets/vendor/three.min.js','assets/js/etichetta-prime.js','assets/vendor/leaflet/leaflet.js','assets/js/scene3d.js']
 scripts=[(p,rd(p)) for p in order]+[('assets/js/main.js',main)]
 html=re.sub(r'<script src="[^"]+" defer></script>\n','',html)
 inl=''.join(f'<script>/* {p} */\n'+s.replace('</script','<\\/script')+'\n</script>\n' for p,s in scripts)

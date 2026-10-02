@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>For Svapo — Sigarette elettroniche, liquidi e ricambi · Via San Martino 19r, Genova</title>
-<meta name="description" content="For Svapo, Via San Martino 19r a Genova: dispositivi, ricambi e accessori per sigarette elettroniche, liquidi, basi neutre e aromi. Vendita riservata ai maggiorenni.">
-<meta name="theme-color" content="#0b1113">
+<title>For Svapo — Sigarette elettroniche, liquidi e ricambi · Negozi a Genova</title>
+<meta name="description" content="For Svapo, negozi di sigarette elettroniche a Genova: Via San Martino 19r, Via Piacenza 83r, Via XX Settembre 87r, Via Molassana 55A r. Dispositivi, ricambi, liquidi, basi e aromi. Vendita riservata ai maggiorenni.">
+<meta name="theme-color" content="#0e0c14">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="it_IT">
-<meta property="og:title" content="For Svapo · Via San Martino 19r, Genova">
+<meta property="og:title" content="For Svapo · Negozi di sigarette elettroniche a Genova">
 <meta property="og:description" content="Dispositivi, ricambi, liquidi, basi e aromi in Via San Martino 19r, quartiere San Martino. Vendita vietata ai minori di 18 anni.">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/big-shoulders-display-latin-900-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -17,15 +17,20 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Store",
-  "name": "For Svapo",
-  "legalName": "For Svapo S.r.l.s.",
-  "vatID": "IT02434000994",
-  "description": "Negozio di sigarette elettroniche, ricambi, accessori, liquidi, basi e aromi.",
-  "address": {"@type": "PostalAddress","streetAddress": "Via San Martino 19r","postalCode": "16131","addressLocality": "Genova","addressRegion": "GE","addressCountry": "IT"},
-  "telephone": "+39 010 455 2110",
-  "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens": "10:00","closes": "19:30"}],
-  "sameAs": ["https://www.instagram.com/forsvapo_genova/","https://www.facebook.com/p/For-Svapo-100075526640831/"]
+  "@graph": [
+    {"@type": "Organization","@id": "#org","name": "For Svapo","legalName": "For Svapo S.r.l.s.","vatID": "IT02434000994",
+     "address": {"@type": "PostalAddress","streetAddress": "Via San Martino 19","postalCode": "16131","addressLocality": "Genova","addressCountry": "IT"},
+     "sameAs": ["https://www.instagram.com/forsvapo_genova/","https://www.facebook.com/p/For-Svapo-100075526640831/"]},
+    {"@type": "Store","name": "For Svapo San Martino","parentOrganization": {"@id": "#org"},"telephone": "+39 010 455 2110",
+     "address": {"@type": "PostalAddress","streetAddress": "Via San Martino 19r","postalCode": "16131","addressLocality": "Genova","addressCountry": "IT"},
+     "openingHoursSpecification": [{"@type": "OpeningHoursSpecification","dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens": "10:00","closes": "19:30"}]},
+    {"@type": "Store","name": "For Svapo Via Piacenza","parentOrganization": {"@id": "#org"},"telephone": "+39 010 099 7405",
+     "address": {"@type": "PostalAddress","streetAddress": "Via Piacenza 83r","addressLocality": "Genova","addressCountry": "IT"}},
+    {"@type": "Store","name": "For Svapo Via XX Settembre","parentOrganization": {"@id": "#org"},"telephone": "+39 010 292 9262",
+     "address": {"@type": "PostalAddress","streetAddress": "Via XX Settembre 87r","postalCode": "16121","addressLocality": "Genova","addressCountry": "IT"}},
+    {"@type": "Store","name": "For Svapo Molassana","parentOrganization": {"@id": "#org"},
+     "address": {"@type": "PostalAddress","streetAddress": "Via Molassana 55A r","postalCode": "16138","addressLocality": "Genova","addressCountry": "IT"}}
+  ]
 }
 </script>
 <script src="assets/js/consent.js" defer></script>
@@ -33,6 +38,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/js/etichetta-prime.js" defer></script>
 <script src="assets/vendor/leaflet/leaflet.js" defer></script>
 <script src="assets/js/scene3d.js" defer></script>
 <script src="assets/js/main.js" defer></script>
@@ -43,6 +49,7 @@
 <svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
   <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
   <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
   <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
   <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
@@ -51,28 +58,29 @@
 <canvas id="flacone" aria-hidden="true"></canvas>
 
 <header class="testata">
-  <a class="marchio" href="#top" aria-label="For Svapo, inizio pagina"><b>FOR</b><b>SVAPO</b><small>Via San Martino 19r</small></a>
-  <p class="testata-meta" aria-hidden="true"><span>Scheda n. 01</span><span>16131 Genova</span></p>
-  <a class="testata-tel" href="tel:+390104552110"><svg aria-hidden="true"><use href="#i-tel"/></svg><span>010 455 2110</span></a>
-  <button class="indice-btn" type="button" aria-expanded="false" aria-controls="indice">Indice <span aria-hidden="true">/ 06</span></button>
+  <a class="marchio" href="#top" aria-label="For Svapo, inizio pagina"><span class="insegna"><b>FOR</b><b>SVAPO</b></span><small>Sigarette elettroniche · Genova</small></a>
+  <p class="testata-meta" aria-hidden="true"><span>San Martino</span><span>Piacenza</span><span>XX Settembre</span><span>Molassana</span></p>
+  <a class="testata-tel" href="#sedi"><svg aria-hidden="true"><use href="#i-pin"/></svg><span>Le sedi</span></a>
+  <button class="indice-btn" type="button" aria-expanded="false" aria-controls="indice">Indice <span aria-hidden="true">/ 07</span></button>
 </header>
 
 <nav class="indice" id="indice" aria-label="Indice delle sezioni" hidden>
   <ol>
-    <li><a href="#top"><b>01</b>Il negozio</a></li>
+    <li><a href="#top"><b>01</b>For Svapo</a></li>
     <li><a href="#banco"><b>02</b>Al banco</a></li>
-    <li><a href="#tavola"><b>03</b>Tavola degli aromi</a></li>
-    <li><a href="#anatomia"><b>04</b>Anatomia di un liquido</a></li>
-    <li><a href="#miscelatore"><b>05</b>Miscelatore</a></li>
-    <li><a href="#dove"><b>06</b>Orari e indirizzo</a></li>
+    <li><a href="#catalogo"><b>03</b>Catalogo</a></li>
+    <li><a href="#tavola"><b>04</b>Tavola degli aromi</a></li>
+    <li><a href="#anatomia"><b>05</b>Anatomia di un liquido</a></li>
+    <li><a href="#miscelatore"><b>06</b>Miscelatore</a></li>
+    <li><a href="#sedi"><b>07</b>Sedi e orari</a></li>
   </ol>
-  <p class="indice-foot">Via San Martino 19r · 16131 Genova · Vendita vietata ai minori di 18 anni</p>
+  <p class="indice-foot">Via San Martino · Via Piacenza · Via XX Settembre · Via Molassana — Vendita vietata ai minori di 18 anni</p>
 </nav>
 
 <!-- Indicatore di livello: avanzamento pagina come serbatoio -->
 <div class="serbatoio" aria-hidden="true">
   <span class="serbatoio-liv"></span>
-  <span class="serbatoio-tacche"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i></span>
+  <span class="serbatoio-tacche"><i>01</i><i>02</i><i>03</i><i>04</i><i>05</i><i>06</i><i>07</i></span>
 </div>
 
 <main id="contenuto">
@@ -80,26 +88,27 @@
   <!-- 01 HERO -->
   <section class="hero" id="top" aria-labelledby="h1">
     <div class="hero-riga" aria-hidden="true">
-      <span>REF · GE-486031</span><span>Quartiere San Martino</span><span>Liquidi · Basi · Aromi · Ricambi</span>
+      <span>REF · GE-486031</span><span>Centro · San Martino · Val Bisagno</span><span>Liquidi · Basi · Aromi · Ricambi</span>
     </div>
     <p class="civico" aria-hidden="true"></p>
     <div class="hero-testo">
       <h1 id="h1">
         <span class="riga"><span>Liquidi, basi,</span></span>
         <span class="riga"><span>aromi e ricambi</span></span>
-        <span class="riga"><span>in <em>Via San Martino</em></span></span>
+        <span class="riga"><span>da <em>San Martino</em></span></span>
+        <span class="riga"><span>a <em>Molassana</em></span></span>
       </h1>
-      <p class="lead">For Svapo è il negozio di sigarette elettroniche al civico 19 rosso di Via San Martino, a Genova. Al banco: dispositivi, resistenze e ricambi, accessori, liquidi pronti, basi neutre e aromi da miscelare.</p>
+      <p class="lead">For Svapo ha negozi di sigarette elettroniche in Via San Martino 19r, Via Piacenza 83r, Via XX Settembre 87r e Via Molassana 55A r. Al banco: dispositivi, resistenze e ricambi, accessori, liquidi pronti, basi neutre e aromi da miscelare. <span class="tbc">[DA CONFERMARE elenco sedi]</span></p>
       <div class="azioni">
-        <a class="btn btn-ambra" href="#dove"><svg aria-hidden="true"><use href="#i-pin"/></svg>Orari e indirizzo</a>
-        <a class="btn" href="#miscelatore">Prova il miscelatore</a>
+        <a class="btn btn-ambra" href="#sedi"><svg aria-hidden="true"><use href="#i-pin"/></svg>Trova la sede</a>
+        <a class="btn" href="#catalogo">Sfoglia il catalogo</a>
       </div>
       <p class="avviso"><b>18+</b> Vendita vietata ai minori di 18 anni. Questo sito ha scopo informativo sul negozio e non vende online.</p>
     </div>
     <figure class="statico statico-hero">
-      <img src="assets/img/flacone.svg" width="360" height="640" alt="Illustrazione di un flacone di liquido da 10 ml con tappo contagocce e base ambrata.">
+      <img src="assets/img/prime-flacone.webp" width="320" height="1128" alt="Flacone da 60 ml di aroma Prime di Super Flavor, tabacco, senza nicotina, con tappo trasparente ed etichetta oro.">
     </figure>
-    <p class="hero-nota">Flacone modellato in 3D a scopo illustrativo: nessun marchio reale.</p>
+    <p class="hero-nota">Il flacone 3D è ricostruito dalla foto del Prime di Super Flavor (aroma tabacco, senza nicotina) fornita dal negozio.</p>
   </section>
 
   <!-- 02 AL BANCO -->
@@ -107,7 +116,7 @@
     <header class="sez-testa">
       <p class="sez-num">02 — Al banco</p>
       <h2 class="titolo" id="banco-t">Sette reparti, <em>un banco solo</em></h2>
-      <p class="nota">Le voci ricalcano l'oggetto sociale depositato da For Svapo S.r.l.s. in Camera di Commercio. Marche e disponibilità vanno chieste in negozio. <span class="tbc">[DA CONFERMARE]</span></p>
+      <p class="nota">Le voci ricalcano l'oggetto sociale depositato da For Svapo S.r.l.s. in Camera di Commercio. Le singole referenze sono nel <a href="#catalogo">catalogo</a>. <span class="tbc">[DA CONFERMARE]</span></p>
     </header>
     <div class="tabella-wrap rv">
       <table class="scheda">
@@ -126,12 +135,84 @@
     </div>
   </section>
 
-  <!-- 03 TAVOLA DEGLI AROMI -->
+
+  <!-- 03 CATALOGO -->
+  <section class="sez catalogo" id="catalogo" aria-labelledby="cat-t">
+    <header class="sez-testa">
+      <p class="sez-num">03 — Catalogo</p>
+      <h2 class="titolo" id="cat-t">Il catalogo, <em>scheda per scheda</em></h2>
+      <p class="nota">Apri una voce per leggerne la scheda. Il catalogo è informativo: non si acquista online, i prodotti si trovano nelle sedi. Prezzi e disponibilità si chiedono in negozio.</p>
+    </header>
+    <div class="filtri" role="group" aria-label="Filtra il catalogo per reparto">
+      <button type="button" class="filtro" data-f="tutti" aria-pressed="true">Tutto</button>
+      <button type="button" class="filtro" data-f="aromi" aria-pressed="false">Aromi e shot</button>
+      <button type="button" class="filtro" data-f="liquidi" aria-pressed="false">Liquidi pronti</button>
+      <button type="button" class="filtro" data-f="basi" aria-pressed="false">Basi</button>
+      <button type="button" class="filtro" data-f="dispositivi" aria-pressed="false">Dispositivi</button>
+      <button type="button" class="filtro" data-f="ricambi" aria-pressed="false">Ricambi</button>
+      <button type="button" class="filtro" data-f="accessori" aria-pressed="false">Accessori</button>
+    </div>
+    <p class="cat-conta" aria-live="polite"><output id="cat-n">6</output> schede</p>
+    <ol class="voci">
+      <li class="voce" data-cat="aromi" data-img="assets/img/prime-flacone.webp">
+        <details>
+          <summary><span class="v-cod">AR-01</span><span class="v-nome">Prime <small>Super Flavor</small></span><span class="v-tipo">Aroma scomposto · tabacco</span><span class="v-form">20 ml / 60 ml · 0 mg</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda">
+            <img src="assets/img/prime-flacone.webp" width="320" height="1128" alt="Flacone del Prime di Super Flavor, etichetta oro con la scritta Tabacco senza nicotina." loading="lazy">
+            <div>
+              <dl>
+                <div><dt>Marca</dt><dd>Super Flavor <span class="tbc">[DA CONFERMARE]</span></dd></div>
+                <div><dt>Famiglia</dt><dd>Tabaccosi (<a href="#tavola">Tb</a>)</dd></div>
+                <div><dt>Formato</dt><dd>20 ml di aroma in flacone da 60 ml</dd></div>
+                <div><dt>Nicotina</dt><dd>Senza nicotina, come indicato in etichetta</dd></div>
+                <div><dt>Come si usa</dt><dd>Aroma concentrato: non si usa puro, va portato a volume con base neutra seguendo le istruzioni del produttore</dd></div>
+                <div><dt>Dove</dt><dd>Chiedi nelle sedi <span class="tbc">[DA CONFERMARE disponibilità]</span></dd></div>
+              </dl>
+            </div>
+          </div>
+        </details>
+      </li>
+      <li class="voce voce-vuota" data-cat="liquidi">
+        <details>
+          <summary><span class="v-cod">LQ-01</span><span class="v-nome">Liquido pronto 10 ml <small>referenza da indicare</small></span><span class="v-tipo">Liquido pronto</span><span class="v-form">10 ml</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda v-segnaposto"><p>Scheda segnaposto: nome, marca, foto e gradazioni vanno forniti dal negozio. <span class="tbc">[DA CONFERMARE]</span></p></div>
+        </details>
+      </li>
+      <li class="voce voce-vuota" data-cat="basi">
+        <details>
+          <summary><span class="v-cod">BS-01</span><span class="v-nome">Base neutra PG/VG <small>formati da indicare</small></span><span class="v-tipo">Base senza aroma</span><span class="v-form">PG/VG</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda v-segnaposto"><p>Scheda segnaposto: rapporti PG/VG e formati disponibili. Per i dosaggi usa il <a href="#miscelatore">miscelatore</a>. <span class="tbc">[DA CONFERMARE]</span></p></div>
+        </details>
+      </li>
+      <li class="voce voce-vuota" data-cat="dispositivi">
+        <details>
+          <summary><span class="v-cod">DV-01</span><span class="v-nome">Kit pod <small>modello da indicare</small></span><span class="v-tipo">Dispositivo</span><span class="v-form">—</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda v-segnaposto"><p>Scheda segnaposto: modello, marca, batteria, foto. <span class="tbc">[DA CONFERMARE]</span></p></div>
+        </details>
+      </li>
+      <li class="voce voce-vuota" data-cat="ricambi">
+        <details>
+          <summary><span class="v-cod">RC-01</span><span class="v-nome">Resistenze e pod di ricambio <small>compatibilità da indicare</small></span><span class="v-tipo">Ricambio</span><span class="v-form">—</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda v-segnaposto"><p>Scheda segnaposto: per quali dispositivi, valori in ohm, confezioni. <span class="tbc">[DA CONFERMARE]</span></p></div>
+        </details>
+      </li>
+      <li class="voce voce-vuota" data-cat="accessori">
+        <details>
+          <summary><span class="v-cod">AC-01</span><span class="v-nome">Batterie e caricatori <small>referenze da indicare</small></span><span class="v-tipo">Accessorio</span><span class="v-form">—</span><span class="v-piu" aria-hidden="true"></span></summary>
+          <div class="v-scheda v-segnaposto"><p>Scheda segnaposto: formati delle batterie, caricatori, custodie. <span class="tbc">[DA CONFERMARE]</span></p></div>
+        </details>
+      </li>
+    </ol>
+    <p class="nota">Le voci segnate "da indicare" sono schede vuote pronte da compilare con l'assortimento reale.</p>
+    <img class="cursore-img" src="assets/img/prime-flacone.webp" width="320" height="1128" alt="" aria-hidden="true">
+  </section>
+
+  <!-- 04 TAVOLA DEGLI AROMI -->
   <section class="sez tavola" id="tavola" aria-labelledby="tavola-t">
     <header class="sez-testa">
-      <p class="sez-num">03 — Tavola degli aromi</p>
+      <p class="sez-num">04 — Tavola degli aromi</p>
       <h2 class="titolo" id="tavola-t">Nove famiglie, <em>come gli elementi</em></h2>
-      <p class="nota">Gli aromi si raggruppano per famiglia. Tocca un elemento per leggerne le note tipiche. Sono le famiglie del settore, non un elenco delle referenze in negozio. <span class="tbc">[DA CONFERMARE assortimento]</span></p>
+      <p class="nota">Gli aromi si raggruppano per famiglia. Tocca un elemento per leggerne le note tipiche. Sono le famiglie del settore: le referenze disponibili stanno nel <a href="#catalogo">catalogo</a>. <span class="tbc">[DA CONFERMARE assortimento]</span></p>
     </header>
     <div class="tavola-grid">
       <div class="elementi" role="group" aria-label="Famiglie aromatiche">
@@ -161,7 +242,7 @@
   <section class="anatomia" id="anatomia" aria-labelledby="anatomia-t">
     <div class="anatomia-pin">
       <header class="anatomia-testa">
-        <p class="sez-num">04 — Anatomia di un liquido</p>
+        <p class="sez-num">05 — Anatomia di un liquido</p>
         <h2 class="titolo" id="anatomia-t">Quattro ingredienti <em>in dieci millilitri</em></h2>
       </header>
       <ol class="passi">
@@ -183,7 +264,7 @@
         </li>
       </ol>
       <figure class="statico statico-anatomia">
-        <img src="assets/img/flacone.svg" width="360" height="640" alt="" >
+        <img src="assets/img/prime-flacone.webp" width="320" height="1128" alt="">
       </figure>
     </div>
   </section>
@@ -192,10 +273,10 @@
   <section class="sez miscelatore" id="miscelatore" aria-labelledby="misc-t">
     <div class="misc-grid">
       <div class="misc-spazio" aria-hidden="true">
-        <figure class="statico statico-misc"><img src="assets/img/flacone.svg" width="360" height="640" alt=""></figure>
+        <figure class="statico statico-misc"><img src="assets/img/prime-flacone.webp" width="320" height="1128" alt=""></figure>
       </div>
       <div class="misc-pannello">
-        <p class="sez-num">05 — Miscelatore</p>
+        <p class="sez-num">06 — Miscelatore</p>
         <h2 class="titolo" id="misc-t">Dosa la tua base, <em>al millilitro</em></h2>
         <p class="nota">Scegli il formato, il rapporto PG/VG e la percentuale di aroma: il calcolo dice quanti millilitri di ogni componente servono. Solo basi neutre, senza nicotina.</p>
         <form class="misc-form" id="misc" novalidate>
@@ -231,49 +312,73 @@
     </div>
   </section>
 
-  <!-- 06 DOVE E ORARI -->
-  <section class="sez dove" id="dove" aria-labelledby="dove-t">
+  <!-- 07 SEDI -->
+  <section class="sez sedi" id="sedi" aria-labelledby="sedi-t">
     <header class="sez-testa">
-      <p class="sez-num">06 — Orari e indirizzo</p>
-      <h2 class="titolo" id="dove-t">Civico <em>19 rosso</em>, San Martino</h2>
+      <p class="sez-num">07 — Sedi e orari</p>
+      <h2 class="titolo" id="sedi-t">Quattro fermate, <em>dal centro alla Val Bisagno</em></h2>
+      <p class="nota">Sedi ricavate da elenchi pubblici e annunci: indirizzi, telefoni e orari vanno confermati con For Svapo prima della pubblicazione. <span class="tbc">[DA CONFERMARE]</span></p>
     </header>
-    <div class="dove-grid">
-      <div class="orari rv">
-        <table>
-          <caption>Orari di apertura <span class="tbc">[DA CONFERMARE]</span></caption>
-          <tbody>
-            <tr data-g="1"><th scope="row">Lunedì</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="2"><th scope="row">Martedì</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="3"><th scope="row">Mercoledì</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="4"><th scope="row">Giovedì</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="5"><th scope="row">Venerdì</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="6"><th scope="row">Sabato</th><td>10:00 – 19:30</td></tr>
-            <tr data-g="0"><th scope="row">Domenica</th><td>chiuso</td></tr>
-          </tbody>
-        </table>
-        <p class="nota">Orari riportati da elenchi online, da verificare con il negozio. Eventuale pausa pranzo <span class="tbc">[DA CONFERMARE]</span></p>
-      </div>
-      <div class="contatti rv">
-        <dl>
-          <div><dt>Indirizzo</dt><dd>Via San Martino 19r<br>16131 Genova (GE)</dd></div>
-          <div><dt>Telefono</dt><dd><a href="tel:+390104552110">010 455 2110</a> <span class="tbc">[DA CONFERMARE]</span></dd></div>
-          <div><dt>Cellulare</dt><dd><a href="tel:+393891729118">389 172 9118</a> <span class="tbc">[DA CONFERMARE]</span></dd></div>
-          <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/forsvapo_genova/" target="_blank" rel="noopener noreferrer">@forsvapo_genova<span class="sr-only"> (si apre in una nuova scheda)</span></a> <span class="tbc">[DA CONFERMARE]</span></dd></div>
-        </dl>
-        <div class="azioni">
-          <a class="btn btn-ambra" href="https://www.google.com/maps/dir/?api=1&amp;destination=For+Svapo+Via+San+Martino+19r+16131+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni<span class="sr-only"> (si apre in una nuova scheda)</span></a>
-          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=For+Svapo+Via+San+Martino+19r+Genova" target="_blank" rel="noopener noreferrer">Recensioni su Google<svg aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (si apre in una nuova scheda)</span></a>
+    <div class="sedi-grid">
+      <ol class="linea">
+        <li class="fermata" data-sede="0">
+          <p class="f-zona">Centro</p>
+          <h3>Via XX Settembre 87r</h3>
+          <p>16121 Genova · Tel. <a href="tel:+390102929262">010 292 9262</a> <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-orari">Orari <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-link"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+XX+Settembre+87r+16121+Genova" target="_blank" rel="noopener noreferrer">Indicazioni<span class="sr-only"> per Via XX Settembre (nuova scheda)</span></a> <button type="button" class="linkbtn f-mappa" data-sede="0" hidden>Sulla mappa</button></p>
+        </li>
+        <li class="fermata f-storica" data-sede="1">
+          <p class="f-zona">San Martino</p>
+          <h3>Via San Martino 19r</h3>
+          <p>16131 Genova · Tel. <a href="tel:+390104552110">010 455 2110</a> <span class="tbc">[DA CONFERMARE]</span></p>
+          <table class="orari">
+            <caption>Orari <span class="tbc">[DA CONFERMARE]</span></caption>
+            <tbody>
+              <tr data-g="1"><th scope="row">Lunedì</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="2"><th scope="row">Martedì</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="3"><th scope="row">Mercoledì</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="4"><th scope="row">Giovedì</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="5"><th scope="row">Venerdì</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="6"><th scope="row">Sabato</th><td>10:00 – 19:30</td></tr>
+              <tr data-g="0"><th scope="row">Domenica</th><td>chiuso</td></tr>
+            </tbody>
+          </table>
+          <p class="f-link"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=For+Svapo+Via+San+Martino+19r+16131+Genova" target="_blank" rel="noopener noreferrer">Indicazioni<span class="sr-only"> per Via San Martino (nuova scheda)</span></a> <button type="button" class="linkbtn f-mappa" data-sede="1" hidden>Sulla mappa</button></p>
+        </li>
+        <li class="fermata" data-sede="2">
+          <p class="f-zona">Val Bisagno</p>
+          <h3>Via Piacenza 83r</h3>
+          <p>Genova · Tel. <a href="tel:+390100997405">010 099 7405</a> <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-orari">Orari <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-link"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Piacenza+83r+Genova" target="_blank" rel="noopener noreferrer">Indicazioni<span class="sr-only"> per Via Piacenza (nuova scheda)</span></a> <button type="button" class="linkbtn f-mappa" data-sede="2" hidden>Sulla mappa</button></p>
+        </li>
+        <li class="fermata" data-sede="3">
+          <p class="f-zona">Molassana</p>
+          <h3>Via Molassana 55A r</h3>
+          <p>16138 Genova · Tel. <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-orari">Orari <span class="tbc">[DA CONFERMARE]</span></p>
+          <p class="f-link"><a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Molassana+55A+16138+Genova" target="_blank" rel="noopener noreferrer">Indicazioni<span class="sr-only"> per Via Molassana (nuova scheda)</span></a> <button type="button" class="linkbtn f-mappa" data-sede="3" hidden>Sulla mappa</button></p>
+        </li>
+      </ol>
+      <div class="sedi-lato">
+        <div class="mappa">
+          <div id="mappa" role="region" aria-label="Mappa delle sedi For Svapo a Genova"></div>
+          <div class="mappa-ph" id="mappa-ph">
+            <svg width="40" height="40" aria-hidden="true"><use href="#i-pin"/></svg>
+            <p>La mappa carica contenuti da OpenStreetMap: il tuo indirizzo IP viene inviato ai loro server. Parte solo se lo chiedi tu.</p>
+            <button class="btn" type="button" id="mappa-btn">Mostra mappa</button>
+          </div>
+          <p class="mappa-attr">Mappa © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · posizioni indicative <span class="tbc">[DA CONFERMARE]</span></p>
         </div>
-        <p class="nota">Le recensioni le scrivono i clienti: le trovi su Google, non le riportiamo qui.</p>
-      </div>
-      <div class="mappa rv">
-        <div id="mappa" role="region" aria-label="Mappa: Via San Martino 19r, Genova"></div>
-        <div class="mappa-ph" id="mappa-ph">
-          <svg width="40" height="40" aria-hidden="true"><use href="#i-pin"/></svg>
-          <p>La mappa carica contenuti da OpenStreetMap: il tuo indirizzo IP viene inviato ai loro server. Parte solo se lo chiedi tu.</p>
-          <button class="btn" type="button" id="mappa-btn">Mostra mappa</button>
+        <div class="contatti">
+          <dl>
+            <div><dt>Info</dt><dd><a href="tel:+393891729118">389 172 9118</a> <span class="tbc">[DA CONFERMARE]</span></dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/forsvapo_genova/" target="_blank" rel="noopener noreferrer">@forsvapo_genova<span class="sr-only"> (si apre in una nuova scheda)</span></a></dd></div>
+          </dl>
+          <a class="btn" href="https://www.google.com/maps/search/?api=1&amp;query=For+Svapo+Genova" target="_blank" rel="noopener noreferrer">Recensioni su Google<svg aria-hidden="true"><use href="#i-ext"/></svg><span class="sr-only"> (si apre in una nuova scheda)</span></a>
+          <p class="nota">Le recensioni le scrivono i clienti: le trovi su Google, non le riportiamo qui.</p>
         </div>
-        <p class="mappa-attr">Mappa © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a> · posizione indicativa <span class="tbc">[DA CONFERMARE]</span></p>
       </div>
     </div>
   </section>
@@ -307,13 +412,13 @@
       </ul>
     </nav>
   </div>
-  <p class="piede-fine"><span>Via San Martino 19r · 16131 Genova</span><span>Sito dimostrativo · bozza da validare</span></p>
+  <p class="piede-fine"><span>Via San Martino 19r · Via Piacenza 83r · Via XX Settembre 87r · Via Molassana 55A r</span><span>Sito dimostrativo · bozza da validare</span></p>
 </footer>
 
 <nav class="mbar" aria-label="Azioni rapide">
-  <a class="primo" href="tel:+390104552110"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
-  <a href="https://www.google.com/maps/dir/?api=1&amp;destination=For+Svapo+Via+San+Martino+19r+16131+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni<span class="sr-only"> (nuova scheda)</span></a>
-  <a href="#dove"><svg aria-hidden="true"><use href="#i-clock"/></svg>Orari</a>
+  <a class="primo" href="#sedi"><svg aria-hidden="true"><use href="#i-pin"/></svg>Sedi</a>
+  <a href="#catalogo"><svg aria-hidden="true"><use href="#i-list"/></svg>Catalogo</a>
+  <a href="tel:+393891729118"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
 </nav>
 
 <section class="consenso" id="consenso" role="dialog" aria-modal="false" aria-labelledby="consenso-t" hidden>

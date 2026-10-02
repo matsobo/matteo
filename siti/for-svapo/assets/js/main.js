@@ -85,20 +85,52 @@
   var riga = document.querySelector('.orari tr[data-g="' + oggi + '"]');
   if (riga) riga.classList.add('oggi');
 
-  /* ---------- mappa Leaflet, solo dopo clic o consenso ---------- */
-  var mappaCaricata = false;
+  /* ---------- catalogo: filtri ---------- */
+  var voci = Array.prototype.slice.call(document.querySelectorAll('.voce'));
+  document.querySelectorAll('.filtro').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-f'), n = 0;
+      document.querySelectorAll('.filtro').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      voci.forEach(function (v) { var ok = f === 'tutti' || v.getAttribute('data-cat') === f; v.hidden = !ok; if (ok) n++; });
+      out('cat-n', n);
+    });
+  });
+
+  /* ---------- mappa Leaflet con le sedi, solo dopo clic o consenso ---------- */
+  // posizioni indicative, da verificare
+  var SEDI = [
+    { n: 'Via XX Settembre 87r', z: 'Centro', p: [44.4052, 8.9392] },
+    { n: 'Via San Martino 19r', z: 'San Martino (sede legale)', p: [44.4029, 8.9688] },
+    { n: 'Via Piacenza 83r', z: 'Val Bisagno', p: [44.4300, 8.9555] },
+    { n: 'Via Molassana 55A r', z: 'Molassana', p: [44.4445, 8.9620] }
+  ];
+  var mappa = null, marker = [], mappaCaricata = false;
+  function evidenzia(i) {
+    document.querySelectorAll('.fermata').forEach(function (f) { f.classList.toggle('on', +f.getAttribute('data-sede') === i); });
+    if (mappa && marker[i]) { mappa.flyTo(SEDI[i].p, 16, { duration: rmQuery.matches ? 0 : 0.8 }); marker[i].openPopup(); }
+  }
   function caricaMappa() {
     if (mappaCaricata || !window.L) return;
     mappaCaricata = true;
     document.getElementById('mappa-ph').hidden = true;
-    var pos = [44.4029, 8.9688]; // posizione indicativa, da verificare
-    var m = window.L.map('mappa', { scrollWheelZoom: false, attributionControl: true }).setView(pos, 17);
+    mappa = window.L.map('mappa', { scrollWheelZoom: false, attributionControl: true });
     window.L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
       maxZoom: 19, attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a>'
-    }).addTo(m);
+    }).addTo(mappa);
     window.L.Icon.Default.imagePath = 'assets/vendor/leaflet/images/';
-    window.L.marker(pos, { alt: 'For Svapo, Via San Martino 19r' }).addTo(m).bindPopup('<b>For Svapo</b><br>Via San Martino 19r');
+    SEDI.forEach(function (d, i) {
+      marker[i] = window.L.marker(d.p, { alt: 'For Svapo, ' + d.n }).addTo(mappa).bindPopup('<b>For Svapo</b><br>' + d.n + '<br>' + d.z);
+      marker[i].on('click', function () { evidenzia(i); });
+    });
+    mappa.fitBounds(SEDI.map(function (d) { return d.p; }), { padding: [30, 30] });
+    document.querySelectorAll('.f-mappa').forEach(function (b) { b.hidden = false; });
   }
+  document.querySelectorAll('.f-mappa').forEach(function (b) {
+    b.addEventListener('click', function () { evidenzia(+b.getAttribute('data-sede')); });
+  });
+  document.querySelectorAll('.fermata').forEach(function (f) {
+    f.addEventListener('mouseenter', function () { document.querySelectorAll('.fermata').forEach(function (x) { x.classList.toggle('on', x === f); }); });
+  });
   var mBtn = document.getElementById('mappa-btn');
   if (mBtn) mBtn.addEventListener('click', caricaMappa);
   if (window.Consenso) {
@@ -144,6 +176,20 @@
       gsap.from(el, { y: 30, opacity: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 85%' } });
     });
 
+    // catalogo: la foto del prodotto segue il cursore sulle voci che ne hanno una
+    var cimg = document.querySelector('.cursore-img');
+    if (cimg && window.matchMedia('(pointer: fine)').matches) {
+      doc.classList.add('js-cursore');
+      var cx = gsap.quickTo(cimg, 'x', { duration: 0.45, ease: 'power3' }), cy = gsap.quickTo(cimg, 'y', { duration: 0.45, ease: 'power3' });
+      document.querySelectorAll('.voce[data-img] summary').forEach(function (sm) {
+        sm.addEventListener('mouseenter', function () { cimg.src = sm.closest('.voce').getAttribute('data-img'); gsap.to(cimg, { opacity: 1, scale: 1, duration: 0.3 }); });
+        sm.addEventListener('mouseleave', function () { gsap.to(cimg, { opacity: 0, scale: 0.85, duration: 0.3 }); });
+        sm.addEventListener('mousemove', function (e) { cx(e.clientX + 140); cy(e.clientY); });
+      });
+    }
+    gsap.from('.voce', { y: 24, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.06, scrollTrigger: { trigger: '.voci', start: 'top 82%' } });
+    gsap.from('.fermata', { x: -24, opacity: 0, duration: 0.7, ease: 'power3.out', stagger: 0.12, scrollTrigger: { trigger: '.linea', start: 'top 80%' } });
+
     // serbatoio: livello = avanzamento pagina
     var serb = document.querySelector('.serbatoio');
     ST.create({ start: 0, end: 'max', onUpdate: function (s) { if (serb) serb.style.setProperty('--liv', s.progress.toFixed(3)); } });
@@ -184,7 +230,7 @@
       if (!window.Flacone) return;
       gsap.to(window.Flacone.stato, Object.assign({ duration: 1.1, ease: 'power3.inOut', overwrite: 'auto' }, preset(nome)));
     }
-    [['.hero', 'hero'], ['#banco', 'spento'], ['#tavola', 'spento'], ['.anatomia', 'anatomia'], ['#miscelatore', 'misc'], ['#dove', 'spento']].forEach(function (c) {
+    [['.hero', 'hero'], ['#banco', 'spento'], ['#catalogo', 'spento'], ['#tavola', 'spento'], ['.anatomia', 'anatomia'], ['#miscelatore', 'misc'], ['#sedi', 'spento']].forEach(function (c) {
       ST.create({
         trigger: c[0], start: 'top 55%', end: 'bottom 45%',
         onToggle: function (s) {
@@ -193,7 +239,7 @@
           inMisc = c[1] === 'misc';
           if (inMisc) flaconeMisc();
           else if (c[1] === 'anatomia') { var k = passoAtt; passoAtt = -1; vaiPasso(Math.max(0, k)); }
-          else if (c[1] === 'hero' && window.Flacone) { window.Flacone.livelli({ vg: 0.36, pg: 0.34, ar: 0.1 }); window.Flacone.etichetta(); }
+          else if (c[1] === 'hero' && window.Flacone) { window.Flacone.livelli({ vg: 0, pg: 0, ar: 0.33 }); }
         }
       });
     });

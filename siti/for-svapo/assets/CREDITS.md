@@ -3,11 +3,12 @@
 ## Immagini
 | File | Origine | Licenza | Modifiche |
 |---|---|---|---|
-| assets/img/flacone.svg | Disegno originale per questo sito | — (proprietà del committente alla consegna) | — |
+| assets/img/prime-flacone.webp/.png | Foto del flacone Prime (Super Flavor) fornita dal committente (Matteo / For Svapo) | Da verificare: probabile foto di catalogo del produttore/distributore | Scontornata, ingrandita x4 |
+| assets/img/prime-etichetta.jpg (+ assets/js/etichetta-prime.js) | Stessa foto | Come sopra | Etichetta "srotolata" (proiezione cilindrica ±80°), ingrandita, nitidezza |
 | assets/img/favicon.svg | Disegno originale | — | — |
 | Flacone 3D (assets/js/scene3d.js) | Modello procedurale Three.js originale, nessun marchio di terzi | — | — |
 
-Nessuna foto stock usata. Da sostituire/affiancare con foto reali del negozio fornite dal titolare.
+Nessuna foto stock. Chiedere a For Svapo conferma dei diritti sulla foto del Prime (o scattarne una in negozio).
 
 ## Font (self-hosted, da @fontsource)
 - Big Shoulders Display 500/800/900 — Patric King — SIL OFL 1.1
