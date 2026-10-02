@@ -195,7 +195,10 @@ legend span{color:var(--rosso)}
 .scontrino dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
 .scontrino dt{font-weight:700;text-transform:uppercase}
 .scontrino dd{margin:0;text-align:right}
-.scontrino .btn{width:100%;justify-content:center;margin-top:16px;font-family:var(--testo)}
+.scontrino .btn{width:100%;justify-content:center;margin-top:12px;font-family:var(--testo)}
+.scontrino .btn-rosso{margin-top:16px}
+.ordine-nota{font-size:.8rem;line-height:1.45;margin-top:10px;color:var(--inchiostro-2)}
+.ordine-nota.fatto{color:var(--verde);font-weight:700}
 
 /* ---------- ORARI ---------- */
 .orari-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;align-items:start}
@@ -302,7 +305,7 @@ footer{padding:56px clamp(20px,4vw,56px) 64px;border-top:2px solid var(--inchios
   .hero{padding:24px 16px 32px;min-height:auto}
   .hero-scena{min-height:340px}
   .cartellino{top:4%;right:0;font-size:.78rem;max-width:160px}
-  .nome-main{font-size:clamp(2.6rem,13.4vw,5rem)}
+  .nome-main{font-size:clamp(2.4rem,12.2vw,5rem)}
   .nome-pre{font-size:.82rem;letter-spacing:.16em}
   .sez{padding:64px 16px}
   .voce{grid-template-columns:44px 1fr;padding:18px 0}
@@ -318,8 +321,8 @@ footer{padding:56px clamp(20px,4vw,56px) 64px;border-top:2px solid var(--inchios
   .scena-nota{position:static;margin-top:4px;align-self:flex-start}
   .hero-scena{order:0;margin:12px 0 0;min-height:360px}
   .hero-scena{flex-direction:column;justify-content:flex-end}
-  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--inchiostro);border-top:2px solid var(--inchiostro);padding-bottom:env(safe-area-inset-bottom,0px)}
-  .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;color:var(--carta);text-decoration:none;font-family:var(--mono);font-weight:700;font-size:.78rem;text-transform:uppercase;border-right:1px dashed rgba(242,230,217,.35)}
+  .mbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--inchiostro);border-top:2px solid var(--inchiostro);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;color:var(--carta);text-decoration:none;font-family:var(--mono);font-weight:700;font-size:.74rem;text-transform:uppercase;border-right:1px dashed rgba(242,230,217,.35)}
   .mbar a:last-child{border-right:0}
   .mbar a svg{width:20px;height:20px}
   .mbar a.primo{background:var(--rosso)}
@@ -1011,6 +1014,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
   "foundingDate": "1920",
   "servesCuisine": ["Hamburger","Pollo arrosto","Gastronomia"],
   "telephone": "+39 010 564949",
+  "hasMenu": "https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu",
+  "potentialAction": {"@type": "OrderAction", "target": "https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu", "deliveryMethod": "http://purl.org/goodrelations/v1#DeliveryModeOwnFleet"},
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Via Innocenzo Frugoni 15r",
@@ -1033,6 +1038,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
   <symbol id="i-tel" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></symbol>
   <symbol id="i-nav" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 11 19-9-9 19-2-8-8-2Z"/></symbol>
+  <symbol id="i-bici" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6h2l3 11.5M5.5 17.5 9 10h7l-4 7.5M9 10 8 7H6"/></symbol>
   <symbol id="i-orologio" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></symbol>
   <symbol id="i-ext" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6M10 14 21 3M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></symbol>
   <symbol id="i-mappa" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
@@ -1077,6 +1083,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       <p class="lead">Pollo arrosto con patate, gastronomia da portare via e hamburger artigianali in cui scegli tu la carne: <strong>manzo, tacchino, spinaci o salsiccia</strong>.</p>
       <div class="azioni">
         <a class="btn btn-rosso" href="#componi">Componi il tuo hamburger</a>
+        <a class="btn" href="https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-bici"/></svg>Ordina su Just Eat<span class="sr-only">(si apre in una nuova scheda)</span></a>
         <a class="btn" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>010 564949</a>
       </div>
     </div>
@@ -1135,7 +1142,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </li>
     </ol>
     <div class="listino-foot">
-      <span>Consegna a domicilio tramite piattaforme di delivery.</span>
+      <span>Consegna a domicilio: <a href="https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu" target="_blank" rel="noopener noreferrer">menu completo e prezzi su Just Eat<span class="sr-only">(si apre in una nuova scheda)</span></a>.</span>
     </div>
   </section>
 
@@ -1173,7 +1180,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <section class="sez componi" id="componi" aria-labelledby="componi-t">
     <p class="sez-num">03 — Al banco si sceglie tutto</p>
     <h2 class="titolo" id="componi-t">Componi il tuo <em>hamburger</em></h2>
-    <p class="nota">Scegli il pane, la carne e le aggiunte: lo scontrino si compone da solo. Poi chiama e ordina, o passa in via Frugoni.</p>
+    <p class="nota">Scegli il pane, la carne e le aggiunte: lo scontrino si compone da solo. Poi ordinalo su Just Eat con consegna a casa, chiama, o passa in via Frugoni.</p>
 
     <div class="componi-grid">
       <form class="scelte" id="builder" aria-describedby="builder-nota">
@@ -1225,7 +1232,9 @@ svg.leaflet-image-layer.leaflet-interactive path {
         <dl><dt>Totale</dt><dd>al banco <span class="tbc">[DA CONFERMARE]</span></dd></dl>
         <hr>
         <p class="c">Grazie e arrivederci</p>
-        <a class="btn btn-rosso" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Ordina: 010 564949</a>
+        <a class="btn btn-rosso" id="ordina-je" href="https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-bici"/></svg>Ordina su Just Eat<span class="sr-only">(si apre in una nuova scheda)</span></a>
+        <p class="ordine-nota" id="ordine-nota">Il pulsante copia il tuo ordine e apre Maragliano su Just Eat: lì scegli <b>Hamburger</b> e seleziona le stesse opzioni.</p>
+        <a class="btn" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Oppure chiama: 010 564949</a>
       </div>
     </div>
   </section>
@@ -1276,7 +1285,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
           <div><dt>Indirizzo</dt><dd>Via Innocenzo Frugoni 15r<br>16121 Genova (GE)</dd></div>
           <div><dt>Telefono</dt><dd><a href="tel:+39010564949">010 564949</a></dd></div>
           <div><dt>Email</dt><dd><span class="tbc">[DA CONFERMARE]</span></dd></div>
-          <div><dt>Servizi</dt><dd>Asporto · consegna a domicilio</dd></div>
+          <div><dt>Servizi</dt><dd>Asporto · consegna a domicilio con <a href="https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu" target="_blank" rel="noopener noreferrer">Just Eat<span class="sr-only">(si apre in una nuova scheda)</span></a></dd></div>
         </dl>
         <div class="azioni">
           <a class="btn btn-rosso" href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Innocenzo+Frugoni+15r+16121+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni<span class="sr-only">(si apre in una nuova scheda)</span></a>
@@ -1334,7 +1343,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 <thead><tr><th scope="col">Servizio</th><th scope="col">Fornitore</th><th scope="col">Dati trasmessi</th><th scope="col">Cookie</th></tr></thead>
 <tbody><tr><td>Mappa (tessere OpenStreetMap)</td><td>OpenStreetMap Foundation — <a href="https://osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer">privacy policy</a></td><td>Indirizzo IP, browser, porzione di mappa richiesta</td><td>Nessuno installato da questo sito</td></tr></tbody>
 </table>
-<p>I link a Google Maps (indicazioni e recensioni) sono semplici collegamenti: non trasferiscono alcun dato finché non li apri. Una volta aperti, si applica l’informativa di Google.</p>
+<p>I link a Google Maps (indicazioni e recensioni) e a Just Eat (ordini a domicilio) sono semplici collegamenti: non trasferiscono alcun dato finché non li apri. Una volta aperti, si applicano le informative di Google e di Just Eat. Il pulsante “Ordina su Just Eat” copia nei tuoi appunti il testo dell’ordine composto sulla pagina: resta sul tuo dispositivo.</p>
 <h2>Come cambiare la scelta</h2>
 <p>Puoi modificare o revocare il consenso in ogni momento: <button type="button" class="js-preferenze btn">Preferenze cookie</button>. Chiudere il banner con la X equivale a rifiutare: restano attivi solo gli strumenti tecnici. Puoi anche cancellare i dati del sito dalle impostazioni del browser.</p>
 <p>Riferimenti: Linee guida del Garante sui cookie e altri strumenti di tracciamento (10 giugno 2021); art. 122 del Codice privacy.</p>
@@ -1399,7 +1408,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
 </footer>
 
 <nav class="mbar" aria-label="Azioni rapide">
-  <a class="primo" href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
+  <a class="primo" href="https://www.justeat.it/restaurants-polleria-maragliano-dal-1920-genova/menu" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-bici"/></svg>Ordina<span class="sr-only">(si apre in una nuova scheda)</span></a>
+  <a href="tel:+39010564949"><svg aria-hidden="true"><use href="#i-tel"/></svg>Chiama</a>
   <a href="https://www.google.com/maps/dir/?api=1&amp;destination=Via+Innocenzo+Frugoni+15r+16121+Genova" target="_blank" rel="noopener noreferrer"><svg aria-hidden="true"><use href="#i-nav"/></svg>Indicazioni</a>
   <a href="#orari"><svg aria-hidden="true"><use href="#i-orologio"/></svg>Orari</a>
 </nav>
@@ -6079,7 +6089,30 @@ window.MARA_BURGER = {"ratio": 1.5, "strati": [{"nome": "pane-sotto", "x": 0.154
     }
     riga('Pane', s.pane); riga('Carne', s.carne);
     s.extra.forEach(function (x) { riga('+', x); });
+    ordineTesto = testoOrdine(s);
   }
+  /* Ordine su Just Eat: non esiste un link che riempia il carrello dall'esterno,
+     quindi il pulsante copia l'ordine (da incollare nelle note) e apre il menu di Maragliano. */
+  var ordineTesto = '';
+  function testoOrdine(s) {
+    return 'Hamburger — pane ' + s.pane.toLowerCase() + ', carne: ' + s.carne.toLowerCase() +
+      (s.extra.length ? ', con ' + s.extra.join(', ').toLowerCase() : ', senza aggiunte');
+  }
+  function copia(t) {
+    try { if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t); return true; } } catch (e) {}
+    try {
+      var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy'); document.body.removeChild(ta); return ok;
+    } catch (e) { return false; }
+  }
+  var ordina = $('#ordina-je'), notaOrdine = $('#ordine-nota');
+  if (ordina) ordina.addEventListener('click', function () {
+    var ok = copia(ordineTesto);
+    notaOrdine.classList.add('fatto');
+    notaOrdine.textContent = (ok ? 'Ordine copiato: ' : 'Il tuo ordine: ') + '“' + ordineTesto + '”. Su Just Eat scegli Hamburger, seleziona queste opzioni' + (ok ? ' e incollalo nelle note.' : '.');
+  });
+
   if (form) {
     form.addEventListener('change', function () { disegna(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });

@@ -181,7 +181,10 @@ legend span{color:var(--rosso)}
 .scontrino dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:2px 12px}
 .scontrino dt{font-weight:700;text-transform:uppercase}
 .scontrino dd{margin:0;text-align:right}
-.scontrino .btn{width:100%;justify-content:center;margin-top:16px;font-family:var(--testo)}
+.scontrino .btn{width:100%;justify-content:center;margin-top:12px;font-family:var(--testo)}
+.scontrino .btn-rosso{margin-top:16px}
+.ordine-nota{font-size:.8rem;line-height:1.45;margin-top:10px;color:var(--inchiostro-2)}
+.ordine-nota.fatto{color:var(--verde);font-weight:700}
 
 /* ---------- ORARI ---------- */
 .orari-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:28px;align-items:start}
@@ -288,7 +291,7 @@ footer{padding:56px clamp(20px,4vw,56px) 64px;border-top:2px solid var(--inchios
   .hero{padding:24px 16px 32px;min-height:auto}
   .hero-scena{min-height:340px}
   .cartellino{top:4%;right:0;font-size:.78rem;max-width:160px}
-  .nome-main{font-size:clamp(2.6rem,13.4vw,5rem)}
+  .nome-main{font-size:clamp(2.4rem,12.2vw,5rem)}
   .nome-pre{font-size:.82rem;letter-spacing:.16em}
   .sez{padding:64px 16px}
   .voce{grid-template-columns:44px 1fr;padding:18px 0}
@@ -304,8 +307,8 @@ footer{padding:56px clamp(20px,4vw,56px) 64px;border-top:2px solid var(--inchios
   .scena-nota{position:static;margin-top:4px;align-self:flex-start}
   .hero-scena{order:0;margin:12px 0 0;min-height:360px}
   .hero-scena{flex-direction:column;justify-content:flex-end}
-  .mbar{display:grid;grid-template-columns:repeat(3,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--inchiostro);border-top:2px solid var(--inchiostro);padding-bottom:env(safe-area-inset-bottom,0px)}
-  .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;color:var(--carta);text-decoration:none;font-family:var(--mono);font-weight:700;font-size:.78rem;text-transform:uppercase;border-right:1px dashed rgba(242,230,217,.35)}
+  .mbar{display:grid;grid-template-columns:repeat(4,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--inchiostro);border-top:2px solid var(--inchiostro);padding-bottom:env(safe-area-inset-bottom,0px)}
+  .mbar a{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;min-height:58px;color:var(--carta);text-decoration:none;font-family:var(--mono);font-weight:700;font-size:.74rem;text-transform:uppercase;border-right:1px dashed rgba(242,230,217,.35)}
   .mbar a:last-child{border-right:0}
   .mbar a svg{width:20px;height:20px}
   .mbar a.primo{background:var(--rosso)}

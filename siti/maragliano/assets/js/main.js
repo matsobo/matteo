@@ -134,7 +134,30 @@
     }
     riga('Pane', s.pane); riga('Carne', s.carne);
     s.extra.forEach(function (x) { riga('+', x); });
+    ordineTesto = testoOrdine(s);
   }
+  /* Ordine su Just Eat: non esiste un link che riempia il carrello dall'esterno,
+     quindi il pulsante copia l'ordine (da incollare nelle note) e apre il menu di Maragliano. */
+  var ordineTesto = '';
+  function testoOrdine(s) {
+    return 'Hamburger — pane ' + s.pane.toLowerCase() + ', carne: ' + s.carne.toLowerCase() +
+      (s.extra.length ? ', con ' + s.extra.join(', ').toLowerCase() : ', senza aggiunte');
+  }
+  function copia(t) {
+    try { if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t); return true; } } catch (e) {}
+    try {
+      var ta = document.createElement('textarea'); ta.value = t; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
+      var ok = document.execCommand('copy'); document.body.removeChild(ta); return ok;
+    } catch (e) { return false; }
+  }
+  var ordina = $('#ordina-je'), notaOrdine = $('#ordine-nota');
+  if (ordina) ordina.addEventListener('click', function () {
+    var ok = copia(ordineTesto);
+    notaOrdine.classList.add('fatto');
+    notaOrdine.textContent = (ok ? 'Ordine copiato: ' : 'Il tuo ordine: ') + '“' + ordineTesto + '”. Su Just Eat scegli Hamburger, seleziona queste opzioni' + (ok ? ' e incollalo nelle note.' : '.');
+  });
+
   if (form) {
     form.addEventListener('change', function () { disegna(true); });
     form.addEventListener('submit', function (e) { e.preventDefault(); });
