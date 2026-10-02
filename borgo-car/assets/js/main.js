@@ -56,7 +56,7 @@
   var ba = $('#ba'), baR = $('#baRange');
   if (ba && baR) baR.addEventListener('input', function () { ba.style.setProperty('--p', baR.value + '%'); });
 
-  /* ---------- schede orizzontali (lavorazioni) ---------- */
+  /* ---------- servizi in scorrimento orizzontale (lavorazioni) ---------- */
   var cards = $('#cards');
   if (cards) {
     var bar = $('#cardsBar');
@@ -170,15 +170,24 @@
   // storia: l'anno si allarga mentre scorri
   var yr = $('#bigYear');
   if (yr && window.ScrollTrigger) {
+    // larghezza massima che entra nella tavola, così l'anno non viene mai tagliato
+    var wrap = yr.parentNode, maxS = 50;
+    var measure = function () {
+      var keep = yr.style.fontStretch; maxS = 50;
+      for (var st = 150; st >= 50; st -= 5) { yr.style.fontStretch = st + '%'; if (yr.getBoundingClientRect().width <= wrap.clientWidth - 2) { maxS = st; break; } }
+      yr.style.fontStretch = keep;
+    };
+    measure();
     window.ScrollTrigger.create({
       trigger: '.year-wrap', start: 'top 80%', end: 'bottom top', scrub: true,
-      onUpdate: function (s) { yr.style.fontStretch = (50 + s.progress * 100) + '%'; }
+      onRefreshInit: measure,
+      onUpdate: function (s) { yr.style.fontStretch = (50 + s.progress * (maxS - 50)) + '%'; }
     });
   }
   // reveal
   $$('.rv').forEach(function (el) {
     gsap.to(el, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 88%', once: true } });
   });
-  // tavole interne: le schede arrivano scorrendo
+  // tavole interne: i servizi arrivano scorrendo
   if ($('#cards')) gsap.from('.card', { x: 60, opacity: 0, duration: 0.8, stagger: 0.06, ease: 'power3.out', clearProps: 'transform,opacity' });
 })();

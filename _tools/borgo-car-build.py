@@ -186,14 +186,14 @@ home = f"""
     <section class="c-bench" aria-labelledby="h-bench">
       <div class="bench-head"><h2 id="h-bench" class="mono">Simulatore di riparazione · urto frontale</h2><span aria-hidden="true">Ponte 1</span></div>
       <div class="bench-stage" id="carStage">
-        <canvas id="car3d" role="img" aria-label="Utilitaria in 3D con urto frontale. Interventi completati: 0 su 4."></canvas>
+        <canvas id="car3d" role="img" aria-label="Auto in 3D con urto sull'angolo anteriore destro. Interventi completati: 0 su 4."></canvas>
         <div class="hotspots" id="hotspots" role="group" aria-label="Punti da riparare sull'auto">
           <button type="button" class="hs" data-part="0">1</button>
           <button type="button" class="hs" data-part="1">2</button>
           <button type="button" class="hs" data-part="2">3</button>
           <button type="button" class="hs" data-part="3">4</button>
         </div>
-        <div class="bench-fallback"><img src="assets/img/prima.jpg" alt="Utilitaria blu con il frontale distrutto, fotografia dimostrativa" width="900" height="900"></div>
+        <div class="bench-fallback"><img src="assets/img/prima.jpg" alt="Auto blu con il frontale distrutto, fotografia dimostrativa" width="900" height="900"></div>
         <p class="bench-hint">Trascina per girare l'auto. Tocca i punti arancioni per ripararla.</p>
         <div class="rot"><button type="button" id="rotL" aria-label="Ruota l'auto a sinistra">{ic("left")}</button><button type="button" id="rotR" aria-label="Ruota l'auto a destra">{ic("right")}</button></div>
       </div>
@@ -201,11 +201,11 @@ home = f"""
         <ol class="vstep" id="vstep" aria-label="Interventi">
           <li><button type="button" data-part="0"><span class="ind" aria-hidden="true"><i>1</i>{CHECK}</span><span class="vt"><b>Paraurti</b><span>Smontaggio e fissaggio</span></span></button></li>
           <li><button type="button" data-part="1"><span class="ind" aria-hidden="true"><i>2</i>{CHECK}</span><span class="vt"><b>Lattoneria</b><span>Cofano e parafango</span></span></button></li>
-          <li><button type="button" data-part="2"><span class="ind" aria-hidden="true"><i>3</i>{CHECK}</span><span class="vt"><b>Fanale</b><span>Gruppo ottico nuovo</span></span></button></li>
+          <li><button type="button" data-part="2"><span class="ind" aria-hidden="true"><i>3</i>{CHECK}</span><span class="vt"><b>Faro</b><span>Gruppo ottico nuovo</span></span></button></li>
           <li><button type="button" data-part="3"><span class="ind" aria-hidden="true"><i>4</i>{CHECK}</span><span class="vt"><b>Verniciatura</b><span>Dopo la lattoneria</span></span></button></li>
         </ol>
         <div class="job">
-          <p class="job-out" id="jobOut" aria-live="polite">Un'utilitaria è arrivata con il muso ammaccato: paraurti staccato, cofano e parafango piegati, fanale rotto, porta strisciata. Scegli da dove cominciare.</p>
+          <p class="job-out" id="jobOut" aria-live="polite">Una compatta è arrivata con l'angolo anteriore destro ammaccato: paraurti che cede, cofano e parafango piegati, vetro del faro rotto, porta strisciata. Scegli da dove cominciare.</p>
           <div class="job-btns">
             <button type="button" class="btn tape-btn" id="fixAll">Ripara tutto</button>
             <button type="button" class="btn ghost-d" id="resetCar">Rimetti il danno</button>
@@ -218,7 +218,7 @@ home = f"""
             <button type="button" class="chip c-bia" data-paint="#e4e2dc" aria-pressed="false" aria-label="Bianco"></button>
             <button type="button" class="chip c-ner" data-paint="#161616" aria-pressed="false" aria-label="Nero"></button>
           </div>
-          <p class="note">Simulazione illustrativa su un'auto generica.</p>
+          <p class="note">Simulazione illustrativa: il danno è ricostruito al computer.</p>
         </div>
       </div>
     </section>
@@ -245,7 +245,7 @@ home = f"""
     </a>
     <a class="c-idx i2" href="lavorazioni.html">
       <span class="mono">Tav. 03 — Lavorazioni</span>
-      <h2>Sei schede di lavoro, dal paraurti alla centralina</h2>
+      <h2>Sei servizi, dal paraurti alla centralina</h2>
       <ul class="svc-mini" aria-label="Servizi">
         <li>Carrozzeria</li><li>Verniciatura</li><li>Meccanica</li><li>Elettrauto</li><li>Ibride</li><li>Ricarica clima</li>
       </ul>
@@ -269,16 +269,16 @@ storia = f"""
     <div class="ed-kicker"><h1>Un'officina, un quartiere, un nome sul campanello</h1></div>
     <div class="ed-body">
       <p>Borgo Car è l'officina di Alessandro Grimaldi in Via del Borgo, a Borgoratti, sulle alture del Levante genovese. L'attività risulta iscritta dal 7 gennaio 1999 <span class="tbd">verificare in visura</span>: da allora l'indirizzo non è cambiato.</p>
-      <p>Nasce come carrozzeria, e il nome sull'insegna lo dice ancora. Oggi le schede online la descrivono anche come officina meccanica ed elettrauto, con interventi su vetture ibride e ricarica dell'aria condizionata: chi porta l'auto per un paraurti può lasciarla anche per il tagliando, nello stesso posto.</p>
+      <p>Nasce come carrozzeria, e il nome sull'insegna lo dice ancora. Oggi gli elenchi online la descrivono anche come officina meccanica ed elettrauto, con interventi su vetture ibride e ricarica dell'aria condizionata: chi porta l'auto per un paraurti può lasciarla anche per il tagliando, nello stesso posto.</p>
       <p>Qui il cliente parla con chi mette le mani sulla macchina. <span class="tbd">Racconto di Alessandro da raccogliere: come è iniziato, chi lavora in officina oggi</span></p>
     </div>
     <aside class="ed-facts" aria-label="Dati dell'attività">
       <dl>
-        <dt>Titolare</dt><dd>Alessandro Grimaldi</dd>
-        <dt>Ragione sociale</dt><dd>{LEGAL}</dd>
-        <dt>In attività dal</dt><dd>1999</dd>
-        <dt>Indirizzo</dt><dd>{STREET}, {CAP} Genova</dd>
-        <dt>Quartiere</dt><dd>Borgoratti</dd>
+        <div><dt>Titolare</dt><dd>Alessandro Grimaldi</dd></div>
+        <div><dt>Ragione sociale</dt><dd>{LEGAL}</dd></div>
+        <div><dt>In attività dal</dt><dd>1999</dd></div>
+        <div><dt>Indirizzo</dt><dd>{STREET}, {CAP} Genova</dd></div>
+        <div><dt>Quartiere</dt><dd>Borgoratti</dd></div>
       </dl>
     </aside>
   </div>
@@ -297,7 +297,7 @@ storia = f"""
     </article>
     <article class="tl-item rv">
       <span class="tl-y">[ANNO]</span>
-      <div><h3>Auto ibride</h3><p>Interventi su vetture ibride, come riportato nelle schede dell'attività. <span class="tbd">Formazione o certificazioni da confermare</span></p></div>
+      <div><h3>Auto ibride</h3><p>Interventi su vetture ibride, come riportato su PagineGialle. <span class="tbd">Formazione o certificazioni da confermare</span></p></div>
       <span class="tl-src">Fonte: PagineGialle</span>
     </article>
     <article class="tl-item rv">
@@ -357,21 +357,21 @@ cards_html = "\n".join(f"""      <article class="card {w} {tone}" aria-labelledb
 
 lavorazioni = f"""
   <div class="intro-split">
-    <h1>Sei schede di lavoro</h1>
-    <p>Carrozzeria prima di tutto, poi motore, impianto elettrico, auto ibride e clima. Le schede riportano solo ciò che risulta dalle fonti pubbliche: i dettagli segnati in giallo vanno confermati in officina.</p>
+    <h1>Sei servizi, un solo indirizzo</h1>
+    <p>Carrozzeria prima di tutto, poi motore, impianto elettrico, auto ibride e clima. Qui trovi solo ciò che risulta dalle fonti pubbliche: i dettagli segnati in giallo vanno confermati in officina.</p>
   </div>
 
   <section class="rail-wrap" aria-labelledby="h-cards">
     <h2 id="h-cards" class="sr">Servizi</h2>
-    <div class="cards" id="cards" tabindex="0" aria-label="Schede servizi, scorrimento orizzontale">
+    <div class="cards" id="cards" tabindex="0" aria-label="Servizi, scorrimento orizzontale">
 {cards_html}
     </div>
     <div class="rail-ctrl">
       <span class="mono">Trascina o usa le frecce</span>
       <div class="progress" aria-hidden="true"><i id="cardsBar"></i></div>
       <div class="btns">
-        <button type="button" id="cPrev" aria-label="Scheda precedente">{ic("left")}</button>
-        <button type="button" id="cNext" aria-label="Scheda successiva">{ic("right")}</button>
+        <button type="button" id="cPrev" aria-label="Servizio precedente">{ic("left")}</button>
+        <button type="button" id="cNext" aria-label="Servizio successivo">{ic("right")}</button>
       </div>
     </div>
   </section>
@@ -422,7 +422,7 @@ contatti = f"""
           <tr data-d="0"><th scope="row">Domenica</th><td>Chiuso</td></tr>
         </tbody>
       </table>
-      <p class="note">Orari da PagineGialle. <span class="tbd">Da confermare</span>: un'altra scheda riporta 8:00–12:30 · 14:00–19:30.</p>
+      <p class="note">Orari da PagineGialle. <span class="tbd">Da confermare</span>: un altro elenco riporta 8:00–12:30 · 14:00–19:30.</p>
 
       <div class="keys">
         <a class="key" href="tel:{TEL}"><span>Telefono</span><b>{TEL_H}</b>{ic("phone")}</a>
@@ -526,7 +526,7 @@ crediti = f"""
     <h2>Librerie</h2>
     <p>GSAP (licenza standard GreenSock, gratuita), Lenis (MIT), three.js (MIT), Leaflet (BSD-2). Dati cartografici © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap contributors</a>, ODbL.</p>
     <h2>Immagini</h2>
-    <p>L'auto 3D del simulatore di riparazione è un'utilitaria generica costruita dal codice, senza modelli o fotografie esterne e senza marchi. Le due foto prima/dopo sono dimostrative, provengono dalla bozza precedente e <span class="tbd">vanno sostituite con foto reali dell'officina</span>.</p>
+    <p>L'auto 3D del simulatore deriva dal modello "Opel Astra" pubblicato su Free3D (licenza per solo uso personale), convertito e semplificato, con loghi e scritte rimossi. <span class="tbd">Da sostituire con un modello a licenza commerciale prima della pubblicazione</span>. Il danno e la riparazione sono simulati dal codice. Le due foto prima/dopo sono dimostrative, provengono dalla bozza precedente e <span class="tbd">vanno sostituite con foto reali dell'officina</span>.</p>
     <h2>Accessibilità</h2>
     <p>Il sito punta al livello AA delle WCAG 2.1: contrasto del testo almeno 4,5:1, navigazione completa da tastiera, testo alternativo per le immagini, rispetto dell'impostazione "riduci movimento" del sistema (animazioni e scena 3D si fermano). Il pannello 3D è decorativo: le stesse informazioni sono scritte nel testo accanto. Segnalazioni: <a href="mailto:{MAIL}">{MAIL}</a>.</p>
   </div>
@@ -535,7 +535,7 @@ crediti = f"""
 DESC = "Borgo Car, carrozzeria, meccanica ed elettrauto in Via del Borgo 18R a Genova Borgoratti. Officina di Alessandro Grimaldi dal 1999."
 files = {
  "index.html": shell("index.html", "Borgo Car · Carrozzeria e officina a Borgoratti, Genova", DESC, "01", "Officina", home,
-                     ["assets/vendor/three.min.js", "assets/js/car3d.js"]),
+                     ["assets/vendor/three.min.js", "assets/js/car-model.js", "assets/js/car3d.js"]),
  "storia.html": shell("storia.html", "Storia · Borgo Car, Via del Borgo dal 1999", "Dal 1999 in Via del Borgo 18R, Borgoratti: la storia dell'officina di Alessandro Grimaldi.", "02", "Storia", storia),
  "lavorazioni.html": shell("lavorazioni.html", "Lavorazioni · Borgo Car: carrozzeria, meccanica, elettrauto", "Carrozzeria, verniciatura, meccanica, elettrauto, vetture ibride e ricarica clima a Genova Borgoratti.", "03", "Lavorazioni", lavorazioni),
  "contatti.html": shell("contatti.html", "Contatti · Borgo Car, Via del Borgo 18R Genova", "Indirizzo, orari, telefono e mappa di Borgo Car a Genova Borgoratti. Preventivo con le foto del danno.", "04", "Contatti", contatti,

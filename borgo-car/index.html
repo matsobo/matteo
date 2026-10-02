@@ -107,14 +107,14 @@
     <section class="c-bench" aria-labelledby="h-bench">
       <div class="bench-head"><h2 id="h-bench" class="mono">Simulatore di riparazione · urto frontale</h2><span aria-hidden="true">Ponte 1</span></div>
       <div class="bench-stage" id="carStage">
-        <canvas id="car3d" role="img" aria-label="Utilitaria in 3D con urto frontale. Interventi completati: 0 su 4."></canvas>
+        <canvas id="car3d" role="img" aria-label="Auto in 3D con urto sull'angolo anteriore destro. Interventi completati: 0 su 4."></canvas>
         <div class="hotspots" id="hotspots" role="group" aria-label="Punti da riparare sull'auto">
           <button type="button" class="hs" data-part="0">1</button>
           <button type="button" class="hs" data-part="1">2</button>
           <button type="button" class="hs" data-part="2">3</button>
           <button type="button" class="hs" data-part="3">4</button>
         </div>
-        <div class="bench-fallback"><img src="assets/img/prima.jpg" alt="Utilitaria blu con il frontale distrutto, fotografia dimostrativa" width="900" height="900"></div>
+        <div class="bench-fallback"><img src="assets/img/prima.jpg" alt="Auto blu con il frontale distrutto, fotografia dimostrativa" width="900" height="900"></div>
         <p class="bench-hint">Trascina per girare l'auto. Tocca i punti arancioni per ripararla.</p>
         <div class="rot"><button type="button" id="rotL" aria-label="Ruota l'auto a sinistra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d="m15 18-6-6 6-6"/></svg></button><button type="button" id="rotR" aria-label="Ruota l'auto a destra"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" stroke-linejoin="miter" aria-hidden="true" focusable="false"><path d="m9 18 6-6-6-6"/></svg></button></div>
       </div>
@@ -122,11 +122,11 @@
         <ol class="vstep" id="vstep" aria-label="Interventi">
           <li><button type="button" data-part="0"><span class="ind" aria-hidden="true"><i>1</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Paraurti</b><span>Smontaggio e fissaggio</span></span></button></li>
           <li><button type="button" data-part="1"><span class="ind" aria-hidden="true"><i>2</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Lattoneria</b><span>Cofano e parafango</span></span></button></li>
-          <li><button type="button" data-part="2"><span class="ind" aria-hidden="true"><i>3</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Fanale</b><span>Gruppo ottico nuovo</span></span></button></li>
+          <li><button type="button" data-part="2"><span class="ind" aria-hidden="true"><i>3</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Faro</b><span>Gruppo ottico nuovo</span></span></button></li>
           <li><button type="button" data-part="3"><span class="ind" aria-hidden="true"><i>4</i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true" focusable="false"><path d="M5 12.5 10 17 19 7"/></svg></span><span class="vt"><b>Verniciatura</b><span>Dopo la lattoneria</span></span></button></li>
         </ol>
         <div class="job">
-          <p class="job-out" id="jobOut" aria-live="polite">Un'utilitaria è arrivata con il muso ammaccato: paraurti staccato, cofano e parafango piegati, fanale rotto, porta strisciata. Scegli da dove cominciare.</p>
+          <p class="job-out" id="jobOut" aria-live="polite">Una compatta è arrivata con l'angolo anteriore destro ammaccato: paraurti che cede, cofano e parafango piegati, vetro del faro rotto, porta strisciata. Scegli da dove cominciare.</p>
           <div class="job-btns">
             <button type="button" class="btn tape-btn" id="fixAll">Ripara tutto</button>
             <button type="button" class="btn ghost-d" id="resetCar">Rimetti il danno</button>
@@ -139,7 +139,7 @@
             <button type="button" class="chip c-bia" data-paint="#e4e2dc" aria-pressed="false" aria-label="Bianco"></button>
             <button type="button" class="chip c-ner" data-paint="#161616" aria-pressed="false" aria-label="Nero"></button>
           </div>
-          <p class="note">Simulazione illustrativa su un'auto generica.</p>
+          <p class="note">Simulazione illustrativa: il danno è ricostruito al computer.</p>
         </div>
       </div>
     </section>
@@ -166,7 +166,7 @@
     </a>
     <a class="c-idx i2" href="lavorazioni.html">
       <span class="mono">Tav. 03 — Lavorazioni</span>
-      <h2>Sei schede di lavoro, dal paraurti alla centralina</h2>
+      <h2>Sei servizi, dal paraurti alla centralina</h2>
       <ul class="svc-mini" aria-label="Servizi">
         <li>Carrozzeria</li><li>Verniciatura</li><li>Meccanica</li><li>Elettrauto</li><li>Ibride</li><li>Ricarica clima</li>
       </ul>
@@ -222,6 +222,7 @@
 <script src="assets/vendor/ScrollTrigger.min.js" defer></script>
 <script src="assets/vendor/lenis.min.js" defer></script>
 <script src="assets/vendor/three.min.js" defer></script>
+<script src="assets/js/car-model.js" defer></script>
 <script src="assets/js/car3d.js" defer></script>
 <script src="assets/js/main.js" defer></script>
 </body>

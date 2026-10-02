@@ -1,0 +1,4 @@
+# Modello 3D derivato da un file con licenza Free3D "solo uso personale": non ridistribuire.
+# Si rigenera con _tools/c4d-to-bcm (vedi borgo-car/LEGGIMI.md); il file unico lo incorpora.
+borgo-car/assets/js/car-model.js
+borgo-car-demo.html

@@ -141,6 +141,7 @@ out = f"""<!doctype html>
 <script>{js("assets/vendor/lenis.min.js")}</script>
 <script>{js("assets/vendor/three.min.js")}</script>
 <script>{js("assets/vendor/leaflet/leaflet.js")}</script>
+<script>{js("assets/js/car-model.js")}</script>
 <script>{js("assets/js/car3d.js")}</script>
 <script>{main}</script>
 <script>{ROUTER}</script>
