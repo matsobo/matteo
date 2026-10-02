@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Accessibilità — For Svapo, Via San Martino 19r, Genova</title>
+<meta name="description" content="Dichiarazione di accessibilità del sito For Svapo.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#0b1113">
+<link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/css/style.css">
+<script src="assets/js/consent.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#contenuto">Vai al contenuto</a>
+<header class="testata testata-semplice">
+  <a class="marchio" href="index.html" aria-label="For Svapo, torna alla home"><b>FOR</b><b>SVAPO</b><small>Via San Martino 19r</small></a>
+  <a class="btn" href="index.html">Torna al sito</a>
+</header>
+<main id="contenuto" class="doc">
+
+<p class="sez-num">Note legali</p>
+<h1>Accessibilità</h1>
+<p>Il sito è progettato per rispettare le WCAG 2.1 livello AA, standard di riferimento della norma EN 301 549 richiamata dal D.Lgs. 82/2022 (European Accessibility Act).</p>
+<h2>Cosa abbiamo fatto</h2>
+<ul>
+<li>Testo in Atkinson Hyperlegible, carattere progettato per la leggibilità a bassa visione; contrasto del testo almeno 4,5:1.</li>
+<li>Navigazione completa da tastiera, focus sempre visibile, link "Vai al contenuto".</li>
+<li>Con l'impostazione di sistema "riduci movimento" il sito disattiva animazioni, scorrimento fluido e scena 3D, e mostra illustrazioni statiche.</li>
+<li>La scena 3D è decorativa: le stesse informazioni sono nel testo.</li>
+<li>Il contenuto resta leggibile anche se JavaScript non è disponibile.</li>
+</ul>
+<h2>Limiti noti</h2>
+<p>La mappa interattiva può risultare poco agevole con i lettori di schermo: indirizzo e link alle indicazioni sono sempre disponibili in testo.</p>
+<h2>Segnalazioni</h2>
+<p>Se trovi un problema di accessibilità scrivi a: email <span class="tbc">[DA CONFERMARE]</span>. Ti risponderemo entro 30 giorni.</p>
+<p class="nota">Dichiarazione redatta il <span class="tbc">[DA CONFERMARE]</span> sulla base di una verifica automatica (axe-core) e manuale.</p>
+
+</main>
+<footer class="piede">
+  <p class="piede-marchio" aria-hidden="true"></p>
+  <div class="piede-grid">
+    <div class="piede-legale">
+      <h2>Dati societari</h2>
+      <p>FOR SVAPO S.R.L.S.<br>
+      Sede legale: Via San Martino 19, 16131 Genova (GE)<br>
+      P.IVA e C.F. 02434000994<br>
+      REA GE-486031 · Capitale sociale € 5.000 <span class="tbc">[i.v. DA CONFERMARE]</span><br>
+      PEC forsvapo@legalmail.it <span class="tbc">[DA CONFERMARE]</span><br>
+      Email <span class="tbc">[DA CONFERMARE]</span></p>
+    </div>
+    <div class="piede-avviso">
+      <h2>Avvertenze</h2>
+      <p>Vendita di sigarette elettroniche e liquidi vietata ai minori di 18 anni: in negozio può essere chiesto un documento.</p>
+      <p>Prodotti contenenti nicotina: la nicotina crea dipendenza. Tenere fuori dalla portata dei bambini.</p>
+    </div>
+    <nav class="piede-link" aria-label="Note legali">
+      <h2>Note legali</h2>
+      <ul>
+        <li><a href="privacy.html">Informativa privacy</a></li>
+        <li><a href="cookie.html">Cookie policy</a></li>
+        <li><button type="button" class="linkbtn" data-consent-open>Preferenze cookie</button></li>
+        <li><a href="accessibilita.html">Accessibilità</a></li>
+        <li><a href="crediti.html">Crediti e licenze</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="piede-fine"><span>Via San Martino 19r · 16131 Genova</span><span>Sito dimostrativo · bozza da validare</span></p>
+</footer>
+<section class="consenso" id="consenso" role="dialog" aria-modal="false" aria-labelledby="consenso-t" hidden>
+  <button type="button" class="x" data-consent="reject" aria-label="Chiudi e usa solo i cookie tecnici">&times;</button>
+  <h2 id="consenso-t">Contenuti esterni</h2>
+  <p>Il sito usa solo strumenti tecnici. La mappa carica contenuti da OpenStreetMap, un server esterno: parte solo se lo accetti. <a href="cookie.html">Cookie policy</a></p>
+  <fieldset id="consenso-pref" hidden>
+    <legend>Categorie</legend>
+    <label><input type="checkbox" checked disabled> Tecnici: necessari al funzionamento</label>
+    <label><input type="checkbox" id="c-ext"> Contenuti esterni: mappa OpenStreetMap</label>
+  </fieldset>
+  <div class="consenso-azioni">
+    <button type="button" class="btn" data-consent="reject">Rifiuta</button>
+    <button type="button" class="btn" data-consent="custom">Personalizza</button>
+    <button type="button" class="btn" data-consent="accept">Accetta tutto</button>
+  </div>
+</section>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 640" role="img" aria-label="Flacone di liquido da 10 ml">
+  <defs>
+    <linearGradient id="v" x1="0" x2="1"><stop offset="0" stop-color="#e6ece8" stop-opacity=".22"/><stop offset=".3" stop-color="#e6ece8" stop-opacity=".05"/><stop offset=".8" stop-color="#e6ece8" stop-opacity=".02"/><stop offset="1" stop-color="#e6ece8" stop-opacity=".18"/></linearGradient>
+    <linearGradient id="l" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffb27d"/><stop offset=".25" stop-color="#ff8a3d"/><stop offset=".6" stop-color="#c8662a"/><stop offset="1" stop-color="#8fe3c4" stop-opacity=".7"/></linearGradient>
+  </defs>
+  <!-- becco contagocce -->
+  <path d="M168 18 L192 18 L200 96 L160 96 Z" fill="#e6ece8"/>
+  <!-- tappo -->
+  <rect x="132" y="96" width="96" height="96" rx="6" fill="#121b1e" stroke="#e6ece8" stroke-width="3"/>
+  <path d="M140 110v68M156 110v68M172 110v68M188 110v68M204 110v68M220 110v68" stroke="#2b3a3d" stroke-width="4"/>
+  <!-- collo e spalla -->
+  <path d="M146 192 h68 v22 c0 18 56 24 56 64 v300 c0 22 -14 34 -34 34 h-112 c-20 0 -34 -12 -34 -34 v-300 c0 -40 56 -46 56 -64 z" fill="url(#v)" stroke="#e6ece8" stroke-width="3"/>
+  <!-- liquido -->
+  <path d="M96 330 h168 v248 c0 16 -10 26 -28 26 h-112 c-18 0 -28 -10 -28 -26 z" fill="url(#l)" opacity=".9"/>
+  <ellipse cx="180" cy="330" rx="84" ry="7" fill="#ffb27d"/>
+  <!-- etichetta -->
+  <rect x="90" y="380" width="180" height="150" fill="#e6ece8"/>
+  <text x="180" y="430" text-anchor="middle" font-family="Arial Narrow,Arial,sans-serif" font-weight="900" font-size="34" fill="#0b1113">FOR SVAPO</text>
+  <text x="180" y="466" text-anchor="middle" font-family="Arial,sans-serif" font-weight="700" font-size="17" fill="#0b1113">PG 50 · VG 50</text>
+  <text x="180" y="506" text-anchor="middle" font-family="Arial,sans-serif" font-size="15" fill="#0b1113">10 ml</text>
+  <!-- riflesso -->
+  <path d="M112 300 v260" stroke="#fff" stroke-opacity=".35" stroke-width="6" stroke-linecap="round"/>
+</svg>
