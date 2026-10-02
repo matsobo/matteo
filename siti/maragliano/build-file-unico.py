@@ -1,4 +1,4 @@
-# Genera siti/export/maragliano-dal-1920.html: tutto il sito in un solo file HTML (CSS, JS, font e immagini inline).
+# Genera siti/export/gastronomia-hamburgeria-maragliano.html: tutto il sito in un solo file HTML (CSS, JS, font e immagini inline).
 import re, base64, pathlib
 R = pathlib.Path('/home/user/matteo/siti/maragliano')
 def b64(p, mime): return f"data:{mime};base64," + base64.b64encode((R/p).read_bytes()).decode()
@@ -79,6 +79,6 @@ for pid, f, _ in pagine:
     html = html.replace(f'href="{f}"', f'href="#{pid}"')
 assert not re.search(r'href="(privacy|cookie|crediti|accessibilita|index)\.html"', html)
 assert 'assets/' not in re.sub(r'/\* assets/[^*]+\*/', '', html), [m for m in re.findall(r'.{40}assets/.{40}', html)][:5]
-out = R.parent / 'export' / 'maragliano-dal-1920.html'
+out = R.parent / 'export' / 'gastronomia-hamburgeria-maragliano.html'
 out.write_text(html, encoding='utf-8')
 print(out, round(out.stat().st_size/1024), 'KB')

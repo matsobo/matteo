@@ -1,9 +1,8 @@
-# Maragliano dal 1920 — sito demo
+# Gastronomia Hamburgeria Maragliano — sito demo
 
 Apri `index.html` con doppio clic (funziona anche da `file://`) oppure servilo da un hosting statico (Netlify legge `_headers`, Apache legge `.htaccess`).
 
 ## Da confermare prima della presentazione
-- Insegna ufficiale: le fonti pubbliche dicono "Gastronomia Hamburgeria Maragliano" / "Polleria Maragliano dal 1920", non "Macelleria".
 - Ragione sociale, forma giuridica, REA e capitale sociale (se società).
 - P.IVA 03551680105: trovata su una scheda di directory (Virgilio), va verificata col titolare.
 - Email di contatto (obbligatoria nel footer, D.Lgs. 70/2003).
@@ -12,7 +11,7 @@ Apri `index.html` con doppio clic (funziona anche da `file://`) oppure servilo d
 - Tipi di pane disponibili oltre a classico/integrale; elenco reale delle aggiunte.
 - Storia: nomi della famiglia, date intermedie, foto d'epoca (oggi c'è solo l'anno 1920).
 - Posizione esatta del civico 15r sulla mappa (coordinate indicative di via Frugoni).
-- Foto dell'hamburger nell'hero: fornita da Matteo, autore e licenza da verificare (sembra uno scatto stock o generato). Meglio sostituirla con uno scatto del banco: basta rilanciare lo scontorno e la mappa di profondità.
+- Foto dell'hamburger nell'hero: fornita da Matteo, autore e licenza da verificare (sembra uno scatto stock o generato). Meglio sostituirla con uno scatto del banco: basta rilanciare `strati-burger.py` (scontorno, divisione in strati, profondità).
 - Foto reali di banco e polli allo spiedo.
 - Titolare del trattamento, hosting scelto e tempi di conservazione dei log (per la privacy policy).
 - Privacy e cookie policy: bozze da far validare a un professionista.

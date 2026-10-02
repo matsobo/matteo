@@ -213,15 +213,13 @@
     }
 
     // intro hero
-    gsap.from('.hero h1 .riga > span', { yPercent: 110, duration: 1, ease: 'power4.out', stagger: 0.1, delay: 0.1 });
-    gsap.from('.anno', { y: 40, opacity: 0, duration: 1.1, ease: 'power3.out' });
+    gsap.from('.hero .riga > span', { yPercent: 110, duration: 1, ease: 'power4.out', stagger: 0.12, delay: 0.1 });
     gsap.from('.kicker, .lead, .hero .azioni', { y: 18, opacity: 0, duration: 0.8, ease: 'power3.out', stagger: 0.08, delay: 0.45 });
     gsap.from('.cartellino', { rotate: -25, y: -40, opacity: 0, duration: 1, ease: 'back.out(1.8)', delay: 0.9, transformOrigin: '50% 0%' });
 
     // l'hamburger si scompone mentre si scende dall'hero
     ST.create({ trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true,
-      onUpdate: function (self) { if (window.MaraScene) window.MaraScene.esplodi(self.progress * 1.6); } });
-    gsap.to('.anno', { yPercent: 18, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true } });
+      onUpdate: function (self) { if (window.MaraScene) window.MaraScene.esplodi(self.progress * 3); } });
 
     // reveal
     $$('.rv').forEach(function (n) {
@@ -231,11 +229,13 @@
     gsap.from('.voce', { x: -24, opacity: 0, duration: 0.6, ease: 'power2.out', stagger: 0.07, scrollTrigger: { trigger: '.listino', start: 'top 80%', once: true } });
 
     // rotolo di carta: si srotola durante la sezione pinnata
-    var tl = gsap.timeline({ scrollTrigger: { trigger: '.bottega-pin', start: 'top top', end: '+=120%', pin: true, scrub: 0.6 } });
-    tl.fromTo('.foglio', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 0% 0)', ease: 'none', duration: 1 })
-      .from('.tappa', { y: 20, opacity: 0, stagger: 0.25, duration: 0.3 }, 0.1)
-      .fromTo('.rotolo-asse', { rotateX: 0 }, { rotateX: 720, ease: 'none', duration: 1 }, 0)
-      .from('.timbro', { scale: 2.4, opacity: 0, rotate: 20, duration: 0.25, ease: 'power4.in' }, 0.75);
+    // il foglio comincia a srotolarsi mentre la sezione entra, poi si chiude con una breve pausa (pin)
+    var entra = gsap.timeline({ scrollTrigger: { trigger: '.bottega', start: 'top 85%', end: 'top top', scrub: 0.2 } });
+    entra.fromTo('.foglio', { clipPath: 'inset(0 0 100% 0)' }, { clipPath: 'inset(0 0 25% 0)', ease: 'none', duration: 1 })
+      .from('.tappa', { y: 16, opacity: 0, stagger: 0.2, duration: 0.35 }, 0.2);
+    var tl = gsap.timeline({ scrollTrigger: { trigger: '.bottega-pin', start: 'top top', end: '+=40%', pin: true, scrub: 0.2 } });
+    tl.to('.foglio', { clipPath: 'inset(0 0 0% 0)', ease: 'none', duration: 0.5 })
+      .from('.timbro', { scale: 2.4, opacity: 0, rotate: 20, duration: 0.3, ease: 'power4.in' }, 0.4);
 
     // cartello orari che "dondola" all'arrivo
     gsap.from('.cartello', { rotate: -4, transformOrigin: '50% 0%', duration: 1.4, ease: 'elastic.out(1,0.35)', scrollTrigger: { trigger: '.cartello', start: 'top 80%', once: true } });
